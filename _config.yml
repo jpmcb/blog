@@ -90,8 +90,10 @@ theme_config:
     About: /about/
     Writing: /archives/
     Projects: http://github.com/jpmcb
+    PGP Key: /keybase.txt
   social_links:
     github: https://github.com/jpmcb/
     twitter: https://twitter.com/jpmmcb/
     linkedin: https://www.linkedin.com/in/jpmcb/
-  
+    keybase: keybase.io/jpmcb
+    
