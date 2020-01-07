@@ -79,9 +79,8 @@ theme: cactus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/jpmcb/blog
-  branch:
-  message:
+  repo: git@github.com:jpmcb/blog.git
+  branch: master
 
 theme_config:
   colorscheme: dark
@@ -95,5 +94,5 @@ theme_config:
     github: https://github.com/jpmcb/
     twitter: https://twitter.com/jpmmcb/
     linkedin: https://www.linkedin.com/in/jpmcb/
-    keybase: keybase.io/jpmcb
+    keybase: https://www.keybase.io/jpmcb
     
