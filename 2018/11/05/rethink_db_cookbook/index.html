@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="IntroductionRethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Nod">
+<meta name="keywords" content="JavaScript,Node,RethinkDB,JSON">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RethinkDB basics - JSON based database">
+<meta property="og:url" content="johncodes.com/2018/11/05/rethink_db_cookbook/index.html">
+<meta property="og:site_name" content="John McBride">
+<meta property="og:description" content="IntroductionRethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Nod">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-01T16:32:44.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RethinkDB basics - JSON based database">
+<meta name="twitter:description" content="IntroductionRethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Nod">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>RethinkDB basics - JSON based database</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/11/12/docker_centos/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/24/introduction/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/05/rethink_db_cookbook/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/05/rethink_db_cookbook/&text=RethinkDB basics - JSON based database"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/05/rethink_db_cookbook/&is_video=false&description=RethinkDB basics - JSON based database"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=RethinkDB basics - JSON based database&body=Check out this article: johncodes.com/2018/11/05/rethink_db_cookbook/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/05/rethink_db_cookbook/&name=RethinkDB basics - JSON based database&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/05/rethink_db_cookbook/&t=RethinkDB basics - JSON based database"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Run-the-offical-Docker-Image"><span class="toc-number">2.</span> <span class="toc-text">Run the offical Docker Image</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Using-the-RethinkDB-admin-pannel"><span class="toc-number">3.</span> <span class="toc-text">Using the RethinkDB admin pannel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Install-Rethink-javascript-drivers-via-NPM"><span class="toc-number">4.</span> <span class="toc-text">Install Rethink javascript drivers via NPM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Open-a-connection-to-the-Rethink-instance"><span class="toc-number">5.</span> <span class="toc-text">Open a connection to the Rethink instance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Crud-Operations"><span class="toc-number">6.</span> <span class="toc-text">Basic Crud Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert-Data"><span class="toc-number">6.0.1.</span> <span class="toc-text">Insert Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-data"><span class="toc-number">6.0.2.</span> <span class="toc-text">Getting data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Update-JSON-objects"><span class="toc-number">6.0.3.</span> <span class="toc-text">Update JSON objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delete-JSON-data"><span class="toc-number">6.0.4.</span> <span class="toc-text">Delete JSON data</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        RethinkDB basics - JSON based database
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">John McBride</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-11-05T07:00:00.000Z" itemprop="datePublished">2018-11-05</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Software-Engineering/">Software Engineering</a> › <a class="category-link" href="/categories/Software-Engineering/Backend/">Backend</a> › <a class="category-link" href="/categories/Software-Engineering/Backend/Databases/">Databases</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JSON/">JSON</a>, <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Node/">Node</a>, <a class="tag-link" href="/tags/RethinkDB/">RethinkDB</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Node infrastructures.</p>
+<p>Pre-reqs: Docker, Node, NPM</p>
+<p>This post will serve as a brief overview of RethinkDB and hopefully give you a taste of how it works and why a JSON based database might be beneficial for you and your product. You should have some knowledge of docker for this tutorial, but it’s not required. However, knowledge of Node and JavaScript will be necessary. </p>
+<h1 id="Run-the-offical-Docker-Image"><a href="#Run-the-offical-Docker-Image" class="headerlink" title="Run the offical Docker Image"></a>Run the offical Docker Image</h1><p>You can pull and run the <a href="https://hub.docker.com/_/rethinkdb/" target="_blank" rel="noopener">official</a> rethink docker image to start the database locally. Simply give it a name and you’re on your way!<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P --name &lt;your container name&gt; rethinkdb</span><br></pre></td></tr></table></figure></p>
+<p>To check the port mappings in docker, simply run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker port &lt;your container name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>This will show you something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">28015/tcp -&gt; 0.0.0.0:32769</span><br><span class="line">29015/tcp -&gt; 0.0.0.0:32768</span><br><span class="line">8080/tcp -&gt; 0.0.0.0:32770</span><br></pre></td></tr></table></figure></p>
+<p>Each of the local port mappings appear on the right and the docker container exposed ports are on the left.</p>
+<p>So, if you wanted to access the containers 8080 port, we would navigate to <code>localhost:32770</code>. We can see this from the example as <code>8080/tcp -&gt; 0.0.0.0:32770</code>. </p>
+<p>Alternatively, you can install rethinkdb for your specific machine and run it locally. This can be found on the <a href="https://rethinkdb.com/docs/install/" target="_blank" rel="noopener">RethinkDB install page</a>. Using the docker container &amp; image is a nice, light weight, modular way to run rethink, similar to how a production microservice architecture might be configured. I also like being able to control the exact environment that my rethink database is running in, it’s ports, and other fun docker quality of life things!</p>
+<h1 id="Using-the-RethinkDB-admin-pannel"><a href="#Using-the-RethinkDB-admin-pannel" class="headerlink" title="Using the RethinkDB admin pannel"></a>Using the RethinkDB admin pannel</h1><p>If using the docker container, navigate to the Admin Panel by going to <code>localhost:32770</code> in a browser. From our previous example, we can see that this local port is mapped to the docker container port 8080 (which is the web admin panel). If you’re running rethink on your machine locally, you should be able to simply navigate to <code>localhost:8080</code>.</p>
+<p>In the admin pannel, you create new databases, explor data, see logs, track performance, and see what connections are running. Lets create a database with a few tables.</p>
+<p>In the top navigation bar, go to the “Data Explorer” and enter the following:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r.dbCreate(<span class="string">'ships'</span>)</span><br><span class="line">r.db(<span class="string">'ships'</span>).tableCreate(<span class="string">'battle_ships'</span>)</span><br><span class="line">r.db(<span class="string">'ships'</span>).tableCreate(<span class="string">'cruisers'</span>)</span><br></pre></td></tr></table></figure>
+<p>These raw rethink queries create and build our initial database. This can also be acomplished from “Tables” in the top navigation bar or right in your node app! However, the “Data Explorer” is an essential tool for viewing, manuipulating, and creating data. This is a great <a href="https://rethinkdb.com/docs/reql-data-exploration/" target="_blank" rel="noopener">link</a> for useful Data Explorer queries.  </p>
+<h1 id="Install-Rethink-javascript-drivers-via-NPM"><a href="#Install-Rethink-javascript-drivers-via-NPM" class="headerlink" title="Install Rethink javascript drivers via NPM"></a>Install Rethink javascript drivers via NPM</h1><p>In order to use the rethink drivers in our Node app, we need to install them via NPM. From the command line:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install rethinkdb</span><br></pre></td></tr></table></figure>
+<p>The <code>node_modules</code> folder will now contain the necessary rethink drivers for accessing our rethink instance. To access the rethink drivers from your Node app, require the drivers:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> r = <span class="built_in">require</span>(<span class="string">'rethinkdb'</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="Open-a-connection-to-the-Rethink-instance"><a href="#Open-a-connection-to-the-Rethink-instance" class="headerlink" title="Open a connection to the Rethink instance"></a>Open a connection to the Rethink instance</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> connection = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This could also be declared from a .env file</span></span><br><span class="line"><span class="keyword">let</span> config = &#123;</span><br><span class="line">  host: <span class="string">'localhost'</span>,</span><br><span class="line">  port: <span class="string">'32769'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r.connect(config, <span class="function"><span class="keyword">function</span>(<span class="params">err, conn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  connection = conn;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Now, the connection variable will hold the raw data necessary to connect to the rethink instance. Make special note of what port you specify. This should be the port that maps to 28015 in the docker container.</p>
+<p>For this local instance of the rethinkdb, we won’t worry too much about dynamic ports or not exposing the ports to the public in production. <a href="https://medium.com/@brucelim/creating-a-rest-api-with-rethinkdb-nodejs-express-81ed12f01e59" target="_blank" rel="noopener">Here</a> is a good article about one way you can create production ready ports and configurations.</p>
+<p>This step can be quite complicated. You can do a number of things per your needs, including placing this step into some middleware to connect automatically, check the configuration of your database, reconfigure settings if something is wrong, or validate authorization. Check out <a href="https://github.com/rethinkdb/rethinkdb-example-nodejs" target="_blank" rel="noopener">this repository</a> from the rethink people for more complex operations around connecting. </p>
+<h1 id="Basic-Crud-Operations"><a href="#Basic-Crud-Operations" class="headerlink" title="Basic Crud Operations"></a>Basic Crud Operations</h1><h3 id="Insert-Data"><a href="#Insert-Data" class="headerlink" title="Insert Data"></a>Insert Data</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inserts 2 battleships</span></span><br><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'battle_ships'</span>).insert([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'Arizona'</span>,</span><br><span class="line">    <span class="string">'size'</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="string">'guns'</span>: [</span><br><span class="line">      <span class="string">'railgun'</span>,</span><br><span class="line">      <span class="string">'off_shore_missles'</span></span><br><span class="line">  ]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'Iowa'</span>,</span><br><span class="line">    <span class="string">'size'</span>: <span class="number">34</span>,</span><br><span class="line">    <span class="string">'guns'</span>: [</span><br><span class="line">      <span class="string">'light_machine'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;]).run(connection, <span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>We can see that we are inserting raw JSON objects! Awesome! Now, from the Data explorer, if we query the <code>battle_ships</code> table:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'battle_ships'</span>)</span><br></pre></td></tr></table></figure>
+<p>We will see the following JSON has been entered into the database:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"guns"</span>: [</span><br><span class="line">        <span class="string">"railgun"</span> ,</span><br><span class="line">        <span class="string">"off_shore_missles"</span></span><br><span class="line">    ] ,</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"35502dbd-0354-4ca8-bef5-06825ab8df26"</span> ,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"Arizona"</span> ,</span><br><span class="line">    <span class="string">"size"</span>: <span class="number">22</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"guns"</span>: [</span><br><span class="line">        <span class="string">"light_machine"</span></span><br><span class="line">    ] ,</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"b960127b-994f-44b7-88f5-f7463fc90dae"</span> ,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"Iowa"</span> ,</span><br><span class="line">    <span class="string">"size"</span>: <span class="number">34</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Getting-data"><a href="#Getting-data" class="headerlink" title="Getting data"></a>Getting data</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get all battle ships</span></span><br><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'battle_ships'</span>)</span><br><span class="line">  .run(connection, <span class="function"><span class="keyword">function</span>(<span class="params">err, cursor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    cursor.toArray(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In this example, we are getting all the ships in the battle_ships table. Most rethink queries of this size will return a cursor by default, so to get the raw results, we must make it an array with the <code>.toArray</code> method. The callback will contain the results that can than be parsed further. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get specific battleship</span></span><br><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'battle_ships'</span>)</span><br><span class="line">  .get(<span class="string">'35502dbd-0354-4ca8-bef5-06825ab8df26'</span>)</span><br><span class="line">  .run(connection, <span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>This gets a single ship from the battle_ships table based on the primary key. The primary key is the ID automatically assigned to the inserted JSON. The results we get back in the callback function is the JSON object of the provided key. </p>
+<h3 id="Update-JSON-objects"><a href="#Update-JSON-objects" class="headerlink" title="Update JSON objects"></a>Update JSON objects</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Update the length of The Texas battle ship</span></span><br><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'cruisers'</span>).filter(r.row(<span class="string">"name"</span>).eq(<span class="string">"Texas"</span>))</span><br><span class="line">  .update(&#123;</span><br><span class="line">    <span class="string">"length"</span>: <span class="number">33</span></span><br><span class="line">  &#125;).run(connection, <span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>Here, we update a ship’s length by providing an updated JSON object. Note that we don’t need to provide all fields of the object in order for it to be updated. Once we <code>run</code> the query, the returned result will be what was updated in the database. This snippet also introduces the <code>.filter</code> rethink method. This can be used to pull specific records based on a number of conditions. Finding json objects this way is very powerful and can be chained with other queries. Almost anything you can do with SQL or Mongo, you can do with rethink queries. Check out <a href="https://rethinkdb.com/docs/introduction-to-reql/" target="_blank" rel="noopener">this awesome page</a> for some really useful queries. </p>
+<h3 id="Delete-JSON-data"><a href="#Delete-JSON-data" class="headerlink" title="Delete JSON data"></a>Delete JSON data</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Remove the Iowa battle ship</span></span><br><span class="line">r.db(<span class="string">'ships'</span>).table(<span class="string">'battle_ships'</span>)</span><br><span class="line">  .filter(r.row(<span class="string">'name'</span>).eq(<span class="string">'Iowa'</span>))</span><br><span class="line">  .delete()</span><br><span class="line">  .run(connection, <span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>Here, we again use the <code>.filter</code> method to find a document in the database. Then, we delete it using the <code>.delete()</code> rethink method. After running this query, the JSON will be removed from the database. </p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>I hope that this little dive into RethinkDB has been interesting and has you curious about JSON based databases. Being able to store raw JSON in a NoSQL database is extremely powerful and fits well with JavaScript based architectures.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Run-the-offical-Docker-Image"><span class="toc-number">2.</span> <span class="toc-text">Run the offical Docker Image</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Using-the-RethinkDB-admin-pannel"><span class="toc-number">3.</span> <span class="toc-text">Using the RethinkDB admin pannel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Install-Rethink-javascript-drivers-via-NPM"><span class="toc-number">4.</span> <span class="toc-text">Install Rethink javascript drivers via NPM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Open-a-connection-to-the-Rethink-instance"><span class="toc-number">5.</span> <span class="toc-text">Open a connection to the Rethink instance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Crud-Operations"><span class="toc-number">6.</span> <span class="toc-text">Basic Crud Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert-Data"><span class="toc-number">6.0.1.</span> <span class="toc-text">Insert Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-data"><span class="toc-number">6.0.2.</span> <span class="toc-text">Getting data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Update-JSON-objects"><span class="toc-number">6.0.3.</span> <span class="toc-text">Update JSON objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delete-JSON-data"><span class="toc-number">6.0.4.</span> <span class="toc-text">Delete JSON data</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/05/rethink_db_cookbook/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/05/rethink_db_cookbook/&text=RethinkDB basics - JSON based database"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/05/rethink_db_cookbook/&is_video=false&description=RethinkDB basics - JSON based database"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=RethinkDB basics - JSON based database&body=Check out this article: johncodes.com/2018/11/05/rethink_db_cookbook/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/05/rethink_db_cookbook/&title=RethinkDB basics - JSON based database"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/05/rethink_db_cookbook/&name=RethinkDB basics - JSON based database&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/05/rethink_db_cookbook/&t=RethinkDB basics - JSON based database"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    John McBride
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

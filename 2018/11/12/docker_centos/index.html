@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="IntroductionIf you are a CS 344 student, then you’ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full C">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When trouble comes to town, use Docker!">
+<meta property="og:url" content="johncodes.com/2018/11/12/docker_centos/index.html">
+<meta property="og:site_name" content="John McBride">
+<meta property="og:description" content="IntroductionIf you are a CS 344 student, then you’ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full C">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-01T16:32:44.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="When trouble comes to town, use Docker!">
+<meta name="twitter:description" content="IntroductionIf you are a CS 344 student, then you’ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full C">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>When trouble comes to town, use Docker!</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/11/16/super_vim_tips/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/11/05/rethink_db_cookbook/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/12/docker_centos/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/12/docker_centos/&text=When trouble comes to town, use Docker!"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/12/docker_centos/&is_video=false&description=When trouble comes to town, use Docker!"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=When trouble comes to town, use Docker!&body=Check out this article: johncodes.com/2018/11/12/docker_centos/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/12/docker_centos/&name=When trouble comes to town, use Docker!&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/12/docker_centos/&t=When trouble comes to town, use Docker!"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Get-Docker"><span class="toc-number">1.1.</span> <span class="toc-text">1. Get Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Start-docker"><span class="toc-number">1.2.</span> <span class="toc-text">2. Start docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pull-the-CentOS-image"><span class="toc-number">1.3.</span> <span class="toc-text">3. Pull the CentOS image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Start-the-container"><span class="toc-number">1.4.</span> <span class="toc-text">4. Start the container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Install-dev-dependencies"><span class="toc-number">1.5.</span> <span class="toc-text">5. Install dev dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Place-files-onto-container"><span class="toc-number">1.6.</span> <span class="toc-text">6. Place files onto container</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-SCP"><span class="toc-number">1.6.1.</span> <span class="toc-text">Using SCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-Docker-cp"><span class="toc-number">1.6.2.</span> <span class="toc-text">Using Docker cp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Work-Compile-Run"><span class="toc-number">1.7.</span> <span class="toc-text">7. Work, Compile, Run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Get-files-off-container"><span class="toc-number">1.8.</span> <span class="toc-text">8. Get files off container</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-SCP-1"><span class="toc-number">1.8.1.</span> <span class="toc-text">Using SCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-docker-cp"><span class="toc-number">1.8.2.</span> <span class="toc-text">Using docker cp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Using-Docker-volumes"><span class="toc-number">1.9.</span> <span class="toc-text">9. Using Docker volumes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Exiting-the-container"><span class="toc-number">1.10.</span> <span class="toc-text">10. Exiting the container</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extras"><span class="toc-number">2.</span> <span class="toc-text">Extras!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS-Docker-Hub"><span class="toc-number">2.1.</span> <span class="toc-text">CentOS Docker Hub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfiles"><span class="toc-number">2.2.</span> <span class="toc-text">Dockerfiles</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        When trouble comes to town, use Docker!
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">John McBride</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-11-12T07:00:00.000Z" itemprop="datePublished">2018-11-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Software-Engineering/">Software Engineering</a> › <a class="category-link" href="/categories/Software-Engineering/Docker/">Docker</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Docker/">Docker</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>If you are a CS 344 student, then you’ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</p>
+<p><em><em>Note:</em></em> when a “host” is referenced, this is in regard to your own laptop and your own environment, not any container or virtual machine you might have running. </p>
+<h3 id="1-Get-Docker"><a href="#1-Get-Docker" class="headerlink" title="1. Get Docker"></a>1. Get Docker</h3><p>You can <a href="https://www.docker.com/get-started" target="_blank" rel="noopener">download and install Docker at this link</a></p>
+<p>Docker creates operating system level virtualizations through “containers”. It’s alot like a traditional Virtual Machine, but containers are run through the host system kernel while maintaining their own software libraries and configurations. In short, containers are significantly less expensive as they don’t have to spin up their own virtual kernels. </p>
+<h3 id="2-Start-docker"><a href="#2-Start-docker" class="headerlink" title="2. Start docker"></a>2. Start docker</h3><p>Once you’ve installed Docker, fire it up. It will run in the background and give you access to its command line tools. </p>
+<h3 id="3-Pull-the-CentOS-image"><a href="#3-Pull-the-CentOS-image" class="headerlink" title="3. Pull the CentOS image"></a>3. Pull the CentOS image</h3><p>Grab the CentOS image with the following command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure></p>
+<p>An image is a template “snapshot” used to build containers. Images contain the specific configurations and packages that define what a container is. </p>
+<h3 id="4-Start-the-container"><a href="#4-Start-the-container" class="headerlink" title="4. Start the container"></a>4. Start the container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t centos</span><br></pre></td></tr></table></figure>
+<p>This will bring up the CentOS container in interactive mode with the CentOS command line. There are a huge number of flags for running containers, but this is an easy way to directly gain access to the CentOS command line.</p>
+<p>Here is the <a href="https://docs.docker.com/engine/reference/run/" target="_blank" rel="noopener">docker reference</a> for flags and running an image. </p>
+<h3 id="5-Install-dev-dependencies"><a href="#5-Install-dev-dependencies" class="headerlink" title="5. Install dev dependencies"></a>5. Install dev dependencies</h3><p>Because this CentOS image is a bare bone, fresh start, linux distro with nothing on it, you will need to install a few unix dev tools. This can easily be done with the following command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall <span class="string">"Development tools"</span></span><br></pre></td></tr></table></figure></p>
+<p>To install Vim:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br></pre></td></tr></table></figure></p>
+<p>If you find that you’re missing some tool, try searching online for the install command (make sure to specify CentOS when googling). It is likely a yum command that you’re looking for. </p>
+<h3 id="6-Place-files-onto-container"><a href="#6-Place-files-onto-container" class="headerlink" title="6. Place files onto container"></a>6. Place files onto container</h3><h4 id="Using-SCP"><a href="#Using-SCP" class="headerlink" title="Using SCP"></a>Using SCP</h4><p>You can pull down your files from a server with this command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp username@access.engr.oregonstate.edu:~/path/to/smallsh.zip /path/to/destination</span><br></pre></td></tr></table></figure>
+<h4 id="Using-Docker-cp"><a href="#Using-Docker-cp" class="headerlink" title="Using Docker cp"></a>Using Docker cp</h4><p>If you have files on your local host machine that you want on the docker container, you can use the built in docker cp command on your host machine:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp path/to/file/testing.txt &lt;container name&gt;:/path/to/destination</span><br></pre></td></tr></table></figure>
+<p>This might look something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp path/to/testing.txt wizardly_montalcini:/path/to/target</span><br></pre></td></tr></table></figure></p>
+<p><em>Note:</em> the container needs to be running for this to work!</p>
+<p>To find the running container name, use the following command on your host machine:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls</span><br></pre></td></tr></table></figure></p>
+<p>This will show us something like this. We can find the name on the far right:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">4218f505a811        centos              &quot;/bin/bash&quot;         2 minutes ago       Up 2 minutes                            wizardly_montalcini</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-Work-Compile-Run"><a href="#7-Work-Compile-Run" class="headerlink" title="7. Work, Compile, Run"></a>7. Work, Compile, Run</h3><p>Now that you have the container running, installed the development dependencies, and pulled your files, you can proceed normally! Work on your program with vim, compile, and run your executable as you would on OS1.</p>
+<p>Here’s an example of me doing this on a CentOS docker container<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@f30ebeebacde /]<span class="comment"># make</span></span><br><span class="line">gcc -Wall -c smallsh.c buffer_io.c utility.c</span><br><span class="line">gcc -Wall -o smallsh smallsh.o buffer_io.o utility.o</span><br><span class="line">[root@f30ebeebacde /]<span class="comment"># ./smallsh</span></span><br><span class="line">:ls</span><br><span class="line">README.md      buffer_io.c  etc   lib64         media  proc  sbin       smallsh.c  srv  usr        var</span><br><span class="line">anaconda-post.log  buffer_io.o  home  makefile          mnt    root  shelltest  smallsh.h  sys  utility.c</span><br><span class="line">bin        dev      lib   mcbridej_smallsh.zip  opt    run   smallsh    smallsh.o  tmp  utility.o</span><br><span class="line">:cat README.md</span><br><span class="line"><span class="comment"># Smallsh</span></span><br><span class="line">Author: John McBride</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-Get-files-off-container"><a href="#8-Get-files-off-container" class="headerlink" title="8. Get files off container"></a>8. Get files off container</h3><p>Once you are ready to get your files back, you can use SCP or the built in docker cp command. These are similar to putting your files onto the container, but with the paths switched.</p>
+<h4 id="Using-SCP-1"><a href="#Using-SCP-1" class="headerlink" title="Using SCP"></a>Using SCP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path/to/file.txt username@access.engr.oregonstate.edu:~/path/to/target</span><br></pre></td></tr></table></figure>
+<h4 id="Using-docker-cp"><a href="#Using-docker-cp" class="headerlink" title="Using docker cp"></a>Using docker cp</h4><p>On your local host:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp &lt;containerId&gt;:/file/path/within/container  /host/path/destination</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-Using-Docker-volumes"><a href="#9-Using-Docker-volumes" class="headerlink" title="9. Using Docker volumes"></a>9. Using Docker volumes</h3><p>There is a better way to get files on and off your container, but it’s slightly more complicated. In this example, let’s mount a file system <em>volume</em>. You can <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">read all about volumes</a> and how they are defined by docker. But the quick and dirty way to get files on to a container from your host when you start docker is as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it -v <span class="string">"/host/user/folder/to/mount:/container/destination"</span> centos</span><br></pre></td></tr></table></figure>
+<p>Note the new <code>-v</code> flag followed by a full file path mapping. Let’s break it down. The <code>-v</code> command tells docker to mount a volume. The first part of the path preceding the <code>:</code> defines the source directory in the host’s filesystem to mount. The path after the <code>:</code> defines the destination inside the container to mount the directory!</p>
+<p>Now, when you poke around the container, the files from the source folder will be in the destination folder. The really cool thing about this is that files are persisted across volumes. Or in other words, if you change a file that’s been mounted by a volume, it will also be changed on host! This eliminates the need for copy files and folders to and from the container!</p>
+<p><em>Much thanks to <a href="https://github.com/nathanperkins" target="_blank" rel="noopener">Nathan</a> for pointing out this tidbit!</em> </p>
+<h3 id="10-Exiting-the-container"><a href="#10-Exiting-the-container" class="headerlink" title="10. Exiting the container"></a>10. Exiting the container</h3><p>You can exit and stop a container in interactive mode with <code>Ctrl d</code></p>
+<p>You can detach from a container when in interactive mode with <code>Ctrl p</code> <code>Ctrl q</code>. To re-attach to the container, use the <code>docker attach</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach &lt;container name&gt;</span><br></pre></td></tr></table></figure>
+<p>This would be something like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach wizardly_montalcini</span><br></pre></td></tr></table></figure></p>
+<p>If you need to kill a container, you can use the <code>docker kill</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> &lt;container name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Using our example, this would look like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> wizardly_montalcini</span><br></pre></td></tr></table></figure></p>
+<p>Warning! Containers are NOT persistent. Again, they are <em><em>NOT persistent.</em></em> Once one is stopped or killed, you will loose everything on it. If you want to keep a container running, just detach from it or make sure to <code>SCP</code> or <code>docker cp</code> your files off the container before you kill it.</p>
+<p>If you stop a docker container you can bring it back up with the <code>docker run -i -t centos</code> command. </p>
+<h2 id="Extras"><a href="#Extras" class="headerlink" title="Extras!"></a>Extras!</h2><p>This section will serve as some docker extras.</p>
+<h3 id="CentOS-Docker-Hub"><a href="#CentOS-Docker-Hub" class="headerlink" title="CentOS Docker Hub"></a>CentOS Docker Hub</h3><p>The official <a href="https://hub.docker.com/_/centos/" target="_blank" rel="noopener">CentOS Docker image</a> from docker hub - This has some interesting tid-bits about security dependencies and installing updates. </p>
+<h3 id="Dockerfiles"><a href="#Dockerfiles" class="headerlink" title="Dockerfiles"></a>Dockerfiles</h3><p>Starting the container and installing the dev dependencies every single time you start it can be kind of annoying. Thankfully, you can use dockerfiles to automate building containers. Here is a sample dockerfile that will build the centos container and install the dev dependencies for us.</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="bash"> yum groupinstall <span class="string">"Development tools"</span></span></span><br></pre></td></tr></table></figure>
+<p>These can get really complicated. <a href="https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images" target="_blank" rel="noopener">Here is some very useful info</a> on how dockerfiles work, how to use them, and how you can make one that fits your needs.</p>
+<p><a href="https://github.com/CentOS/CentOS-Dockerfiles" target="_blank" rel="noopener">Here is the official</a> CentOS dockerfile repository on github.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Get-Docker"><span class="toc-number">1.1.</span> <span class="toc-text">1. Get Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Start-docker"><span class="toc-number">1.2.</span> <span class="toc-text">2. Start docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pull-the-CentOS-image"><span class="toc-number">1.3.</span> <span class="toc-text">3. Pull the CentOS image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Start-the-container"><span class="toc-number">1.4.</span> <span class="toc-text">4. Start the container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Install-dev-dependencies"><span class="toc-number">1.5.</span> <span class="toc-text">5. Install dev dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Place-files-onto-container"><span class="toc-number">1.6.</span> <span class="toc-text">6. Place files onto container</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-SCP"><span class="toc-number">1.6.1.</span> <span class="toc-text">Using SCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-Docker-cp"><span class="toc-number">1.6.2.</span> <span class="toc-text">Using Docker cp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Work-Compile-Run"><span class="toc-number">1.7.</span> <span class="toc-text">7. Work, Compile, Run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Get-files-off-container"><span class="toc-number">1.8.</span> <span class="toc-text">8. Get files off container</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-SCP-1"><span class="toc-number">1.8.1.</span> <span class="toc-text">Using SCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-docker-cp"><span class="toc-number">1.8.2.</span> <span class="toc-text">Using docker cp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Using-Docker-volumes"><span class="toc-number">1.9.</span> <span class="toc-text">9. Using Docker volumes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Exiting-the-container"><span class="toc-number">1.10.</span> <span class="toc-text">10. Exiting the container</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extras"><span class="toc-number">2.</span> <span class="toc-text">Extras!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS-Docker-Hub"><span class="toc-number">2.1.</span> <span class="toc-text">CentOS Docker Hub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfiles"><span class="toc-number">2.2.</span> <span class="toc-text">Dockerfiles</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/12/docker_centos/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/12/docker_centos/&text=When trouble comes to town, use Docker!"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/12/docker_centos/&is_video=false&description=When trouble comes to town, use Docker!"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=When trouble comes to town, use Docker!&body=Check out this article: johncodes.com/2018/11/12/docker_centos/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/12/docker_centos/&title=When trouble comes to town, use Docker!"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/12/docker_centos/&name=When trouble comes to town, use Docker!&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/12/docker_centos/&t=When trouble comes to town, use Docker!"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    John McBride
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

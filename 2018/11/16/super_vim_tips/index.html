@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="IntroductionI’d consider myself some sort of Vim - evangelist. It’s an incredible tool and has ALOT of power. If there’s something you wish Vim could do, there’s probably a plugin for it or a way to m">
+<meta name="keywords" content="Vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="John&#39;s Super Vim Tips!">
+<meta property="og:url" content="johncodes.com/2018/11/16/super_vim_tips/index.html">
+<meta property="og:site_name" content="John McBride">
+<meta property="og:description" content="IntroductionI’d consider myself some sort of Vim - evangelist. It’s an incredible tool and has ALOT of power. If there’s something you wish Vim could do, there’s probably a plugin for it or a way to m">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-01T16:32:44.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="John&#39;s Super Vim Tips!">
+<meta name="twitter:description" content="IntroductionI’d consider myself some sort of Vim - evangelist. It’s an incredible tool and has ALOT of power. If there’s something you wish Vim could do, there’s probably a plugin for it or a way to m">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>John&#39;s Super Vim Tips!</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/14/to_catch_a_hacker/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/11/12/docker_centos/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/16/super_vim_tips/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/16/super_vim_tips/&text=John&#39;s Super Vim Tips!"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/16/super_vim_tips/&is_video=false&description=John&#39;s Super Vim Tips!"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=John&#39;s Super Vim Tips!&body=Check out this article: johncodes.com/2018/11/16/super_vim_tips/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/16/super_vim_tips/&name=John&#39;s Super Vim Tips!&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/16/super_vim_tips/&t=John&#39;s Super Vim Tips!"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Vim"><span class="toc-number">1.1.</span> <span class="toc-text">Get Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-started"><span class="toc-number">1.2.</span> <span class="toc-text">Getting started:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-cheat-sheets"><span class="toc-number">1.2.1.</span> <span class="toc-text">Command cheat sheets:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interactive-Tutorials"><span class="toc-number">1.2.2.</span> <span class="toc-text">Interactive Tutorials</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exiting-Vim"><span class="toc-number">1.3.</span> <span class="toc-text">Exiting Vim:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Saving-and-Exiting"><span class="toc-number">1.3.1.</span> <span class="toc-text">Saving and Exiting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Making-a-hard-exit"><span class="toc-number">1.3.2.</span> <span class="toc-text">Making a hard exit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Just-saving"><span class="toc-number">1.3.3.</span> <span class="toc-text">Just saving</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Customize-Vim"><span class="toc-number">1.4.</span> <span class="toc-text">Customize Vim:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-in-Vim"><span class="toc-number">1.5.</span> <span class="toc-text">Search in Vim:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Split-window-view"><span class="toc-number">1.6.</span> <span class="toc-text">Split window view!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Horizontal-split"><span class="toc-number">1.6.1.</span> <span class="toc-text">Horizontal split</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception"><span class="toc-number">1.7.</span> <span class="toc-text">Inception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-Comments"><span class="toc-number">1.8.</span> <span class="toc-text">Block Comments</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-traveling"><span class="toc-number">1.9.</span> <span class="toc-text">Time traveling!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plugins"><span class="toc-number">1.10.</span> <span class="toc-text">Plugins</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion:</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        John&#39;s Super Vim Tips!
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">John McBride</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-11-16T07:00:00.000Z" itemprop="datePublished">2018-11-16</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Software-Engineering/">Software Engineering</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Vim/">Vim</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>I’d consider myself some sort of Vim - evangelist. It’s an incredible tool and has ALOT of power. If there’s something you wish Vim could do, there’s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from. Being able to modify files directly on a server is necessary in almost every development sphere. </p>
+<h2 id="Get-Vim"><a href="#Get-Vim" class="headerlink" title="Get Vim"></a>Get Vim</h2><p>Most unix like operating systems (including MacOS) should come pre-packaged with Vim. If not, you can install it with yum:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br></pre></td></tr></table></figure></p>
+<p>Or apt-get<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure></p>
+<p>On windows you’ll want to use the installation wizard <a href="https://www.vim.org/download.php" target="_blank" rel="noopener">provided by the vim organization</a></p>
+<p>On MacOS, if for some reason you’re missing Vim, you can install it with the Homebrew installer (a great <a href="https://brew.sh/" target="_blank" rel="noopener">package manager and installer</a>):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install macvim</span><br></pre></td></tr></table></figure></p>
+<h2 id="Getting-started"><a href="#Getting-started" class="headerlink" title="Getting started:"></a>Getting started:</h2><h3 id="Command-cheat-sheets"><a href="#Command-cheat-sheets" class="headerlink" title="Command cheat sheets:"></a>Command cheat sheets:</h3><p>Cheat sheets are really great to have printed off at your desk for quick reference. Here are a few of my favorites:</p>
+<ul>
+<li><a href="https://www.fprintf.net/vimCheatSheet.html" target="_blank" rel="noopener">fprintf.net</a></li>
+<li><a href="https://www.linuxtrainingacademy.com/vim-cheat-sheet/" target="_blank" rel="noopener">Linux Training Academy</a></li>
+<li><a href="http://vimsheet.com/" target="_blank" rel="noopener">VimSheet.com</a></li>
+</ul>
+<h3 id="Interactive-Tutorials"><a href="#Interactive-Tutorials" class="headerlink" title="Interactive Tutorials"></a>Interactive Tutorials</h3><ul>
+<li><p><a href="https://vim-adventures.com/" target="_blank" rel="noopener">The Vim browser game</a><br>This is a great way to learn the movement keys to get around a file and do basic operations. Here are some other great resources on getting started in Vim:</p>
+</li>
+<li><p>vimtutor<br>Vim is packaged with its own tutorial named vimtutor! To start the tutorial, simple enter the name of the program! You can exit vimtutor the same way you would normally exit vim (see the section below)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vimtutor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85" target="_blank" rel="noopener">Vim in 4 weeks</a><br>A comprehensive, in depth plan to learning the various aspects of Vim. This article gets talked alot about when people are learning Vim.</p>
+</li>
+<li><p>Only use Vim!<br>If you only use Vim, and don’t let yourself use anything else (like sublime text or VS Code), you’ll learn fast (but I would recommend going through one of the interactive tutorials first)!</p>
+</li>
+</ul>
+<h2 id="Exiting-Vim"><a href="#Exiting-Vim" class="headerlink" title="Exiting Vim:"></a>Exiting Vim:</h2><p>Alot of people start up vim and then get frustrated by not being able to save and exit. It’s confusing initially! Here are a few different ways to save and exit!</p>
+<h3 id="Saving-and-Exiting"><a href="#Saving-and-Exiting" class="headerlink" title="Saving and Exiting"></a>Saving and Exiting</h3><ol>
+<li>Hit esc to ensure you’re in normal mode</li>
+<li>Enter the command palette by hitting <code>:</code></li>
+<li>Type <code>qw</code> and hit enter. This will “write” the file and than “quit” Vim</li>
+</ol>
+<p>Alternatively: in normal mode, hitting <code>ZZ</code> (yes both capitalized) will save and exit vim for you!</p>
+<h3 id="Making-a-hard-exit"><a href="#Making-a-hard-exit" class="headerlink" title="Making a hard exit"></a>Making a hard exit</h3><ol>
+<li>Hit esc to ensure you’re in normal mode</li>
+<li>Enter the command palette by hitting <code>:</code></li>
+<li>Type <code>q!</code> and enter to force vim to quite without writing (saving) anything. Danger! All things you typed since your last “write” will NOT be saved </li>
+</ol>
+<h3 id="Just-saving"><a href="#Just-saving" class="headerlink" title="Just saving"></a>Just saving</h3><ol>
+<li>Hit esc to ensure you’re in normal mode</li>
+<li>Enter the command palette by hitting <code>:</code></li>
+<li>Type <code>w</code> and enter to “write” your changes</li>
+</ol>
+<h2 id="Customize-Vim"><a href="#Customize-Vim" class="headerlink" title="Customize Vim:"></a>Customize Vim:</h2><p>When starting Vim, it will search for a <code>.vimrc</code> file in your home directory (based on your home path name). If you don’t have one, you can create one (right in your home directory, usually the same directory as your .bashrc) and use it to customize how vim functions on startup! The following are some basics that everyone should have (The reader should note that “ are comments in Vimscript):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot; Turns on nice colors</span><br><span class="line">colo desert</span><br><span class="line">&quot; Turns on the syntax for code. Automatically will recognize various file types</span><br><span class="line">syntax on</span><br></pre></td></tr></table></figure>
+<p>Placing these (and other vimscript things) into your <code>.vimrc</code> will change the behavior of vim when it starts. Here’s a vimscript for setting tabs to be 4 spaces!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filetype plugin indent on</span><br><span class="line">&quot; show existing tab with 4 spaces width</span><br><span class="line">set tabstop=4</span><br><span class="line">&quot; when indenting with &apos;&gt;&apos;, use 4 spaces width</span><br><span class="line">set shiftwidth=4</span><br><span class="line">&quot; On pressing tab, insert 4 spaces</span><br><span class="line">set expandtab</span><br></pre></td></tr></table></figure>
+<p>This next one is more involved, but it auto creates closing parenthesis for us! We can see that the <code>h</code> and <code>i</code> in this vimscript are the literal movement commands given to vim after auto completing the parenthesis to get the cursor back to the it’s correct position. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot; For mapping the opening paran with the closing one</span><br><span class="line">inoremap ( ()&lt;Esc&gt;hi</span><br></pre></td></tr></table></figure>
+<p>This should give you a small taste of what vimscript is like and what it’s capable of. It can do alot and it’s very powerful. If there’s something you want Vim to do (like something special with spacing, indents, comments, etc), search online for it. Someone has likely tried to do the same thing and wrote a Vim script for it. </p>
+<p><a href="https://www.ibm.com/developerworks/library/l-vim-script-1/index.html" target="_blank" rel="noopener">This cool IBM guide</a> goes into some depth with how vim scripting works and what you can build.</p>
+<h2 id="Search-in-Vim"><a href="#Search-in-Vim" class="headerlink" title="Search in Vim:"></a>Search in Vim:</h2><p>Vim makes it super easy to search and find expressions in the file you have open; it’s very powerful.</p>
+<p>To search, when in normal mode (hit esc a few times):</p>
+<ol>
+<li>hit the forward-slash key <code>/</code></li>
+<li>Begin typing the phrase or keyword you are looking for</li>
+<li>Hit enter</li>
+<li>The cursor will be placed on the first instance of that phrase!</li>
+<li>While still in normal mode, hit <code>n</code> to go to the next instance of that phrase!</li>
+<li>Hitting <code>N</code> will go to the previous instance of that phrase</li>
+<li>To turn off the highlighted phrases you searched for, in normal mode, hit the colon <code>:</code> to enter the command palette </li>
+<li>Type <code>noh</code> into the command palette to set “no highlighting” and the highlights will be turned off</li>
+</ol>
+<h2 id="Split-window-view"><a href="#Split-window-view" class="headerlink" title="Split window view!"></a>Split window view!</h2><p>You can have two instances of Vim open at once in a split window on the terminal. This is like tmux, but it’s managed exclusively by vim!</p>
+<h3 id="Horizontal-split"><a href="#Horizontal-split" class="headerlink" title="Horizontal split"></a>Horizontal split</h3><p>When in normal mode, enter this into the command palette to enter a horizontal split. The “name of file to load” is the path to a file you want to open. The path is relative to where Vim was started from.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:split &lt;name of file to load&gt;</span><br></pre></td></tr></table></figure></p>
+<p>To achieve a vertical split:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:vsplit &lt;name of file to load&gt;</span><br></pre></td></tr></table></figure></p>
+<p>To change the current active panel, (when in normal mode) hit <code>Ctrl w Ctrl w</code> (yes, that’s ctrl w twice)</p>
+<h2 id="Inception"><a href="#Inception" class="headerlink" title="Inception"></a>Inception</h2><p>Start a bash shell (or any other unix-y command) right in Vim! (in other words, yes Inception is real). When in normal mode, start the command palette and use the following command to bring up a bash shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:!bash</span><br></pre></td></tr></table></figure>
+<p>Note the exclamation mark telling Vim to execute the command.</p>
+<p>Here’s where it gets crazy. Your initial shell you used to enter Vim is still running. On top of that shell, Vim is running. Now, on top of that, a bash shell instance is now running! It’s sort of like an onion with all the layers you can go down into. To get back to Vim, exit your bash instance with the <code>exit</code> command. If you than exit Vim, you will be back to your original shell. A word of warning though, all this job handling and nested processes can get fairly processor hungry. So, if your noticing some chugging, back off alittle on the inception. </p>
+<p>You can execute almost any unix command like this. For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:!wc sample.txt</span><br></pre></td></tr></table></figure></p>
+<p>This will run the word count program for the sample.txt file! Command inception is crazy cool!</p>
+<h2 id="Block-Comments"><a href="#Block-Comments" class="headerlink" title="Block Comments"></a>Block Comments</h2><p>I find this extremely helpful when doing full Vim development. This is taken from the following <a href="https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim" target="_blank" rel="noopener">Stack Overflow discussion</a> </p>
+<p>For commenting a block of text:</p>
+<p> “First, go to the first line you want to comment, press Ctrl V. This will put the editor in the VISUAL BLOCK mode. </p>
+<p> Now using the arrow key, select up to the last line you want commented. Now press Shift i, which will put the editor in INSERT mode and then press #. </p>
+<p> This will add a hash to the first line. (if this was a C file, just type //). Then press Esc (give it a second), and it will insert a # character on all other selected lines.”</p>
+<p>Un-commenting is nearly the same, but in opposite order using the visual block mode!</p>
+<h2 id="Time-traveling"><a href="#Time-traveling" class="headerlink" title="Time traveling!"></a>Time traveling!</h2><p>Yes, you heard that right, vim makes time travel possible! Note, this ONLY works within current Vim sessions. So, if you exit vim, you will lose your current session’s stack of edits. </p>
+<p>On the Vim command palette, which you can enter from Normal mode by hitting the colon <code>:</code>, you can type ‘earlier’ and ‘later’ to go back and forth in your current session stack of edits. This is super helpful if you need to revert a few small changes you’ve made in the last minute or want to revert everything you did in the last hour. Or if you decide you do want those changes, go forward in time too! </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:earlier 3m</span><br><span class="line">:later 5s</span><br></pre></td></tr></table></figure>
+<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>One of the reasons Vim is so great is that there are TONS of awesome plugins for Vim. If you’re having a hard time scripting something on your own with vimscript, there’s probably a plugin for it! They range anywhere from super useful to super silly. Some of my favorites include the file system NERD tree, the fugitive git client, and ordering pizza with Vim Pizza (yes that’s right, you can order pizza with Vim! It can really do it all!)</p>
+<p>Check out <a href="https://vimawesome.com/" target="_blank" rel="noopener">this great resource</a> for discovering Vim plugins, instructions to install them, and buzz around the Vim community.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h1><p>This by no means is a comprehensive guide. There are a ton of great resources for Vim out there and its capabilities. This guide should serve more as a small taste to what Vim can do and maybe peaked your interest to learning more about it.</p>
+<p>Take heart! Vim has a steep learning curve, and, like any complex tool set, it takes alot of time and practice to get good with. Google is your friend here. </p>
+<p>Feel free to reach out to me if something from this guide was not super clear!</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Vim"><span class="toc-number">1.1.</span> <span class="toc-text">Get Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-started"><span class="toc-number">1.2.</span> <span class="toc-text">Getting started:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-cheat-sheets"><span class="toc-number">1.2.1.</span> <span class="toc-text">Command cheat sheets:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interactive-Tutorials"><span class="toc-number">1.2.2.</span> <span class="toc-text">Interactive Tutorials</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exiting-Vim"><span class="toc-number">1.3.</span> <span class="toc-text">Exiting Vim:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Saving-and-Exiting"><span class="toc-number">1.3.1.</span> <span class="toc-text">Saving and Exiting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Making-a-hard-exit"><span class="toc-number">1.3.2.</span> <span class="toc-text">Making a hard exit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Just-saving"><span class="toc-number">1.3.3.</span> <span class="toc-text">Just saving</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Customize-Vim"><span class="toc-number">1.4.</span> <span class="toc-text">Customize Vim:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-in-Vim"><span class="toc-number">1.5.</span> <span class="toc-text">Search in Vim:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Split-window-view"><span class="toc-number">1.6.</span> <span class="toc-text">Split window view!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Horizontal-split"><span class="toc-number">1.6.1.</span> <span class="toc-text">Horizontal split</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception"><span class="toc-number">1.7.</span> <span class="toc-text">Inception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-Comments"><span class="toc-number">1.8.</span> <span class="toc-text">Block Comments</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-traveling"><span class="toc-number">1.9.</span> <span class="toc-text">Time traveling!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plugins"><span class="toc-number">1.10.</span> <span class="toc-text">Plugins</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion:</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=johncodes.com/2018/11/16/super_vim_tips/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=johncodes.com/2018/11/16/super_vim_tips/&text=John&#39;s Super Vim Tips!"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=johncodes.com/2018/11/16/super_vim_tips/&is_video=false&description=John&#39;s Super Vim Tips!"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=John&#39;s Super Vim Tips!&body=Check out this article: johncodes.com/2018/11/16/super_vim_tips/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=johncodes.com/2018/11/16/super_vim_tips/&title=John&#39;s Super Vim Tips!"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=johncodes.com/2018/11/16/super_vim_tips/&name=John&#39;s Super Vim Tips!&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=johncodes.com/2018/11/16/super_vim_tips/&t=John&#39;s Super Vim Tips!"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    John McBride
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/jpmcb">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
