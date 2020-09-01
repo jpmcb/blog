@@ -5,7 +5,7 @@
 # Site
 title: John McBride
 subtitle: Denver based Software Engineer
-description: I am a Denver based Software Engineer working on Cloud Foundry.
+description: I am a Denver based Software Engineer.
 keywords: Software Engineer
 author: John McBride
 language: en
@@ -89,10 +89,7 @@ theme_config:
     About: /about/
     Writing: /archives/
     Projects: http://github.com/jpmcb
-    PGP Key: /keybase.txt
   social_links:
     github: https://github.com/jpmcb/
     twitter: https://twitter.com/jpmmcb/
     linkedin: https://www.linkedin.com/in/jpmcb/
-    keybase: https://www.keybase.io/jpmcb
-    
