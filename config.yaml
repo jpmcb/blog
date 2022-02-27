@@ -1,0 +1,59 @@
+baseURL: 'http://johncodes.com/'
+languageCode: 'en-us'
+title: 'John McBride'
+paginate: 5
+theme: 'PaperMod'
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+
+minify:
+  disableXML: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    menu:
+      main:
+        - name: About
+          url: about
+          weight: 5
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: Categories
+          url: categories/
+          weight: 10
+
+# home-info mode
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: John-McBride
+  description: "John McBride"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: John McBride
+  DateFormat: "January 2, 2006"
+  defaultTheme: "dark"
+  disableThemeToggle: true
+
+  # Home profile mode
+  homeInfoParams:
+    Title : 'Tech re-view 📝'
+    Content: 'A blog about technology, programming, philosophy and whatever I want.'
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/johncodezzz"
+    - name: github
+      url: "https://github.com/jpmcb"
