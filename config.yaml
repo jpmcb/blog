@@ -1,4 +1,4 @@
-baseURL: 'johncodes.com/'
+baseURL: 'https://johncodes.com/'
 languageCode: 'en-us'
 title: 'John McBride 👨‍💻'
 paginate: 5
@@ -13,6 +13,7 @@ enableEmoji: true
 
 minify:
   disableXML: true
+  minifyOutput: true
 
 languages:
   en:
