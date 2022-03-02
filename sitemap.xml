@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://johncodes.com/</loc>
+    <loc>johncodes.dev/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/golang-performance/</loc>
+    <loc>johncodes.dev/posts/golang-performance/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/</loc>
+    <loc>johncodes.dev/posts/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/slack-is-watching/</loc>
+    <loc>johncodes.dev/posts/slack-is-watching/</loc>
     <lastmod>2019-01-21T21:18:06-07:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/npm-event-stream/</loc>
+    <loc>johncodes.dev/posts/npm-event-stream/</loc>
     <lastmod>2018-12-14T21:20:46-07:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/rethink-db-cookbook/</loc>
+    <loc>johncodes.dev/posts/rethink-db-cookbook/</loc>
     <lastmod>2018-11-05T21:15:35-07:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/docker-trouble/</loc>
+    <loc>johncodes.dev/posts/docker-trouble/</loc>
     <lastmod>2017-05-13T22:17:04-07:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/posts/vim-tips/</loc>
+    <loc>johncodes.dev/posts/vim-tips/</loc>
     <lastmod>2017-03-22T21:19:16-07:00</lastmod>
   </url><url>
-    <loc>http://johncodes.com/about/</loc>
+    <loc>johncodes.dev/about/</loc>
   </url><url>
-    <loc>http://johncodes.com/archives/</loc>
+    <loc>johncodes.dev/archives/</loc>
   </url><url>
-    <loc>http://johncodes.com/categories/</loc>
+    <loc>johncodes.dev/categories/</loc>
   </url><url>
-    <loc>http://johncodes.com/search/</loc>
+    <loc>johncodes.dev/search/</loc>
   </url><url>
-    <loc>http://johncodes.com/tags/</loc>
+    <loc>johncodes.dev/tags/</loc>
   </url>
 </urlset>
