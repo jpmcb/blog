@@ -1,6 +1,6 @@
 baseURL: 'http://johncodes.com/'
 languageCode: 'en-us'
-title: 'John McBride'
+title: 'John McBride 👨‍💻'
 paginate: 5
 theme: 'PaperMod'
 
@@ -20,6 +20,9 @@ languages:
     weight: 1
     menu:
       main:
+        - name: PGP Key
+          url: pgp-key.txt
+          weight: 1
         - name: About
           url: about
           weight: 5
@@ -29,31 +32,43 @@ languages:
         - name: Search
           url: search/
           weight: 10
-        - name: Tags
-          url: tags/
-          weight: 10
-        - name: Categories
-          url: categories/
-          weight: 10
 
 # home-info mode
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: John-McBride
-  description: "John McBride"
+  description: ""
   keywords: [Blog, Portfolio, PaperMod]
   author: John McBride
   DateFormat: "January 2, 2006"
   defaultTheme: "dark"
-  disableThemeToggle: true
+  disableThemeToggle: false
+  ShowReadingTime: true
+  editPost:
+    URL: "https://github.com/jpmcb/blog/tree/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  ShowCodeCopyButtons: true
 
   # Home profile mode
   homeInfoParams:
-    Title : 'Tech re-view 📝'
-    Content: 'A blog about technology, programming, philosophy and whatever I want.'
-
+    Title : '📝'
+    Content: 'This is a blog about technology, programming, short stories, philosophy and whatever I want.' 
   socialIcons:
     - name: twitter
       url: "https://twitter.com/johncodezzz"
     - name: github
       url: "https://github.com/jpmcb"
+    - name: linkedin
+      url: "https://linkedin.com/in/jpmcb"
+    - name: youtube
+      url: "https://youtube.com/c/JohnCodes"
+    - name: tiktok
+      url: "https://tiktok.com/@johncodes"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
