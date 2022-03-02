@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on John McBride 👨‍💻</title>
-    <link>johncodes.com/posts/</link>
+    <link>https://johncodes.com/posts/</link>
     <description>Recent content in Posts on John McBride 👨‍💻</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leaky Go Channels</title>
-      <link>johncodes.com/posts/golang-performance/</link>
+      <link>https://johncodes.com/posts/golang-performance/</link>
       <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>johncodes.com/posts/golang-performance/</guid>
+      <guid>https://johncodes.com/posts/golang-performance/</guid>
       <description>These simple go tests check the &amp;ldquo;leaky-ness&amp;rdquo; of using channels in Go. There are two methods described here; one using both a local context, and the parent context. When tests are run against both, the LeakyAsync method runs faster, but fails the leak checker as goroutines are not resolved or cleaned up.
 In a production system with possibly thousands of go routines being spun up, this could result in massive memory leaks and a deadlock situation in the go binary.</description>
     </item>
     
     <item>
       <title>Slack Is Always Watching ...</title>
-      <link>johncodes.com/posts/slack-is-watching/</link>
+      <link>https://johncodes.com/posts/slack-is-watching/</link>
       <pubDate>Mon, 21 Jan 2019 21:18:06 -0700</pubDate>
       
-      <guid>johncodes.com/posts/slack-is-watching/</guid>
+      <guid>https://johncodes.com/posts/slack-is-watching/</guid>
       <description>(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed) TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.
 In today&amp;rsquo;s world, violations of privacy are no surprise. Between all the leaks and data dumps, many people have accepted this as &amp;ldquo;just the world we live in&amp;rdquo;. But what if information was exposed that could be used to judge your work performance?</description>
     </item>
     
     <item>
       <title>To Catch a Hacker - NPM Even Stream</title>
-      <link>johncodes.com/posts/npm-event-stream/</link>
+      <link>https://johncodes.com/posts/npm-event-stream/</link>
       <pubDate>Fri, 14 Dec 2018 21:20:46 -0700</pubDate>
       
-      <guid>johncodes.com/posts/npm-event-stream/</guid>
+      <guid>https://johncodes.com/posts/npm-event-stream/</guid>
       <description>(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)
 A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM.</description>
     </item>
     
     <item>
       <title>Rethink-DB Cookbook</title>
-      <link>johncodes.com/posts/rethink-db-cookbook/</link>
+      <link>https://johncodes.com/posts/rethink-db-cookbook/</link>
       <pubDate>Mon, 05 Nov 2018 21:15:35 -0700</pubDate>
       
-      <guid>johncodes.com/posts/rethink-db-cookbook/</guid>
+      <guid>https://johncodes.com/posts/rethink-db-cookbook/</guid>
       <description>(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed) RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data and is a production ready option for Node infrastructures.
 Pre-reqs: Docker, Node, NPM
 This post will serve as a brief overview of RethinkDB and hopefully give you a taste of how it works and why a JSON based database might be beneficial for you and your product.</description>
@@ -50,19 +50,19 @@ This post will serve as a brief overview of RethinkDB and hopefully give you a t
     
     <item>
       <title>Virtual machine trouble?? Try Docker!</title>
-      <link>johncodes.com/posts/docker-trouble/</link>
+      <link>https://johncodes.com/posts/docker-trouble/</link>
       <pubDate>Sat, 13 May 2017 22:17:04 -0700</pubDate>
       
-      <guid>johncodes.com/posts/docker-trouble/</guid>
+      <guid>https://johncodes.com/posts/docker-trouble/</guid>
       <description>If you are a Oregon State CS 344 student, then you&amp;rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</description>
     </item>
     
     <item>
       <title>Vim Tips!</title>
-      <link>johncodes.com/posts/vim-tips/</link>
+      <link>https://johncodes.com/posts/vim-tips/</link>
       <pubDate>Wed, 22 Mar 2017 21:19:16 -0700</pubDate>
       
-      <guid>johncodes.com/posts/vim-tips/</guid>
+      <guid>https://johncodes.com/posts/vim-tips/</guid>
       <description>(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)
 I&amp;rsquo;d consider myself some sort of Vim - evangelist. It&amp;rsquo;s an incredible tool and has ALOT of power. If there&amp;rsquo;s something you wish Vim could do, there&amp;rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from.</description>
     </item>
