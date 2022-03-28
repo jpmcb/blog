@@ -65,8 +65,6 @@ params:
       url: "https://linkedin.com/in/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
-    - name: tiktok
-      url: "https://tiktok.com/@johncodes"
 
 outputs:
   home:
