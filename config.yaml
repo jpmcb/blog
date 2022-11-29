@@ -4,6 +4,12 @@ title: 'John McBride'
 paginate: 5
 theme: 'PaperMod'
 
+markup:
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -30,9 +36,9 @@ languages:
         - name: About
           url: about
           weight: 5
-        #- name: Interview Prep
-          #url: interview-prep/
-          #weight: 1
+        - name: Interview Prep
+          url: interview-prep/
+          weight: 1
         - name: Archive
           url: archives
           weight: 5
@@ -61,8 +67,10 @@ params:
   # Home profile mode
   homeInfoParams:
     #Title : ' 📝'
-    Content: 'This is my blog about technology, software engineering, and programming. I am a software engineer by trade, so most things here revolve around that.
-      But, at times, I may post short stories, photos, videos, things about philosophy, and really, whatever I want.' 
+    Content: |
+      This is my blog about technology, software engineering, and programming.
+      I am a software engineer by trade, so most things here revolve around that.
+      But, at times, I may post short stories, photos, videos, things about philosophy, and really, whatever I want.
   socialIcons:
     - name: twitter
       url: "https://twitter.com/johncodezzz"
@@ -72,6 +80,8 @@ params:
       url: "https://linkedin.com/in/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
+    - name: "tiktok"
+      url: "tiktok.com/johncodes"
 
 outputs:
   home:
