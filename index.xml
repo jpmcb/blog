@@ -81,6 +81,17 @@ Contact I can be reached at hello@johncodes.com</description>
     
     <item>
       <title></title>
+      <link>https://johncodes.com/interview-prep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/interview-prep/</guid>
+      <description>The No Nonsense Interview Prep The following is interview preperation material for software engineer and development roles that covers the most common aspects of data structures, algorithms, design, and behavioral.
+This interview manual is ever evolving; I make changes to it frequently as my experience grows and I find new resources.
+Python Crash Course But why Python? Basic operations Data structures Arrays Python Crash Course The following is a crash course in Python that I&amp;rsquo;ve used to refresh my knowledge and understanding of the langauge from a high level.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://johncodes.com/talks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
