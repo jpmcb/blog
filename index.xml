@@ -979,14 +979,14 @@ and reduces the overall complexity of your technical interview.</p>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/talks/</guid>
-      <description>Talks If you want to book me for your conference, meetup, or podcast, email me at talks@johncodes.com
+      <description>Talks Inquires: talks@johncodes.com
 2022 The Risks of Single Maintainer Dependencies I spoke at Kubecon EU 2021 on my experience maintaining spf13/cobra with a very small group of other contributors.
-Exploring the Risks of Single Maintainer Dependencies with John McBride During my time in Spain for Kubecon EU &amp;lsquo;22, I appeared on the &amp;ldquo;Bussiness of Open Source&amp;rdquo; podcast to discuss maintaining Cobra.</description>
+Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride During my time in Spain for Kubecon EU &amp;lsquo;22, I also appeared on the &amp;ldquo;Business of Open Source&amp;rdquo; podcast to discuss maintaining cobra and what startups considering opening sourcing their technologies can learn.</description>
       <content:encoded><![CDATA[<h1 id="talks">Talks</h1>
-<p>If you want to book me for your conference, meetup, or podcast,
-email me at <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
+<p>Inquires: <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
 <h2 id="2022">2022</h2>
-<h4 id="the-risks-of-single-maintainer-dependencies">The Risks of Single Maintainer Dependencies</h4>
+<hr>
+<h3 id="the-risks-of-single-maintainer-dependencies">The Risks of Single Maintainer Dependencies</h3>
 <p>I spoke at Kubecon EU 2021 on my experience maintaining spf13/cobra
 with a very small group of other contributors.</p>
 
@@ -994,10 +994,19 @@ with a very small group of other contributors.</p>
   <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h4 id="exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Exploring the Risks of Single Maintainer Dependencies with John McBride</h4>
+<hr>
+<h3 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h3>
 <p>During my time in Spain for Kubecon EU &lsquo;22,
-I appeared on the &ldquo;Bussiness of Open Source&rdquo; podcast to discuss maintaining Cobra.</p>
-<!-- raw HTML omitted -->
+I also appeared on the &ldquo;Business of Open Source&rdquo; podcast to discuss maintaining cobra
+and what startups considering opening sourcing their technologies can learn.
+<a href="https://share.transistor.fm/s/51727ee9">You can listen to the episode here</a>.</p>
+<hr>
+<h3 id="distributed-shared-team-configurations-with-oh-my-zsh">Distributed Shared Team Configurations With Oh-My-Zsh</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/ppvjyibyrEg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 ]]></content:encoded>
     </item>
     
