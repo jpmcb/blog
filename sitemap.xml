@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://johncodes.com/</loc>
-    <lastmod>2020-03-30T00:00:00+00:00</lastmod>
+    <loc>https://johncodes.com/posts/aws-job/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://johncodes.com/posts/golang-performance/</loc>
-    <lastmod>2020-03-30T00:00:00+00:00</lastmod>
+    <loc>https://johncodes.com/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://johncodes.com/posts/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://johncodes.com/posts/golang-performance/</loc>
     <lastmod>2020-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://johncodes.com/posts/slack-is-watching/</loc>

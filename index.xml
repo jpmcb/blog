@@ -6,7 +6,123 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I got a job at Amazon as a software engineer</title>
+      <link>https://johncodes.com/posts/aws-job/</link>
+      <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/aws-job/</guid>
+      <description>If you&amp;rsquo;d like a view a video version of this article, check out the following:
+In the summer of 2022, I left my job at VMware for Amazon Web Services. It was a bitter sweet journey; I loved my time at VMware and I loved working on some cutting edge things in the Kubernetes space. Even just a few months latter, the project I was working on is now completely defunct.</description>
+      <content:encoded><![CDATA[<p><em>If you&rsquo;d like a view a video version of this article, check out the following:</em></p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/vcyXrlGKec4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<hr>
+<p>In the summer of 2022, I left my job at VMware for Amazon Web Services.
+It was a bitter sweet journey; I loved my time at VMware
+and I loved working on some cutting edge things in the Kubernetes space.
+Even just a few months latter, <a href="https://github.com/vmware-tanzu/community-edition">the project I was working on is now completely defunct.</a></p>
+<p>The process to getting into AWS was no easy one.
+But in the end, over the course of interviewing at many different companies,
+I landed with 4 offers. I decided to go with AWS since it was the most compelling offer
+and I get to work on some <a href="https://github.com/bottlerocket-os/bottlerocket">really cool technologies</a> I&rsquo;m excited about.</p>
+<p>Here are my biggest pieces of advice for landing a job and the process I did to make it happen:</p>
+<h2 id="1-study">1. Study</h2>
+<p>I studied <em>alot</em> in preparation for my interviews.
+Ontop of my 40hr/week job at VMware, I was studying an additional 20-30 hours a week for about 4 weeks.
+This meant that for awhile, in the middle of July, all I was doing was working and studying.</p>
+<p>But I was <em>very</em> focused on how I approached my interview prep and what things I wanted to tackle:</p>
+<h4 id="the-14-principles-to-ace-any-coding-interviewhttpshackernooncom14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed"><a href="https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed">The 14 Principles to Ace Any Coding interview</a></h4>
+<p>This is my all-time <em>favorite</em> resource for ramping up on coding interviews.
+It&rsquo;s just an article, but it&rsquo;s a critical way to think about coding interviews
+and how to approach them.
+Since there are only 14 patterns, they are easy enough to remember
+but also deep enough to apply to a myriad of different questions.</p>
+<p>If you can master each of these, you will be well on your way to acing your coding interview.</p>
+<h4 id="grokking-the-coding-interviewhttpswwweducativeiocoursesgrokking-coding-interview-patterns-python"><a href="https://www.educative.io/courses/grokking-coding-interview-patterns-python">Grokking the Coding Interview</a></h4>
+<p>I used this course as a supplement to the 14 patterns.
+It&rsquo;s actually created by the author of the 14 patterns article
+but has alot of interactive questions you can go through to get ramped up quickly.
+Unfortunately, it is quite expensive. But I found the cost to be worth it.</p>
+<p>If you don&rsquo;t want to pay for the course, you can find almost all the same questions on Leetcode.
+You just have to do some more digging and figure out some of the solutions on your own.</p>
+<h4 id="blind-75httpsleetcodecomdiscussgeneral-discussion460599blind-75-leetcode-questions"><a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">Blind 75</a></h4>
+<p>By this point, the blind 75 have become a notorious list of Leetcode questions that <em>constantly</em> come up
+in whiteboard style interviews.
+But I <em>didn&rsquo;t</em> do all of them; I only did probably 20-30 or so. And I was very selective on <em>which</em> ones
+I wanted to tackle. You&rsquo;ll notice that the are broken up into different categories.
+In general, if you can solve 1 or 2 linked list question, you can solve almost all of them.
+So I started skipping the ones that seemed to repeat or overlap.</p>
+<p>This compounded with the 14 patterns since I was able to apply that knowledge alongside the
+various data structures and algorithms identified by the blind 75 as the most important.</p>
+<h4 id="cracking-the-coding-interviewhttpswwwcrackingthecodinginterviewcom"><a href="https://www.crackingthecodinginterview.com/">Cracking the Coding Interview</a></h4>
+<p>I did open up Cracking the Coding Interview, what most would consider the bible of
+whiteboard style interviews.
+But I only refreshed myself on the most important parts, mostly the first few chapters.
+I had read this book in the past (I think back in 2018?), and I didn&rsquo;t feel it was necessary
+to go through the whole thing.
+Again, I felt I was already getting alot of benefit from the 14 patterns and the blind 75.
+So, as I skimmed the book, I skipped portions I felt overlapped with material I&rsquo;d already covered
+or was too obscure the be relevant to my study plan.</p>
+<h4 id="elements-of-programming-interviews-in-pythonhttpselementsofprogramminginterviewscomabout"><a href="https://elementsofprogramminginterviews.com/about/">Elements of Programming Interviews in Python</a></h4>
+<p>I love Elements of Programming Interviews. It&rsquo;s <em>very</em> deep,
+has alot of well thought out solutions, and is a great way to refresh your knowledge of a chosen language
+(in my case, Python).</p>
+<p>But it&rsquo;s a bit of a double edged sword; for my study plan, it was too much and I wanted to stay focused
+on the 14 patterns, the blind 75, and grokking the coding interview.
+So, instead, I used it as supplemental material, mostly to refresh myself on python3,
+it&rsquo;s inner workings, and some tricks that are useful during interviews.</p>
+<hr>
+<p>All in all, if I had to only focus on 2 of these,
+I&rsquo;d say the 14 patterns to ace any coding interview and the Blind 75 are the most important.
+If you can master the patterns and have a good understanding of the Blind 75 (and the various categories),
+then you&rsquo;ll be <em>95% of the way there</em>.</p>
+<h2 id="2-get-a-referral">2. Get a referral</h2>
+<p>Leverage your network! I hit up alot of people (just to see what&rsquo;s out there)
+and it was massively successful. I&rsquo;d say my favorite interviews all came from referrals.
+You also get the benefit of skipping the &ldquo;get to know you&rdquo; recruiter call.
+So reach out to people on LinkedIn, previous co-workers</p>
+<h2 id="3-company-values">3. Company values</h2>
+<p>Every company, no matter how big or small, has some values they live by.
+At Amazon, these are the leadership principles and you <em>will</em> be asked behavioral style questions
+based on these company values.</p>
+<p>Do your research! Come prepared to the interview knowing the company values.</p>
+<h2 id="4-take-notes">4. Take notes</h2>
+<p>I consistently took notes after each interview. This was a big win since I was doing 3-4 interviews
+<em>per week</em>. After each interview I would note who I talked to, what we talked about, any advice they gave me
+about the next round, etc.</p>
+<h2 id="5-open-source">5. Open source</h2>
+<p>Open source is a great way to show off your code, show off what you&rsquo;ve done,
+and how you&rsquo;ve contributed to the broader open source world.</p>
+<h2 id="6-story-telling">6. Story telling</h2>
+<p>Story telling in interviews is huge.
+A good story conveys your impact, what you did, the result of your actions,
+and much much more.</p>
+<p>I prefer 2 story telling methods:</p>
+<h4 id="star-method">STAR method</h4>
+<p>This stands for Situation. Task. Action. Result.
+And people at Amazon love this for interviews (and for good reason).
+It tells the person listen the kind of impact you had across a certain situation
+and what you did to remedy it through your actions.</p>
+<h4 id="man-in-the-hole-method">Man in the hole method</h4>
+<p>The man in the hole story telling method is abit more nuanced.
+You start from a &ldquo;good place&rdquo; and describe how some hole is getting dug out from under you.
+This is essentially the &ldquo;situation&rdquo; from the STAR method.</p>
+<p>But you keep digging and you keep digging. Until it seems that there is no way
+you could possibly get out of the hole.</p>
+<p>Then, you describe the actions you took to get you (or your team / organization) <em>out of that hole</em>.
+It&rsquo;s a very powerful method for describing high impact from things you did or delivered.</p>
+<hr>
+<p>This advice you could really apply to <em>any</em> interview,
+but going back to basics and studying hard was a really great way to do well in my interviews
+and land a few different offers. Hope this was helpful! Until next time!!</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Leaky Go Channels</title>
       <link>https://johncodes.com/posts/golang-performance/</link>
