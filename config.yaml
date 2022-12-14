@@ -75,14 +75,16 @@ params:
   socialIcons:
     - name: "rss"
       url: "https://johncodes.com/index.xml"
-    - name: twitter
-      url: "https://twitter.com/johncodezzz"
     - name: github
       url: "https://github.com/jpmcb"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
+    - name: mastodon
+      url: "https://fosstodon.org/@johnmcbride"
+    - name: twitter
+      url: "https://twitter.com/johncodezzz"
 
 outputs:
   home:
