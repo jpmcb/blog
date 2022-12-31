@@ -1110,14 +1110,32 @@ with a very small group of other contributors.</p>
   <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<hr>
-<h3 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h3>
+<h4 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h4>
 <p>During my time in Spain for Kubecon EU &lsquo;22,
 I also appeared on the &ldquo;Business of Open Source&rdquo; podcast to discuss maintaining cobra
-and what startups considering opening sourcing their technologies can learn.
-<a href="https://share.transistor.fm/s/51727ee9">You can listen to the episode here</a>.</p>
+and what startups considering opening sourcing their technologies can learn.</p>
+<p><a href="https://share.transistor.fm/s/51727ee9">You can listen to the episode here</a>.</p>
+<hr>
+<h3 id="neovimconf-2022-lua-a-primer">NeovimConf 2022: Lua, A Primer</h3>
+<p>Configuring Nvim via Lua is a powerful, native, and fast way to get your Nvim editor environment just how you like it.
+But what <em>IS</em> Lua?</p>
+<p>Well, in this talk, we&rsquo;ll explore the essentials of this amazing &amp; simple language.
+You&rsquo;ll learn how to use it effectively within Nvim, how to create a simple Lua plugin,
+and how to use it on it&rsquo;s own via it&rsquo;s interpreter.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/gjIl5Sfh2QQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <hr>
 <h3 id="distributed-shared-team-configurations-with-oh-my-zsh">Distributed Shared Team Configurations With Oh-My-Zsh</h3>
+<p>Team knowledge, configurations, and infrastructure access can be challenging in a distributed world.
+Have you ever asked “what’s that command we use?”
+or “Where are the secrets to access that environment?” - well this talk is for you!</p>
+<p>In this talk, I explore using Oh-My-Zsh, a powerful Zsh configuration framework,
+in order to share team knowledge, distribute common configurations, and share infrastructure access.
+I also discuss the real world scenario this use case emerged from,
+challenges faced in this approach, and how you can leverage Oh-My-Zsh for your distributed devops teams.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/ppvjyibyrEg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
