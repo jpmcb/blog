@@ -1,6 +1,8 @@
 ---
 title: "There is no secure software supply-chain."
 date: 2022-12-27T09:00:00-00:00
+images:
+  - /images/neo-black-and-white.jpg
 ---
 
 ![The Matrix, 1990](/images/neo-black-and-white.jpg)
