@@ -193,3 +193,13 @@ Here, we again use the `.filter` method to find a document in the database. Then
 
 # Conclusion
 I hope that this little dive into RethinkDB has been interesting and has you curious about JSON based databases. Being able to store raw JSON in a NoSQL database is extremely powerful and fits well with JavaScript based architectures.
+
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

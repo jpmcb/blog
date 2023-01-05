@@ -149,3 +149,13 @@ It's a very powerful method for describing high impact from things you did or de
 This advice you could really apply to _any_ interview,
 but going back to basics and studying hard was a really great way to do well in my interviews
 and land a few different offers. Hope this was helpful! Until next time!!
+
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

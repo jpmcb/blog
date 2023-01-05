@@ -174,3 +174,13 @@ CMD yum groupinstall "Development tools"
 These can get really complicated. [Here is some very useful info](https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images) on how dockerfiles work, how to use them, and how you can make one that fits your needs.
 
 [Here is the official](https://github.com/CentOS/CentOS-Dockerfiles) CentOS dockerfile repository on github.
+
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

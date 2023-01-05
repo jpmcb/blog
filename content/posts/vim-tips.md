@@ -192,3 +192,12 @@ Take heart! Vim has a steep learning curve, and, like any complex tool set, it t
 
 Feel free to reach out to me if something from this guide was not super clear!
 
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

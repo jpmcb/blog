@@ -205,3 +205,12 @@ I think it's important to recognize the larger issue here; NPM modules are too e
 
 By involving yourself in the open source projects that you use, you can become a vigilant member of the community that protects and maintains open source software. Solo hero developers are far and few between, so don't depend on them. Get involved, be apart of the open source community, and contribute to the projects that you use.
 
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

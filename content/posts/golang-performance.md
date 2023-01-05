@@ -194,3 +194,13 @@ ok  	perform	13.655s
 
 `ContextAsync` is the best of both worlds. We don't have to do a select within the `for` loop, yet we avoid a go routine
 leak.
+
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}

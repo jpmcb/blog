@@ -75,3 +75,12 @@ In short, it requires very little configuration and code to access and expose pr
 
 3. Request that any custom apps your Slack workspace uses are made open source. 
 
+---
+
+If you found this blog post valuable,
+consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
+or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+{{< comments >}}
