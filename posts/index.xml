@@ -6,7 +6,144 @@
     <description>Recent content in Posts on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An elegant social media network for a more civilized age.</title>
+      <link>https://johncodes.com/posts/2023-01-28-the-joy-of-mastodon/</link>
+      <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2023-01-28-the-joy-of-mastodon/</guid>
+      <description>&amp;ldquo;This is the social media network of a software engineer. Not as clumsy or random as Twitter; an elegant network for a more civilized age.&amp;rdquo; ― obi-wan kenobi
+Over the last week, I&amp;rsquo;ve abandoned my Twitter account in favor of diving head first into the world of Mastodon and the &amp;ldquo;Fediverse&amp;rdquo;. So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.
+By the time I moved to Mastodon, I had some 3,000 followers on Twitter.</description>
+      <content:encoded><![CDATA[<p><img loading="lazy" src="/images/lite-saber-meme.png" alt="Mastodon, an elegant social media network"  />
+</p>
+<p><em>&ldquo;This is the social media network of a software engineer.
+Not as clumsy or random as Twitter; an elegant network for a more civilized age.&rdquo; ― obi-wan kenobi</em></p>
+<hr>
+<p>Over the last week, I&rsquo;ve abandoned my Twitter account
+in favor of diving head first into the world of Mastodon and the <em>&ldquo;Fediverse&rdquo;</em>.
+So far, it&rsquo;s been a surprising, delightful, and enriching experience.</p>
+<p>By the time I moved to Mastodon,
+I had some <em>3,000</em> followers on Twitter.
+But the platform has atrophied and changed in many sad ways.
+Long gone are the days of fun technical deep dives,
+inside scoops on your favorite projects,
+and starting conversations with your technical peers.
+Engagement (at least for me. Maybe I&rsquo;m very boring?)
+is way down and the platform itself is breaking:
+I haven&rsquo;t been able to reliably access my DMs for the better part of a week.</p>
+<p>Instead, tech Twitter has been left with an exorbitant amount of <em>&ldquo;influencers&rdquo;</em> saying things like:
+<em>&ldquo;As a developer, how many hours do you sleep&rdquo;</em>,
+<em>&ldquo;10 reasons Next.js is the best thing since sliced bread!&rdquo;</em>,
+and <em>&ldquo;How to get your first tech job in 6 months!&rdquo;</em>.
+All shameless attempts to groom the <em>all seeing algorithm</em> in their favor.</p>
+<p>For me, the interesting conversations had stifled and it was time to try something else.
+Enter Mastodon; the blessed successor to many&rsquo;s beloved Twitter of a forgotten era!</p>
+<p>Mastodon is abit weird though.</p>
+<p>For one, there&rsquo;s no <em>&ldquo;algorithm&rdquo;</em>.
+It&rsquo;s just a sequential timeline of stuff from people you follow.
+For some who grew up in the age of never ending, dopamine dumping,
+slot machine scrolling, <em>this might take awhile to get used to.</em>
+But what you&rsquo;ll find instead is real <em>conversation</em>
+and the ability to engage with those <em>people</em> directly.
+I don&rsquo;t miss the days of inflammatory content designed to artificially drive up engagement.
+I&rsquo;m happy it&rsquo;s been replaced in my social media life with a slower, more intentional feed.</p>
+<p>In that same vein, you&rsquo;ll also notice that Mastodon is not a centralized place where <em>everyone</em> gathers
+to share their hot takes. Instead, it&rsquo;s <em>&ldquo;federated&rdquo;</em> which means there are
+<em>many different</em> Mastodon servers and services.
+You can then <em>crawl</em> these different
+server instances to connect with a distributed network; they&rsquo;re all interlinked.
+So, if I have an account on <em>&ldquo;server A&rdquo;</em>,
+I can still search, follow, and see content from people on <em>&ldquo;server B&rdquo;</em>.
+All of <em>my content and information</em> lives on <em>&ldquo;server A&rdquo;</em>, but through the magic of the
+internet and graph theory, a massive number of Mastodon servers can come together
+to create <em>the great &ldquo;Fediverse&rdquo;</em>; independently hosted and maintained servers
+that can all communicate together.</p>
+<p>Or not.</p>
+<p>It&rsquo;s also completely plausible to have a small Mastodon instance that is cut off from the Fediverse
+where only people internal to that instance can interact with each-other.
+That&rsquo;s the joy of open source technology
+that you have the power to own, modify, and dictate the direction of.</p>
+<p>To get started, you&rsquo;ll need to find a server that you want to join.
+I picked <a href="https://fosstodon.org">fosstodon.org</a>
+since its main focus is supporting people in the open source community.
+Browsing the list of <a href="https://joinmastodon.org/servers">indexed servers</a>
+is a great way to start and find a place that makes sense for you to call home.</p>
+<h3 id="finding-your-twitter-network">Finding your Twitter network</h3>
+<p>When you first get started, it can be hard trying to find people,
+especially if you&rsquo;re coming from a large network on Twitter.</p>
+<p>One of the Fediverse&rsquo;s biggest downfalls is a lack of an efficient and sensible search.
+Because there could be any number of different web publishing platforms linked into the broader Fediverse,
+there&rsquo;s no good way to index, search, and serve all of that distributed content at once.</p>
+<p>Thankfully, there are a few handy tools to make this transition easier!
+My favorite is <a href="https://twitodon.com/">Twitodon</a>. You sign in with your Twitter,
+sign in with your Mastodon account, and it crawls your Twitter following to find
+people in your existing network who have a Mastodon account. Then, you can export a CSV of your network
+and import it directly into Mastodon!
+(Don&rsquo;t forget to revoke Twitodon&rsquo;s access to Twitter and Mastodon once your done.
+Thankfully, they provide the steps necessary to do that).</p>
+<h3 id="user-experience">User experience</h3>
+<p>The default Mastodon user interface and experience is not amazing.
+And who can blame them.
+Mastodon is a non-profit foundation building the open source platform
+and hosting some of the biggest instances for pennies on the dollar.
+They probably have more important things to worry about (<a href="https://github.com/mastodon/mastodon/issues/20673">like if they should support quote Toots</a>).</p>
+<p>But, because the Fediverse is a thriving space full of tinkerers and hackers,
+I have a few recommendations on taking your Mastodon experience to the next level:</p>
+<h4 id="ivory">Ivory</h4>
+<p><a href="https://tapbots.com/tweetbot/">Tweetbot was a favorite Twitter client for many people.</a>
+Tapbots, the duo who created the iOS application, lovingly curated a <em>delightful</em> Twitter user experience.
+But suddenly, a few weeks ago at the beginning of January,
+Twitter shut down third party client access to the API.
+And in one fell swoop, Tweetbot was no more.
+Instead of sulking, Tapbots <em>immediately</em> got to work shipping their Mastodon iOS client, <a href="https://tapbots.com/ivory/">Ivory</a>.</p>
+<p>And wow.</p>
+<p>Before Ivory, Mastodon didn&rsquo;t really <em>&ldquo;make sense&rdquo;</em> for me.
+Now, it&rsquo;s everything I hoped for; a beautiful user interface,
+customizable buttons and actions, and notifications that actually work.
+Even in it&rsquo;s <em>very early</em> access state, it&rsquo;s still a massive accomplishment.</p>
+<p>For an iOS client (sorry Android people), I couldn&rsquo;t recommend Ivory enough.</p>
+<h4 id="elkzone">Elk.zone</h4>
+<p>So, what about a web client?
+Well, let me introduce to you <a href="https://elk.zone">Elk.zone</a>,
+a web client from members of the core <a href="https://vuejs.org/">Vue.js</a> team.</p>
+<p>And it&rsquo;s really, <em>really</em> good. I would argue maybe even better than the Twitter web client user experience.
+It&rsquo;s intuitive, it makes tons of sense, it has native lite and dark mode, etc.
+And I shouldn&rsquo;t be surprised; anytime I come across a page built with Vue,
+I&rsquo;m always impressed by the framework&rsquo;s output.</p>
+<p>Huge shout out to this small team for accomplishing so much in such a short time!</p>
+<hr>
+<p>In short, as Twitter falls apart, there is a lovely home for you somewhere in the Fediverse.
+It&rsquo;s growing day by day. And with lots of people tinkering on the platform,
+it&rsquo;s user experience, features, and possibilities will only continue to thrive from here.
+I can&rsquo;t wait to see you there and start a conversation:
+<a href="https://fosstodon.org/@johnmcbride">https://fosstodon.org/@johnmcbride</a></p>
+<hr>
+<p>If you found this blog post valuable,
+consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
+or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>There is no secure software supply-chain.</title>
       <link>https://johncodes.com/posts/there-is-no-secure-software-supply-chain/</link>
