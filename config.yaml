@@ -69,7 +69,7 @@ params:
   homeInfoParams:
     #Title : ' 📝'
     Content: |
-      This is my personal landing page and blog about technology, software engineering, and programming.
+      Hello! This is my personal blog about technology, software engineering, and programming.
       I am a software engineer by trade, so most things here revolve around that.
       But, at times, I may post short stories, photos, videos, things about philosophy, and really, whatever I want.
   socialIcons:
@@ -77,14 +77,12 @@ params:
       url: "https://johncodes.com/index.xml"
     - name: github
       url: "https://github.com/jpmcb"
+    - name: mastodon
+      url: "https://fosstodon.org/@johnmcbride"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
-    - name: mastodon
-      url: "https://fosstodon.org/@johnmcbride"
-    - name: twitter
-      url: "https://twitter.com/johncodezzz"
 
 outputs:
   home:
