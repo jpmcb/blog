@@ -1,6 +1,6 @@
 ---
 title: "An elegant social media network for a more civilized age."
-date: 2023-01-14
+date: 2023-01-28
 images:
   - /images/lite-saber-meme.png
 ---
