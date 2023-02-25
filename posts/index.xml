@@ -6,13 +6,140 @@
     <description>Recent content in Posts on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NeoVim: Using the spellchecker</title>
+      <link>https://johncodes.com/posts/2023/02-25-nvim-spell/</link>
+      <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2023/02-25-nvim-spell/</guid>
+      <description>I know.
+Any sane person&amp;rsquo;s editor already has spellchecking built in. And enabled by default. But I could never leave my beloved Neovim (and all the muscle memory I&amp;rsquo;ve built) just to spell things correctly! That&amp;rsquo;s why I became a programmer dammit! Who needs to know how to spell correctly when I can have single character variable names! Besides. We have tools. Isn&amp;rsquo;t that what computers are for!? Automate the boring stuff!</description>
+      <content:encoded><![CDATA[<p><em>I know.</em></p>
+<p>Any <em>sane</em> person&rsquo;s editor already has spellchecking built in.
+And enabled by default.
+But I could never leave my beloved Neovim
+(and all the muscle memory I&rsquo;ve built) just to spell things correctly!
+That&rsquo;s why I became a programmer dammit! Who needs to know how to spell correctly
+when I can have single character variable names!
+Besides. We have <em>tools</em>. Isn&rsquo;t that what computers are for!?
+Automate the boring stuff! <em>(like spelling and grammar).</em></p>
+<p>Thankfully, the long awaited <code>spell</code> feature has landed in NeoVim.
+Now, by default without plugins, nvim can make spelling suggestions.</p>
+<p>This has already <em>greatly</em> increased my productivity when writing.
+If you know anything about me (or have had the pleasure of working with me
+and seeing my egregious spelling mistakes),
+you know that I can <em>not</em> spell.
+My reliance on good spell checker tools has really evolved into a dependency.
+But no longer! Now, I can continue to convince myself that nvim
+is a superior editor because it finally has <em>spell checking</em>.</p>
+<p>In all seriousness, shout out to the NeoVim community and maintainers
+for getting this feature in!! It&rsquo;s already been a huge value add
+and saved me on <em>several</em> occasion from pushing an embarrassing commit message.</p>
+<hr>
+<h3 id="enabling-it">Enabling it</h3>
+<p>Make sure you have a new-ish version of NeoVim.
+I&rsquo;m running with a newer nightly build, but the latest official release should do the trick.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>❯ nvim --version
+</span></span><span style="display:flex;"><span>NVIM v0.9.0-dev-699+gc752c8536
+</span></span></code></pre></div><p>In your nvim configuration files, you&rsquo;ll want to set the one of the following options:</p>
+<ul>
+<li><em>For those who&rsquo;ve ascended to using Lua</em>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>vim.opt.spelllang <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en_us&#39;</span>
+</span></span><span style="display:flex;"><span>vim.opt.spell <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><ul>
+<li><em>Or good, ol trusty Vimscript</em>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">spelllang</span>=<span style="color:#a6e22e">en_us</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">spell</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Alternatively, you can use the command prompt to enable <code>spell</code> in your current session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>:setlocal spell spelllang=en_us
+</span></span></code></pre></div><p>Note that <code>en_us</code> is <em>US English</em>.
+But there are <em>tons</em> of supported languages out of the box:
+<code>en_gb</code> for Great Britian English,
+<code>de</code> for German, <code>ru</code> for Russian, and more.</p>
+<p>Now, you should see words that are misspelled underlined! Nice!!</p>
+<h3 id="using-it">Using it</h3>
+<p>There are 3 default key-mappings my workflow has revolved around
+for fixing spelling mistakes when I&rsquo;m writing.</p>
+<h4 id="finding-words">Finding words:</h4>
+<p><code>]s</code> will go to the <em>next</em> misspelled word.</p>
+<p><code>[s</code> will go to the <em>previous</em> misspelled word.</p>
+<p>Easy as that! These default key-mappings are designed to be composable
+(or heck, modified in any way you like - this is NeoVim after all!)
+so spend some time thinking about what re-mappings, key bindings,
+or macros might make sense for you and your workflow.</p>
+<h4 id="fixing-words">Fixing words:</h4>
+<p>When the cursor is under a word that is misspelled,
+<code>z=</code> will open the list of suggestions.
+Typically, the first suggestion is almost always right.
+Hit <code>1</code> and <code>&lt;enter&gt;</code> in the prompt to indicate you want to take the first suggestion.
+And the word has been fixed!</p>
+<p>There&rsquo;s also</p>
+<pre tabindex="0"><code>:spellr
+</code></pre><p>which is the &ldquo;spell repeater&rdquo;. It repeats the replacement done by <code>z=</code>
+for all matched misspellings in the current window.
+So, if there&rsquo;s a word you <em>frequently</em> misspell, using <code>:spellr</code> is a quick and easy
+one stop shop for fixing <em>all</em> the misspellings of that type.</p>
+<h3 id="adding-words-to-the-spellfile">Adding words to the spellfile</h3>
+<p>If you&rsquo;ve typed a word that doesn&rsquo;t appear in the default dictionary,
+<em>but is spelled correctly</em>, you can easily add it yourself to the internal spell list.
+Especially in programming docs, there are <em>lots</em> of words not loaded into the default dictionary.
+With your cursor under the <em>correctly</em> spelled word that is underlined as misspelled,
+use the <code>zg</code> mapping to mark the word as a &ldquo;good&rdquo; word.</p>
+<p>Doing this, you&rsquo;ll notice that NeoVim will automatically create a <code>spell/</code> directory
+in the runtime path (typically under <code>~/.config/nvim</code>).
+And in that directory, you&rsquo;ll find two files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>~/.config/nvim/
+</span></span><span style="display:flex;"><span>  |-- spell
+</span></span><span style="display:flex;"><span>  |    |-- en.utf-8.add
+</span></span><span style="display:flex;"><span>  |    |-- en.utf-8.add.spl
+</span></span></code></pre></div><p>The <code>.add</code> file is a list of words you&rsquo;ve added.
+For example, my <code>.add</code> file has <em>tech</em> words like &ldquo;Kubernetes&rdquo;
+which don&rsquo;t typically appear in the default English dictionary.</p>
+<p>The <code>.spl</code> file is a compiled binary &ldquo;spellfile&rdquo;.
+And it&rsquo;s what is used to actually make suggestions and crawl the dictionary graph.
+Creating spellfiles is &hellip; <em>rather</em> involved.
+But, for most people, simply using <code>zg</code> to mark &ldquo;good&rdquo; words gets you 99% of the way there.</p>
+<hr>
+<p>As with most things NeoVim,
+there are <em>excellent</em> docs and APIs for using the spell interface: <a href="https://neovim.io/doc/user/spell.html">https://neovim.io/doc/user/spell.html</a>
+Especially if you plan to generate your own spellfiles
+or programmatically modify text via the spell APIs,
+these doc resources are a must read!</p>
+<hr>
+<p>If you found this blog post valuable, comment below,
+consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
+or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a>
+Your support means the world to me!!</p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>An elegant social media network for a more civilized age.</title>
-      <link>https://johncodes.com/posts/2023-01-28-the-joy-of-mastodon/</link>
+      <link>https://johncodes.com/posts/2023/01-28-the-joy-of-mastodon/</link>
       <pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://johncodes.com/posts/2023-01-28-the-joy-of-mastodon/</guid>
+      <guid>https://johncodes.com/posts/2023/01-28-the-joy-of-mastodon/</guid>
       <description>&amp;ldquo;This is the social media network of a software engineer. Not as clumsy or random as Twitter; an elegant network for a more civilized age.&amp;rdquo; ― obi-wan kenobi
 Over the last week, I&amp;rsquo;ve abandoned my Twitter account in favor of diving head first into the world of Mastodon and the &amp;ldquo;Fediverse&amp;rdquo;. So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.
 By the time I moved to Mastodon, I had some 3,000 followers on Twitter.</description>
