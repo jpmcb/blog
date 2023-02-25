@@ -14,8 +14,14 @@ when I can have single character variable names!
 Besides. We have _tools_. Isn't that what computers are for!?
 Automate the boring stuff! _(like spelling and grammar)._
 
-Thankfully, the long awaited `spell` feature has landed in NeoVim.
-Now, by default without plugins, nvim can make spelling suggestions.
+Thankfully, the long awaited `spell` integration features have landed in the NeoVim APIs.
+While `spell` has been around forever (or at least as long as Vim has been),
+[only recently have the NeoVim Lua APIs](https://github.com/neovim/neovim/pull/19419)
+been able to take advantage of it.
+Now, by default, _without plugins_, nvim can make spelling suggestions and
+treesitter can do the right things with misspellings in the
+syntax highlighting, code parsing, and search queries.
+Or in other words, `spell` is _waaay_ nicer to use since it'll ignore code (but not other stuff).
 
 This has already _greatly_ increased my productivity when writing.
 If you know anything about me (or have had the pleasure of working with me
