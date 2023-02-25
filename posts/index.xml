@@ -24,8 +24,14 @@ That&rsquo;s why I became a programmer dammit! Who needs to know how to spell co
 when I can have single character variable names!
 Besides. We have <em>tools</em>. Isn&rsquo;t that what computers are for!?
 Automate the boring stuff! <em>(like spelling and grammar).</em></p>
-<p>Thankfully, the long awaited <code>spell</code> feature has landed in NeoVim.
-Now, by default without plugins, nvim can make spelling suggestions.</p>
+<p>Thankfully, the long awaited <code>spell</code> integration features have landed in the NeoVim APIs.
+While <code>spell</code> has been around forever (or at least as long as Vim has been),
+<a href="https://github.com/neovim/neovim/pull/19419">only recently have the NeoVim Lua APIs</a>
+been able to take advantage of it.
+Now, by default, <em>without plugins</em>, nvim can make spelling suggestions and
+treesitter can do the right things with misspellings in the
+syntax highlighting, code parsing, and search queries.
+Or in other words, <code>spell</code> is <em>waaay</em> nicer to use since it&rsquo;ll ignore code (but not other stuff).</p>
 <p>This has already <em>greatly</em> increased my productivity when writing.
 If you know anything about me (or have had the pleasure of working with me
 and seeing my egregious spelling mistakes),
