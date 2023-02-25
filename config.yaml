@@ -77,6 +77,8 @@ params:
       url: "https://johncodes.com/index.xml"
     - name: github
       url: "https://github.com/jpmcb"
+    - name: twitter
+      url: "https://twitter.com/johncodezzz"
     - name: mastodon
       url: "https://fosstodon.org/@johnmcbride"
     - name: linkedin
