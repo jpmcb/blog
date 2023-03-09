@@ -3,6 +3,10 @@ title: "NeoVim: Using the spellchecker"
 date: 2023-02-25
 ---
 
+{{< youtube KoL-2WTlr04 >}}
+
+---
+
 _I know._
 
 Any _sane_ person's editor already has spellchecking built in.
