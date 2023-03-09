@@ -15,7 +15,13 @@
       <guid>https://johncodes.com/posts/2023/02-25-nvim-spell/</guid>
       <description>I know.
 Any sane person&amp;rsquo;s editor already has spellchecking built in. And enabled by default. But I could never leave my beloved Neovim (and all the muscle memory I&amp;rsquo;ve built) just to spell things correctly! That&amp;rsquo;s why I became a programmer dammit! Who needs to know how to spell correctly when I can have single character variable names! Besides. We have tools. Isn&amp;rsquo;t that what computers are for!? Automate the boring stuff!</description>
-      <content:encoded><![CDATA[<p><em>I know.</em></p>
+      <content:encoded><![CDATA[
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/KoL-2WTlr04" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<hr>
+<p><em>I know.</em></p>
 <p>Any <em>sane</em> person&rsquo;s editor already has spellchecking built in.
 And enabled by default.
 But I could never leave my beloved Neovim
