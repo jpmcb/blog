@@ -14,7 +14,7 @@
       
       <guid>https://johncodes.com/posts/2023/03-12-revisiting-core-js/</guid>
       <description>SE7EN, 1995 - “The Box”
-Weeks ago, Denis Pushkarev, the author of core-js, published “So, what’s next?”, a long and lengthy stream of consciousness on the state of the project, it is something that I believe anyone and everyone who interacts with open source software should read. It chronicles an emotional tale of his passion project, distrust &amp;amp; hate for him, his seemingly selfless solitary quest for a better web, and a plea for financial assistance.</description>
+Weeks ago, Denis Pushkarev, the author of core-js, published “So, what’s next?”, a long and lengthy stream of consciousness on the state of the project. I believe it is something that anyone and everyone who interacts with open source software should read. It chronicles an emotional tale of his passion project, distrust &amp;amp; hate for him, his seemingly selfless solitary quest for a better web, and a plea for financial assistance.</description>
       <content:encoded><![CDATA[<p><img loading="lazy" src="/images/core-js.jpg" alt="SE7EN, 1995 - “The Box”"  />
 </p>
 <blockquote>
@@ -23,8 +23,8 @@ Weeks ago, Denis Pushkarev, the author of core-js, published “So, what’s nex
 <hr>
 <p>Weeks ago, Denis Pushkarev,
 the author of core-js, published <a href="https://github.com/zloirock/core-js/issues/1179">“So, what’s next?”</a>,
-a long and lengthy stream of consciousness on the state of the project, it is
-something that I believe <em>anyone</em> and <em>everyone</em> who interacts with open source
+a long and lengthy stream of consciousness on the state of the project.
+I believe it is something that <em>anyone</em> and <em>everyone</em> who interacts with open source
 software should read. It chronicles an emotional tale of his passion project,
 distrust &amp; hate for him, his seemingly selfless solitary quest for a better
 web, and a plea for financial assistance.</p>
