@@ -2016,16 +2016,17 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John. I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, kubernetes, Linux operating systems, and cloud technology.
-This site is my personal landing page and blog. All opinions and views herein are my own opinions and do not reflect those of employer (past, present, future, or interdimensional).
+      <description>Hi there! 🌊 My name is John. I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, the Bottlerocket operating system, kubernetes, Linux, and cloud technologies.
+This site is my personal landing page and blog. All opinions and views herein are my own opinions and do not reflect those of any employer (past, present, future, or interdimensional).
 Enjoy!
 Support If you find anything I&amp;rsquo;ve done valuable, consider subscribing to future posts via RSS or buying me a coffee via GitHub sponsors.</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
 <p>My name is John. I&rsquo;m a software engineer at Amazon Web Services
-where I work on open source software, kubernetes, Linux operating systems, and cloud technology.</p>
+where I work on open source software, the Bottlerocket operating system,
+kubernetes, Linux, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
 All opinions and views herein are my <em>own</em> opinions and do <em>not</em> reflect
-those of employer (past, present, future, or interdimensional).</p>
+those of any employer (past, present, future, or interdimensional).</p>
 <p>Enjoy!</p>
 <h4 id="support">Support</h4>
 <p>If you find anything I&rsquo;ve done valuable,
