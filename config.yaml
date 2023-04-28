@@ -32,12 +32,9 @@ languages:
           weight: 2
         - name: PGP Key
           url: pgp-key.txt
-          weight: 20
+          weight: 99
         - name: About
           url: about
-          weight: 5
-        - name: Interview Prep
-          url: interview-prep/
           weight: 1
         - name: Archive
           url: archives
@@ -58,33 +55,34 @@ params:
   defaultTheme: "dark"
   disableThemeToggle: false
   ShowReadingTime: false
-  editPost:
-    URL: "https://github.com/jpmcb/blog/tree/main/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
-
   ShowCodeCopyButtons: true
 
   # Home profile mode
-  homeInfoParams:
-    #Title : ' 📝'
-    Content: |
-      Hello! This is my personal blog about technology, software engineering, and programming.
-      I am a software engineer by trade, so most things here revolve around that.
-      But, at times, I may post short stories, photos, videos, things about philosophy, and really, whatever I want.
+  profileMode:
+    enabled: true
+    title: John McBride
+    subtitle: "Software Engineer. Content Creator."
+    imageUrl: "images/profile-pic.jpg"
+    imageWidth: 200
+    imageHeight: 200
+    imageTitle: "this is john mcbride"
   socialIcons:
-    - name: "rss"
-      url: "https://johncodes.com/index.xml"
+    - name: email
+      url: "mailto:hello@johncodes.com"
+    - name: substack
+      url: "https://onengineering.substack.com"
     - name: github
       url: "https://github.com/jpmcb"
-    - name: twitter
-      url: "https://twitter.com/johncodezzz"
-    - name: mastodon
-      url: "https://fosstodon.org/@johnmcbride"
-    - name: linkedin
-      url: "https://linkedin.com/in/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
+    - name: tiktok
+      url: "https://tiktok/com/@JohnCodes"
+    - name: twitter
+      url: "https://twitter.com/johncodezzz"
+    - name: twitch
+      url: "https://twitch.com/johncodes"
+    - name: linkedin
+      url: "https://linkedin.com/in/jpmcb"
 
 outputs:
   home:
