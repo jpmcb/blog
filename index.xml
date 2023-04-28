@@ -6,418 +6,7 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Revisiting the Core-JS situation</title>
-      <link>https://johncodes.com/posts/2023/03-12-revisiting-core-js/</link>
-      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://johncodes.com/posts/2023/03-12-revisiting-core-js/</guid>
-      <description>SE7EN, 1995 - “The Box”
-Weeks ago, Dennis Pushkarev, the author of core-js, published “So, what’s next?”, a long and lengthy stream of consciousness on the state of the project, it is something that I believe anyone and everyone who interacts with open source software should read. It chronicles an emotional tale of his passion project, distrust &amp;amp; hate for him, his seemingly selfless solitary quest for a better web, and a plea for financial assistance.</description>
-      <content:encoded><![CDATA[<p><img loading="lazy" src="/images/core-js.jpg" alt="SE7EN, 1995 - “The Box”"  />
-</p>
-<blockquote>
-<p><em>SE7EN, 1995 - “The Box”</em></p>
-</blockquote>
-<hr>
-<p>Weeks ago, Dennis Pushkarev,
-the author of core-js, published <a href="https://github.com/zloirock/core-js/issues/1179">“So, what’s next?”</a>,
-a long and lengthy stream of consciousness on the state of the project, it is
-something that I believe <em>anyone</em> and <em>everyone</em> who interacts with open source
-software should read. It chronicles an emotional tale of his passion project,
-distrust &amp; hate for him, his seemingly selfless solitary quest for a better
-web, and a plea for financial assistance.</p>
-<p><a href="https://www.reddit.com/r/programming/comments/111k9aq/corejs_maintainer_so_whats_next/">The post rightfully went viral</a>
-and <a href="https://www.patreon.com/zloirock">donations started flowing in.</a></p>
-<p>However, boiling just under the surface,
-much like any other large open source project with a solo developer,
-there are some real and scary implications to this entire situation.</p>
-<p><em>But first, what is core-js?</em></p>
-<p>After all, the project is at the center of this discussion, so it’s worth
-understanding it deeply. Core-js is a JavaScript library that focuses on providing
-cutting edge web APIs, standardization, and <em>“polyfills”.</em> At the time of this
-writing, it has over 50 thousand dependent projects and some 40 million
-downloads <em>weekly</em> on NPM, a popular JavaScript module hosting service.</p>
-<p><img loading="lazy" src="/images/core-js-npm-downloads.png" alt="core-js NPM weekly downloads"  />
-</p>
-<p>In short, it’s <em>the</em> JavaScript glue for web applications.</p>
-<p>It enables modern JavaScript to work on an array of different browsers,
-including Internet Explorer. And it constantly tracks the latest web standards.
-This way, JavaScript developers can take advantage of the latest and greatest
-ECMAScript standards, ensuring interoperability of web pages and applications
-across different browser platforms. Things like collections, iterators, and
-promises can simply and easily be used through the core-js polyfills. All
-without having to re-invent the wheel and worry about broken builds across the
-many different browsers and JavaScript interpreters.</p>
-<p>Like any project that attempts to implement a “standard”, this also means that
-it’s a “living” project; without constant update, which usually requires
-interplay with the upstream browsers and web-standard-setters, core-js would
-quickly fall apart. One small change in a web browser’s JavaScript interpreter
-without an update to core-js could mean a whole swath of web applications stop
-working and break.</p>
-<p>And for years, the project has existed in the depths of front-end dependencies,
-where Dennis worked tirelessly. Many projects consumed core-js, usually not
-directly, but rather, somewhere in the nether of the NPM dependency hellscape.
-Its code, at least indirectly through dependency poisoning, is used almost
-everywhere. Massive multi-billion dollar companies like Apple, Amazon, Netflix,
-and many more have it embedded somewhere in their front-end dependency chains.</p>
-<p>To say the least, it’s a really important project used by nearly every
-front-end.</p>
-<p>So when did the trouble start? Around 2018, if you tried to NPM install core-js
-(or a project that depended on core-js), you would be greeted with the
-following message after the installation:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Thank you for using core-js for polyfilling JavaScript standard library!
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>The project needs your help! Please consider supporting of core-js on Open
-</span></span><span style="display:flex;"><span>Collective or Patreon ...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Also, the author of core-js is looking for a good job
-</span></span></code></pre></div><p>While, admittedly, this was a fairly unconventional way to ask for support, it
-was a heartfelt attempt by the author to find financial means for a project he
-believed was worth all his time.
-<a href="https://github.com/zloirock/core-js/issues/548">Many in the JavaScript community did not</a>
-respond well. So much so that <em>“the author of some library is looking for a
-good job”</em> <a href="https://github.com/zloirock/core-js/issues/708">sort of became a meme unto itself.</a></p>
-<p>At this point, many in the JavaScript, front-end
-open source community should have looked a little closer and seen the potential
-disastrous future incoming; the author was in financial trouble (<em>“the project
-needs your help!”</em>) and the author was taking extreme measures to find any
-financial support (by adding a very unconventional message embedded
-<a href="https://github.com/zloirock/core-js/blob/381c366b8cdc84050bb0ef7184a6e80f45bf5903/packages/core-js/scripts/postinstall.js">within a post-install script</a>).
-But instead of responding accordingly by financially supporting the project,
-adding additional maintainers, forking the project, or moving it to a foundation, the
-broader JavaScript open source community instead turned to slander and hate;
-Dennis received numerous distasteful comments in the core-js repository, via
-email, and everywhere else he had a presence online.</p>
-<p>In 2019, as a response to a growing number of projects using the
-post-install-script as a way to raise funds and advertise their commercial
-product, NPM made the unilateral decision to
-<a href="https://github.com/zloirock/core-js/issues/635">ban post install console output that included “ads”.</a>
-This impacted core-js and removed Dennis’s plea for support.</p>
-<p>His response:</p>
-<blockquote>
-<p>If NPM will ban the postinstall message, it will be moved to browsers
-console. If NPM will ban core-js - it will cause problems for millions of
-users. I warned about it.</p>
-</blockquote>
-<p><a href="https://github.com/zloirock/core-js/issues/548#issuecomment-510684777"><em>And what was that warning?</em></a></p>
-<blockquote>
-<p>If for some reason will be disabled ability to publish packages with this
-message - we will have one more left-pad-like problem, but much more
-serious. And after that 2 options - or core-js will not be maintained
-completely, or it will be maintained as a commercial-only project.</p>
-</blockquote>
-<blockquote>
-<p>Yes, I am ready to kill it as a free open source project, if it will be
-required by the protection of my rights.</p>
-</blockquote>
-<p>Through these warnings that attempted to appear genuine on the
-surface but really, were just thinly veiled threats, Dennis was making it clear to
-anyone looking closely enough that he was more than ok nuking the project out
-of existence (or at least, hard pivoting it to a commercial product).</p>
-<p><em>But what is left-pad?</em> And what does it have to do with core-js anyways?</p>
-<p>Left-pad was a very small JavaScript library authored by Azer Koçulu. It was
-only 11 lines of code long and added additional white space to the beginning of
-a string (or in other words, it would &ldquo;pad&rdquo; the left side of a string).</p>
-<p>And much like core-js, it was also distributed through NPM <em>(I’m seeing a common
-theme here …)</em>. After a legal dispute with NPM over the name of Azer’s package
-“kik” (a different side project which happened to also be the name of a popular
-messaging app), Azer removed all of his packages from NPM. Suddenly, in one
-fell swoop, across the world, JavaScript developers started seeing errors when
-building their projects:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>npm ERR! 404 ‘left-pad’ is not in the npm registry.
-</span></span></code></pre></div><p>Almost no one knew what the “left-pad” module was or what it did. And it didn’t
-even really matter. Somehow, through the swamp of NPM dependency chains,
-left-pad had become a project with 10s of millions of downloads a week and
-thousands of dependent projects. Azer effectively “broke the internet” by
-removing his packages that happened to be used across many other packages (and
-those packages used by other packages, so on and so forth).</p>
-<p>Some time latter, <a href="https://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/">in emails that were widely published</a>,
-Azer wrote:</p>
-<blockquote>
-<p>I want all my modules to be deleted including my account, along with this
-package. I don’t wanna be a part of NPM anymore. If you don’t do it, let me
-know how do it quickly.</p>
-</blockquote>
-<blockquote>
-<p>I think I have the right of deleting all my stuff from NPM.</p>
-</blockquote>
-<p>Yes, it is well within the rights of a package owner to remove their packages
-from the NPM registry. They are, after all, just pieces of open source
-software, freely distributed with no contract to their working order;
-often a fact that corporate consumers of open source software forget.</p>
-<p>By invoking the name of “left-pad”, Dennis insinuates that he has considered
-following in Azer’s footsteps and doing the same.
-Although, the impact would likely be far greater.</p>
-<p><em>What about commercialization?</em> Instead of completely
-obliterate the project, why not start selling licenses for it?
-Or somehow turn it into a product.</p>
-<p>I find this unlikely. If Dennis, a Russian national, commercialized
-the library over night, it would essentially have the same effect as deleting
-it: core-js is used by thousands of large businesses around the world, and if
-they suddenly had a Russian corporate dependency
-(<a href="https://www.state.gov/the-impact-of-sanctions-and-export-controls-on-the-russian-federation/">where there are currently many sanctions, including against “advanced technologies”</a>),
-this would force drastic action to remove core-js from any and all front end dependencies. More
-likely than not, NPM themselves would remove the package if this hard pivot was
-made. If I had to guess, this is why Dennis has not yet attempted to
-commercialize core-js; it would destroy a library he is passionate about
-without providing him the financial windfall he desires. A lose, lose
-situation.</p>
-<p>But this is a sort of <em>“Tale of Two Cities”</em> - despite the clear and present
-danger the project was in and regardless of veiled threats leveraged against
-the community by it’s sole maintainer, JavaScript developers disregarded this
-risk, big businesses consumed it as a deeply integrated dependency,
-and everyone increased their usage of the library, ignoring a potentially
-worsening situation.</p>
-<p>And, unfortunately, things did get worse.</p>
-<p>Sometime in 2019-2020, Dennis found himself in prison. And the core-js project went dark.
-<a href="https://github.com/zloirock/core-js/issues/767">Many found themselves asking</a>
-<em>“What happened?”</em>, <em>“What’s the state of this project?”</em>, and <em>“Is there any governance?”</em>:</p>
-<blockquote>
-<p>The JavaScript community should be a bit concerned because @zloirock looks
-like to be the &ldquo;only&rdquo; maintainer. Does somebody else have admin privileges
-to write on this repo? Publish on npm and make this project not to die?</p>
-</blockquote>
-<p>Compounding a risky situation, Dennis had made himself the sole maintainer of
-the GitHub repository, despite frequent requests to donate the project to a
-foundation or to add others with administrative privileges. At the time, and
-still to this day, he had no interest in giving up authority over the project.
-This means that during the time of Dennis’s absence, there were no changes. No
-security fixes. No new features. No commits to the main branch.</p>
-<p>The project, for all intents and purposes, was dead.</p>
-<p>Yet, still, the open source community and many multi-billion dollar companies
-did nothing. They didn’t attempt to mitigate the risk of using this critical,
-solo maintainer project and no alternatives emerged. Funny enough, at the time,
-the usage actually increased, by some estimates, to over 25 million downloads a
-week.</p>
-<p>In the lifecycle of “important” projects, once they die or their sole
-maintainer abandons them,
-<a href="https://github.com/ryanelian/ts-polyfill/issues/4#issuecomment-599227863">usually a prominent fork emerges from within the community:</a></p>
-<blockquote>
-<p>Babel maintainer here 👋 We are probably not going to fork core-js because
-we don&rsquo;t have enough resources to maintain it.</p>
-</blockquote>
-<p>Unfortunately, despite many requests, one of the most qualified JavaScript
-organizations in the entire ecosystem, Babel, who had worked closely with
-Dennis and core-js in the past, would not take the onerous of protecting their
-secure software supply-chain by forking core-js. Either because core-js was too
-complicated, they truly didn’t have allocations, or there was existing bad
-blood with the project, no useful alternative to core-js emerged.</p>
-<p>And unfortunately, at the point when a critical, solo-maintainer, open source
-project becomes so complex and so intertwined with the foundation of your
-product, you’ve effectively <em>&ldquo;lost&rdquo;</em>. When it becomes impossible to fork,
-maintain, or contribute back to the upstream project, you’ve effectively
-entered a deadlock hostage situation. Providing community support
-becomes impossible, yet, your software’s well-being is now directly linked to a
-solo maintainer who’s incentives are completely out of your control. One day on
-their own volition, they may up and abandon the project, leaving you the
-impossible task of picking up all the pieces.</p>
-<p>At this point, major JavaScript organizations like NPM or the V8 engine team at
-Google should have recognized the problem, stepped in, forked the project into
-an organization with a community, and enabled people to start contributing
-back.</p>
-<p>But Dennis has never wanted to give up core-js to the community - he’s fought
-back on allowing others to have administrative privileges, he doesn’t enable
-others to make large meaningful contributions, and he won’t share the burden of
-shepherding an important project.
-<a href="https://github.com/zloirock/core-js/issues/139">He’s only ever seen two potential futures for core-js;</a>
-make enough money (through donations or a job) to work on core-js full
-time or let it die. Any requests from Dennis for outside contributions are
-general asks to report issues, improve testing, and write better documentation.</p>
-<p>If I had to criticize Dennis for something, it would be this deliberate
-decision to castrate his open source community.
-The overwhelming majority of the over 5,000
-commits to the repository are exclusively from Dennis, mostly committed
-directly to the main branch; no pull requests, no discussion, no feedback, just
-straight to the mainline. And a great open source leader should eventually
-evolve beyond making code contributions; they should be effectively delegating
-tasks to the community, grooming the backlog, discussing proposals with
-community members, creating safegaurds to ensure the safety &amp; security of the
-software assets, and guiding the general direction of everything. Core-js never
-evolved past a simple pet project. Yet, to this day, the JavaScript ecosystem
-treats core-js like it’s a well maintained project with the support of an
-entire community. In reality, it’s one person with all the power making all the
-decisions and pushing all the changes.</p>
-<p>This, finally, brings us to this week: Dennis is out of prison. He appears to
-be in insurmountable debt to some Russian authority. And he publishes his call
-for financial assistance
-<a href="https://github.com/zloirock/core-js">directly to the core-js README</a>.
-It’s a harrowing story. A story that I believe it, fills me with sympathy
-but also scares me.</p>
-<p>Dennis ends his writing with the following, quoted at length for brevity:</p>
-<blockquote>
-<p>This was the last attempt to keep core-js as a free open-source project
-with a proper quality and functionality level. It was the last attempt to
-convey that there are real people on the other side of open-source with
-families to feed and problems to solve.</p>
-</blockquote>
-<blockquote>
-<p>If you or your company use core-js in one way or another and are interested
-in the quality of your supply chain, support the project</p>
-</blockquote>
-<p>Again, his final statement:</p>
-<blockquote>
-<p>If your company uses core-js and are interested in the quality of your
-supply chain, support the project</p>
-</blockquote>
-<p>is not the crescendo of someone asking for help. This is, like before, a thinly
-veiled threat. And this time, it’s a threat against the security of the
-JavaScript supply chain at large.</p>
-<p>If you know anything about me, you know that the secure software supply-chain
-is a topic I am deeply passionate about. I believe it is the most important
-technological hurdle of our modern area and I believe is at incredible risk.
-There are many avenues to disastrous supply chain attacks, but widely used
-projects that have solo maintainers are probably the largest and most blatant
-risk of them all.
-They’re sort of like unicorns, difficult to believe they’re real, but here we
-see one; a solo maintainer project that Amazon, Netflix, Apple, LinkedIn,
-PayPal, Binance, and tens of thousands of others have a dependency on.</p>
-<p>Worse yet, <a href="https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md#accident">through Dennis’s own words</a>,
-we can now clearly see the massive financial trouble he is in:</p>
-<blockquote>
-<p>I received financial claims totaling about 80 thousand dollars at the
-exchange rate at that time from &ldquo;victims&rsquo;&rdquo; relatives. A significant amount
-of money was also needed for a lawyer.</p>
-</blockquote>
-<p>And for a solo maintainer who has administrative, force push powers on a very
-complex, very popular software library, that few other people understand, his
-claims are a troubling reality. In the worst case, he could easily embed a
-malicious piece of code deep in the commit log and publish a new package to NPM
-for his financial gain. But more realistically, I worry for his safety; someone
-with crushing debt who presides over an incredibly valuable technological
-resource with little oversight is a prime target for state-sponsored hacker
-groups.</p>
-<p>Ironically, to this day, many well respected security and supply-chain
-companies would call core-js “healthy”. Snyk, a developer security platform
-company, <a href="https://snyk.io/advisor/npm-package/core-js">gives core-js a score of 94/100</a>
-noting it’s “Popularity” rating as a
-“Key Ecosystem Project” and its “Maintenance” rating as “Healthy”. I personally
-find this surprising given the years of solo maintainership of core-js,
-refusals by that sole maintainer to donate the project to a reputable
-organization, where that solo maintainer disappeared for well over a year,
-where threats of extinguishing the project were levied against the community,
-and where financial problems have been a reoccurring theme since the project&rsquo;s
-conception.</p>
-<p>Still, potentially worse, are the thousands of massive companies that saw no problem
-freely commercializing Dennis&rsquo;s work despite the clear call for help.
-Again, this is a sort of <em>&ldquo;Tale of Two Cities&rdquo;</em>:
-Dennis <em>should</em> be criticized for how he&rsquo;s handled the open source community
-around his project
-but the software industry should be equally ashamed of
-how they&rsquo;ve turned their back on this maintainer and their own software stability.</p>
-<p><em>“This all sounds bad. What do I do?”</em> Here are my recommendations for consumers of
-core-js:</p>
-<ul>
-<li>
-<p>Make a financial contribution - To start with, show Dennis your
-support for the solo work he’s done on core-js and the incredible functionality
-he’s brought to the web. It&rsquo;s the least we, as a software ecosystem, can do.</p>
-</li>
-<li>
-<p>Pin your core-js dependency - While not a long term solution, pinning your
-dependency will keep you from consuming potentially malicious upstream
-changes that get made to new versions of core-js. Generally, it’s not a
-great idea to blindly take every new package or track “latest”. You should
-attempt to independently verify critical projects and packages you consume,
-pinning to the ones that pass your screening.</p>
-</li>
-<li>
-<p>Cache versions of core-js you do rely on - In general, it is a mistake to
-blindly take dependencies from upstream package registries. In other words,
-you should never install an NPM package directly to your production
-environment. You may find yourself in a “left-pad” situation where a module
-owner one day decides to remove that package from the face of the earth. Or
-worse, where the package owner publishes a new malicious package under the
-same version that flows down to consumers. Those packages should, instead,
-be installed through a cache that you and your security team have
-independently created, validated, and control. Yes, this is another service
-you’d be running internally, but it’s well worth the cost in order to
-mitigate an entire class of supply chain attacks.</p>
-</li>
-<li>
-<p>Raise this concern with your CISO - Chief Information Security Officers are
-tasked with tracking, monitoring, and assessing the risk to all security
-vectors your company may be vulnerable to. It’s clear that Dennis is in
-financial trouble. That, compounded with the fact that he has admin access
-to force push onto the main branch and unilaterally publish new packages,
-should be concerning. Work with your security team and CISO to determine
-the threat level of this risk and what impact it has on your code bases.</p>
-</li>
-<li>
-<p>Get involved with the project - I’ve generally advocated for this in the
-past. And while core-js appears to be a difficult project to get involved
-with, there are still issues on GitHub you can raise, a few pull-requests
-to be commented on, and the commit log to be validated. If it’s a critical
-project to your company, spend the time, money, and engineering resources
-to protect your companies assets by getting involved.</p>
-</li>
-<li>
-<p>Find a reputable alternative and move to it - This is the best long term
-solution. But would require significant engineering resources.</p>
-</li>
-</ul>
-<p>A quick note on making a financial contribution - by donating,
-you are not supporting a project. You are not
-providing funds to a well defined organization. And you are not entitled to
-technical support. You are simply bank-rolling an individual.
-An individual who has brought massively useful usability features to the web
-and JavaScript developers.
-Someone who needs help.
-Someone who, at will, on their own volition, may abandon the project, inject malicious commits
-deep into the commit log, or outright sell their GitHub account to nefarious
-third parties. And for a massively critical project like core-js, this is a
-terrifying solution to propose: <em>“just pay him and forget about it”</em> won’t fix
-the problem in the long term and will never scale. If anything, it may exacerbate the problem by
-enabling a single, solo developer to keep working on a critical piece of web
-infrastructure by themselves. In that scenario, <a href="https://en.wikipedia.org/wiki/Bus_factor">the bus factor</a> is <em>still</em> 100%;
-Dennis working on the project alone means that at any time, he could disappear
-again and leave the project to rot.</p>
-<p>If you’ve read this far, I hope you understand why I am worried for core-js’s
-future. And yet, I am also sympathetic to Dennis’s plea. Commercialization of
-free and open software by large, multi-billion dollar companies has gone
-unchecked for decades. Dennis worked tirelessly for years to provide what he
-believed to be a good solution to a massive problem on the web. And the ecosystem took
-advantage of that, using his project with little recognition. While I disagree
-with and criticize some of his decisions, in the end, <em>it is his project</em>, it’s
-just gotten out of control and is used <em>everywhere</em>.
-He has every right to do with it what he wants.</p>
-<p>But that’s also the beauty of open source software. Dennis could completely
-disappear tomorrow and there would be zero real world consequence to him doing
-that; most open source licenses indicate that the software is provided <em>“as is”</em>
-with no support, no contract, and no assurance of its good working order.</p>
-<p>It also means that anyone can fork the project and maintain it themselves. If
-there’s anyone to be ashamed of, it’s the JavaScript open source ecosystem that
-perpetuated an increasingly bad situation for too long.</p>
-<p>Now is the time to step up.
-Now is the time to support Dennis.
-Now is the time to fork core-js.
-Now is the time to prevent another “left-pad-like problem”.</p>
-<hr>
-<p>If you found this blog post valuable,
-consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
-or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
-<hr>
-<script src="https://giscus.app/client.js"
-        data-repo="jpmcb/blog"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
-        data-category="Blog comments"
-        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="dark_dimmed"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
-
-]]></content:encoded>
-    </item>
-    
+    <lastBuildDate>Sat, 25 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NeoVim: Using the spellchecker</title>
       <link>https://johncodes.com/posts/2023/02-25-nvim-spell/</link>
@@ -695,245 +284,207 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     </item>
     
     <item>
-      <title>There is no secure software supply-chain.</title>
-      <link>https://johncodes.com/posts/there-is-no-secure-software-supply-chain/</link>
-      <pubDate>Tue, 27 Dec 2022 09:00:00 +0000</pubDate>
+      <title>Memoirs of a Registered Nurse</title>
+      <link>https://johncodes.com/posts/drafts/memoirs-of-an-rn/</link>
+      <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://johncodes.com/posts/there-is-no-secure-software-supply-chain/</guid>
-      <description>The Matrix, 1999
-Years ago, entrepreneurs and innovators predicated that “software would eat the world”. And to little surprise, year after year, the world has become more and more reliant on software solutions. Often times, that software is (or indirectly depends on) some open source software, maintained by a group of people whose only affiliation to one another may be participation in that open source project’s community. But we’re in trouble.</description>
-      <content:encoded><![CDATA[<p><img loading="lazy" src="/images/neo-black-and-white.jpg" alt="The Matrix, 1990"  />
+      <guid>https://johncodes.com/posts/drafts/memoirs-of-an-rn/</guid>
+      <description>Before I became a programmer, I was a registered nurse.
+The ugly parts (bitten, spat at) 3 days to say &amp;ldquo;I love you man&amp;rdquo; (and a long drive home) Morning breakfast burritos One of the best days of my life I&amp;rsquo;ll never forget the day I walked into my managers office, told him I was quiting, and never looked back. He was shocked, to say the least.
+What makes life worth living?</description>
+      <content:encoded><![CDATA[<p>Before I became a programmer, I was a registered nurse.</p>
+<hr>
+<h3 id="the-ugly-parts-bitten-spat-at">The ugly parts (bitten, spat at)</h3>
+<hr>
+<h3 id="3-days-to-say-i-love-you-man-and-a-long-drive-home">3 days to say &ldquo;I love you man&rdquo; (and a long drive home)</h3>
+<hr>
+<h3 id="morning-breakfast-burritos">Morning breakfast burritos</h3>
+<h3 id="one-of-the-best-days-of-my-life">One of the best days of my life</h3>
+<p>I&rsquo;ll never forget the day I walked into my managers office,
+told him I was quiting,
+and never looked back.
+He was shocked, to say the least.</p>
+<hr>
+<p>What makes life worth living?
+Often, during the middle of a night shift, I&rsquo;d find myself asking that question.
+Many of the old, dying patients around me had accomplished very little,
+family and friends were long gone,
+etc.</p>
+<p>It was the little moments.
+Always the little moments that made it all worth it.
+A passing smile to impart some comfort,
+tears at realizing this fleeting moment would be your last together,
+or that morning breakfast burritos smothered in chili sauce after a long night in the hospital.</p>
+<p>I do not miss my nursing career.
+But, at times, I do miss the many small moments and all the lessons about life to be learned along the way.</p>
+<hr>
+<p>NOTES</p>
+<ul>
+<li>What parallels and lessons can I draw on from my 4 years as an RN</li>
+</ul>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>So long windows 7!</title>
+      <link>https://johncodes.com/posts/2023/01-14-sat-edition/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2023/01-14-sat-edition/</guid>
+      <description>Welcome to the &amp;ldquo;Sunday Edition&amp;rdquo; of my blog. This is my (occassionally) recurring weekly news letter where I highlight some interesting things from across the tech industry, share a few insights from the week, and give you a chance to catch up on some worth-while reads from around the internet.
+If you&amp;rsquo;d like to subscribe via RSS and receive new posts, you can find the atom feed here.
+News Microsoft ended long term support for Windows 7 this week.</description>
+      <content:encoded><![CDATA[<p>Welcome to the <em>&ldquo;Sunday Edition&rdquo;</em> of my blog. This is my (occassionally) recurring weekly
+news letter where I highlight some interesting things from across the tech industry, share a
+few insights from the week, and give you a chance to catch up on some
+worth-while reads from around the internet.</p>
+<p>If you&rsquo;d like to subscribe via RSS and receive new posts,
+you can find <a href="https://johncodes.com/index.xml">the atom feed here.</a></p>
+<hr>
+<h2 id="news">News</h2>
+<p>Microsoft ended long term support for Windows 7 this week.</p>
+<p>This means that both the Windows 7 Professional and Enterprise editions will no
+longer receive any kind of security updates. And while “support” for Windows 7
+ended in January of 2020, Microsoft has had a hard time putting this operating
+system down; many deeply entrenched industries (like healthcare, manufacturing,
+defense, and governement) still used it heavily. By some estimates, some 11% of
+all Windows users are still using Windows 7.</p>
+<p>I’d anticipate this version of Windows becoming a major target for bad actors
+out in the wild. Major exploits of older Windows versions have been discovered
+long after edtended support ended and with Windows 7 massive footprint, it
+remains a very high value target for many.</p>
+<p>If you still use Windows 7, now is the time to update.</p>
+<h2 id="good-reads-from-across-the-internet">Good reads from across the internet</h2>
+<ul>
+<li><em>This girl is going to kill herself - Krista Diamond on Long Reads</em></li>
+</ul>
+<p>Before I got into software engineering, I worked a few summers in the outdoor
+rec industry as a mountain guide. I lead rock climbing trips, rafted rivers,
+hiked 14-ers, and bushwacked in the backcountry. And like this story from
+Krista Diamond reflects on, I too faced unprecedented life or death situations
+in the backcountry. But too often, time and time again, I would brush off my
+experiance as</p>
+<p>We as humans are very bad at assessing risk. People don’t conceptualize
+statistics, especially when it pertains to them personally. Whether it’s the
+risk of weather on the mountain or the risk of missing delivery deadlines at
+work, people don’t really understand the risk until it’s usually too late.</p>
+<p>One of the best ways to combat this in my own life and work is to make the risk
+more digestible and specific: “The backcountry is dangerous and risky” is
+difficult to conceptualize. But “crossing a river at peak flow while wearing
+your pack is dangerous and risky” is way easier to reason about. “Re-writing
+the entire app is risky” is difficult to conceptualize. But “re-writing the app
+to use a newest web framework would require we adopt a new database schema
+which entails doing risky and costly migrations” is easier to reason about.</p>
+<ul>
+<li><em>Jeff Beck, Guitarist With a Chapter in Rock History, Dies at 78 - The New York
+Times</em></li>
+</ul>
+<p>When I was 12, I got my first guitar. I always wanted to play like my dad and
+my big brother. I learned the basics from my dad but then (like any teenager
+would), I wanted to find my own path. I would go to the local library, browse
+their collection of CDs, find albums with interesting enough covers, and check
+them out. I’d then head home, put the CD into my disc changer, pick up my
+guitar, and try my best to play along.</p>
+<p>I stumbled onto Jeff Beck’s Wired album, put it on, and was immediately
+introduced to Led Boots:</p>
+<p>I’d never heard anything like it; a mix of sweeping rock solos, complex jazz
+changes, nuanced beats, &amp; a mixing of melody and rythmn.</p>
+<p>I went back to the library and I checked out ever Jeff Beck album they had. For
+me, his music was something very special. It was so different from any of the
+radio rock I’d heard before. It’s what got me interested in exploring jazz. And
+to one midwest teenager with a guitar, it helped inspire a lifetime love of
+music and creating.</p>
+<h1 id="command-line-tip-of-the-week">Command line tip of the week</h1>
+<p>If you’re anything like me, you have a highly configured command line
+environment with alot of aliases. And sometimes, you need to escape using an
+alias in favor of its original intent. A good example in my environment is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ which vim
+</span></span><span style="display:flex;"><span>vim: aliased to nvim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ vim --version
+</span></span><span style="display:flex;"><span>NVIM v0.8.2
+</span></span></code></pre></div><p>I use NeoVim almost exclusively so the “vim” alias makes sense 99% of the time.
+But whenever I need <em>actual</em> vim, I can escape my alias using a backslash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ \vim --version
+</span></span><span style="display:flex;"><span>VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 16:44:48)
+</span></span></code></pre></div><p>This (unfortunately) won’t work on fish but is a great little backdoor
+alias escape for zsh, bash, etc.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Why I deleted my TikTok with 135,000&#43; followers.</title>
+      <link>https://johncodes.com/posts/drafts/tiktok/</link>
+      <pubDate>Tue, 10 Jan 2023 09:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/drafts/tiktok/</guid>
+      <description>???
+If you&amp;rsquo;re interested in a video version of this post, check out the following from my YouTube.
+In January of this year, 2023, I made the decision to delete my TikTok account; an account with over 135,000 followers, millions of likes, hundreds of videos, and countless comments. The “John Codes” page on TikTok is no more.
+This was not a decision I came to lightly; there is “no turning back” from this.</description>
+      <content:encoded><![CDATA[<p>???</p>
+<p><em>If you&rsquo;re interested in a video version of this post,
+check out <a href="">the following from my YouTube.</a></em></p>
+<hr>
+<p>In January of this year, 2023, I made the decision to delete my TikTok
+account; an account with over 135,000 followers, millions of likes, hundreds of
+videos, and countless comments. The “John Codes” page on TikTok is no more.</p>
+<p>This was not a decision I came to lightly;  there is “no turning back” from
+this. I knew I had to consider every angle, think deeply on how this would
+affect me, and what I would be communicating to my audience and the larger
+“TechTok” space. Although, I seriously doubt I will be missed.</p>
+<p>When I first started posting content, it was never about likes, followers,
+influence, money, or power. It was always about sharing my joy of technology
+and programming with others. It was about starting the discourse on interesting
+and difficult topics in tech. It was about connecting with a community. It was
+about having fun.</p>
+<p>I loved talking about Vim, the Go programming language, how cool Kubernetes is,
+cyber security principles, current news in tech, and hearing from people all
+over the world.</p>
+<p>But, in early 2020 when TikTok was gaining mass popularity <em>beyond</em> just dances
+and trends, the platform itself was drastically changing. The community
+guidelines became more strict. Without warning, the guidelines would be
+modified, redacted, and updated.</p>
+<p>Time and time again, I had videos about cyber-security and CVEs get taken down.
+My account suffered constant community guideline violations and constant
+appeals. At one point, I was <em>1 takedown away</em> from having my account
+permanently banned:</p>
+<p><img loading="lazy" src="/images/tiktok-ban.jpg" alt="TikTok ban"  />
 </p>
-<p><em>The Matrix, 1999</em></p>
-<hr>
-<p>Years ago, entrepreneurs and innovators predicated that
-<a href="https://a16z.com/2011/08/20/why-software-is-eating-the-world/">“software would eat the world”.</a>
-And to little surprise, year after year, the world has become more and
-more reliant on software solutions. Often times, that software is (or
-indirectly depends on) some open source software, maintained by a group of
-people whose only affiliation to one another may be participation in that open
-source project’s community. But we’re in trouble. The security of open source
-software is under threat and we’re running out of people to reliably maintain
-those projects. And as our stacks get deeper, our dependencies become more
-interlinked, leading to terrifying compromises in the secure software
-supply-chain. For a perfect example of what’s happening in the open source
-world right now, we don’t need to look much further than the extremely popular
-<a href="https://github.com/orgs/gorilla/repositories">Gorilla toolkit for Go.</a></p>
-<p>As of this writing, in December of 2022, Gorilla has been archived, a project
-that provided powerful web framework technology like mux and sessions. Over its
-lengthy tenure, it was the de facto Go framework for web servers, routing
-requests, handling HTTP traffic, and using websockets. It was used by tens of
-thousands of other software packages and it came as a shock to most people in
-the Go community that the project would be no more; no longer maintained, no
-more releases, and no community support. But for anyone paying close enough
-attention, the signs of turmoil were clear:
-<a href="https://github.com/gorilla/websocket/issues/370">open calls for maintainers</a>
-went unanswered, there were few active outside contributors, and the burden of
-maintainership was very heavy.</p>
-<p>The Gorilla framework was one of those “important dependencies”. It sat at the
-critical intersection of providing nice quality of life tools while still
-securely handling important payloads. Developers would mold their logic around
-the APIs provided by Gorilla and entire codebases would be shaped by the use of
-the framework. The community at large trusted Gorilla; the last thing you want
-in your server is a web framework riddled with bugs and CVEs. In the secure
-software supply-chain, much like Nginx and OpenSSL, it’s a project that was at
-the cornerstone of many other supply-chains and dependencies. If something went
-wrong in the Gorilla framework, it had the potential to impact millions of
-servers, services, and other projects.</p>
-<p>The secure software supply-chain is one of those abstract concepts that giant
-tech companies, security firms, and news outlets all love to buzz wording
-about. It’s the “idea” that the software you are consuming as a dependency, all
-the way through your stack, is exactly the software you’re expecting to
-consume. In other words, it’s the assurance that some hacker didn’t inject a
-backdoor into a library or build tool you use, compromising your entire
-product, software library, or even company. Supply-chain attacks are misgevious
-because they almost never go after the actual intended target. Instead, they
-compromise some dependency to then go after the intended target.</p>
-<p>The classic example, still to this day, is
-<a href="https://www.gao.gov/blog/solarwinds-cyberattack-demands-significant-federal-and-private-sector-response-infographic">the Solar Winds attack:</a>
-some unnamed, Russian state-backed hacker group was able to compromise the internal
-Solar Winds build system, leaving any subsequent software built using that
-system injected with backdoors and exploits.
-<a href="https://www.nytimes.com/2020/12/14/us/politics/russia-hack-nsa-homeland-security-pentagon.html">The fallout from this attack was massive.</a>
-Many government agencies, including the State Department, confirmed
-massive data breaches. The estimated cost of this attack continues to rise and
-<a href="https://www.nytimes.com/2020/12/16/us/politics/russia-hack-putin-trump-biden.html">is estimated to be in the billions of dollars.</a></p>
-<p>Product after product have popped up in the last few years to try and solve
-these problems: software signing solutions, automated security scanning tools,
-up to date CVE databases, automated bots, AI assisted coding tools, etc. There
-was even a whole Whitehouse counsel on the subject. The federal government
-knows this is the most important (and most critically vulnerable) vector to the
-well being of our nation’s software infrastructure and they’ve been taking
-direct action to fight these kind of attacks.</p>
-<p>But the secure software supply-chain is also one of those things that falls
-apart quickly; without delicate handling and meticulous safeguarding, things go
-south fast. For months, the Gorilla toolkit had an open call for maintainers,
-seeking additional people to keep its codebases up to date, secure, and well
-maintained. But in the end, the Gorilla maintainers couldn’t find enough people
-to keep the project afloat. Many people volunteered but then were never seen
-again. <a href="https://github.com/gorilla#gorilla-toolkit">And the bar for maintainer-ship was rightfully very high:</a></p>
-<blockquote>
-<p>just handing the reins of even a single software package that has north of 13k
-unique clones a week (mux) is just not something I’d ever be comfortable with.
-This has tended to play out poorly with other projects.</p>
-</blockquote>
-<p>And in the past, this has played out poorly in other projects:</p>
-<p>In 2018, GitHub user FallingSnow opened
-<a href="https://github.com/dominictarr/event-stream/issues/116">the issue “I don’t know what to say.”</a>
-in the popular, but somewhat unknown, NPM JavaScript package event-stream. He&rsquo;d
-found something very peculiar in recent commits to the library. A new
-maintainer, not seen in the community before, with what appeared to be an
-entirely new GitHub account, had committed a strange piece of code directly to
-the main branch. This unknown new maintainer had also cut a new package to the
-NPM registry, forcing this change onto anyone tracking the latest packages in
-their project.</p>
-<p>The changes looked like this: In a new file, a long inline encrypted string was
-added. The string would be decoded using some unknown environment variable, and
-then, that unencrypted string would be injected as a JavaScript module into the
-package, effectively executing whatever code was hidden behind the encrypted
-string. In short, unknown code was being deciphered, injected, and executed at
-runtime.</p>
-<p>The GitHub issue went viral. And through sheer brute force, abit of luck, and
-hundreds of commenters, the community was able to decrypt the string, revealing
-the injected code’s purpose: a crypto-currency “wallet stealer”. If the code
-detected a specific wallet on the system, it used a known exploit to steal all
-the crypto stored in that wallet.</p>
-<p>This exploitative code lived in the event-stream NPM module for months. Going
-undetected by security scanners, consumers, and the project’s owner. Only when
-someone in the community who was curious enough to take a look did this obvious
-code-injection attack become clear. But what made this attack especially bad
-was that the event-stream module was used by many other modules (and those
-modules used by other modules, and so on). In theory, this potentially affected
-thousands of software packages and millions of end-users. Developers who had no
-idea their JavaScript used event-stream deep in their dependency stack were now
-suddenly having to quickly patch their code. How was this even possible? Who
-approved and allowed this to happen?</p>
-<p><a href="https://github.com/dominictarr/event-stream/issues/116#issuecomment-440927400">The owner of the GitHub repository, and original author of the code, said:</a></p>
-<blockquote>
-<p>he emailed me and said he wanted to maintain the module, so I gave it to him. I
-don&rsquo;t get any thing from maintaining this module, and I don&rsquo;t even use it
-anymore, and havn&rsquo;t for years.</p>
-</blockquote>
-<p>and</p>
-<blockquote>
-<p>note: I no longer have publish rights to this module on npm.</p>
-</blockquote>
-<p>Just like that, just by asking, some bad actor was able to compromise tens of
-thousands of software packages, going undetected through the veil of
-“maintainership”.</p>
-<p>In the past, I’ve referred to this as “The Risks of Single Maintainer
-Dependencies”: the overwhelming, often lonely, and sometimes dangerous
-experience of maintaining a widely distributed software package on your own.
-Like the owner of event-stream, most solo maintainers drift away, fading into
-the background to let their software go into disarray.</p>
-<p><a href="https://github.com/gorilla#gorilla-toolkit">This was the case with Gorilla:</a></p>
-<blockquote>
-<p>The original author and maintainer, moraes, had moved on a long time ago.
-kisielk and garyburd had the longest run, maintaining a mix of the HTTP
-libraries and gorilla/websocket respectively. I (elithrar) got involved
-sometime in 2014 or so, when I noticed kisielk doing a lot of the heavy lifting
-and wanted to help contribute back to the libraries I was using for a number of
-personal projects. Since about ~2018 or so, I was the (mostly) sole maintainer
-of everything but websocket, which is about the same time garyburd put out an
-(effectively unsuccessful) call for new maintainers there too.</p>
-</blockquote>
-<p>The secure software supply-chain will never truly be strong and secure as long
-as a single solo maintainer is able to disrupt an entire ecosystem of packages
-by giving their package away to some bad actor. In truth, there is no secure
-software supply-chain: we are only as strong as the weakest among us and too
-often, those weak links in the chain are already broken, left to rot, or given
-up to those with nefarious purposes.</p>
-<p>Whenever I bring up this topic, someone always asks about money. Oh, money,
-life’s truest satisfaction! And yes! Money can be a powerful motivator for some
-people. But it’s a sad excuse for what the secure software supply-chain really
-needs: true reliability. The software industry can throw all the money it wants
-at maintainers of important open source projects,
-<a href="https://www.theverge.com/23499215/valve-steam-deck-interview-late-2022">something Valve has started doing:</a></p>
-<blockquote>
-<p>Griffais says the company is also directly paying more than 100 open-source
-developers to work on the Proton compatibility layer, the Mesa graphics driver,
-and Vulkan, among other tasks like Steam for Linux and Chromebooks.</p>
-</blockquote>
-<p>but at some point, it becomes unreasonable to ask just a handful of people to
-hold up the integrity, security, and viability of your companies entire product
-stack. If it’s that important, why not hire some of those people, build a team
-of maintainers, create processes for contribution, and allocate developer time
-into the open source? Too often I hear about solving open source problems by
-just throwing money at it, but at some point, the problems of scaling software
-delivery outweigh any amount you can possibly pay a few people. Let’s say you
-were building a house, it might make sense to have one or two people work on
-the foundation. But if you’re zoning and building an entire city block, I’d
-sure hope you’d put an entire team on planning, building, and maintaining those
-foundations. No amount of money will make just a few people build a strong and
-safe foundation all by themselves. But what we’re asking some open source
-maintainers to do is to plan, build, and coordinate the foundations for an
-entire world.</p>
-<p><a href="https://github.com/gorilla#gorilla-toolkit">And this is something the Gorilla maintainers recognized as well:</a></p>
-<blockquote>
-<p>No. I don’t think any of us were after money here. The Gorilla Toolkit was,
-looking back at the most active maintainers, a passion project. We didn’t want
-it to be a job.</p>
-</blockquote>
-<p>For them, it wasn’t about the money, so throwing any amount at the project
-wouldn’t have helped. It was about the software’s quality, maintainability, and
-the kind of intrinsic satisfaction it provided.</p>
-<p>So then, how can we incentivize open source maintainers to maintain their
-software in a scalable, realistic way? Some people are motivated by the
-altruistic value they provide to a community. Some are motivated by fame,
-power, and recognition. Others still just want to have fun and work on
-something cool. It’s impossible to understand the complicated, interlinked way
-different people in an open source community are all motivated. Instead, the
-best solution is obvious: If you are on a team that relies on some piece of
-open source software, allocate real engineering time to contributing, being
-apart of the community, and helping maintain that software. Eventually, you’ll
-get a really good sense of how a project operates and what motivates its main
-players. And better yet, you’ll help alleviate the heavy burden of solo
-maintainership.</p>
-<p>Sometimes, I like to think of software like its a wooden canoe, its many
-dependencies making up the wooden strips of the boat. When first built, it
-seems sturdy, strong, and able to withstand the harshest of conditions. Its
-first coat of oil finish is fresh and beautiful, its wood grains smooth and
-unbent. But as the years ware on, eventually, its finish fads, its wooden
-strips need replacing, and maybe, if it takes on water, it requires time and
-new material to repair. Neglected long enough, and its wood could mold and rot
-from the inside, completely compromising the integrity of the boat. And just
-like a boat, software requires time, energy, maintenance, and “hands-on-deck”
-to ensure its many links in the secure software supply-chain are strong.
-Otherwise, the termites of time and the rot of bad-actors weaken links in the
-chain, compromising the stability of it all.</p>
-<p>In the end, the maintainers of the Gorilla framework did the right thing: they
-decommissioned a widely used project that was at risk of rotting from the
-inside out. And instead of let it live in disarray or potentially fall into the
-hands of bad actors, it is simply gone. Its link on the chain of software has
-been purposefully broken to force anyone using it to choose a better, and
-hopefully, more secure option.</p>
-<blockquote>
-<p>I do believe that open source software is entitled to a lifecycle — a
-beginning, a middle, and an end — and that no project is required to live on
-forever. That may not make everyone happy, but such is life.</p>
-</blockquote>
-<hr>
-<p>If you found this blog post valuable,
-consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
-or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
-<hr>
-<script src="https://giscus.app/client.js"
-        data-repo="jpmcb/blog"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
-        data-category="Blog comments"
-        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="dark_dimmed"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
-
+<p>One particularly bad take-down was when I discussed the nasty OpenSSL
+remote-code-execution vulnerability from late 2022. That video was taken down
+after receiving some 20,000 views in a few hours (and in TikTok terms, this
+meant the video had the velocity to reach millions of people within a day or
+two). But this resulted in a strike against my account, despite the fact that I
+didn’t talk about or disclose <em>anything</em> that wasn’t immediately available in
+the public CVE.</p>
+<p>In other-words, simply <em>mentioning</em> that there was a massive OpenSSL CVE, much
+like a journalist would talk about it, lead to an immediate de-platforming of
+the content. I appealed the decision and nothing changed: the only
+communication I had was a notice that the video was removed for promoting
+“Illegal activates and regulated goods”. To this day, my only assumption is
+that by discussing cyber-security, according to TikTok, I am inadvertently
+encouraging the masses of the platform to go exploit vulnerabilities.</p>
+<p>And as the community guidelines continue to change, content that was posted
+years ago has <em><strong><strong><strong><strong><strong><strong>retroactively been</strong></strong></strong></strong></strong></strong></em> taken down resulting
+in strikes against my account. This means that content that was at one time
+“ok” by the community guidelines <em>is no longer seen that way</em> and the creator
+receives punitive action regardless of <em>when it was posted</em>.</p>
+<p>The “TechTok” space has become a heavily censored one. The community guidelines
+envision a world where CVEs don’t exist, cyber-security practices are a heavily
+regulated activity, and pen-testing is something only nefarious hackers do. My
+content is no longer welcome there and at this point, it has only become a
+matter of time before my account is banned.</p>
+<p>So, on my own volition, I’ve decided the best thing for me is to take the
+account down myself.</p>
+<p>So much more could be said about TikTok’s impact on the mental health of its
+users, the endless cycle and demand for constant content from its creators
+(least you fall into obscurity!), how it compensates the creators with pennies
+on the dollar, and the app’s questionable practices spying on America citizens
+for a foreign power.</p>
+<p>In short, I refuse to be apart of a platform that consumes my creative energy
+but rejects an open discourse in favor of a sanitized, problem free world.</p>
+<p>Goodbye TikTok and the “TechTok” community. It was fun, but it wasn’t that fun.</p>
 ]]></content:encoded>
     </item>
     
@@ -2016,23 +1567,25 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John. I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, kubernetes, Linux operating systems, and cloud technology.
-This site is my personal landing page and blog. All opinions and views herein are my own opinions and do not reflect those of employer (past, present, future, or interdimensional).
-Enjoy!
-Support If you find anything I&amp;rsquo;ve done valuable, consider subscribing to future posts via RSS or buying me a coffee via GitHub sponsors.</description>
+      <description>Hi there! 🌊 My name is John. I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.
+This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, photos, videos, ramblings on philosophy, and really, whatever I want.
+For my long-form essays on software engineering and the tech industry, subscribe to my substack, On Engineering.</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
 <p>My name is John. I&rsquo;m a software engineer at Amazon Web Services
-where I work on open source software, kubernetes, Linux operating systems, and cloud technology.</p>
+where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
-All opinions and views herein are my <em>own</em> opinions and do <em>not</em> reflect
-those of employer (past, present, future, or interdimensional).</p>
+You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories,
+photos, videos, ramblings on philosophy, and really, whatever I want.</p>
+<p>For my long-form essays on software engineering and the tech industry,
+<a href="https://onengineering.substack.com/">subscribe to my substack, On Engineering.</a></p>
+<p>All opinions and views herein are my <em>own</em> opinions and do <em>not</em> reflect
+those of any employer (past, present, future, or inter-dimensional).</p>
 <p>Enjoy!</p>
-<h4 id="support">Support</h4>
-<p>If you find anything I&rsquo;ve done valuable,
-consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
-or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
 <h3 id="contact">Contact</h3>
-<p>I can be reached at <a href="mailto:hello@johncodes.com">hello@johncodes.com</a></p>
+<p>I can be reached directly at <a href="mailto:hello@johncodes.com">hello@johncodes.com</a></p>
+<h3 id="support">Support</h3>
+<p>If you find anything I&rsquo;ve done valuable,
+consider <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
 ]]></content:encoded>
     </item>
     
