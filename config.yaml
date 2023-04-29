@@ -61,7 +61,7 @@ params:
   profileMode:
     enabled: true
     title: John McBride
-    subtitle: "Software Engineer. Content Creator."
+    subtitle: "Software Engineer."
     imageUrl: "images/profile-pic.jpg"
     imageWidth: 200
     imageHeight: 200
