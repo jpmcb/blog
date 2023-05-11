@@ -3,7 +3,7 @@ title: "So long windows 7!"
 date: 2023-01-15
 ---
 
-Welcome to the _"Sunday Edition"_ of my blog. This is my (occassionally) recurring weekly
+Welcome to the _"Sunday Edition"_ of my blog. This is my (occasionally) recurring weekly
 news letter where I highlight some interesting things from across the tech industry, share a
 few insights from the week, and give you a chance to catch up on some
 worth-while reads from around the internet.
@@ -77,7 +77,7 @@ radio rock I’d heard before. It’s what got me interested in exploring jazz. 
 to one midwest teenager with a guitar, it helped inspire a lifetime love of
 music and creating.
 
-# Command line tip of the week
+# Command line tip
 
 If you’re anything like me, you have a highly configured command line
 environment with alot of aliases. And sometimes, you need to escape using an
