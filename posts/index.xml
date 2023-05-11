@@ -284,57 +284,15 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     </item>
     
     <item>
-      <title>Memoirs of a Registered Nurse</title>
-      <link>https://johncodes.com/posts/drafts/memoirs-of-an-rn/</link>
-      <pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://johncodes.com/posts/drafts/memoirs-of-an-rn/</guid>
-      <description>Before I became a programmer, I was a registered nurse.
-The ugly parts (bitten, spat at) 3 days to say &amp;ldquo;I love you man&amp;rdquo; (and a long drive home) Morning breakfast burritos One of the best days of my life I&amp;rsquo;ll never forget the day I walked into my managers office, told him I was quiting, and never looked back. He was shocked, to say the least.
-What makes life worth living?</description>
-      <content:encoded><![CDATA[<p>Before I became a programmer, I was a registered nurse.</p>
-<hr>
-<h3 id="the-ugly-parts-bitten-spat-at">The ugly parts (bitten, spat at)</h3>
-<hr>
-<h3 id="3-days-to-say-i-love-you-man-and-a-long-drive-home">3 days to say &ldquo;I love you man&rdquo; (and a long drive home)</h3>
-<hr>
-<h3 id="morning-breakfast-burritos">Morning breakfast burritos</h3>
-<h3 id="one-of-the-best-days-of-my-life">One of the best days of my life</h3>
-<p>I&rsquo;ll never forget the day I walked into my managers office,
-told him I was quiting,
-and never looked back.
-He was shocked, to say the least.</p>
-<hr>
-<p>What makes life worth living?
-Often, during the middle of a night shift, I&rsquo;d find myself asking that question.
-Many of the old, dying patients around me had accomplished very little,
-family and friends were long gone,
-etc.</p>
-<p>It was the little moments.
-Always the little moments that made it all worth it.
-A passing smile to impart some comfort,
-tears at realizing this fleeting moment would be your last together,
-or that morning breakfast burritos smothered in chili sauce after a long night in the hospital.</p>
-<p>I do not miss my nursing career.
-But, at times, I do miss the many small moments and all the lessons about life to be learned along the way.</p>
-<hr>
-<p>NOTES</p>
-<ul>
-<li>What parallels and lessons can I draw on from my 4 years as an RN</li>
-</ul>
-]]></content:encoded>
-    </item>
-    
-    <item>
       <title>So long windows 7!</title>
       <link>https://johncodes.com/posts/2023/01-14-sat-edition/</link>
       <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/01-14-sat-edition/</guid>
-      <description>Welcome to the &amp;ldquo;Sunday Edition&amp;rdquo; of my blog. This is my (occassionally) recurring weekly news letter where I highlight some interesting things from across the tech industry, share a few insights from the week, and give you a chance to catch up on some worth-while reads from around the internet.
+      <description>Welcome to the &amp;ldquo;Sunday Edition&amp;rdquo; of my blog. This is my (occasionally) recurring weekly news letter where I highlight some interesting things from across the tech industry, share a few insights from the week, and give you a chance to catch up on some worth-while reads from around the internet.
 If you&amp;rsquo;d like to subscribe via RSS and receive new posts, you can find the atom feed here.
 News Microsoft ended long term support for Windows 7 this week.</description>
-      <content:encoded><![CDATA[<p>Welcome to the <em>&ldquo;Sunday Edition&rdquo;</em> of my blog. This is my (occassionally) recurring weekly
+      <content:encoded><![CDATA[<p>Welcome to the <em>&ldquo;Sunday Edition&rdquo;</em> of my blog. This is my (occasionally) recurring weekly
 news letter where I highlight some interesting things from across the tech industry, share a
 few insights from the week, and give you a chance to catch up on some
 worth-while reads from around the internet.</p>
@@ -394,7 +352,7 @@ me, his music was something very special. It was so different from any of the
 radio rock I’d heard before. It’s what got me interested in exploring jazz. And
 to one midwest teenager with a guitar, it helped inspire a lifetime love of
 music and creating.</p>
-<h1 id="command-line-tip-of-the-week">Command line tip of the week</h1>
+<h1 id="command-line-tip">Command line tip</h1>
 <p>If you’re anything like me, you have a highly configured command line
 environment with alot of aliases. And sometimes, you need to escape using an
 alias in favor of its original intent. A good example in my environment is:</p>
@@ -413,87 +371,11 @@ alias escape for zsh, bash, etc.</p>
     </item>
     
     <item>
-      <title>Why I deleted my TikTok with 135,000&#43; followers.</title>
-      <link>https://johncodes.com/posts/drafts/tiktok/</link>
-      <pubDate>Tue, 10 Jan 2023 09:00:00 +0000</pubDate>
-      
-      <guid>https://johncodes.com/posts/drafts/tiktok/</guid>
-      <description>???
-If you&amp;rsquo;re interested in a video version of this post, check out the following from my YouTube.
-In January of this year, 2023, I made the decision to delete my TikTok account; an account with over 135,000 followers, millions of likes, hundreds of videos, and countless comments. The “John Codes” page on TikTok is no more.
-This was not a decision I came to lightly; there is “no turning back” from this.</description>
-      <content:encoded><![CDATA[<p>???</p>
-<p><em>If you&rsquo;re interested in a video version of this post,
-check out <a href="">the following from my YouTube.</a></em></p>
-<hr>
-<p>In January of this year, 2023, I made the decision to delete my TikTok
-account; an account with over 135,000 followers, millions of likes, hundreds of
-videos, and countless comments. The “John Codes” page on TikTok is no more.</p>
-<p>This was not a decision I came to lightly;  there is “no turning back” from
-this. I knew I had to consider every angle, think deeply on how this would
-affect me, and what I would be communicating to my audience and the larger
-“TechTok” space. Although, I seriously doubt I will be missed.</p>
-<p>When I first started posting content, it was never about likes, followers,
-influence, money, or power. It was always about sharing my joy of technology
-and programming with others. It was about starting the discourse on interesting
-and difficult topics in tech. It was about connecting with a community. It was
-about having fun.</p>
-<p>I loved talking about Vim, the Go programming language, how cool Kubernetes is,
-cyber security principles, current news in tech, and hearing from people all
-over the world.</p>
-<p>But, in early 2020 when TikTok was gaining mass popularity <em>beyond</em> just dances
-and trends, the platform itself was drastically changing. The community
-guidelines became more strict. Without warning, the guidelines would be
-modified, redacted, and updated.</p>
-<p>Time and time again, I had videos about cyber-security and CVEs get taken down.
-My account suffered constant community guideline violations and constant
-appeals. At one point, I was <em>1 takedown away</em> from having my account
-permanently banned:</p>
-<p><img loading="lazy" src="/images/tiktok-ban.jpg" alt="TikTok ban"  />
-</p>
-<p>One particularly bad take-down was when I discussed the nasty OpenSSL
-remote-code-execution vulnerability from late 2022. That video was taken down
-after receiving some 20,000 views in a few hours (and in TikTok terms, this
-meant the video had the velocity to reach millions of people within a day or
-two). But this resulted in a strike against my account, despite the fact that I
-didn’t talk about or disclose <em>anything</em> that wasn’t immediately available in
-the public CVE.</p>
-<p>In other-words, simply <em>mentioning</em> that there was a massive OpenSSL CVE, much
-like a journalist would talk about it, lead to an immediate de-platforming of
-the content. I appealed the decision and nothing changed: the only
-communication I had was a notice that the video was removed for promoting
-“Illegal activates and regulated goods”. To this day, my only assumption is
-that by discussing cyber-security, according to TikTok, I am inadvertently
-encouraging the masses of the platform to go exploit vulnerabilities.</p>
-<p>And as the community guidelines continue to change, content that was posted
-years ago has <em><strong><strong><strong><strong><strong><strong>retroactively been</strong></strong></strong></strong></strong></strong></em> taken down resulting
-in strikes against my account. This means that content that was at one time
-“ok” by the community guidelines <em>is no longer seen that way</em> and the creator
-receives punitive action regardless of <em>when it was posted</em>.</p>
-<p>The “TechTok” space has become a heavily censored one. The community guidelines
-envision a world where CVEs don’t exist, cyber-security practices are a heavily
-regulated activity, and pen-testing is something only nefarious hackers do. My
-content is no longer welcome there and at this point, it has only become a
-matter of time before my account is banned.</p>
-<p>So, on my own volition, I’ve decided the best thing for me is to take the
-account down myself.</p>
-<p>So much more could be said about TikTok’s impact on the mental health of its
-users, the endless cycle and demand for constant content from its creators
-(least you fall into obscurity!), how it compensates the creators with pennies
-on the dollar, and the app’s questionable practices spying on America citizens
-for a foreign power.</p>
-<p>In short, I refuse to be apart of a platform that consumes my creative energy
-but rejects an open discourse in favor of a sanitized, problem free world.</p>
-<p>Goodbye TikTok and the “TechTok” community. It was fun, but it wasn’t that fun.</p>
-]]></content:encoded>
-    </item>
-    
-    <item>
       <title>How I got a job at Amazon as a software engineer</title>
-      <link>https://johncodes.com/posts/aws-job/</link>
+      <link>https://johncodes.com/posts/legacy/aws-job/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://johncodes.com/posts/aws-job/</guid>
+      <guid>https://johncodes.com/posts/legacy/aws-job/</guid>
       <description>If you&amp;rsquo;d like a view a video version of this article, check out the following:
 In the summer of 2022, I left my job at VMware for Amazon Web Services. It was a bitter sweet journey; I loved my time at VMware and I loved working on some cutting edge things in the Kubernetes space. Even just a few months latter, the project I was working on is now completely defunct.</description>
       <content:encoded><![CDATA[<p><em>If you&rsquo;d like a view a video version of this article, check out the following:</em></p>
@@ -628,10 +510,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>Leaky Go Channels</title>
-      <link>https://johncodes.com/posts/golang-performance/</link>
+      <link>https://johncodes.com/posts/legacy/golang-performance/</link>
       <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://johncodes.com/posts/golang-performance/</guid>
+      <guid>https://johncodes.com/posts/legacy/golang-performance/</guid>
       <description>These simple go tests check the &amp;ldquo;leaky-ness&amp;rdquo; of using channels in Go. There are two methods described here; one using both a local context, and the parent context. When tests are run against both, the LeakyAsync method runs faster, but fails the leak checker as goroutines are not resolved or cleaned up.
 In a production system with possibly thousands of go routines being spun up, this could result in massive memory leaks and a deadlock situation in the go binary.</description>
       <content:encoded><![CDATA[<p>These simple go tests check the &ldquo;leaky-ness&rdquo; of using channels in Go.
@@ -832,10 +714,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>Slack Is Always Watching ...</title>
-      <link>https://johncodes.com/posts/slack-is-watching/</link>
+      <link>https://johncodes.com/posts/legacy/slack-is-watching/</link>
       <pubDate>Mon, 21 Jan 2019 21:18:06 -0700</pubDate>
       
-      <guid>https://johncodes.com/posts/slack-is-watching/</guid>
+      <guid>https://johncodes.com/posts/legacy/slack-is-watching/</guid>
       <description>(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed) TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.
 In today&amp;rsquo;s world, violations of privacy are no surprise. Between all the leaks and data dumps, many people have accepted this as &amp;ldquo;just the world we live in&amp;rdquo;. But what if information was exposed that could be used to judge your work performance?</description>
       <content:encoded><![CDATA[<p>(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed)
@@ -920,10 +802,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>To Catch a Hacker - NPM Even Stream</title>
-      <link>https://johncodes.com/posts/npm-event-stream/</link>
+      <link>https://johncodes.com/posts/legacy/npm-event-stream/</link>
       <pubDate>Fri, 14 Dec 2018 21:20:46 -0700</pubDate>
       
-      <guid>https://johncodes.com/posts/npm-event-stream/</guid>
+      <guid>https://johncodes.com/posts/legacy/npm-event-stream/</guid>
       <description>(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)
 A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM.</description>
       <content:encoded><![CDATA[<p>(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)</p>
@@ -1123,10 +1005,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>Rethink-DB Cookbook</title>
-      <link>https://johncodes.com/posts/rethink-db-cookbook/</link>
+      <link>https://johncodes.com/posts/legacy/rethink-db-cookbook/</link>
       <pubDate>Mon, 05 Nov 2018 21:15:35 -0700</pubDate>
       
-      <guid>https://johncodes.com/posts/rethink-db-cookbook/</guid>
+      <guid>https://johncodes.com/posts/legacy/rethink-db-cookbook/</guid>
       <description>(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed) RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data and is a production ready option for Node infrastructures.
 Pre-reqs: Docker, Node, NPM
 This post will serve as a brief overview of RethinkDB and hopefully give you a taste of how it works and why a JSON based database might be beneficial for you and your product.</description>
@@ -1284,10 +1166,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>Virtual machine trouble?? Try Docker!</title>
-      <link>https://johncodes.com/posts/docker-trouble/</link>
+      <link>https://johncodes.com/posts/legacy/docker-trouble/</link>
       <pubDate>Sat, 13 May 2017 22:17:04 -0700</pubDate>
       
-      <guid>https://johncodes.com/posts/docker-trouble/</guid>
+      <guid>https://johncodes.com/posts/legacy/docker-trouble/</guid>
       <description>If you are a Oregon State CS 344 student, then you&amp;rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</description>
       <content:encoded><![CDATA[<p>If you are a Oregon State CS 344 student, then you&rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</p>
 <p><em><em>Note:</em></em> when a &ldquo;host&rdquo; is referenced, this is in regard to your own laptop and your own environment, not any container or virtual machine you might have running.</p>
@@ -1401,10 +1283,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
     
     <item>
       <title>Vim Tips!</title>
-      <link>https://johncodes.com/posts/vim-tips/</link>
+      <link>https://johncodes.com/posts/legacy/vim-tips/</link>
       <pubDate>Wed, 22 Mar 2017 21:19:16 -0700</pubDate>
       
-      <guid>https://johncodes.com/posts/vim-tips/</guid>
+      <guid>https://johncodes.com/posts/legacy/vim-tips/</guid>
       <description>(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)
 I&amp;rsquo;d consider myself some sort of Vim - evangelist. It&amp;rsquo;s an incredible tool and has ALOT of power. If there&amp;rsquo;s something you wish Vim could do, there&amp;rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from.</description>
       <content:encoded><![CDATA[<p>(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)</p>
