@@ -110,15 +110,16 @@ there are droves of engineers and existing stacks that couldn&rsquo;t possibly s
 to adopt new tech constantly.</p>
 <p>And what customer needs is all this new tech really servicing?
 If we already have well understood tools and stacks, why adopt something new
-unless it really meets some customer need? _(see above on working backwards
-from the customer)</p>
+unless it really meets some customer need? <em>(see above on working backwards from the customer)</em>.</p>
 <p>Early on, the Bottlerocket team adopted Rust for first party source code. And
 for very good reasons: it provides unique memory safe capabilities and performance, there was an
 existing paradigm of using rust at AWS, and among many other reasons,
 writing new C or C++ systems code may not be unacceptable from a security standpoint.</p>
 <p>When I first arrived on the team, my naive assumption for why Rust was adopted
 was because it happens to be the cool new kid on the programming block.</p>
-<p>When, in reality, adopting this new tech serviced some real customer and product needs.</p>
+<p>When, in reality, adopting this new tech serviced some real customer and product needs.
+In short, keeping the customer at the center of all decisions, including what tech gets adopted,
+will continue to give you better and better results.</p>
 <hr>
 <p><em>So long AWS, and thanks for everything!</em></p>
 <hr>
