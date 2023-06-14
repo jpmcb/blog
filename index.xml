@@ -5,8 +5,148 @@
     <link>https://johncodes.com/</link>
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 25 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>So long AWS!</title>
+      <link>https://johncodes.com/posts/2023/06-13-goodbye-aws/</link>
+      <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2023/06-13-goodbye-aws/</guid>
+      <description>This is my last week at Amazon Web Services.
+And while the last year has been an incredible journey diving deep into the world of containers, Linux, Rust, Kubernetes, and building operating systems, I&amp;rsquo;ve made the difficult decision to leave.
+And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced building the future of open source insights, tooling, and innovation.
+Since before I started my computer science degree (almost 7 years ago!</description>
+      <content:encoded><![CDATA[<p>This is my last week at Amazon Web Services.</p>
+<p>And while the last year has been an incredible journey diving deep into the world
+of containers, Linux, Rust, Kubernetes, and building operating systems,
+I&rsquo;ve made the difficult decision to leave.</p>
+<p>And I&rsquo;m very excited to be joining the incredible team at <a href="https://opensauced.pizza/">OpenSauced</a>
+building the future of open source insights, tooling, and innovation.</p>
+<p>Since before I started my computer science degree (almost 7 years ago!)
+I&rsquo;ve wanted to cut my teeth on building a startup, working on a greenfield product.
+These kinds of opportunities are far &amp; few between.
+And the timing is <em>just about</em> right;
+I can&rsquo;t wait to push myself, learn new skills, and build new products
+with a small tactical team.</p>
+<p>To everyone at AWS and the Bottlerocket team:
+Thank you for making the last year an incredible learning opportunity.
+Here&rsquo;s hoping our paths cross again soon!! I&rsquo;m sure I&rsquo;ll be seeing you around
+the open source ecosystem! Cheers!</p>
+<hr>
+<p>If you&rsquo;re curious, here are a few personal reflections on the last year:</p>
+<h3 id="the-power-of-grit"><em><strong>The power of grit.</strong></em></h3>
+<p>There&rsquo;s something really incredible about a team of engineers dedicated to
+creating wonderful customer experiences
+(especially when there is alot of really challenging work to get done).</p>
+<p>You could have the most talented people in the world working on your products
+but when the times get tough, tapping into the grit superpower trumps all others.</p>
+<p>What is grit?</p>
+<p>Personally, I&rsquo;ve found it to be the <em>resolve</em> to do what needs to get done.
+At times, no matter what.</p>
+<p>I was constantly impressed with what could be accomplished at AWS through sheer
+motivation and grit. It was pretty rare to hear <em>&ldquo;it can&rsquo;t be done&rdquo;</em> or <em>&ldquo;I can&rsquo;t do this&rdquo;</em>.
+More often then not, you&rsquo;d hear <em>&ldquo;how can we do this for our customers?&rdquo;</em>
+or <em>&ldquo;what needs to change in order to accomplish this&rdquo;</em>.</p>
+<h3 id="the-open-source-movement-is-alive-and-well"><em><strong>The open source movement is alive and well.</strong></em></h3>
+<p>Just before joining Amazon, I was coming hot off of
+Tanzu Community Edition at VMware, an open source Kubernetes platform aiming to
+be a simple and easy entry point for VMware customers to get introduced to the cloud
+native ecosystem.</p>
+<p>Unfortunately, sometime after the Broadcom acquisition was announced, the entire
+project was scrapped. After well over a year of stealth development, user research,
+release, community support, and more, all our effort essentially resulted in &hellip; nothing.</p>
+<p>To say the least, it left me abit skeptical (and sad) about the whole open source
+<em>&ldquo;idea&rdquo;</em>. Maybe you could call it a crisis of faith. Did it really make sense
+to ship software and platforms for free? Does it make for any kind of sustainable
+business?</p>
+<p>But while at AWS, I saw amazing projects get iterated on,
+injected with critical engineering resources,
+shipped,
+and improved through Amazon&rsquo;s open source
+office. Things like
+Bottlerocket,
+Containerd,
+Finch,
+and many more.</p>
+<p>To say the least, the open source movement is strong and there&rsquo;s so much
+awesome innovation happening out in the open wild.
+I&rsquo;m energized and hopeful for the future of the free <em>(as in freedom, not as in beer)</em>
+and open movement.</p>
+<h3 id="when-customers-give-you-lemons-make-lemonade"><em><strong>When customers give you lemons, make lemonade.</strong></em></h3>
+<p>The &ldquo;first principle&rdquo; of working at Amazon is to be customer obsessed.
+And being customer obsessed means you should make all efforts to work backwards
+from the customer needs.</p>
+<p>I&rsquo;m not gonna lie: at first, I really thought the whole &ldquo;peculiar culture&rdquo; and
+&ldquo;customer obsessed&rdquo; mantras were a load of b.s.</p>
+<p>But seeing real customer&rsquo;s needs get met on a daily basis by the team was a pretty
+incredible thing: there was little question on what the team was delivering and why.
+It always revolved around the customers.</p>
+<p>From an individual contributor perspective, that is incredibly empowering to be able
+to hear of a real customer issue or need, make changes to address it, and ship it without question.
+In software, customer needs, request, and issues are like lemons.
+And when you have an abundance of lemons, make lemonade.</p>
+<h3 id="want-to-be-understood-write-a-document"><em><strong>Want to be understood? Write a document.</strong></em></h3>
+<p>Before working at Amazon,
+I really, <em>really</em> underestimated the power of technical writing.</p>
+<p>Almost all decisions at Amazon get made through a well written document that
+clearly lays out the narrative for how a decision should be made.</p>
+<p>Writing has never been something I felt <em>&ldquo;good&rdquo;</em> at.
+In fact, for years throughout primary school, I struggled with reading
+and writing <em>(see my previous post on using the spell checker in Neovim for
+an understanding on how critical these tools are for me)</em>.</p>
+<p>The first few docs I wrote were not well written docs (party because of how much
+I underestimated how important writing is).</p>
+<p>So, one of my biggest goals in 2023 became to become a better writer. Part of that
+has been writing on this blog.
+But more importantly, my <em>&ldquo;goal within a goal&rdquo;</em> was to be better understood,
+more organized with my thoughts, and in the end, be a better engineer.</p>
+<p>Don&rsquo;t underestimate the power of writing: it&rsquo;s how you communicate technical
+ideas.</p>
+<h3 id="make-it-boring-making-it-scale-make-the-right-decision"><em><strong>Make it boring. Making it scale. Make the right decision.</strong></em></h3>
+<p>New, sexy tech often gets in the way of building great customer products.</p>
+<p>Amazon (maybe notoriously?) doesn&rsquo;t adopt new tech fast. And for good reason:
+there are droves of engineers and existing stacks that couldn&rsquo;t possibly scale
+to adopt new tech constantly.</p>
+<p>And what customer needs is all this new tech really servicing?
+If we already have well understood tools and stacks, why adopt something new
+unless it really meets some customer need? _(see above on working backwards
+from the customer)</p>
+<p>Early on, the Bottlerocket team adopted Rust for first party source code. And
+for very good reasons: it provides unique memory safe capabilities and performance, there was an
+existing paradigm of using rust at AWS, and among many other reasons,
+writing new C or C++ systems code may not be unacceptable from a security standpoint.</p>
+<p>When I first arrived on the team, my naive assumption for why Rust was adopted
+was because it happens to be the cool new kid on the programming block.</p>
+<p>When, in reality, adopting this new tech serviced some real customer and product needs.</p>
+<hr>
+<p><em>So long AWS, and thanks for everything!</em></p>
+<hr>
+<p>If you found this blog post valuable, comment below,
+<a href="https://johncodes.com/index.xml">subscribe to future posts via RSS</a>,
+or <a href="https://github.com/sponsors/jpmcb">buy me a coffee via GitHub sponsors.</a>
+Your support means the world to me!!</p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>NeoVim: Using the spellchecker</title>
       <link>https://johncodes.com/posts/2023/02-25-nvim-spell/</link>
@@ -1449,11 +1589,11 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John. I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.
+      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.
 This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, photos, videos, ramblings on philosophy, and really, whatever I want.
 For my long-form essays on software engineering and the tech industry, subscribe to my substack, On Engineering.</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
-<p>My name is John. I&rsquo;m a software engineer at Amazon Web Services
+<p>My name is John &amp; I&rsquo;m a software engineer at Amazon Web Services
 where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
 You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories,
