@@ -4,7 +4,7 @@
 
 # Hi there! 🌊
 
-My name is John. I'm a software engineer at Amazon Web Services
+My name is John & I'm a software engineer at Amazon Web Services
 where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.
 
 This site is my personal landing page and blog.

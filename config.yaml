@@ -29,19 +29,19 @@ languages:
       main:
         - name: Talks
           url: talks/
-          weight: 2
+          weight: 3
         - name: PGP Key
           url: pgp-key.txt
-          weight: 99
+          weight: 5
         - name: About
           url: about
           weight: 1
         - name: Archive
           url: archives
-          weight: 5
+          weight: 2
         - name: Search
           url: search/
-          weight: 10
+          weight: 4
 
 # home-info mode
 params:
@@ -66,21 +66,20 @@ params:
     imageWidth: 200
     imageHeight: 200
     imageTitle: "this is john mcbride"
+    buttons:
+      - name: Archive
+        url: "/archives"
   socialIcons:
     - name: email
       url: "mailto:hello@johncodes.com"
-    - name: substack
-      url: "https://onengineering.substack.com"
+    - name: rss
+      url: "https://johncodes.com/index.xml"
     - name: github
       url: "https://github.com/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
-    - name: tiktok
-      url: "https://tiktok/com/@JohnCodes"
     - name: twitter
       url: "https://twitter.com/johncodezzz"
-    - name: twitch
-      url: "https://twitch.com/johncodes"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
 
