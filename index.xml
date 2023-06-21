@@ -8,27 +8,27 @@
     <language>en</language>
     <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>So long AWS!</title>
+      <title>So long AWS! Hello OpenSauced!</title>
       <link>https://johncodes.com/posts/2023/06-13-goodbye-aws/</link>
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/06-13-goodbye-aws/</guid>
       <description>This is my last week at Amazon Web Services.
 And while the last year has been an incredible journey diving deep into the world of containers, Linux, Rust, Kubernetes, and building operating systems, I&amp;rsquo;ve made the difficult decision to leave.
-And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced building the future of open source insights, tooling, and innovation.
+And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced where we&amp;rsquo;ll be building the future of open source insights, tooling, and innovation.
 Since before I started my computer science degree (almost 7 years ago!</description>
       <content:encoded><![CDATA[<p>This is my last week at Amazon Web Services.</p>
 <p>And while the last year has been an incredible journey diving deep into the world
 of containers, Linux, Rust, Kubernetes, and building operating systems,
 I&rsquo;ve made the difficult decision to leave.</p>
 <p>And I&rsquo;m very excited to be joining the incredible team at <a href="https://opensauced.pizza/">OpenSauced</a>
-building the future of open source insights, tooling, and innovation.</p>
+where we&rsquo;ll be building the future of open source insights, tooling, and innovation.</p>
 <p>Since before I started my computer science degree (almost 7 years ago!)
-I&rsquo;ve wanted to cut my teeth on building a startup, working on a greenfield product.
+I&rsquo;ve wanted to cut my teeth on building a startup and working on a greenfield product.
 These kinds of opportunities are far &amp; few between.
 And the timing is <em>just about</em> right;
 I can&rsquo;t wait to push myself, learn new skills, and build new products
-with a small tactical team.</p>
+with a small, amazing tactical team.</p>
 <p>To everyone at AWS and the Bottlerocket team:
 Thank you for making the last year an incredible learning opportunity.
 Here&rsquo;s hoping our paths cross again soon!! I&rsquo;m sure I&rsquo;ll be seeing you around
@@ -1590,23 +1590,23 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a software engineer at Amazon Web Services where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.
-This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, photos, videos, ramblings on philosophy, and really, whatever I want.
-For my long-form essays on software engineering and the tech industry, subscribe to my substack, On Engineering.</description>
+      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at OpenSauced where I&amp;rsquo;m building open source insights tooling.
+In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry where I worked on open source software, Kubernetes, Linux operating systems, and cloud technologies.
+This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays, photos, videos, ramblings on philosophy, and really, whatever I want (it&amp;rsquo;s my website after all).</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
-<p>My name is John &amp; I&rsquo;m a software engineer at Amazon Web Services
-where I work on open source software, Kubernetes, Linux operating systems, and cloud technologies.</p>
+<p>My name is John &amp; I&rsquo;m a senior software engineer at <a href="https://opensauced.pizza">OpenSauced</a>
+where I&rsquo;m building open source insights tooling.</p>
+<p>In the past, I&rsquo;ve worked at AWS, VMware, &amp; Pivotal Cloud Foundry
+where I worked on open source software, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
-You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories,
-photos, videos, ramblings on philosophy, and really, whatever I want.</p>
-<p>For my long-form essays on software engineering and the tech industry,
-<a href="https://onengineering.substack.com/">subscribe to my substack, On Engineering.</a></p>
+You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays,
+photos, videos, ramblings on philosophy, and really, whatever I want <em>(it&rsquo;s my website after all)</em>.</p>
 <p>All opinions and views herein are my <em>own</em> opinions and do <em>not</em> reflect
 those of any employer (past, present, future, or inter-dimensional).</p>
 <p>Enjoy!</p>
 <h3 id="contact">Contact</h3>
-<p>I can be reached directly at <a href="mailto:hello@johncodes.com">hello@johncodes.com</a></p>
-<h3 id="support">Support</h3>
+<p>I can be reached directly at <a href="mailto:hello@johncodes.com">hello@johncodes.com</a> or on Twitter <a href="https://twitter.com/johncodezzz">@johncodezzz</a></p>
+<h3 id="support-my-content">Support my content!</h3>
 <p>If you find anything I&rsquo;ve done valuable,
 consider <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
 ]]></content:encoded>
@@ -1760,15 +1760,16 @@ and reduces the overall complexity of your technical interview.</p>
       
       <guid>https://johncodes.com/talks/</guid>
       <description>Talks Inquires: talks@johncodes.com
-2022 The Risks of Single Maintainer Dependencies I spoke at Kubecon EU 2021 on my experience maintaining spf13/cobra with a very small group of other contributors.
+2022 The Risks of Single Maintainer Dependencies I spoke at Kubecon EU 2022 on my experience maintaining spf13/cobra, an extremely important software project in the cloud-native ecosystem, with just a small group of other contributors.
 Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride During my time in Spain for Kubecon EU &amp;lsquo;22, I also appeared on the &amp;ldquo;Business of Open Source&amp;rdquo; podcast to discuss maintaining cobra and what startups considering opening sourcing their technologies can learn.</description>
       <content:encoded><![CDATA[<h1 id="talks">Talks</h1>
 <p>Inquires: <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
 <h2 id="2022">2022</h2>
 <hr>
 <h3 id="the-risks-of-single-maintainer-dependencies">The Risks of Single Maintainer Dependencies</h3>
-<p>I spoke at Kubecon EU 2021 on my experience maintaining spf13/cobra
-with a very small group of other contributors.</p>
+<p>I spoke at Kubecon EU 2022 on my experience maintaining <code>spf13/cobra</code>,
+an extremely important software project in the cloud-native ecosystem,
+with just a small group of other contributors.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
@@ -1792,7 +1793,7 @@ and how to use it on it&rsquo;s own via it&rsquo;s interpreter.</p>
 </div>
 
 <hr>
-<h3 id="distributed-shared-team-configurations-with-oh-my-zsh">Distributed Shared Team Configurations With Oh-My-Zsh</h3>
+<h3 id="deserted-island-devops-2022-distributed-shared-team-configurations-with-oh-my-zsh">Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh</h3>
 <p>Team knowledge, configurations, and infrastructure access can be challenging in a distributed world.
 Have you ever asked “what’s that command we use?”
 or “Where are the secrets to access that environment?” - well this talk is for you!</p>

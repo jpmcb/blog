@@ -8,27 +8,27 @@
     <language>en</language>
     <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>So long AWS!</title>
+      <title>So long AWS! Hello OpenSauced!</title>
       <link>https://johncodes.com/posts/2023/06-13-goodbye-aws/</link>
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/06-13-goodbye-aws/</guid>
       <description>This is my last week at Amazon Web Services.
 And while the last year has been an incredible journey diving deep into the world of containers, Linux, Rust, Kubernetes, and building operating systems, I&amp;rsquo;ve made the difficult decision to leave.
-And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced building the future of open source insights, tooling, and innovation.
+And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced where we&amp;rsquo;ll be building the future of open source insights, tooling, and innovation.
 Since before I started my computer science degree (almost 7 years ago!</description>
       <content:encoded><![CDATA[<p>This is my last week at Amazon Web Services.</p>
 <p>And while the last year has been an incredible journey diving deep into the world
 of containers, Linux, Rust, Kubernetes, and building operating systems,
 I&rsquo;ve made the difficult decision to leave.</p>
 <p>And I&rsquo;m very excited to be joining the incredible team at <a href="https://opensauced.pizza/">OpenSauced</a>
-building the future of open source insights, tooling, and innovation.</p>
+where we&rsquo;ll be building the future of open source insights, tooling, and innovation.</p>
 <p>Since before I started my computer science degree (almost 7 years ago!)
-I&rsquo;ve wanted to cut my teeth on building a startup, working on a greenfield product.
+I&rsquo;ve wanted to cut my teeth on building a startup and working on a greenfield product.
 These kinds of opportunities are far &amp; few between.
 And the timing is <em>just about</em> right;
 I can&rsquo;t wait to push myself, learn new skills, and build new products
-with a small tactical team.</p>
+with a small, amazing tactical team.</p>
 <p>To everyone at AWS and the Bottlerocket team:
 Thank you for making the last year an incredible learning opportunity.
 Here&rsquo;s hoping our paths cross again soon!! I&rsquo;m sure I&rsquo;ll be seeing you around
