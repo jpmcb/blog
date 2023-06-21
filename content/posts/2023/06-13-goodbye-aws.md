@@ -1,5 +1,5 @@
 ---
-title: "So long AWS!"
+title: "So long AWS! Hello OpenSauced!"
 date: 2023-06-13
 ---
 
@@ -10,14 +10,14 @@ of containers, Linux, Rust, Kubernetes, and building operating systems,
 I've made the difficult decision to leave.
 
 And I'm very excited to be joining the incredible team at [OpenSauced](https://opensauced.pizza/)
-building the future of open source insights, tooling, and innovation.
+where we'll be building the future of open source insights, tooling, and innovation.
 
 Since before I started my computer science degree (almost 7 years ago!)
-I've wanted to cut my teeth on building a startup, working on a greenfield product.
+I've wanted to cut my teeth on building a startup and working on a greenfield product.
 These kinds of opportunities are far & few between.
 And the timing is _just about_ right;
 I can't wait to push myself, learn new skills, and build new products 
-with a small tactical team.
+with a small, amazing tactical team.
 
 To everyone at AWS and the Bottlerocket team:
 Thank you for making the last year an incredible learning opportunity. 

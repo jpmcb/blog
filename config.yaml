@@ -61,13 +61,13 @@ params:
   profileMode:
     enabled: true
     title: John McBride
-    subtitle: "Software Engineer."
+    subtitle: "Software Engineer @ OpenSauced."
     imageUrl: "images/profile-pic.jpg"
     imageWidth: 200
     imageHeight: 200
     imageTitle: "this is john mcbride"
     buttons:
-      - name: Archive
+      - name: Blog Archive
         url: "/archives"
   socialIcons:
     - name: email

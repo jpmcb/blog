@@ -10,13 +10,16 @@ Inquires: talks@johncodes.com
 
 ---
 ### The Risks of Single Maintainer Dependencies
-I spoke at Kubecon EU 2021 on my experience maintaining spf13/cobra
-with a very small group of other contributors.
+
+I spoke at Kubecon EU 2022 on my experience maintaining `spf13/cobra`,
+an extremely important software project in the cloud-native ecosystem,
+with just a small group of other contributors.
 
 {{< youtube YBsDnXXW_d8 >}}
 
 
 #### Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride
+
 During my time in Spain for Kubecon EU '22,
 I also appeared on the "Business of Open Source" podcast to discuss maintaining cobra
 and what startups considering opening sourcing their technologies can learn.
@@ -25,6 +28,7 @@ and what startups considering opening sourcing their technologies can learn.
 
 ---
 ### NeovimConf 2022: Lua, A Primer
+
 Configuring Nvim via Lua is a powerful, native, and fast way to get your Nvim editor environment just how you like it.
 But what _IS_ Lua?
 
@@ -35,7 +39,8 @@ and how to use it on it's own via it's interpreter.
 {{< youtube gjIl5Sfh2QQ >}}
 
 ---
-### Distributed Shared Team Configurations With Oh-My-Zsh
+### Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh
+
 Team knowledge, configurations, and infrastructure access can be challenging in a distributed world.
 Have you ever asked “what’s that command we use?”
 or “Where are the secrets to access that environment?” - well this talk is for you!
