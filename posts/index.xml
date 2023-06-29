@@ -17,7 +17,7 @@
 During my time at AWS, I had a really hard time contributing to open source projects that were important to me (and important to the broader ecosystem). I didn&amp;rsquo;t have the energy, but more importantly, I didn&amp;rsquo;t have the bandwidth.
 There&amp;rsquo;s alot of red tape to get through when it comes to open source at Amazon. After all, AWS alone is a massive business unit with thousands of products and tens of thousands of engineers all around the world.</description>
       <content:encoded><![CDATA[<p>There&rsquo;s something I feel like I need to acknowledge
-around my maintainership of <a href="https://github.com/spf13/cobra"><code>spf13/cobra</code></a>.</p>
+around <a href="https://github.com/spf13/cobra">my maintainership of <code>spf13/cobra</code></a>.</p>
 <p>During my time at AWS, I had a <em>really</em> hard time contributing to open source
 projects that were important to me (and important to the broader ecosystem).
 I didn&rsquo;t have the energy, but more importantly, I didn&rsquo;t have the bandwidth.</p>
@@ -60,16 +60,16 @@ when the wellness and maintenance of those projects directly correlates to the b
 <p>But <code>spf13/cobra</code> is used <em>throughout</em> several important AWS led open source projects.
 Just to name a few:</p>
 <ul>
-<li><a href="https://github.com/containerd/nerdctl/blob/29fd529c8a684be58c67c052b4842221542212a7/go.mod#L48"><code>containerd/nerdctl</code></a></li>
-<li><a href="https://github.com/runfinch/finch/blob/f7e091670fb2ac5377423e72f98aa8be33aa41c8/go.mod#L18"><code>finch</code></a></li>
-<li><a href="https://github.com/weaveworks/eksctl/blob/dce1ef8f39223db7ab45419eac0c9b1fdaea7a44/go.mod#L61"><code>eksctl</code></a></li>
-<li><a href="https://github.com/aws/copilot-cli/blob/5b6f75d457bff8d13563fb6034c5d3b9ce157e39/go.mod#L22">the <code>copilot</code> CLI</a></li>
+<li><a href="https://github.com/containerd/nerdctl/blob/29fd529c8a684be58c67c052b4842221542212a7/go.mod#L48">containerd&rsquo;s nerdctl</a></li>
+<li><a href="https://github.com/runfinch/finch/blob/f7e091670fb2ac5377423e72f98aa8be33aa41c8/go.mod#L18">finch</a></li>
+<li><a href="https://github.com/weaveworks/eksctl/blob/dce1ef8f39223db7ab45419eac0c9b1fdaea7a44/go.mod#L61">eksctl</a></li>
+<li><a href="https://github.com/aws/copilot-cli/blob/5b6f75d457bff8d13563fb6034c5d3b9ce157e39/go.mod#L22">the copilot CLI</a></li>
 </ul>
 <p>Maybe the <em>&ldquo;engineering allocation chain&rdquo;</em> only goes one or two layers deep.
 Not deep enough to notice a dependency like cobra and its lack of maintenance.</p>
-<p>In 2022, I gave a talk at Kubecon EU about maintaining cobra with a very small group,
+<p>In 2022, I gave a talk at KubeCon EU about maintaining cobra with a very small group,
 what the &ldquo;solo&rdquo; maintainer experience is like, and why solo maintainer projects are incredibly dangerous
-to the wellness of the entire ecosystem and broader secure software supplychain.</p>
+to the wellness of the entire ecosystem and broader secure software supply-chain.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
