@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://johncodes.com/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://johncodes.com/posts/2023/06-29-on-maintaining-cobra/</loc>
+    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://johncodes.com/posts/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://johncodes.com/posts/2023/06-13-goodbye-aws/</loc>
     <lastmod>2023-06-13T00:00:00+00:00</lastmod>
