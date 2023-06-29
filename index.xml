@@ -13,11 +13,12 @@
       <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/06-29-on-maintaining-cobra/</guid>
-      <description>There&amp;rsquo;s something I feel like I need to acknowledge around my maintainership of spf13/cobra.
+      <description>There&amp;rsquo;s something I feel like I need to acknowledge around my maintainership of. spf13/cobra.
 During my time at AWS, I had a really hard time contributing to open source projects that were important to me (and important to the broader ecosystem). I didn&amp;rsquo;t have the energy, but more importantly, I didn&amp;rsquo;t have the bandwidth.
 There&amp;rsquo;s alot of red tape to get through when it comes to open source at Amazon. After all, AWS alone is a massive business unit with thousands of products and tens of thousands of engineers all around the world.</description>
       <content:encoded><![CDATA[<p>There&rsquo;s something I feel like I need to acknowledge
-around <a href="https://github.com/spf13/cobra">my maintainership of <code>spf13/cobra</code></a>.</p>
+around <a href="https://github.com/spf13/cobra">my maintainership of</a>.
+spf13/cobra.</p>
 <p>During my time at AWS, I had a <em>really</em> hard time contributing to open source
 projects that were important to me (and important to the broader ecosystem).
 I didn&rsquo;t have the energy, but more importantly, I didn&rsquo;t have the bandwidth.</p>
