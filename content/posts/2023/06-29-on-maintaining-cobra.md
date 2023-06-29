@@ -4,7 +4,7 @@ date: 2023-06-29
 ---
 
 There's something I feel like I need to acknowledge
-around my maintainership of [`spf13/cobra`](https://github.com/spf13/cobra).
+around [my maintainership of `spf13/cobra`](https://github.com/spf13/cobra).
 
 During my time at AWS, I had a _really_ hard time contributing to open source
 projects that were important to me (and important to the broader ecosystem).
@@ -56,17 +56,17 @@ when the wellness and maintenance of those projects directly correlates to the b
 But `spf13/cobra` is used _throughout_ several important AWS led open source projects.
 Just to name a few:
 
-- [`containerd/nerdctl`](https://github.com/containerd/nerdctl/blob/29fd529c8a684be58c67c052b4842221542212a7/go.mod#L48)
-- [`finch`](https://github.com/runfinch/finch/blob/f7e091670fb2ac5377423e72f98aa8be33aa41c8/go.mod#L18)
-- [`eksctl`](https://github.com/weaveworks/eksctl/blob/dce1ef8f39223db7ab45419eac0c9b1fdaea7a44/go.mod#L61)
-- [the `copilot` CLI](https://github.com/aws/copilot-cli/blob/5b6f75d457bff8d13563fb6034c5d3b9ce157e39/go.mod#L22)
+- [containerd's nerdctl](https://github.com/containerd/nerdctl/blob/29fd529c8a684be58c67c052b4842221542212a7/go.mod#L48)
+- [finch](https://github.com/runfinch/finch/blob/f7e091670fb2ac5377423e72f98aa8be33aa41c8/go.mod#L18)
+- [eksctl](https://github.com/weaveworks/eksctl/blob/dce1ef8f39223db7ab45419eac0c9b1fdaea7a44/go.mod#L61)
+- [the copilot CLI](https://github.com/aws/copilot-cli/blob/5b6f75d457bff8d13563fb6034c5d3b9ce157e39/go.mod#L22)
 
 Maybe the _"engineering allocation chain"_ only goes one or two layers deep.
 Not deep enough to notice a dependency like cobra and its lack of maintenance.
 
-In 2022, I gave a talk at Kubecon EU about maintaining cobra with a very small group,
+In 2022, I gave a talk at KubeCon EU about maintaining cobra with a very small group,
 what the "solo" maintainer experience is like, and why solo maintainer projects are incredibly dangerous
-to the wellness of the entire ecosystem and broader secure software supplychain.
+to the wellness of the entire ecosystem and broader secure software supply-chain.
 
 {{< youtube YBsDnXXW_d8 >}}
 
