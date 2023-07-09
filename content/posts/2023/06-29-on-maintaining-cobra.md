@@ -4,7 +4,7 @@ date: 2023-06-29
 ---
 
 There's something I feel like I need to acknowledge
-around [my maintainership of](https://github.com/spf13/cobra).
+around [my maintainership of](https://github.com/spf13/cobra)
 spf13/cobra.
 
 During my time at AWS, I had a _really_ hard time contributing to open source
