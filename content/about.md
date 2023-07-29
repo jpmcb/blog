@@ -27,3 +27,8 @@ I can be reached directly at hello@johncodes.com or on Twitter [@johncodezzz](ht
 
 If you find anything I've done valuable,
 consider [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
+
+---
+
+You can find my personal [public PGP here](/pgp-key.txt).
+Use it to send me secret messages or verify my identity online.

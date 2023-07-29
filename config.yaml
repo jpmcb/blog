@@ -30,13 +30,10 @@ languages:
         - name: Talks
           url: talks/
           weight: 3
-        - name: PGP Key
-          url: pgp-key.txt
-          weight: 5
         - name: About
           url: about
           weight: 1
-        - name: Archive
+        - name: Blog archive
           url: archives
           weight: 2
         - name: Search
@@ -61,14 +58,11 @@ params:
   profileMode:
     enabled: true
     title: John McBride
-    subtitle: "Software Engineer @ OpenSauced."
+    subtitle: "Sr Software Engineer @ OpenSauced."
     imageUrl: "images/profile-pic.jpg"
     imageWidth: 200
     imageHeight: 200
     imageTitle: "this is john mcbride"
-    buttons:
-      - name: Blog Archive
-        url: "/archives"
   socialIcons:
     - name: email
       url: "mailto:hello@johncodes.com"
