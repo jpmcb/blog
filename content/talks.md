@@ -6,10 +6,23 @@
 
 Inquires: talks@johncodes.com
 
+{{< toc >}}
+
+## 2023
+
+---
+### PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass
+
+I spoke at Stackoverflow's cyber-security and red-team conference, PankcakesCon.
+In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers,
+as a use case for hardening container based environments against attack.
+
+{{< youtube 7azaXmlcoGg >}}
+
 ## 2022
 
 ---
-### The Risks of Single Maintainer Dependencies
+### KubeCon EU: The Risks of Single Maintainer Dependencies
 
 I spoke at Kubecon EU 2022 on my experience maintaining `spf13/cobra`,
 an extremely important software project in the cloud-native ecosystem,
@@ -18,7 +31,7 @@ with just a small group of other contributors.
 {{< youtube YBsDnXXW_d8 >}}
 
 
-#### Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride
+### Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride
 
 During my time in Spain for Kubecon EU '22,
 I also appeared on the "Business of Open Source" podcast to discuss maintaining cobra
