@@ -2056,13 +2056,44 @@ and reduces the overall complexity of your technical interview.</p>
       
       <guid>https://johncodes.com/talks/</guid>
       <description>Talks Inquires: talks@johncodes.com
-2022 The Risks of Single Maintainer Dependencies I spoke at Kubecon EU 2022 on my experience maintaining spf13/cobra, an extremely important software project in the cloud-native ecosystem, with just a small group of other contributors.
-Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride During my time in Spain for Kubecon EU &amp;lsquo;22, I also appeared on the &amp;ldquo;Business of Open Source&amp;rdquo; podcast to discuss maintaining cobra and what startups considering opening sourcing their technologies can learn.</description>
+2023 PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass 2022 KubeCon EU: The Risks of Single Maintainer Dependencies Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride NeovimConf 2022: Lua, A Primer Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh 2023 PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass I spoke at Stackoverflow&amp;rsquo;s cyber-security and red-team conference, PankcakesCon. In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers, as a use case for hardening container based environments against attack.</description>
       <content:encoded><![CDATA[<h1 id="talks">Talks</h1>
 <p>Inquires: <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
+<div class="toc">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2023">2023</a>
+      <ul>
+        <li><a href="#pancakescon-4-containers-hardening-against-escapes-and-funk-bass">PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass</a></li>
+      </ul>
+    </li>
+    <li><a href="#2022">2022</a>
+      <ul>
+        <li><a href="#kubecon-eu-the-risks-of-single-maintainer-dependencies">KubeCon EU: The Risks of Single Maintainer Dependencies</a></li>
+        <li><a href="#business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</a></li>
+        <li><a href="#neovimconf-2022-lua-a-primer">NeovimConf 2022: Lua, A Primer</a></li>
+        <li><a href="#deserted-island-devops-2022-distributed-shared-team-configurations-with-oh-my-zsh">Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+
+<h2 id="2023">2023</h2>
+<hr>
+<h3 id="pancakescon-4-containers-hardening-against-escapes-and-funk-bass">PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass</h3>
+<p>I spoke at Stackoverflow&rsquo;s cyber-security and red-team conference, PankcakesCon.
+In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers,
+as a use case for hardening container based environments against attack.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/7azaXmlcoGg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <h2 id="2022">2022</h2>
 <hr>
-<h3 id="the-risks-of-single-maintainer-dependencies">The Risks of Single Maintainer Dependencies</h3>
+<h3 id="kubecon-eu-the-risks-of-single-maintainer-dependencies">KubeCon EU: The Risks of Single Maintainer Dependencies</h3>
 <p>I spoke at Kubecon EU 2022 on my experience maintaining <code>spf13/cobra</code>,
 an extremely important software project in the cloud-native ecosystem,
 with just a small group of other contributors.</p>
@@ -2071,7 +2102,7 @@ with just a small group of other contributors.</p>
   <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h4 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h4>
+<h3 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h3>
 <p>During my time in Spain for Kubecon EU &lsquo;22,
 I also appeared on the &ldquo;Business of Open Source&rdquo; podcast to discuss maintaining cobra
 and what startups considering opening sourcing their technologies can learn.</p>
