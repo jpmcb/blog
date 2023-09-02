@@ -74,6 +74,8 @@ params:
       url: "https://youtube.com/c/JohnCodes"
     - name: twitter
       url: "https://twitter.com/johncodezzz"
+    - name: threads
+      url: "https://www.threads.net/@johncodezzz"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
 
