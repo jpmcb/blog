@@ -68,6 +68,8 @@ params:
       url: "mailto:hello@johncodes.com"
     - name: rss
       url: "https://johncodes.com/index.xml"
+    - name: substack
+      url: "https://onengineering.substack.com"
     - name: github
       url: "https://github.com/jpmcb"
     - name: youtube
