@@ -752,9 +752,9 @@ I&rsquo;m running with a newer nightly build, but the latest official release sh
 </span></span></code></pre></div><ul>
 <li><em>Or good, ol trusty Vimscript</em>:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">spelllang</span>=<span style="color:#a6e22e">en_us</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">spell</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>Alternatively, you can use the command prompt to enable <code>spell</code> in your current session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">spelllang</span>=<span style="color:#a6e22e">en_us</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">spell</span>
+</span></span></code></pre></div><p>Alternatively, you can use the command prompt to enable <code>spell</code> in your current session:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>:setlocal spell spelllang=en_us
 </span></span></code></pre></div><p>Note that <code>en_us</code> is <em>US English</em>.
 But there are <em>tons</em> of supported languages out of the box:
@@ -2139,26 +2139,24 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       
       <guid>https://johncodes.com/about/</guid>
       <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at OpenSauced where I&amp;rsquo;m building open source insights tooling.
-In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry where I worked on open source software, Kubernetes, Linux operating systems, and cloud technologies.
+In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry where I worked on open source software, observability &amp;amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.
 This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays, photos, music, videos, ramblings on philosophy, and really, whatever I want (it&amp;rsquo;s my website after all).</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
 <p>My name is John &amp; I&rsquo;m a senior software engineer at <a href="https://opensauced.pizza">OpenSauced</a>
 where I&rsquo;m building open source insights tooling.</p>
 <p>In the past, I&rsquo;ve worked at AWS, VMware, &amp; Pivotal Cloud Foundry
-where I worked on open source software, Kubernetes, Linux operating systems, and cloud technologies.</p>
+where I worked on open source software, observability &amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
 You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays,
 photos, music, videos, ramblings on philosophy, and really, whatever I want <em>(it&rsquo;s my website after all)</em>.</p>
-<p>I write longform essays at:
-<a href="https://onengineering.substack.com">https://onengineering.substack.com</a></p>
 <p>All opinions and views herein are my <em>own</em> opinions and do <em>not</em> reflect
 those of any employer (past, present, future, or inter-dimensional).</p>
 <p>Enjoy!</p>
 <h3 id="contact">Contact</h3>
-<p>I can be reached directly at <a href="mailto:hello@johncodes.com">hello@johncodes.com</a> or on Twitter <a href="https://twitter.com/johncodezzz">@johncodezzz</a></p>
-<h3 id="support-my-content">Support my content!</h3>
-<p>If you find anything I&rsquo;ve done valuable,
-consider <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
+<p>I can be reached directly at <a href="mailto:hello.john.codes@gmail.com">hello.john.codes@gmail.com</a></p>
+<h3 id="support">Support</h3>
+<p>If you find any of the open source work I&rsquo;ve done valuable,
+please consider <a href="https://github.com/sponsors/jpmcb">supporting me via GitHub sponsors.</a></p>
 <hr>
 <p>You can find my personal <a href="/pgp-key.txt">public PGP here</a>.
 Use it to send me secret messages or verify my identity online.</p>
