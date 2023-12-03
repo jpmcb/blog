@@ -2311,7 +2311,7 @@ and reduces the overall complexity of your technical interview.</p>
       
       <guid>https://johncodes.com/talks/</guid>
       <description>Talks Inquires: talks@johncodes.com
-2023 PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass 2022 KubeCon EU: The Risks of Single Maintainer Dependencies Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride NeovimConf 2022: Lua, A Primer Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh 2023 PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass I spoke at Stackoverflow&amp;rsquo;s cyber-security and red-team conference, PankcakesCon. In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers, as a use case for hardening container based environments against attack.</description>
+2023 Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass 2022 KubeCon EU: The Risks of Single Maintainer Dependencies Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride NeovimConf 2022: Lua, A Primer Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh 2023 Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .</description>
       <content:encoded><![CDATA[<h1 id="talks">Talks</h1>
 <p>Inquires: <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
 <div class="toc">
@@ -2319,6 +2319,7 @@ and reduces the overall complexity of your technical interview.</p>
   <ul>
     <li><a href="#2023">2023</a>
       <ul>
+        <li><a href="#kubecon-na-hacking-the-kubernetes-secure-software-supply-chain-with-zip-domains">Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains</a></li>
         <li><a href="#pancakescon-4-containers-hardening-against-escapes-and-funk-bass">PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass</a></li>
       </ul>
     </li>
@@ -2337,6 +2338,8 @@ and reduces the overall complexity of your technical interview.</p>
 
 <h2 id="2023">2023</h2>
 <hr>
+<h3 id="kubecon-na-hacking-the-kubernetes-secure-software-supply-chain-with-zip-domains">Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains</h3>
+<p><em>Talk pending YouTube</em></p>
 <h3 id="pancakescon-4-containers-hardening-against-escapes-and-funk-bass">PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass</h3>
 <p>I spoke at Stackoverflow&rsquo;s cyber-security and red-team conference, PankcakesCon.
 In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers,
