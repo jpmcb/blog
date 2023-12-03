@@ -11,6 +11,10 @@ Inquires: talks@johncodes.com
 ## 2023
 
 ---
+### Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains
+
+_Talk pending YouTube_
+
 ### PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass
 
 I spoke at Stackoverflow's cyber-security and red-team conference, PankcakesCon.
