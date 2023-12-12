@@ -13,8 +13,14 @@ Inquires: talks@johncodes.com
 ---
 ### Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains
 
-_Talk pending YouTube_
+{{< youtube 57k-KwOsj9c >}}
 
+---
+### Neovim Conf 2023: Introducing nvim-llama
+
+{{< youtube Jx4IEJRlPQw >}}
+
+---
 ### PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass
 
 I spoke at Stackoverflow's cyber-security and red-team conference, PankcakesCon.
