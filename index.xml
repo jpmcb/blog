@@ -6,7 +6,384 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Sep 2023 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Dec 2023 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4 billion Go if statements</title>
+      <link>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</link>
+      <pubDate>Thu, 28 Dec 2023 09:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</guid>
+      <description>I recently read this excellent little bit of programming horror titled: &amp;ldquo;4 billion if statements&amp;rdquo;.
+It chronicles how one could use an insane number of hard coded if statements to check if any given 32 bit number is even or odd. Instead of do this the normal and efficient way with a modulus operator and for loop, hard coding if statements requires some clever meta programming, some custom assembly code, and a nearly 40 GB compiled binary for all the comparisons.</description>
+      <content:encoded><![CDATA[<p>I recently read <a href="https://andreasjhkarlsson.github.io/jekyll/update/2023/12/27/4-billion-if-statements.html">this <em>excellent</em> little bit of programming horror</a>
+titled: <em>&ldquo;4 billion if statements&rdquo;</em>.</p>
+<p>It chronicles how one could use an <em>insane</em> number of hard coded if statements
+to check if any given 32 bit number is even or odd. Instead of do this the normal
+and efficient way with a modulus operator and <code>for</code> loop,
+hard coding if statements requires some clever meta programming,
+some custom assembly code, and a nearly 40 GB compiled binary for all the comparisons.</p>
+<p>This all got me thinking:
+<em>&ldquo;Could you do this in Go? What sort of limitations are there with the Go compiler?&rdquo;</em></p>
+<p>Much like the original, I started with a very simple Go program and 10 <code>if</code> comparisons:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;strconv&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">arg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#e6db74">&#34;argument must be provided&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseUint</span>(<span style="color:#a6e22e">arg</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">64</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#e6db74">&#34;could not parse argument as int64&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>                println(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d is odd&#34;</span>, <span style="color:#a6e22e">num</span>))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> {
+</span></span><span style="display:flex;"><span>                println(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d is even&#34;</span>, <span style="color:#a6e22e">num</span>))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>                println(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d is odd&#34;</span>, <span style="color:#a6e22e">num</span>))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// etc. etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Pretty simple! It gets the argument to the program, parses it as an <code>uint64</code> integer,
+and then goes through all the comparisons one by one.</p>
+<p>And it works flawlessly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ go run main.go 8
+</span></span><span style="display:flex;"><span>8 is even
+</span></span></code></pre></div><p>In order to extend this <em>beyond</em> what I am humanly capable of doing by hand and what I want to spend the rest of my life doing,
+(if I was to write out each <code>if</code> statement by hand, and it took me 1/2 a second each time,
+in order to write out all 32 bit numbers,
+it would take me roughly 292471207.5 millennium to complete)
+we should also take advantage of some meta programming. Let the computers do the boring stuff quickly!</p>
+<p>Here&rsquo;s a simple bash script I came up with to drop in some Go code
+for us to try and compile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The initial boilerplate for the Go program in a heredoc</span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; EOF &gt; main.go
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">package main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">import (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;fmt&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;os&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;strconv&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">func main() {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        arg := os.Args[1]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if arg == &#34;&#34; {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                panic(&#34;number argument must be provided&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        num, err := strconv.ParseInt(arg, 10, 64)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if err != nil {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                panic(&#34;could not parse argument as int64&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A few variables to control the meta programming flow</span>
+</span></span><span style="display:flex;"><span>END<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>ISEVEN<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Loop through all values, flipping a flag back and forth (since we&#39;re not</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># using the modulus operator to make even/odd comparisons)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>1; i&lt;<span style="color:#f92672">=</span>END; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $ISEVEN <span style="color:#f92672">=</span> true <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        cat <span style="color:#e6db74">&lt;&lt; EOF &gt;&gt; main.go
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if num == $i {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                println(fmt.Sprintf(&#34;%d is even&#34;, num))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>        ISEVEN<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        cat <span style="color:#e6db74">&lt;&lt; EOF &gt;&gt; main.go
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if num == $i {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                println(fmt.Sprintf(&#34;%d is odd&#34;, num))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>        ISEVEN<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Close out the main go program</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;}&#34;</span> &gt;&gt; main.go
+</span></span></code></pre></div><p>This uses one of my favorite bash features, the &ldquo;heredoc&rdquo;, in order to drop
+large string chunks (in this case, Go code) into a file.
+Note that this only goes up to 1000 if statements <em>(for now &hellip;)</em>: we&rsquo;ll slowly increase the number of if statements
+to see if we can hit any kind of ceiling or limitation.</p>
+<p>After running the bash script, let&rsquo;s build the generated, meta go code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> go build -gcflags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-N&#34;</span> -a main.go
+</span></span></code></pre></div><p>This instructs the Go toolchain (which includes a <code>gc</code> compiler) to do the following:</p>
+<ul>
+<li>Disable <code>gc</code> optimizations with <code>-N</code>: we don&rsquo;t want the underlying compiler to make
+any changes to our meta code through compiler trickery.</li>
+<li>Disable <code>cgo</code> from require a locally linkable C toolchain: I.e., this builds a sole, statically linked binary.</li>
+<li>Always build the program, no matter if it&rsquo;s already been built with the <code>-a</code> flag</li>
+</ul>
+<p>This produces a single <code>main</code> binary that we can run some tests against:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ./main 500
+</span></span><span style="display:flex;"><span>500 is even
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ./main 677
+</span></span><span style="display:flex;"><span>677 is odd
+</span></span></code></pre></div><p>Great! Things seem to be working!!</p>
+<p>Now, since we know 1000 if statements works, let&rsquo;s try to scale this up abit:
+like the original post, let&rsquo;s go up to 16 bit integers
+(which should be 65536 <code>if</code> statements):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>END<span style="color:#f92672">=</span>2**16<span style="color:#f92672">))</span>
+</span></span></code></pre></div><p>This was <em>abit</em> slower and took just under 2 mins:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$time ./meta.bash
+</span></span><span style="display:flex;"><span>./meta.bash  18.39s user 65.09s system 78% cpu 1:45.79 total
+</span></span></code></pre></div><p>and resulted in a <code>main.go</code> file that is over 100,000 lines of code and <code>5.6M</code> big.</p>
+<p>After building, let&rsquo;s test it out:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ./main 65536
+</span></span><span style="display:flex;"><span>65536 is even
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ./main 6553
+</span></span><span style="display:flex;"><span>6553 is odd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ./main 32322
+</span></span><span style="display:flex;"><span>32322 is even
+</span></span></code></pre></div><p>Excellent! Now, onward to the 32 bit integer holy grail and over 4 billion if statements!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>END<span style="color:#f92672">=</span>2**32<span style="color:#f92672">))</span>
+</span></span></code></pre></div><p>At first, I let this ignorantly run <em>all night</em> only to come back and find that I had let my bash script
+consume all available disc on my Macbook (it only has a 500 GB internal drive): by my estimates, the way I wrote the meta Go code boilerplate,
+a single file would be over 300 GB in size. Things crashed around 1 billion <code>if</code> statements (since it couldn&rsquo;t write to disc anymore)
+and I was left with nothing to do but delete the file and reclaim the disc space.</p>
+<p><em>There must be a better way!!</em></p>
+<p>Let&rsquo;s try using external storage: I had a spare 1TB external SSD laying around that I could run this experiment on.
+Now, the only thing would be seeing if the read/write speeds on this external drive would be fast enough
+resulting in a bottleneck.</p>
+<p>Using the bash script, it took just under 10 minutes (conservatively) to write 1 million <code>if</code> statements to the drive:
+to reach 4 billion, using this as an anchor point, it will take 40,000 minutes.
+Or roughly 27 days to complete. <em>Yikes, the read/write on this old drive is really slow</em>.
+For my internal mac storage to reach 1 million <code>if</code> statements, it takes less than 5 seconds.</p>
+<p><em>Foiled again!!</em> I was definitely not anticipating disc space and read/write IO being the biggest hurdle here.</p>
+<p>Bash is probably <em>not a wise choice</em> at this point: if I want to make the writing to disc
+fast and efficient, I probably need something more robust: like Go!</p>
+<p>This Go program is more or less the same as the original bash script,
+but, with some major improvements: we are using a buffered writer that lets us
+make significantly fewer writes to disc with bigger chunks! This speeds
+things up significantly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;math&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// The file on my attached &#34;Dark-Star&#34; SSD
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">META_FILE</span> = <span style="color:#e6db74">&#34;/Volumes/Dark-Star/4-billion/main.go&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Delete/truncate existing bits within main.go file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Truncate</span>(<span style="color:#a6e22e">META_FILE</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// open main.go file for writing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">OpenFile</span>(<span style="color:#a6e22e">META_FILE</span>, <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">O_WRONLY</span>, <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">ModeAppend</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// close file on exit and check for its returned error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Close</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                        panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>        }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Use a buffered writer and periodically flush
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#a6e22e">f</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Initial Go boilerplate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">package main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">import (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;os&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;strconv&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">func main() {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        arg := os.Args[1]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if arg == &#34;&#34; {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                panic(&#34;number argument must be provided&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        num, err := strconv.ParseInt(arg, 10, 64)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if err != nil {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                panic(&#34;could not parse argument as int64&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Flush</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Since we&#39;re still not using modulous operators,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// use a few flags for tracking the number of chunks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// written to the buffered writer and for even/odd
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">chunks</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">isEven</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Go is nice since it carries constants in the math package
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// for max ints of varying bit width
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">MaxUint32</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>                println(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Every 10000 writes to the buffer, flush to the main.go file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// Note: this is where the actual write to disc happens
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">chunks</span> &gt; <span style="color:#ae81ff">10000</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Flush</span>()
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">chunks</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">isEven</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// chunk for an even number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, string(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if num == %d {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                println(&#34;%d is even&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }`</span>), <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">isEven</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// chunk for an odd number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">w</span>, string(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if num == %d {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                println(&#34;%d is odd&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }`</span>), <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">isEven</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">chunks</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Write the last closing bracket for the main function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// flush out any remaining bits and finish up
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Flush</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                panic(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In total, this took just over 3 hours to write to my external SSD! Much better!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>./main  1722.63s user 4116.48s system 49% cpu 3:16:32.52 total
+</span></span></code></pre></div><p>and the <code>main.go</code> file on the external SSD ended up being about 350GB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ll main.go
+</span></span><span style="display:flex;"><span>-rwxrwxrwx@ 1 jpmcb  staff   344G Dec 29 15:55 main.go
+</span></span></code></pre></div><p>Now, let&rsquo;s compile it!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ CGO_ENABLED=0 go build -a main.go
+</span></span><span style="display:flex;"><span>command-line-arguments:
+</span></span><span style="display:flex;"><span>/opt/homebrew/Cellar/go/1.21.3/libexec/pkg/tool/darwin_arm64/compile:
+</span></span><span style="display:flex;"><span>signal: killed
+</span></span></code></pre></div><p>&hellip; about an hour latter, it turns out, I don&rsquo;t have <em>quite</em> enough ram to actually compile this monstrosity.</p>
+<p>What&rsquo;s going on here? As the Go compiler (and the underlying <code>gc</code> compiler) consume the billions and billions
+of lines of Go code, it loads those contexts into memory. I believe this is a similar limitation the original
+author ran into when compiling their C code: there&rsquo;s just not enough memory on the system to consume and compile such a massive program.</p>
+<p>I considered going down the assembly route:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">cmp</span> <span style="color:#66d9ef">w1</span>, <span style="color:#ae81ff">1</span>     <span style="color:#75715e">; Compare number in the w1 registry with &#34;1&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b.eg</span> <span style="color:#66d9ef">odd</span>      <span style="color:#75715e">; Print &#34;odd&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cmp</span> <span style="color:#66d9ef">w1</span>, <span style="color:#ae81ff">2</span>     <span style="color:#75715e">; Compare number in the w1 registry with &#34;2&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b.eg</span> <span style="color:#66d9ef">even</span>     <span style="color:#75715e">; Print &#34;even&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; ... and many, many more comparisons
+</span></span></span></code></pre></div><p>but this would:</p>
+<ol>
+<li>Essentially replicate Andreas Karlsson&rsquo;s original experiment</li>
+<li>Probably be very tedious to do on a Macbook since <em>&ldquo;Darwin function numbers
+are considered private by Apple, and are subject to change.&rdquo;</em>
+I was able to piece together some of the syscalls through the <a href="https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/syscalls.master">XNU bsd kernal syscalls header</a>,
+Apple&rsquo;s OSS distribution of the kernel for MacOS and iOS.
+But again, this seemed be a relatively fraught effort replicating what&rsquo;s already been done on x86.</li>
+</ol>
+<h3 id="lessons-learned">Lessons learned:</h3>
+<ul>
+<li>Building massive Go projects requires an equally massive amount of RAM.</li>
+<li>External SSD io read/write times <em>can</em> indeed be a scaling issue:
+I had to pivot to a more efficient, chunking strategy when writing the 300+ GB
+file to my external drive.</li>
+<li>Like any massive scale problem, abit of bubble-gum and duct tape is usually required.</li>
+</ul>
+<hr>
+<h3 id="sidebar-bash-does-not-support-64-bit-wide-ints">Sidebar: bash does not support 64 bit wide ints</h3>
+<p>At one point during this journey, I thought that <em>maybe</em>
+I could keep these shenanigans going and scale this all
+the way up to 64 bit wide ints.</p>
+<p>Besides how absolutely <em>huge</em> the source file would be
+(the difference between the max 32 bit int and max 64 bit int
+is roughly 4 billion times the size: so we can assume the
+source file would be 400 GB * 4 billion == 16 million petabytes).
+I found there was a tricky soft limit on ints in bash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>NUM<span style="color:#f92672">=(</span>2**64<span style="color:#f92672">)))</span>
+</span></span><span style="display:flex;"><span>echo $NUM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>NUM<span style="color:#f92672">=(</span>2**64<span style="color:#f92672">)</span> - 1<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>echo $NUM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2^64 truly results in zero, not just overflowed back around to 0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>NUM<span style="color:#f92672">=(</span>2**63<span style="color:#f92672">)))</span>
+</span></span><span style="display:flex;"><span>echo $NUM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -9223372036854775808</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># interesting! This seems to overflow</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">((</span>NUM<span style="color:#f92672">=(</span>2**63<span style="color:#f92672">)</span> - 1<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>echo $NUM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 9223372036854775807</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This seems to be the upper limit of bit width ints in bash</span>
+</span></span></code></pre></div><hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>There is no secure software supply-chain.</title>
       <link>https://johncodes.com/posts/2023/09-02-there-is-no-secure-software-supply-chain/</link>
