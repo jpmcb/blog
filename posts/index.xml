@@ -6,7 +6,206 @@
     <description>Recent content in Posts on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 Dec 2023 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023 in review</title>
+      <link>https://johncodes.com/posts/2024/01-01-in-review/</link>
+      <pubDate>Mon, 01 Jan 2024 09:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2024/01-01-in-review/</guid>
+      <description>I had a huge year.
+And every year, around this time, when I have a well deserved opportunity to take a break and prepare for the next year, I like to reflect: think on the year&amp;rsquo;s accomplishments, derive some lessons learned, and drink in everything from my experiences.
+Herein are my musings and thoughts regarding the last year.
+Leaving AWS I still think about my time at AWS: it was a short, but very sweet and formative period for me.</description>
+      <content:encoded><![CDATA[<p>I had a huge year.</p>
+<p>And every year, around this time, when I have a well deserved opportunity to
+take a break and prepare for the next year, I like to reflect:
+think on the year&rsquo;s accomplishments, derive some lessons learned, and drink in everything from my experiences.</p>
+<p>Herein are my musings and thoughts regarding the last year.</p>
+<h2 id="leaving-aws">Leaving AWS</h2>
+<p>I still think about my time at AWS:
+it was a short, but very sweet and formative period for me.
+Out of the ashes of the Broadcom / VMware acquisition news,
+an announcement that many felt was deeply misaligned with VMware&rsquo;s Kubernetes vision,
+I went searching for something else in mid 2022.
+When I eventually joined the Amazon Linux and Bottlerocket team, I felt I had found a new home among people I related to:
+peers who were passionate and deeply curious about programming, the art of computer science, and Linux.</p>
+<p>But something I&rsquo;ve come to grips with, and continue to digest since leaving,
+is just how burned out I actually was at AWS.
+The team was amazing, I got to work in Rust every single day, I was surrounded by individuals I looked up to and respected,
+and I was living my dream of building a Linux distribution in the open source.
+And yet, expectations were lofty. There was little room for error.
+Constant shifting organizational priorities. Leadership re-orgs.
+And a new, ambiguous return to office policy with the looming potential of having to eventually move to Seattle.
+It was a very befuddling decision to me: the entire Bottlerocket team was distributed all around the world.
+Why &ldquo;return to team&rdquo; when the team was fully remote and async to begin with?</p>
+<p>All of that <em>and</em> I was coming off a relatively high pressure team at VMware shipping
+(<a href="https://github.com/vmware-tanzu/community-edition">and eventually deprecating</a>) TCE.</p>
+<p><em>&ldquo;Customer obsession&rdquo;</em> is probably Amazon&rsquo;s deepest principle.
+And it&rsquo;s embodied well throughout AWS:
+people legitimately care about shipping the best stuff for customers
+and delighting them with their work.
+But for the individual contributor, like me, leadership can wield it
+as justification to push beyond the bounds of what good work life balance is.</p>
+<p>But, in the end, my burnout was no one&rsquo;s fault exactly: sometimes these things just happen from a stint of bad luck.
+I joined AWS just before a tumultuous time in the market
+where the software engineer career path would drastically contract,
+layoffs would abound,
+and the pressure would be on for teams to ship real value that made their engineering headcount make sense.
+I was thankful to still have a job but
+I also could have done a much better job of setting clear work / life boundaries
+and finding balance: one of the tricky things I&rsquo;m learning as I grow deeper into my tech career
+is that, while I <em>deeply</em> love and enjoy what I do,
+<em>&ldquo;variety is the spice of life&rdquo;</em> and finding a balance <em>outside</em> of tech is key to having a fruitful
+and enjoyable long term tech career.</p>
+<p>I&rsquo;m very proud of alot of the work I did at AWS: there were some <em>really</em> tricky problems to solve. Here is some of the work I&rsquo;m most proud of at AWS over the last year:</p>
+<ul>
+<li><a href="https://github.com/bottlerocket-os/bottlerocket-update-operator/pull/325">v1.0.0 GA release of the Bottlerocket update-operator</a>: this was a pretty huge undertaking. When I first joined the Bottlerocket team, there was a big backlog of things that needed to be fixed in the kubernetes update operator before we could consider it GA. For those curious, the Bottlerocket update-operator, or more affectionately called &ldquo;brupop&rdquo;, is a kubernetes operator system for automatic and continuous upgrade of Bottlerocket host nodes in a kubernetes cluster: this is great because someone operating a k8s cluster with Bottlerocket nodes will almost always want to consume the latest changes from our distro stream. These upgrades often included security patches and performance improvements. In order to cut this as GA, there were a number of huge refactors that needed to go in (including a deep dive on <a href="https://github.com/bottlerocket-os/bottlerocket-update-operator/pull/340">enabling mTLS between our API and operator pods</a>, <a href="https://github.com/bottlerocket-os/bottlerocket-update-operator/pull/401">removing a long standing transient dependency on <code>openssl</code></a>, and <a href="https://github.com/bottlerocket-os/bottlerocket-update-operator/pull/350">refactoring massive amounts of code to enable the use of <code>helm</code></a> (which customers really wanted). <em>Huge</em> shoutout to my counterpart, <a href="https://github.com/gthao313">Tianhao</a>, for partnering on this massive achievement with me and the team! I learned alot from working with you!!</li>
+<li><a href="https://github.com/bottlerocket-os/bottlerocket/pull/2378">Vending go modules using the custom Bottlerocket <code>buildsys</code></a>: the Bottlerocket <code>buildsys</code> is a mechanism to build the Bottlerocket operating system artifacts. Much easier said then done: because of Bottlerocket&rsquo;s unique security constraints, use of <code>selinux</code>, and containerization paradigm, we had to find ways to consume upstream files (often in RPMs) in a reproducible manner where we could be assured source files had not been tampered with. Several Go modules were used throughout the OS which presented unique contraints when consuming and building those targets. This PR enabled Go modules to be vendored, checked, consumed, and built, all from within our internal build system: while this was early work, it set the stage for my presence on the team. After this, I felt I became the sort of &ldquo;Go guy&rdquo; and I often fielded bumping the version of Go we built with when new security releases were dropped, owning a few of our bespoke first party Go modules, working with internal Go teams to get new features and fixes into Bottlerocket when necessary, and much more. Amazon has a very healthy Go ecosystem and I&rsquo;m excited to see what the teams do with it in the future!</li>
+</ul>
+<h4 id="lesson">Lesson:</h4>
+<p>Recognize the cinders of burnout before it becomes an all consuming flame. And do what you need to do in your life to find balance.
+Sometimes things happen. And you can&rsquo;t always control them: what you can control is how you react.</p>
+<h2 id="joining-opensauced">Joining OpenSauced</h2>
+<p>Serendipitously, early in 2023, I had connected with <a href="https://twitter.com/bdougieYO">bdougie</a>,
+CEO of OpenSauced, the self proclaimed <a href="https://thenewstack.io/after-github-brian-douglas-builds-an-open-source-startup/"><em>&ldquo;Beyonce of open source&rdquo;</em></a>. We chatted a few times and I realized his vision for building tooling and platforms <em>for</em> open source maintainers and enablers was exactly what I&rsquo;d been missing <em>in my own</em> personal open source contributions and work in AWS open source.</p>
+<p>So many times I found myself asking <em>&ldquo;who exactly is this?&rdquo;</em> or <em>&ldquo;will this project accept contributions ..?&rdquo;</em> or <em>&ldquo;is this project&rsquo;s community a welcoming one?&rdquo;</em> when working in open source.</p>
+<p>Joining a very early stage startup is something I&rsquo;ve always wanted to try: you hear these legendary stories of people in the early 90s and 2000s solving huge problems with technology out of their garages (thankfully, we&rsquo;re not running OpenSauced out of bdougie&rsquo;s garage, we&rsquo;re fully remote!)</p>
+<p>I followed my gut, trusted my instinct, and joined OpenSauced in mid 2023, leaving behind a very good and comfortable job at AWS: what an incredible decision! Since then, I&rsquo;ve learned <em>alot</em>, been building <em>alot</em> of things, and have shipped a number of big enhancements to our data pipelines, backend infrastructure, frontend, how we approach building metrics and insights around open source contributions, and much more. I deeply believe that in 2024, we will have some incredible things to show off.</p>
+<p>Some public OpenSauced work I&rsquo;m most proud of:</p>
+<ul>
+<li><a href="https://github.com/open-sauced/go-api">Efficiently caching and ingesting git repos</a>: I&rsquo;ve written about this before, but one of the many challenges in building ontop of Git and Git based platforms is how you efficiently pull down new changes from repos (without having to clone the whole thing over and over again. Such a waste!) We needed a mechanism that could introspect individual commits in git repos to then derive insights from: enter the pizza oven, a Go based web server for cloning repos to disc, introspecting commits, and upserting new commits it sees to a database. one of the major efficiency bumps it gets is my implementation of an LRU cache: a caching mechanisms that drops the &ldquo;least used&rdquo; member when the cache is full. I could go <em>very</em>  deep into this project, but i encourage you to read more about it here:
+<ul>
+<li><a href="https://dev.to/opensauced/caching-git-repos-a-deep-dive-into-opensauceds-pizza-oven-service-49nf">https://dev.to/opensauced/caching-git-repos-a-deep-dive-into-opensauceds-pizza-oven-service-49nf</a></li>
+<li><a href="https://dev.to/opensauced/how-we-made-our-go-microservice-24x-faster-5h3l">https://dev.to/opensauced/how-we-made-our-go-microservice-24x-faster-5h3l</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/open-sauced/pizza-cli">The OpenSauced <code>pizza</code> CLI</a>: OpenSauced isn&rsquo;t just a web app for metrics and insights. It&rsquo;s a software platform that is made to enable people building and consuming in the open. One thing we recognized was missing from our suite of tools is a CLI: the <code>pizza</code> CLI is a Go, Cobra based CLI that integrates with the OpenSauced API, bringing deeper capabilities to people who want to integrate OpenSauced into their CI/CD pipelines, scripts, or internal reporting tools.
+<ul>
+<li>Shipping an OpenSauced Go client: alongside the OpenSauced CLI is <a href="https://github.com/open-sauced/go-api">a Go based client for the OpenSauced API</a>. This enables <em>anyone</em> using Go to build ontop of our API and integrate deeply with our platform.</li>
+</ul>
+</li>
+<li>Integrating realtime, events driven data into OpenSauced: the cat&rsquo;s <em>abit</em> out of the bag on this one, and there is <em>so</em> much more to come, but I&rsquo;ve been heads down over the last month or so shipping new infrastructure and data pipelines to integrate GitHub&rsquo;s realtime events data into OpenSauced. Much of this is possible through the magic of the Timescale time series database: this gives us the power of leveraging Postgres <em>alongside</em> time series events data from GitHub. <a href="https://github.com/open-sauced/app/pull/2293">Check out the initial integration</a> and be on the lookout for some <em>really</em> incredible improvements to the platform through these new mechanisms.</li>
+</ul>
+<h4 id="lesson-1">Lesson:</h4>
+<p>In 1994, Jeff Bezos took a huge leap of faith, quit his well paying, comfortable job in New York City <a href="https://www.aboutamazon.com/news/policy-news-views/statement-by-jeff-bezos-to-the-u-s-house-committee-on-the-judiciary">to start Amazon</a>: <em>&quot;&hellip; I decided that if I didn’t at least give it my best shot, I was going to regret not trying to participate in this thing called the internet that I thought was going to be a big deal&quot;</em>.</p>
+<p>Take a leap of faith once in awhile. Trust your gut, take that opportunity, especially if you&rsquo;ve always wanted to and it makes sense.</p>
+<h2 id="cobra">Cobra</h2>
+<p>In 2023, along with the help of the amazing Go and Cobra community, <a href="https://github.com/spf13/cobra/releases">we shipped 2 massive cobra releases</a>:
+even while taking a break from maintaining Cobra,
+I found it deeply rewarding to give back to the community
+and continue maintenance of this incredibly important project.</p>
+<p>Here are some of my favorite things we shipped in Cobra this last year:</p>
+<ul>
+<li>Support for usage of Cobra as a meta &ldquo;plugin&rdquo; framework: many tools, like <code>kubectl</code>
+can have &ldquo;plugins&rdquo; that you add to the top level CLI. These then get consumed through that top level CLI
+as a nice and comprehensive silo for your <code>kubectl</code> needs.
+We did something <em>very</em> similar with the <code>tanzu</code> CLI (although we built alot of custom software to make it work),
+this now has much better support directly in Cobra for plugin completions, command paths, etc.</li>
+<li>Completions support keeps getting better: <code>powershell</code> 7.2+ is now supported, there&rsquo;s better
+support for <code>bash</code>, <code>zsh</code>, and <code>fish</code>, and we shipped <em>many</em> fixes to improve the overall
+quality of life when using completions and writing CLIs for completions.</li>
+</ul>
+<p>Here&rsquo;s to much more cobra joy in 2024!!</p>
+<h4 id="lesson-2">Lesson:</h4>
+<p>Taking breaks is a good thing. Come back to what brings you joy.</p>
+<h2 id="deeper-into-neovim">Deeper into Neovim</h2>
+<p>Part of me wondered when I joined AWS if my workflows in Neovim would be able to scale and keep up: TLDR, they did and they still do. Although, it required some continous tweaking.</p>
+<p>Here are a few of my favorite little tidbits of neovim goodness from 2023:</p>
+<ul>
+<li><a href="https://github.com/williamboman/mason.nvim"><code>mason.nvim</code></a>: Mason is what I personally would consider
+one of Neovim&rsquo;s most important 3rd party projects. It would not surprise me if it eventually was
+integrated directly into Neovim itself. Mason is a sort of manager of editor tooling, primarily
+LSP servers, linters, formaters, and the like. It provides a thin, simple interface for
+installing, managing, upgrading, and integrating with those tools.
+You might not think this is a big deal (&quot;<em>another</em> package manager??&quot;),
+but when you think about the effort and pain of setting up a new neovim environment
+(having to manually install and integrate <code>gopls</code> for Go development,
+having to manually install and integrate <code>cargo</code> for rust development,
+having to manually install and integrate <code>eslint</code> for Typescript development, etc. etc.),
+you realize that there is <em>alot</em> of 3rd party tooling you rely on. Using <code>mason.nvim</code> makes it so simple and easy.</li>
+<li><a href="https://github.com/stevearc/oil.nvim"><code>oil.nvim</code></a>: Many people are familiar with <code>vim-vinegar</code>, a <code>netrw</code> enhancement for file explorering in vim.
+<code>oil.nvim</code> takes that concept and expands on it providing the ability to edit your filesystem
+<em>in a normal nvim buffer</em>. For a long time, I had been using a seperate tmux pane to do file system edits
+with <code>mv</code>, <code>cp</code>, and all the other traditional linux utilities. It was fine, but I really was missing
+the speed and power that <code>oil.nvim</code> gives you. This was sort of one of those things I didn&rsquo;t know
+I was missing until I started using it but wow has it enhanced my workflow greatly. Highly, highly recommended!</li>
+<li><a href="https://github.com/jpmcb/nvim-llama"><code>nvim-llama</code></a>: I built a small, basic plugin that integrates Ollama docker containers (see the LLM section below) into neovim.
+I really love the idea of using <em>local</em> large language models and not ones as part of services:
+maybe it&rsquo;s my dogmatic, Stallman view of open source software and services out in the wild,
+gut this was a great exercise in building a neovim plugin, letting the world know about it,
+and getting some really good feedback to improve its usage.</li>
+</ul>
+<h4 id="lesson-3">Lesson</h4>
+<p>Building good habits around things that improve your workflow is an investment I&rsquo;m still greatly benefiting from.
+Take the time to know your tooling very well: these are compounding skills that can be applied to a wide range of disciplines.</p>
+<h2 id="using-llms">Using LLMs</h2>
+<p>I was pretty skeptical of AI technology towards the end of 2022:
+could Large Language Models and their interfaces, like ChatGPT, really become apart of my workflows?</p>
+<p>I think I&rsquo;ve surprised myself: in some ways, using LLMs has indeed become a huge part of my workflows.
+My original, fear based assumption that this meant I&rsquo;d no longer be able to write as much code as before was baseless:
+it&rsquo;s a tool, just like anything else. And if anything, it&rsquo;s allowed me to write <em>more</em> code.
+But I&rsquo;ve hit many of the snags with using LLMs: I&rsquo;ve gotten some nasty hallucinations and
+I&rsquo;ve found areas that LLMs just don&rsquo;t know about (for example, in early 2023, LLM&rsquo;s rust knowledge was pretty poor).
+Still, I&rsquo;ve found it to be a really useful tool and almost essential to quickly discovering new knowledge.</p>
+<p>Here&rsquo;s how I used LLMs in 2023:</p>
+<ul>
+<li>Subscribed to ChatGPT plus. A month or so latter, canceled.</li>
+<li>Used Google&rsquo;s Bard on occasion: Google definitely seems to have some of the best training data (this shouldn&rsquo;t be a surprise to anyone).</li>
+<li>Started using <a href="https://github.com/ggerganov/llama.cpp/">local LLMs with <code>llama.cpp</code> </a> and Meta&rsquo;s Llama 2 and Code Llama models.</li>
+<li>Started using <a href="https://github.com/jmorganca/ollama">Ollama</a> in Docker for a seamless DX and user experience. Much easier to integrate a docker container.</li>
+<li>Use <a href="https://huggingface.co/chat/">https://huggingface.co/chat/</a> to experiment with open source, unfiltered, cutting edge models.</li>
+</ul>
+<h4 id="lesson-4">Lesson</h4>
+<p>The biggest shift in my mental paradigm around LLMs is that running them locally
+is actually not as bad as you&rsquo;d think: Apple&rsquo;s newest M chipsets are honestly powerhouses
+and I&rsquo;ve had amazing results with some of the 7B and 13B parameter models:
+I believe the future of open source AI technology is very bright and I hope
+it grows to rival that of major tech companies building this technology on proprietary software.
+Long live the open source movement!! And long live open source LLMs!</p>
+<h2 id="social-media">Social media</h2>
+<p>I still don&rsquo;t know what the hell I&rsquo;m doing with social media: some days it feels like a huge burden,
+something I <em>have</em> to do in order to stay engaged with people in the tech communities I&rsquo;m apart of.</p>
+<p>Other days, I feel so thankful to live at a time in history when I can connect with other technologists,
+scientist, and engineers around the world seamlessly.</p>
+<p>I&rsquo;m not sure if it&rsquo;s a curse upon society or a blessing: but one thing I&rsquo;ve realized,
+somewhere through the torrent of tiktok videos I&rsquo;ve consumed, at least for me, anything
+more than very mild social media consumption is a detriment to my well-being.</p>
+<p>I&rsquo;m certain that being burned out at AWS was in some ways due to my social media use:
+it was hard to not doom scroll news about layoffs, the stock market, or the waning tech job field.
+It was hard to not see viral posts like <em>&ldquo;how I became a 10x engineer&rdquo;</em> or <em>&ldquo;how I made 1 million dollars as a software engineer&rdquo;</em>.
+Eventually, unconsciously, those words start to change your mindset.
+And overall, it just made me discontent: this all reminds me of the famous Theodore Roosevelt quote:</p>
+<blockquote>
+<p>Comparison is the thief of joy.</p>
+</blockquote>
+<h4 id="lesson-5">Lesson</h4>
+<p>Mass social media consumption isn&rsquo;t good for me. I&rsquo;m still figuring a balance out, but for now, to start,
+I&rsquo;m limiting social media access on my phone.</p>
+<hr>
+<p>Here&rsquo;s to many more years!
+Good luck in the new year!!</p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>4 billion Go if statements</title>
       <link>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</link>
