@@ -5,7 +5,7 @@
 # Hi there! 🌊
 
 My name is John & I'm a senior software engineer at [OpenSauced](https://opensauced.pizza)
-where I'm building open source insights tooling.
+where I'm building our backend infrastructure and open source insights tooling.
 
 In the past, I've worked at AWS, VMware, & Pivotal Cloud Foundry
 where I worked on open source software, observability & SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.

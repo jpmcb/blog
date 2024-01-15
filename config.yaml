@@ -73,12 +73,12 @@ params:
       url: "https://johncodes.com/index.xml"
     - name: github
       url: "https://github.com/jpmcb"
-    - name: twitch
-      url: "https://twitch.tv/johncodes"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
     - name: twitter
       url: "https://twitter.com/johncodezzz"
+    - name: mastodon
+      url: "https://fosstodon.org/@johnmcbride"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
 
@@ -86,4 +86,4 @@ outputs:
   home:
     - HTML
     - RSS
-    - JSON # is necessary
+    - JSON # is necessary for RSS feed, hugo metadata, etc.
