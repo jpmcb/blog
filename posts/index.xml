@@ -122,16 +122,16 @@ Instead of using <code>send-keys</code> manually, let&rsquo;s create a small scr
 But many of the same rules, flags, and syntaxes also apply to creating new windows, panes, etc.
 Tmux has a strong paradigm that is consistent across different ways to multi-plex shells
 so it&rsquo;d be just as simple to create 2 windows instead of two panes that we then send commands to:</p>
-<pre tabindex="0"><code>#!/usr/bin/env bash
-
-# Create named windows
-tmux new-window -n npm-test -d -c ~/workspace/opensauced/api
-tmux new-window -n npm-build -d -c ~/workspace/opensauced/api
-
-# Send commands to the detached sessions
-tmux send-keys -t 0:npm-test &#34;npm run test&#34; Enter
-tmux send-keys -t 0:npm-build &#34;npm run build&#34; Enter
-</code></pre><p>A few things to note here: instead of <code>-s</code> for the session name, we provide <code>-n</code> for the new window name.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create named windows</span>
+</span></span><span style="display:flex;"><span>tmux new-window -n npm-test -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>tmux new-window -n npm-build -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Send commands to the detached sessions</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t 0:npm-test <span style="color:#e6db74">&#34;npm run test&#34;</span> Enter
+</span></span><span style="display:flex;"><span>tmux send-keys -t 0:npm-build <span style="color:#e6db74">&#34;npm run build&#34;</span> Enter
+</span></span></code></pre></div><p>A few things to note here: instead of <code>-s</code> for the session name, we provide <code>-n</code> for the new window name.
 You&rsquo;ll also notice the <code>send-keys</code> syntax now includes a <code>:</code>. The first part is the name of the session (in my case, session named <code>0</code>)
 and the name of the window to send the keys to.</p>
 <h3 id="setting-env-variables-for-sessions">Setting env variables for sessions</h3>
@@ -139,8 +139,8 @@ and the name of the window to send the keys to.</p>
 denote global environment variables (env vars available to all new sessions)
 and session based env vars. In newer versions of tmux, I recommend setting the local session
 variable with the <code>-e</code> flag:</p>
-<pre tabindex="0"><code>tmux new -s my-session -d -e MYVAR=myvalue -c /dir
-</code></pre><p>This session named <code>my-session</code> will have access to the <code>MYVAR</code> environment variable we provided when creating the new session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux new -s my-session -d -e MYVAR<span style="color:#f92672">=</span>myvalue -c /dir
+</span></span></code></pre></div><p>This session named <code>my-session</code> will have access to the <code>MYVAR</code> environment variable we provided when creating the new session:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ echo $MYVAR
 </span></span><span style="display:flex;"><span>myval
 </span></span></code></pre></div><h2 id="scheduling-jobs-with-at-and-scripts">Scheduling jobs with <code>at</code> and scripts</h2>
