@@ -6,7 +6,234 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Job scheduling with tmux</title>
+      <link>https://johncodes.com/posts/2024/01-13-tmux-scheduling/</link>
+      <pubDate>Sat, 13 Jan 2024 09:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2024/01-13-tmux-scheduling/</guid>
+      <description>Tmux is one of my favorite utilities: it&amp;rsquo;s a terminal multiplexer that lets you create persistent shell sessions, panes, windows, etc. all within a single terminal. It&amp;rsquo;s a great way to organize your shell sessions and natively give you multi-shell environments to work in without having to rely on a terminal program for those features.
+You&amp;rsquo;d think in a world of modern applications and fancy terminals like iTerm 2 and Kitty, you wouldn&amp;rsquo;t need such a utility.</description>
+      <content:encoded><![CDATA[<p>Tmux is one of my favorite utilities: it&rsquo;s a terminal multiplexer
+that lets you create persistent shell sessions, panes, windows, etc. all within a single
+terminal. It&rsquo;s a great way to organize your shell sessions and natively give you
+multi-shell environments to work in without having to rely on a terminal program for those features.</p>
+<p>You&rsquo;d think in a world of modern applications and fancy terminals
+like iTerm 2 and Kitty, you wouldn&rsquo;t need such a utility. But time and time again,
+tmux has proven itself to be a powerful and essential tool.
+Especially when working with remote machines in the cloud or across SSH sessions,
+tmux is critical in maintaining my organization and getting things done.</p>
+<p>Beyond multiplexing, tmux has some incredible capabilities that extend its functionality
+to be able to run and schedule jobs, automatically execute scripts within given contexts,
+and much more.</p>
+<p>Let&rsquo;s look at a few use cases where we can schedule jobs to run
+and even create a whole production like environment, all organized and managed from tmux!</p>
+<h2 id="running-commands">Running commands</h2>
+<p>Tmux offers a way to run scripts in new sessions automatically:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux new -s my-session -c /path/to/directory <span style="color:#e6db74">&#39;echo &#34;Hello Tmux!&#34; &amp;&amp; sleep 100&#39;</span>
+</span></span></code></pre></div><p>Let&rsquo;s break this down: this arbitrary example creates a new session named &ldquo;my-session&rdquo;,
+sets the session directory using the <code>-c</code> flag, and then executes a command.</p>
+<p>This command will echo &ldquo;Hello Tmux!&rdquo; and then sleep for 100 seconds.</p>
+<p>When running this tmux command, we are automatically attached to the session and see
+&ldquo;Hello Tmux!&rdquo; printed at the top of the screen and then the <code>sleep</code> command takes over.
+Once the <code>sleep</code> command is done, the session exits.</p>
+<p>If we wanted to run this in the background, we could provide the <code>-d</code> flag: this will
+keep the new session detached and run the given commands behind the scenes in the background.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ tmux new -s my-session -d -c ~/workspace &#39;echo &#34;hello world!&#34; &amp;&amp; sleep 1000&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ tmux ls
+</span></span><span style="display:flex;"><span>my-session: 1 windows (created Mon Jan 15 11:02:21 2024)
+</span></span></code></pre></div><p>Using <code>tmux ls</code> we can list out the current sessions and see <code>my-session</code> is running with 1 window in the background.
+This is part of the power of tmux: you can have sessions exist and persist <em>outside</em>
+of the current shell or session you are attached to. The sky is really the limit here
+and using multiple sessions, windows, and panes has become a cornerstone of my workflows.</p>
+<p>If we wanted to attach to the session and see the progress of the command we gave it, we could run <code>tmux a -t my-session</code>.
+This will attach to the session named <code>my-session</code>.</p>
+<h2 id="persisting-sessions">Persisting sessions</h2>
+<p>This is all great, but not all that useful when need to latter observe the results of our command or persist the history:
+running a script for a new session or window or pane will automatically close once it&rsquo;s completed.</p>
+<p>Instead, we can use a regular session we create and send it some commands remotely:</p>
+<p>As an example, let&rsquo;s say we needed to run some tests in the background on our Typescript project with <code>npm run test</code>
+and latter observe the results. We can do this with the <code>send-keys</code> command for sessions.
+Here, I&rsquo;ll be using the OpenSauced API as my playground:</p>
+<ol>
+<li>Create a new named session:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># Create a new named, detached session</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># that starts in the given directory</span>
+</span></span><span style="display:flex;"><span>tmux new -s my-npm-tests -d -c ~/workspace/opensauced/api
+</span></span></code></pre></div><ol start="2">
+<li>Send the command</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># Send the test command to the session</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t my-npm-tests <span style="color:#e6db74">&#34;npm run test&#34;</span> Enter
+</span></span></code></pre></div><p>A few things to note here:</p>
+<p><code>Enter</code> uses the special &ldquo;key binding syntax&rdquo; for sending a literal <code>Enter</code> key
+at the end of the command. If we needed to send something else, like &ldquo;control c&rdquo;,
+we could do that with <code>C-c</code> or <code>M-c</code> for &ldquo;alt c&rdquo;. Check the official man page
+where this has <a href="http://man.openbsd.org/OpenBSD-current/man1/tmux.1#KEY_BINDINGS">a full description</a>
+of what&rsquo;s possible with sending key bindings to sessions.</p>
+<ol start="3">
+<li>Attach to the session:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>tmux a -t my-npm-tests
+</span></span></code></pre></div><p>Now that we&rsquo;ve sent our test command to the session, at any point in the future we can attach to the session to see
+how it did and check the results. Since the session will be persisted after the
+command has run, there&rsquo;s no rush to observe the results! The shell&rsquo;s full history for that session will be right there when we need it!</p>
+<ol start="4">
+<li>Check results</li>
+</ol>
+<p>Within the attached session, we can see the full history of the <code>npm</code> command
+that was sent and check the results! This session is persisted so we can use the shell
+from this session to do additional work, detach, close it, etc.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ npm run test
+</span></span><span style="display:flex;"><span>npm info using npm@9.6.7
+</span></span><span style="display:flex;"><span>npm info using node@v18.17.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; @open-sauced/api@2.3.0-beta.2 test
+</span></span><span style="display:flex;"><span>&gt; jest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>npm info ok
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$
+</span></span></code></pre></div><h2 id="script-it">Script it!</h2>
+<p>What if there are 5 or 6 things I want to do behind the scenes?
+Maybe I have a build and test process that can run many things in parallel at once?
+Instead of using <code>send-keys</code> manually, let&rsquo;s create a small script that can do this all for us!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create named, detached sessions</span>
+</span></span><span style="display:flex;"><span>tmux new -s npm-test -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>tmux new -s npm-build -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Send commands to the detached sessions</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t npm-test <span style="color:#e6db74">&#34;npm run test&#34;</span> Enter
+</span></span><span style="display:flex;"><span>tmux send-keys -t npm-build <span style="color:#e6db74">&#34;npm run build&#34;</span> Enter
+</span></span></code></pre></div><p>Running this script yields the following tmux sessions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>❯ tmux ls
+</span></span><span style="display:flex;"><span>npm-build: 1 windows (created Mon Jan 15 11:31:28 2024)
+</span></span><span style="display:flex;"><span>npm-test: 1 windows (created Mon Jan 15 11:31:28 2024)
+</span></span></code></pre></div><p>and can be attached to in order to inspect the results of each command.</p>
+<p>If the commands to run within individual sessions is more complex than just a sole one liner,
+<code>send-keys</code> can also run a script or <code>make</code> command!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux send-keys -t kubernetes <span style="color:#e6db74">&#34;make build&#34;</span> Enter
+</span></span></code></pre></div><p>In this article, I&rsquo;m assuming you always want to create a new session.
+But many of the same rules, flags, and syntaxes also apply to creating new windows, panes, etc.
+Tmux has a strong paradigm that is consistent across different ways to multi-plex shells
+so it&rsquo;d be just as simple to create 2 windows instead of two panes that we then send commands to:</p>
+<pre tabindex="0"><code>#!/usr/bin/env bash
+
+# Create named windows
+tmux new-window -n npm-test -d -c ~/workspace/opensauced/api
+tmux new-window -n npm-build -d -c ~/workspace/opensauced/api
+
+# Send commands to the detached sessions
+tmux send-keys -t 0:npm-test &#34;npm run test&#34; Enter
+tmux send-keys -t 0:npm-build &#34;npm run build&#34; Enter
+</code></pre><p>A few things to note here: instead of <code>-s</code> for the session name, we provide <code>-n</code> for the new window name.
+You&rsquo;ll also notice the <code>send-keys</code> syntax now includes a <code>:</code>. The first part is the name of the session (in my case, session named <code>0</code>)
+and the name of the window to send the keys to.</p>
+<h3 id="setting-env-variables-for-sessions">Setting env variables for sessions</h3>
+<p>An important and powerful thing to remember here is environment variables: tmux provides the ability to
+denote global environment variables (env vars available to all new sessions)
+and session based env vars. In newer versions of tmux, I recommend setting the local session
+variable with the <code>-e</code> flag:</p>
+<pre tabindex="0"><code>tmux new -s my-session -d -e MYVAR=myvalue -c /dir
+</code></pre><p>This session named <code>my-session</code> will have access to the <code>MYVAR</code> environment variable we provided when creating the new session:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ echo $MYVAR
+</span></span><span style="display:flex;"><span>myval
+</span></span></code></pre></div><h2 id="scheduling-jobs-with-at-and-scripts">Scheduling jobs with <code>at</code> and scripts</h2>
+<p>One of the more powerful things I&rsquo;ve used this all for is local job scheduling.
+Let&rsquo;s look at 2 examples using <code>at</code> and scripts:</p>
+<h4 id="one-off-at-scheduling">One off <code>at</code> scheduling</h4>
+<p><code>at</code> is a very basic command line utility that comes packaged with many desktop
+Linux distros and lets you do very simple one off scheduling.</p>
+<p>For example, let&rsquo;s say that you needed to do a git push 3 hours from now in a specific directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux new -d -s git-push-later <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -c /path/to/your/repo <span style="color:#e6db74">&#39;echo &#34;git push&#34; | at now + 3 hours&#39;</span>
+</span></span></code></pre></div><p>This will create a new detached session named <code>git-push-later</code> within the directory for your git repo
+and it sends <code>git push</code> to the <code>at</code> command via a pipe with the argument &ldquo;now + 3 hours&rdquo;.</p>
+<p>Looking at scheduled jobs via <code>at</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ at -l
+</span></span><span style="display:flex;"><span>1       Mon Jan 15 14:46:00 2024
+</span></span></code></pre></div><p>I can see there is a scheduled job! Cool!! This isn&rsquo;t <em>too</em> much different than
+just running <code>at</code> manually from the given current directory, but it can be really useful and powerful
+if I&rsquo;m working in a different directory or need to quickly load up some env vars.
+Better yet, you can easily combine this into a script that loads some global tmux environments
+to then execute many <code>at</code> commands in sequence.</p>
+<h3 id="shell-script-scheduling">Shell script scheduling</h3>
+<p>There are <em>alot</em> of ways in Linux to do what I&rsquo;m suggesting here, primarily through <code>cron</code> and <code>crontab</code>
+but sometimes for a quick and dirty job that needs to run on repeat every so often in a background shell,
+it can be quick and dirty to just wrap what I&rsquo;m doing in a loop with a sleep command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The command to continously run</span>
+</span></span><span style="display:flex;"><span>    npm run test
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Sleep for 5 minutes between runs</span>
+</span></span><span style="display:flex;"><span>    sleep 5m
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>This can then be thrown in a script and executed via a tmux <code>send-keys</code> command like we&rsquo;ve seen:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux send-keys -t my-npm-tests <span style="color:#e6db74">&#34;./run-tests-every-5-mins.sh&#34;</span> Enter
+</span></span></code></pre></div><p>Why do it this way and not just have a cron job in the background?</p>
+<p>For observable things, like builds, tests, etc., I really like to have a persistent
+shell session that I can attach to, detach from, and occasionally keep track of.</p>
+<p>Usually with this method, these aren&rsquo;t things that are <em>too</em> important, so if the tmux
+server dies, it&rsquo;s nothing I can&rsquo;t quickly spin back up with a little tmux script. It&rsquo;s nice having a sort of &ldquo;location&rdquo;
+where these jobs are running in the background but always reachable from a different tmux window or tab.
+I sometimes find I&rsquo;ve lost track of things Linux abstracts away with <code>cron</code>, <code>systemd</code>, etc.
+(which is generally a good thing: I don&rsquo;t want to have to think about the things <code>systemd</code> is managing!)
+So, instead, for the little things I need to keep an eye on, I choose to keep track of them in a tmux session!</p>
+<h2 id="building-production-like-environments">Building production like environments</h2>
+<p>Using all of this and with my weird tendency to keep track of things in tmux sessions,
+let&rsquo;s build a simple production like environment using a starter script,
+docker, and a few tmux sessions!</p>
+<p>Let&rsquo;s again look at an OpenSauced example: this starts a postgres database in docker,
+boots up the API (which will then attach to that database), and then starts the frontend:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create named, detached sessions</span>
+</span></span><span style="display:flex;"><span>tmux new -s database -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>tmux new -s api -d -c ~/workspace/opensauced/api
+</span></span><span style="display:flex;"><span>tmux new -s frontend -d -c ~/workspace/opensauced/app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start the database up</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t database <span style="color:#e6db74">&#34;docker run -it --rm --name database -p 25060:5432 my_postgres_image:latest&#34;</span> Enter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start the API</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t api <span style="color:#e6db74">&#34;npm run start&#34;</span> Enter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start the frontend app</span>
+</span></span><span style="display:flex;"><span>tmux send-keys -t frontend <span style="color:#e6db74">&#34;npm run start&#34;</span> Enter
+</span></span></code></pre></div><p>Horrifying, I know.</p>
+<p>But surprisingly, I&rsquo;ve found this to be a really great way to keep the various
+components of our system organized in a system I know well and can easily wrap my head around.</p>
+<p>Then, when I&rsquo;m done with this environment, I can easily tear it down by stopping the tmux sessions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tmux kill-session database
+</span></span><span style="display:flex;"><span>tmux kill-session api
+</span></span><span style="display:flex;"><span>tmux kill-session frontend
+</span></span></code></pre></div><p>And that&rsquo;s it! Easy organization, job scheduling, and multi-tasking with tmux!</p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>2023 in review</title>
       <link>https://johncodes.com/posts/2024/01-01-in-review/</link>
@@ -2714,12 +2941,12 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at OpenSauced where I&amp;rsquo;m building open source insights tooling.
+      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at OpenSauced where I&amp;rsquo;m building our backend infrastructure and open source insights tooling.
 In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry where I worked on open source software, observability &amp;amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.
 This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays, photos, music, videos, ramblings on philosophy, and really, whatever I want (it&amp;rsquo;s my website after all).</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
 <p>My name is John &amp; I&rsquo;m a senior software engineer at <a href="https://opensauced.pizza">OpenSauced</a>
-where I&rsquo;m building open source insights tooling.</p>
+where I&rsquo;m building our backend infrastructure and open source insights tooling.</p>
 <p>In the past, I&rsquo;ve worked at AWS, VMware, &amp; Pivotal Cloud Foundry
 where I worked on open source software, observability &amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
