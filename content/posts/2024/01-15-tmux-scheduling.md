@@ -1,6 +1,6 @@
 ---
 title: "Job scheduling with tmux"
-date: 2024-01-13T09:00:00-00:00
+date: 2024-01-15T09:00:00-00:00
 ---
 
 Tmux is one of my favorite utilities: it's a terminal multiplexer
