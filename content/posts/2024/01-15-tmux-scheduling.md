@@ -159,7 +159,7 @@ But many of the same rules, flags, and syntaxes also apply to creating new windo
 Tmux has a strong paradigm that is consistent across different ways to multi-plex shells
 so it'd be just as simple to create 2 windows instead of two panes that we then send commands to:
 
-```
+```sh
 #!/usr/bin/env bash
 
 # Create named windows
@@ -182,7 +182,7 @@ denote global environment variables (env vars available to all new sessions)
 and session based env vars. In newer versions of tmux, I recommend setting the local session
 variable with the `-e` flag:
 
-```
+```sh
 tmux new -s my-session -d -e MYVAR=myvalue -c /dir
 ```
 
