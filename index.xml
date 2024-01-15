@@ -6,13 +6,13 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Job scheduling with tmux</title>
-      <link>https://johncodes.com/posts/2024/01-13-tmux-scheduling/</link>
-      <pubDate>Sat, 13 Jan 2024 09:00:00 +0000</pubDate>
+      <link>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</link>
+      <pubDate>Mon, 15 Jan 2024 09:00:00 +0000</pubDate>
       
-      <guid>https://johncodes.com/posts/2024/01-13-tmux-scheduling/</guid>
+      <guid>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</guid>
       <description>Tmux is one of my favorite utilities: it&amp;rsquo;s a terminal multiplexer that lets you create persistent shell sessions, panes, windows, etc. all within a single terminal. It&amp;rsquo;s a great way to organize your shell sessions and natively give you multi-shell environments to work in without having to rely on a terminal program for those features.
 You&amp;rsquo;d think in a world of modern applications and fancy terminals like iTerm 2 and Kitty, you wouldn&amp;rsquo;t need such a utility.</description>
       <content:encoded><![CDATA[<p>Tmux is one of my favorite utilities: it&rsquo;s a terminal multiplexer
