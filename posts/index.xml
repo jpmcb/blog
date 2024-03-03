@@ -6,7 +6,180 @@
     <description>Recent content in Posts on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jan 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Mar 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awk: A beginners guide for humans</title>
+      <link>https://johncodes.com/posts/2024/03-03-awk-basics/</link>
+      <pubDate>Sun, 03 Mar 2024 09:00:00 +0000</pubDate>
+      
+      <guid>https://johncodes.com/posts/2024/03-03-awk-basics/</guid>
+      <description>Earlier this week, I had a file of names, each delimited by a newline:
+john jack jill But really, I needed this file to be in the form:
+{ &amp;#34;full_name&amp;#34;: &amp;#34;name&amp;#34; }, This file wasn&amp;rsquo;t absolutely huge, but it was big enough that editing it manually would have been annoying. I thought to myself, &amp;ldquo;instead of editing this file manually or generating it correctly, how can I spend the maximum amount of time using a bespoke tool to get it in the right format?</description>
+      <content:encoded><![CDATA[<p>Earlier this week, I had a file of names, each delimited by a newline:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>john
+</span></span><span style="display:flex;"><span>jack
+</span></span><span style="display:flex;"><span>jill
+</span></span></code></pre></div><p>But really, I needed this file to be in the form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;full_name&#34;: &#34;name&#34;
+</span></span><span style="display:flex;"><span>},
+</span></span></code></pre></div><p>This file wasn&rsquo;t absolutely huge, but it was big enough that editing it manually
+would have been annoying. I thought to myself, &ldquo;instead of editing this file manually
+or generating it correctly, how can I spend the maximum amount of time
+using a bespoke tool to get it in the right format?
+A neovim macro? Sed? Write some python? Why not awk!&rdquo;</p>
+<p>In the end, here&rsquo;s the awk command I used:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print &#34;{\n    \&#34;full_name\&#34;: \&#34;&#34; $0 &#34;\&#34;\n},&#34;}&#39;</span> names.txt
+</span></span></code></pre></div><p>This printed each line surrounded by the appropriate curly braces and whitespace.</p>
+<hr>
+<p>Let&rsquo;s break down how I did this and build the command one bit at a time:</p>
+<ol>
+<li>Awk is a Linux command line utility just like any other.
+But, similar to something like like python or lua,
+it&rsquo;s a special program interpreter that is especially
+good at scanning and processing inputs with small (or big) one liner programs you give it.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;&lt;an-awk-program&gt;&#39;</span> some-input-file
+</span></span></code></pre></div><ol start="2">
+<li>Let&rsquo;s start simple and just print the names from the file directly to stdout:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print $0}&#39;</span> names.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>john
+</span></span><span style="display:flex;"><span>jack
+</span></span><span style="display:flex;"><span>jill
+</span></span></code></pre></div><p>within the <code>''</code>, we provide awk with a small program it will execute.
+This is basically the &ldquo;hello world&rdquo; of awk: it just takes each line and prints it out
+just like it is, unedited, in the file.</p>
+<p>But what is <code>$0</code>?
+Awk has the concept of &ldquo;columns&rdquo; in a file: these are typically space delimited.
+So a file like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1 2 3
+</span></span><span style="display:flex;"><span>4 5 6 
+</span></span></code></pre></div><p>has 3 columns and 2 rows.
+The <code>$0</code> variable is a special one and represents the entire row of arguments.
+Then, each <code>$N</code> is the N-th (where 1 is the first column) argument in that row.</p>
+<p>So, if we only wanted the 1st column in the above file with 3 columns,
+we could run the following awk program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print $1}&#39;</span> numbers.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>1
+</span></span><span style="display:flex;"><span>4
+</span></span></code></pre></div><p>If we only wanted the 2nd and 3rd columns, we could run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print $2 &#34; &#34; $3}&#39;</span> numbers.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>2 3
+</span></span><span style="display:flex;"><span>5 6
+</span></span></code></pre></div><p>(notice the blank <code>&quot; &quot;</code> we provide as a string to force some whitespace formatting
+so the columns are closer to what exists in the original file.</p>
+<ol start="3">
+<li>Next, lets add in some additional text to print out:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print &#34;{\&#34;full_name\&#34;: \&#34;&#34; $0 &#34;\&#34;},&#34;}&#39;</span> names.txt
+</span></span></code></pre></div><p>First thing you&rsquo;ll notice is a confusing array of <code>&quot;</code></p>
+<ul>
+<li>the first <code>&quot;</code> denotes the beginning of a string output for awk to print.
+The subsequent <code>\&quot;</code> are literal escaped quotes which we <em>want</em> to appear in the output.
+We eventually end the first string with a standalone <code>&quot;</code> to then print the line with the <code>$0</code> variable
+and then we enter a string again to add the trailing bracket <code>}</code> and comma <code>,</code></li>
+</ul>
+<p>When run, this outputs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{&#34;full_name&#34;: &#34;john&#34;},
+</span></span><span style="display:flex;"><span>{&#34;full_name&#34;: &#34;jack&#34;},
+</span></span><span style="display:flex;"><span>{&#34;full_name&#34;: &#34;jill&#34;},
+</span></span></code></pre></div><ol start="4">
+<li>Now we&rsquo;re getting somewhere! Let&rsquo;s finish this off by adding the additional white spacing:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print &#34;{\n    \&#34;full_name\&#34;: \&#34;&#34; $0 &#34;\&#34;\n},&#34;}&#39;</span> names.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;full_name&#34;: &#34;john&#34;
+</span></span><span style="display:flex;"><span>},
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;full_name&#34;: &#34;jack&#34;
+</span></span><span style="display:flex;"><span>},
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;full_name&#34;: &#34;jill&#34;
+</span></span><span style="display:flex;"><span>},
+</span></span></code></pre></div><p>The added whitespace within the strings (by including the literal escaped newlines <code>\n</code>)
+are printed to give the correct, desired output!</p>
+<ol start="5">
+<li>Bonus: what if we wanted to remove the trailing comma?
+What if we wanted to wrap this all in <code>[...]</code> to be closer to valid json?
+Yeah, yeah, I know, <code>jq</code> exists, but by the power of our lord and savior awk,
+all things possible!!</li>
+</ol>
+<p>To remove the trailing comma, we can use a sliding window technique:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;NR &gt; 1 {print prev &#34;,&#34;} {prev = &#34;{\n    \&#34;full_name\&#34;: \&#34;&#34; $0 &#34;\&#34;\n}&#34;} END {print prev}&#39;</span> names.txt
+</span></span></code></pre></div><p>This introduces abit more complexity.</p>
+<p>First, we add the <code>NR</code> concept: <code>NR</code> is the &ldquo;number of records&rdquo;.
+This can be really useful for checking progress,
+doing different things based on number of records processed, etc.</p>
+<p>So, after the first record, we print the comma.
+We also always store the &ldquo;previous&rdquo; chunk in a <code>prev</code> variable:
+this is the N + 1 sliding window. Nothing actually happens when the first record is processed,
+it&rsquo;s line output is simply stored in the <code>prev</code> variable to be printed on the next iteration.
+This way, we&rsquo;re always one behind the current record
+and when we reach the very end (using the <code>END</code> keyword),
+we can print the previous chunk without the trailing comma!</p>
+<p>To wrap it up the entire output in a square bracket and give it the correct spacing,
+we can use this awk program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-awk" data-lang="awk"><span style="display:flex;"><span>BEGIN {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Print the opening bracket for the JSON array</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#34;[&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NR <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># after the first line, print the previously stored chunk</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">print</span> <span style="color:#a6e22e">prev</span> <span style="color:#e6db74">&#34;,&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Store the current line in a JSON object format</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">prev</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;    {\n        \&#34;full_name\&#34;: \&#34;&#34;</span> <span style="color:#f92672">$</span><span style="color:#ae81ff">0</span> <span style="color:#e6db74">&#34;\&#34;\n    }&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>END {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Print the last line stored in prev and close the JSON array</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">print</span> <span style="color:#a6e22e">prev</span> <span style="color:#e6db74">&#34;\n]&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can run this awk program via a file instead of doing all of that on the command line directly.
+This greatly helps with readability, maintainability, etc.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -f format_names.awk names.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        &#34;full_name&#34;: &#34;john&#34;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        &#34;full_name&#34;: &#34;jack&#34;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        &#34;full_name&#34;: &#34;jill&#34;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Just like the previous awk program, we are printing each segment and then at the end,
+leaving off the trailing comma. But this time, at the beginning of the program,
+using <code>BEGIN</code> and <code>END</code>, we print an opening and closing bracket.</p>
+<hr>
+<p>Happy awk-ing and good luck!</p>
+<hr>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Job scheduling with tmux</title>
       <link>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</link>
