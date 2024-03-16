@@ -6,7 +6,152 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Mar 2024 09:00:00 +0000</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Mar 2024 10:00:00 -0600</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Editing Astro projects with Neovim</title>
+      <link>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</link>
+      <pubDate>Sat, 16 Mar 2024 10:00:00 -0600</pubDate>
+      
+      <guid>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</guid>
+      <description>Astro is a fast &amp;amp; dynamic web framework designed to be flexible enough for small static websites, blogs, big interactive apps, and more. I&amp;rsquo;ve been interested in checking it out since building silly little static websites that are &amp;ldquo;Content-first&amp;rdquo; is a fun past-time of mine.
+Since Neovim is my main text editor, it took abit of configuration fu to get things up and running.
+Herein is my Astro setup:
+Prerequisites You probably already have most of these tools installed since they have become synonymous with most Neovim configs:</description>
+      <content:encoded><![CDATA[<p><a href="https://astro.build/">Astro</a> is a fast &amp; dynamic web framework designed to be flexible
+enough for small static websites, blogs, big interactive apps, and more.
+I&rsquo;ve been interested in checking it out since building silly little static websites
+that are &ldquo;Content-first&rdquo; is a fun past-time of mine.</p>
+<p>Since Neovim is my main text editor, it took <em>abit</em> of configuration fu
+to get things up and running.</p>
+<p>Herein is my Astro setup:</p>
+<hr>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You probably already have most of these tools installed since they have become
+synonymous with most Neovim configs:</p>
+<ul>
+<li>A newer version of <a href="https://github.com/neovim/neovim">Neovim</a> -
+At the time of this writing, <a href="https://github.com/neovim/neovim/releases/tag/v0.9.5">the latest version is v0.9.5</a>.
+I typically recommend staying on the latest Neovim version since it gets you the latest
+features that various plugins may take advantage of.</li>
+<li>A package manager - these days, I (and it seems most of the Neovim community)
+typically recommend <a href="https://github.com/folke/lazy.nvim">Lazy.nvim</a></li>
+<li><a href="https://github.com/nvim-treesitter/nvim-treesitter">Treesitter for Neovim</a> - an essential tool
+for syntax parsing and definitions.</li>
+</ul>
+<h2 id="install-treesitter-parsers">Install Treesitter parsers</h2>
+<p>Astro files are actually amalgamations of several technologies.
+Depending on your Astro configuration, there may be HTML, Typescript, CSS, JavaScript, Tsx, etc.</p>
+<p>In order to get syntax highlighting and parsing, you&rsquo;ll need to install
+a few Treesitter parsers that enable Treesitter to introspect the different
+chunks of an Astro file:</p>
+<p>On the Neovim command palate, first make sure Treesitter is updated:</p>
+<pre tabindex="0"><code>:TSUpdate
+</code></pre><p>Then, install the parsers:</p>
+<pre tabindex="0"><code>:TSInstall astro
+:TSInstall css
+:TSInstall typescript
+:TSInstall tsx
+</code></pre><p>Depending on your Treesitter setup, you may choose to ensure these parsers are always
+installed via the <code>nvim-treesitter</code> plugin:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>require(<span style="color:#e6db74">&#34;nvim-treesitter.configs&#34;</span>).setup({
+</span></span><span style="display:flex;"><span>	ensured_installed <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;astro&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;css&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;typescript&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;tsx&#34;</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This way, you don&rsquo;t have to manually remember to install these parsers:
+they&rsquo;ll just be there thanks to Treesitter&rsquo;s config.</p>
+<h2 id="treesitter-grammar-plugin">Treesitter grammar plugin</h2>
+<p>Having the parsers alone won&rsquo;t give Treesitter everything it needs to correctly
+parse and crawl your Astro files: you&rsquo;ll also need to install <a href="https://github.com/virchau13/tree-sitter-astro">this community</a>
+plugin that provides Treesitter with the appropriate grammar for how to <em>actually</em>
+use the parsers we&rsquo;ve installed to interpret those files.</p>
+<p>In the future, this may eventually be upstreamed into Treesitter itself.
+But for now, at the time of this writing, you&rsquo;ll need this additional plugin
+to instruct Treesitter on how to understand <code>.astro</code> files.</p>
+<p>In short, this ensures that the Astro specification is understood by Treesitter:</p>
+<pre tabindex="0"><code>---
+{typescript}
+---
+{html}
+</code></pre><p>having Typescript highlighting and syntax definitions in the frontmatter.
+And HTML / Tsx in the rest of the <code>.astro</code> file.</p>
+<p>To install the plugin, using Lazy in your lua configs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">-- Astro treesitter grammar bindings</span>
+</span></span><span style="display:flex;"><span>{ <span style="color:#e6db74">&#34;virchau13/tree-sitter-astro&#34;</span> },
+</span></span></code></pre></div><h2 id="astro-language-server">Astro language server</h2>
+<p>As you may already know, language servers for Neovim are the bread and butter
+of modern code editing. Without one, you&rsquo;re <em>almost</em> back to the dark age.</p>
+<p>In order to get modern functionality when editing your Astro files
+(like inline suggestions, &ldquo;Go to definition&rdquo;, &ldquo;Refactor across project&rdquo;, &ldquo;Find types&rdquo;, etc.)
+you&rsquo;ll need an Astro language server.</p>
+<p>To install the server for use by Neovim, you can get it globally via <code>npm</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm install -g @astrojs/language-server
+</span></span></code></pre></div><h4 id="optional-install-language-server-through-mason">Optional: Install language server through Mason</h4>
+<p>These days, I&rsquo;ve moved away from installing one off bespoke editor tools
+from a myriad of ecosystems.
+And, instead, have chosen to unify my editor toolchain using <a href="https://github.com/williamboman/mason.nvim">Mason</a>:</p>
+<pre tabindex="0"><code>:MasonInstall astro-language-server
+</code></pre><p>This installs the language server through the Mason framework
+and allows me to manage <em>all</em> of my Neovim editor tools (LSPs, DAPs, linters, etc.)
+from within Mason instead of through one off package managers.
+More importantly, it gives me consistency across the many different machines
+I may be using my Neovim configs with:
+no more jumping to a new machine and having to remember
+what commands I used to install some random, one-off tool.
+Now, it&rsquo;s all just managed by Mason.</p>
+<p>Further, within Mason&rsquo;s config (and the <code>mason-lspconfig</code> config helper plugin)
+I can force the Astro language server to be installed automatically.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>require(<span style="color:#e6db74">&#34;mason&#34;</span>).setup()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Ensures the servers named in nvim-lspconfig are installed by Mason</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>require(<span style="color:#e6db74">&#34;mason-lspconfig&#34;</span>).setup({
+</span></span><span style="display:flex;"><span>	ensure_installed <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;astro&#34;</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="configure-your-astro-language-server">Configure your Astro language server</h2>
+<p>To actually enable and attach your Astro language server when editing <code>.astro</code> files,
+you&rsquo;ll need to configure it via <a href="https://github.com/neovim/nvim-lspconfig">the <code>nvim-lspconfig</code> plugin</a>;
+the configuration binding plugin for all language servers used by Neovim.</p>
+<p>To install <code>nvim-lspconfig</code> via Lazy.nvim:</p>
+<pre tabindex="0"><code>-- nvim LSP configs
+{ &#34;neovim/nvim-lspconfig&#34; },
+</code></pre><p>Configuring the language server is actually rather simple, but it&rsquo;s an important step
+to ensure <code>.astro</code> files are &ldquo;seen&rdquo; by Neovim and attached to your installed Astro language server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">local</span> lspconfig <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;lspconfig&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Astro langauge server</span>
+</span></span><span style="display:flex;"><span>lspconfig.astro.setup({})
+</span></span></code></pre></div><p>For a full understanding of the defaults and possible configuration options,
+<a href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#astro">read up on it here</a>.</p>
+<h2 id="fin">Fin</h2>
+<p>And that&rsquo;s it! This gets you the basic setup with syntax highlighting, the Astro language server, etc.
+Happy coding!</p>
+<script src="https://giscus.app/client.js"
+        data-repo="jpmcb/blog"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Awk: A beginners guide for humans</title>
       <link>https://johncodes.com/posts/2024/03-03-awk-basics/</link>
