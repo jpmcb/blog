@@ -1,5 +1,5 @@
 ---
-title: "Astro projects with Neovim: My setup"
+title: "Editing Astro projects with Neovim"
 date: 2024-03-16T10:00:00-06:00
 ---
 
