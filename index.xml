@@ -6,17 +6,135 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Mar 2024 10:00:00 -0600</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Sep 2024 08:00:00 -0600</lastBuildDate><atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Binging on Bytes: The Danger of Overprocessed Engineering Content</title>
+      <link>https://johncodes.com/posts/2024/09-03-binging-on-bytes/</link>
+      <pubDate>Wed, 04 Sep 2024 08:00:00 -0600</pubDate>
+      
+      <guid>https://johncodes.com/posts/2024/09-03-binging-on-bytes/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s universally agreed that eating a lot of junk food and candy over your lifetime will lead to all sorts of problems:
+diabetes, increased cancer risk, obesity, heart problems, digestive issues, etc.&lt;/p&gt;
+&lt;p&gt;And if you grew up in the early 90s, maybe you learned these lessons from the &amp;ldquo;Food Pyramid&amp;rdquo;:
+an ominous, overly simplified, all encompassing guide to the various food groups.
+The pyramid was an attempt to teach the youth of America what acceptable portion sizes are,
+how to balance their diet, and which food groups to avoid.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>It&rsquo;s universally agreed that eating a lot of junk food and candy over your lifetime will lead to all sorts of problems:
+diabetes, increased cancer risk, obesity, heart problems, digestive issues, etc.</p>
+<p>And if you grew up in the early 90s, maybe you learned these lessons from the &ldquo;Food Pyramid&rdquo;:
+an ominous, overly simplified, all encompassing guide to the various food groups.
+The pyramid was an attempt to teach the youth of America what acceptable portion sizes are,
+how to balance their diet, and which food groups to avoid.</p>
+<p><img loading="lazy" src="/images/food-pyramid.png" alt="Food pyramid"  />
+</p>
+<p>Towards the bottom of the pyramid, forming the base of the whole structure,
+are the most essential foods: fruits, veggies, and basic grains.
+Further up, with less area of the overall pyramid, animal by-products like cheese, milk, eggs, and meat.
+And <em>all the way at the top</em>, with nearly no area of the pyramid at all, fats and sweets.</p>
+<p>While the overall impact of this early 90s initiative is questionable, at best,
+in a culture consumed by fast food and cheap eats, the idea behind the food pyramid was simple:
+eat fewer foods high in fats and sugars. Especially those of the over-processed kind.</p>
+<p>We can think of the food pyramid as a breakdown of the basic &ldquo;building blocks&rdquo;
+of what should form a healthy diet. The blocks towards the bottom should make
+up the majority of someone&rsquo;s diet. While the blocks at the top should form the smallest
+part of one&rsquo;s diet. Inverse that relationship, and you have an incredibly unstable
+upside-down pyramid, ready to topple over.</p>
+<p>Ultimately, food in any food group breaks down into calories, proteins, minerals, vitamins,
+and all the other nutritional components we can digest. Even ultra-processed foods
+break down into these components: but they are often overly inundated with sugar and fat
+to make it insatiable to the human palate.</p>
+<p>We can apply this same idea to the media we consume.</p>
+<p>Books and other &ldquo;slow&rdquo; media
+make up the base. TV, news, and other mass media make up the middle. And at the top,
+social media: the &ldquo;candy and soda&rdquo; of modern media consumption.</p>
+<p><a href="https://calnewport.com/on-ultra-processed-content/">As Cal Newport put it:</a></p>
+<blockquote>
+<p>&hellip; ultra-processed foods are created by first breaking down cheap stock foods
+into their basic elements, and then recombining these ingredients into something
+unnatural but irresistible. Something similar happens with social media content.
+Whereas the stock ingredients for ultra-processed food are found in vast fields
+of cheap corn and soy, social media content draws on vast databases of user-generated
+information — posts, reactions, videos, quips, and memes. Recommendation algorithms
+then sift through this monumental collection of proto-content to find new, hard to
+resist combinations that will appeal to users.</p>
+</blockquote>
+<p>This same structure applies to &ldquo;engineering&rdquo; content: at the bottom are books,
+documentation, research papers, and conference talks. Things that require <em>a lot</em>
+of time, effort, energy, and invention from the creator to produce. This is the 1st tier.</p>
+<p>In the middle are well thought out technical blogs, focused forums, and well structured tutorials.
+This is the 2nd tier.</p>
+<p>And towards the top, the most attention seeking and algorithmic driven are social media posts,
+YouTube videos, and free for all places like Hacker News and Reddit. This is the 3rd tier.</p>
+<p><img loading="lazy" src="/images/content-pyramid.png" alt="Content pyramid"  />
+</p>
+<p>Yet, somehow, in a never ending pursuit of becoming a 10x engineer, some really clever individuals with growing social media influence
+introduced a 4th, even more ultra-processed tier: reaction-content.</p>
+<p>If you didn&rsquo;t know, &ldquo;reaction-content&rdquo; started as a way for YouTubers to pump out
+nearly infinite daily videos with minimal effort by &ldquo;reacting&rdquo; to <em>other</em> pieces of content, usually video.
+Example: it&rsquo;s not uncommon to see <em>&ldquo;You laugh you loose!&rdquo;</em> pieces of reaction-content on YouTube.
+This is where someone watches a super-cut of funny videos and &hellip; <em>well</em>, they attempt to not laugh.
+<em>You</em>, the viewer, are the one watching the person <em>watching</em> something.
+You are not directly consuming the funny videos. You are consuming content of someone consuming content.</p>
+<p>The levels of inception reaction-content can get into can be abit mind numbing.</p>
+<p>And, unfortunately, what technical, engineering reaction-content has become isn&rsquo;t really any better:
+instead of watching something, you&rsquo;ll often see people reading something from
+tiers lower in the content pyramid. The typical formula these days for large engineering YouTubers like
+<a href="https://www.youtube.com/@ThePrimeTimeagen">ThePrimeagen</a> or <a href="https://www.youtube.com/@t3dotgg">Theo</a>
+is to record a super-cut of themselves (often during a live-stream to ensure the parasocial relationship keeps going full force)
+reading or reacting to some viral blog or post on Hacker News or Reddit. These days, it&rsquo;s very rare to
+find large engineering YouTubers creating content in the 1st or 2nd tier of
+the content pyramid. Sometimes, you&rsquo;ll even see reaction-content to <em>other</em> pieces of reaction-content
+creating a machine of reacting to reactions that becomes a whole meta-verse in itself.</p>
+<p>There seems to be no way to escape it either: I&rsquo;ve seen a lot of technical creators go along the creator treadmill from tier 2 to tier 3
+and, eventually, land in tier 4 doing reaction videos: they start with making high quality, very good technical tutorials or deep dives.
+Eventually it devolves to posting on social media with hot takes or consumable pieces of content on their area of expertise.
+And enevitably, if they stay on the dug in trail of the online creator, they&rsquo;ll find themselves doing online reaction-content.</p>
+<p><img loading="lazy" src="/images/reaction-content-pyramid.png" alt="Reaction-content pyramid"  />
+</p>
+<p>Why is this a problem?</p>
+<p>For a few years now, I&rsquo;ve worried about the general ability of engineers in the industry,
+both new and old, to think for themselves. While the <a href="https://medialiteracynow.org/nationalsurvey2022/">overall media literacy of adults in the United States is decreasing</a>,
+I believe part of what&rsquo;s to blame is this 4th tier of ultra-mega-processed content: hundreds and hundreds of thousands of people
+every day are being spoon fed opinions, reactions, and ideas that are accepted as fact
+just because it comes from their favorite engineering YouTuber.</p>
+<p>I recognize the irony here: I&rsquo;ve made technical reaction-content in the past.
+I once had a TikTok acount with 100k+ followers where I mostly just reacted
+to the latest technical news of the day. But, as a creator once in the jaws of the system, I understand the struggle: it&rsquo;s nearly impossible to
+<em>not</em> get sucked into the trap of algorithmic ultra-mega-processed content.
+These platforms are fighting with a user base who has an increasingly diminished
+attention span. And often times, pushing the most shocking, condensed, and &ldquo;clickable&rdquo;
+pieces of media is what keeps users and advertisers on the platform.
+And creators want their content consumed. So, creators on platforms
+are often subtly nudged to continue doing the thing that eventually puts them on the path
+of &ldquo;easily consumable&rdquo; content where very, very little is asked of the audience.</p>
+<p><em>&ldquo;Am I empowering my audience? Or am I simply asking them to blindly consume?&rdquo;</em></p>
+<p>One of the marks of really excellent engineers is the ability for them to process a lot of raw information
+and come to a sensible, weighted technical decision. Maybe you&rsquo;re considering a new framework
+to implement a critical system in and you need to consider performance trade-offs, team strengths,
+organization requirements, budget, and so much more.</p>
+<p>The worst possible thing someone in this situation could do is make a knee-jerk
+decision based on the latest reaction-content trend.</p>
+<p>Be <em>extremely</em> mindful of your own personal &ldquo;content pyramid diet&rdquo;.
+How much of the 3rd or 4th tier are you consuming? Strive to cultivate a personal media consumption habit that prioritizes
+slow media and quality technical blogs that empower your own decision making capabilities and technical skills.
+Avoid consuming things at the top of the content pyramid.
+Otherwise, much like a poor nutritional diet will whither away your body, you risk rotting away your technical skills.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Editing Astro projects with Neovim</title>
       <link>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</link>
       <pubDate>Sat, 16 Mar 2024 10:00:00 -0600</pubDate>
       
       <guid>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</guid>
-      <description>Astro is a fast &amp;amp; dynamic web framework designed to be flexible enough for small static websites, blogs, big interactive apps, and more. I&amp;rsquo;ve been interested in checking it out since building silly little static websites that are &amp;ldquo;Content-first&amp;rdquo; is a fun past-time of mine.
-Since Neovim is my main text editor, it took abit of configuration fu to get things up and running.
-Herein is my Astro setup:
-Prerequisites You probably already have most of these tools installed since they have become synonymous with most Neovim configs:</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://astro.build/&#34;&gt;Astro&lt;/a&gt; is a fast &amp;amp; dynamic web framework designed to be flexible
+enough for small static websites, blogs, big interactive apps, and more.
+I&amp;rsquo;ve been interested in checking it out since building silly little static websites
+that are &amp;ldquo;Content-first&amp;rdquo; is a fun past-time of mine.&lt;/p&gt;
+&lt;p&gt;Since Neovim is my main text editor, it took &lt;em&gt;abit&lt;/em&gt; of configuration fu
+to get things up and running.&lt;/p&gt;
+&lt;p&gt;Herein is my Astro setup:&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><a href="https://astro.build/">Astro</a> is a fast &amp; dynamic web framework designed to be flexible
 enough for small static websites, blogs, big interactive apps, and more.
 I&rsquo;ve been interested in checking it out since building silly little static websites
@@ -158,9 +276,19 @@ Happy coding!</p>
       <pubDate>Sun, 03 Mar 2024 09:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2024/03-03-awk-basics/</guid>
-      <description>Earlier this week, I had a file of names, each delimited by a newline:
-john jack jill But really, I needed this file to be in the form:
-{ &amp;#34;full_name&amp;#34;: &amp;#34;name&amp;#34; }, This file wasn&amp;rsquo;t absolutely huge, but it was big enough that editing it manually would have been annoying. I thought to myself, &amp;ldquo;instead of editing this file manually or generating it correctly, how can I spend the maximum amount of time using a bespoke tool to get it in the right format?</description>
+      <description>&lt;p&gt;Earlier this week, I had a file of names, each delimited by a newline:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;john
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;jack
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;jill
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But really, I needed this file to be in the form:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;#34;full_name&amp;#34;: &amp;#34;name&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This file wasn&amp;rsquo;t absolutely huge, but it was big enough that editing it manually
+would have been annoying. I thought to myself, &amp;ldquo;instead of editing this file manually
+or generating it correctly, how can I spend the maximum amount of time
+using a bespoke tool to get it in the right format?
+A neovim macro? Sed? Write some python? Why not awk!&amp;rdquo;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Earlier this week, I had a file of names, each delimited by a newline:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>john
 </span></span><span style="display:flex;"><span>jack
@@ -331,8 +459,15 @@ using <code>BEGIN</code> and <code>END</code>, we print an opening and closing b
       <pubDate>Mon, 15 Jan 2024 09:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</guid>
-      <description>Tmux is one of my favorite utilities: it&amp;rsquo;s a terminal multiplexer that lets you create persistent shell sessions, panes, windows, etc. all within a single terminal. It&amp;rsquo;s a great way to organize your shell sessions and natively give you multi-shell environments to work in without having to rely on a terminal program for those features.
-You&amp;rsquo;d think in a world of modern applications and fancy terminals like iTerm 2 and Kitty, you wouldn&amp;rsquo;t need such a utility.</description>
+      <description>&lt;p&gt;Tmux is one of my favorite utilities: it&amp;rsquo;s a terminal multiplexer
+that lets you create persistent shell sessions, panes, windows, etc. all within a single
+terminal. It&amp;rsquo;s a great way to organize your shell sessions and natively give you
+multi-shell environments to work in without having to rely on a terminal program for those features.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;d think in a world of modern applications and fancy terminals
+like iTerm 2 and Kitty, you wouldn&amp;rsquo;t need such a utility. But time and time again,
+tmux has proven itself to be a powerful and essential tool.
+Especially when working with remote machines in the cloud or across SSH sessions,
+tmux is critical in maintaining my organization and getting things done.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Tmux is one of my favorite utilities: it&rsquo;s a terminal multiplexer
 that lets you create persistent shell sessions, panes, windows, etc. all within a single
 terminal. It&rsquo;s a great way to organize your shell sessions and natively give you
@@ -558,10 +693,19 @@ components of our system organized in a system I know well and can easily wrap m
       <pubDate>Mon, 01 Jan 2024 09:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2024/01-01-in-review/</guid>
-      <description>I had a huge year.
-And every year, around this time, when I have a well deserved opportunity to take a break and prepare for the next year, I like to reflect: think on the year&amp;rsquo;s accomplishments, derive some lessons learned, and drink in everything from my experiences.
-Herein are my musings and thoughts regarding the last year.
-Leaving AWS I still think about my time at AWS: it was a short, but very sweet and formative period for me.</description>
+      <description>&lt;p&gt;I had a huge year.&lt;/p&gt;
+&lt;p&gt;And every year, around this time, when I have a well deserved opportunity to
+take a break and prepare for the next year, I like to reflect:
+think on the year&amp;rsquo;s accomplishments, derive some lessons learned, and drink in everything from my experiences.&lt;/p&gt;
+&lt;p&gt;Herein are my musings and thoughts regarding the last year.&lt;/p&gt;
+&lt;h2 id=&#34;leaving-aws&#34;&gt;Leaving AWS&lt;/h2&gt;
+&lt;p&gt;I still think about my time at AWS:
+it was a short, but very sweet and formative period for me.
+Out of the ashes of the Broadcom / VMware acquisition news,
+an announcement that many felt was deeply misaligned with VMware&amp;rsquo;s Kubernetes vision,
+I went searching for something else in mid 2022.
+When I eventually joined the Amazon Linux and Bottlerocket team, I felt I had found a new home among people I related to:
+peers who were passionate and deeply curious about programming, the art of computer science, and Linux.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I had a huge year.</p>
 <p>And every year, around this time, when I have a well deserved opportunity to
 take a break and prepare for the next year, I like to reflect:
@@ -757,8 +901,13 @@ Good luck in the new year!!</p>
       <pubDate>Thu, 28 Dec 2023 09:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</guid>
-      <description>I recently read this excellent little bit of programming horror titled: &amp;ldquo;4 billion if statements&amp;rdquo;.
-It chronicles how one could use an insane number of hard coded if statements to check if any given 32 bit number is even or odd. Instead of do this the normal and efficient way with a modulus operator and for loop, hard coding if statements requires some clever meta programming, some custom assembly code, and a nearly 40 GB compiled binary for all the comparisons.</description>
+      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://andreasjhkarlsson.github.io/jekyll/update/2023/12/27/4-billion-if-statements.html&#34;&gt;this &lt;em&gt;excellent&lt;/em&gt; little bit of programming horror&lt;/a&gt;
+titled: &lt;em&gt;&amp;ldquo;4 billion if statements&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;It chronicles how one could use an &lt;em&gt;insane&lt;/em&gt; number of hard coded if statements
+to check if any given 32 bit number is even or odd. Instead of do this the normal
+and efficient way with a modulus operator and &lt;code&gt;for&lt;/code&gt; loop,
+hard coding if statements requires some clever meta programming,
+some custom assembly code, and a nearly 40 GB compiled binary for all the comparisons.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>I recently read <a href="https://andreasjhkarlsson.github.io/jekyll/update/2023/12/27/4-billion-if-statements.html">this <em>excellent</em> little bit of programming horror</a>
 titled: <em>&ldquo;4 billion if statements&rdquo;</em>.</p>
 <p>It chronicles how one could use an <em>insane</em> number of hard coded if statements
@@ -1134,9 +1283,20 @@ I found there was a tricky soft limit on ints in bash:</p>
       <pubDate>Sun, 03 Sep 2023 09:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/09-02-there-is-no-secure-software-supply-chain/</guid>
-      <description>Years ago, entrepreneurs and innovators predicated that “software would eat the world”.
-And to little surprise, year after year, the world has become more and more reliant on software solutions. Often times, that software is (or indirectly depends on) some open source software, maintained by a group of people whose only affiliation to one another may be participation in that open source project’s community.
-But we’re in trouble. The security of open source software is under threat and we’re running out of people to reliably maintain those projects.</description>
+      <description>&lt;p&gt;Years ago, entrepreneurs and innovators predicated that
+&lt;a href=&#34;https://a16z.com/2011/08/20/why-software-is-eating-the-world/&#34;&gt;“software would eat the world”.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And to little surprise, year after year, the world has become more and
+more reliant on software solutions. Often times, that software is (or
+indirectly depends on) some open source software, maintained by a group of
+people whose only affiliation to one another may be participation in that open
+source project’s community.&lt;/p&gt;
+&lt;p&gt;But we’re in trouble. The security of open source
+software is under threat and we’re running out of people to reliably maintain
+those projects. And as our stacks get deeper, our dependencies become more
+interlinked, leading to terrifying compromises in the secure software
+supply-chain. For a perfect example of what’s happening in the open source
+world right now, we don’t need to look much further than the extremely popular
+&lt;a href=&#34;https://github.com/orgs/gorilla/repositories&#34;&gt;Gorilla toolkit for Go.&lt;/a&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Years ago, entrepreneurs and innovators predicated that
 <a href="https://a16z.com/2011/08/20/why-software-is-eating-the-world/">“software would eat the world”.</a></p>
 <p>And to little surprise, year after year, the world has become more and
@@ -1389,7 +1549,13 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/08-11-prestige/</guid>
-      <description>The world of software engineering influencers, what I typically like to refer to as &amp;ldquo;tech-fluencers&amp;rdquo;, has grown significantly in the last few years. There are people who have built entire personal brands and businesses solely on the basis of their online tech content. And many massive technology companies now participate in the same spheres that 5 years ago would have been unheard of (just think about all the memes major tech companies have created in the last few years).</description>
+      <description>&lt;p&gt;The world of software engineering influencers, what I typically like to refer to
+as &amp;ldquo;tech-fluencers&amp;rdquo;, has grown significantly in the last few years. There are
+people who have built entire personal brands and businesses solely on the basis
+of their online tech content. And many massive technology companies now
+participate in the same spheres that 5 years ago would have been unheard of
+(just think about all the memes major tech companies have created in the last
+few years).&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>The world of software engineering influencers, what I typically like to refer to
 as &ldquo;tech-fluencers&rdquo;, has grown significantly in the last few years. There are
 people who have built entire personal brands and businesses solely on the basis
@@ -1557,9 +1723,15 @@ the typical &ldquo;tech-fluencers&rdquo; content grind.</p>
       <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/06-29-on-maintaining-cobra/</guid>
-      <description>There&amp;rsquo;s something I feel like I need to acknowledge around my maintainership of spf13/cobra.
-During my time at AWS, I had a really hard time contributing to open source projects that were important to me (and important to the broader ecosystem). I didn&amp;rsquo;t have the energy, but more importantly, I didn&amp;rsquo;t have the bandwidth.
-There&amp;rsquo;s alot of red tape to get through when it comes to open source at Amazon. After all, AWS alone is a massive business unit with thousands of products and tens of thousands of engineers all around the world.</description>
+      <description>&lt;p&gt;There&amp;rsquo;s something I feel like I need to acknowledge
+around &lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;my maintainership of&lt;/a&gt;
+spf13/cobra.&lt;/p&gt;
+&lt;p&gt;During my time at AWS, I had a &lt;em&gt;really&lt;/em&gt; hard time contributing to open source
+projects that were important to me (and important to the broader ecosystem).
+I didn&amp;rsquo;t have the energy, but more importantly, I didn&amp;rsquo;t have the bandwidth.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s alot of red tape to get through when it comes to open source at Amazon.
+After all, AWS alone is a massive business unit with thousands of products
+and tens of thousands of engineers all around the world.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>There&rsquo;s something I feel like I need to acknowledge
 around <a href="https://github.com/spf13/cobra">my maintainership of</a>
 spf13/cobra.</p>
@@ -1616,9 +1788,12 @@ Not deep enough to notice a dependency like cobra and its lack of maintenance.</
 what the &ldquo;solo&rdquo; maintainer experience is like, and why solo maintainer projects are incredibly dangerous
 to the wellness of the entire ecosystem and broader secure software supply-chain.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YBsDnXXW_d8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <p>I think about that talk alot.
@@ -1682,10 +1857,18 @@ or <a href="https://github.com/sponsors/jpmcb">buy me a coffee via GitHub sponso
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/06-13-goodbye-aws/</guid>
-      <description>This is my last week at Amazon Web Services.
-And while the last year has been an incredible journey diving deep into the world of containers, Linux, Rust, Kubernetes, and building operating systems, I&amp;rsquo;ve made the difficult decision to leave.
-And I&amp;rsquo;m very excited to be joining the incredible team at OpenSauced where we&amp;rsquo;ll be building the future of open source insights, tooling, and innovation.
-Since before I started my computer science degree (almost 7 years ago!</description>
+      <description>&lt;p&gt;This is my last week at Amazon Web Services.&lt;/p&gt;
+&lt;p&gt;And while the last year has been an incredible journey diving deep into the world
+of containers, Linux, Rust, Kubernetes, and building operating systems,
+I&amp;rsquo;ve made the difficult decision to leave.&lt;/p&gt;
+&lt;p&gt;And I&amp;rsquo;m very excited to be joining the incredible team at &lt;a href=&#34;https://opensauced.pizza/&#34;&gt;OpenSauced&lt;/a&gt;
+where we&amp;rsquo;ll be building the future of open source insights, tooling, and innovation.&lt;/p&gt;
+&lt;p&gt;Since before I started my computer science degree (almost 7 years ago!)
+I&amp;rsquo;ve wanted to cut my teeth on building a startup and working on a greenfield product.
+These kinds of opportunities are far &amp;amp; few between.
+And the timing is &lt;em&gt;just about&lt;/em&gt; right;
+I can&amp;rsquo;t wait to push myself, learn new skills, and build new products
+with a small, amazing tactical team.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>This is my last week at Amazon Web Services.</p>
 <p>And while the last year has been an incredible journey diving deep into the world
 of containers, Linux, Rust, Kubernetes, and building operating systems,
@@ -1823,12 +2006,28 @@ Your support means the world to me!!</p>
       <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/02-25-nvim-spell/</guid>
-      <description>I know.
-Any sane person&amp;rsquo;s editor already has spellchecking built in. And enabled by default. But I could never leave my beloved Neovim (and all the muscle memory I&amp;rsquo;ve built) just to spell things correctly! That&amp;rsquo;s why I became a programmer dammit! Who needs to know how to spell correctly when I can have single character variable names! Besides. We have tools. Isn&amp;rsquo;t that what computers are for!? Automate the boring stuff!</description>
+      <description>&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/KoL-2WTlr04?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;I know.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Any &lt;em&gt;sane&lt;/em&gt; person&amp;rsquo;s editor already has spellchecking built in.
+And enabled by default.
+But I could never leave my beloved Neovim
+(and all the muscle memory I&amp;rsquo;ve built) just to spell things correctly!
+That&amp;rsquo;s why I became a programmer dammit! Who needs to know how to spell correctly
+when I can have single character variable names!
+Besides. We have &lt;em&gt;tools&lt;/em&gt;. Isn&amp;rsquo;t that what computers are for!?
+Automate the boring stuff! &lt;em&gt;(like spelling and grammar).&lt;/em&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/KoL-2WTlr04" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KoL-2WTlr04?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <p><em>I know.</em></p>
@@ -1962,9 +2161,14 @@ Your support means the world to me!!</p>
       <pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/01-28-the-joy-of-mastodon/</guid>
-      <description>&amp;ldquo;This is the social media network of a software engineer. Not as clumsy or random as Twitter; an elegant network for a more civilized age.&amp;rdquo; ― obi-wan kenobi
-Over the last week, I&amp;rsquo;ve abandoned my Twitter account in favor of diving head first into the world of Mastodon and the &amp;ldquo;Fediverse&amp;rdquo;. So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.
-By the time I moved to Mastodon, I had some 3,000 followers on Twitter.</description>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://johncodes.com/images/lite-saber-meme.png&#34; alt=&#34;Mastodon, an elegant social media network&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;This is the social media network of a software engineer.
+Not as clumsy or random as Twitter; an elegant network for a more civilized age.&amp;rdquo; ― obi-wan kenobi&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Over the last week, I&amp;rsquo;ve abandoned my Twitter account
+in favor of diving head first into the world of Mastodon and the &lt;em&gt;&amp;ldquo;Fediverse&amp;rdquo;&lt;/em&gt;.
+So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><img loading="lazy" src="/images/lite-saber-meme.png" alt="Mastodon, an elegant social media network"  />
 </p>
 <p><em>&ldquo;This is the social media network of a software engineer.
@@ -2099,9 +2303,12 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/2023/01-14-sat-edition/</guid>
-      <description>Welcome to the &amp;ldquo;Sunday Edition&amp;rdquo; of my blog. This is my (occasionally) recurring weekly news letter where I highlight some interesting things from across the tech industry, share a few insights from the week, and give you a chance to catch up on some worth-while reads from around the internet.
-If you&amp;rsquo;d like to subscribe via RSS and receive new posts, you can find the atom feed here.
-News Microsoft ended long term support for Windows 7 this week.</description>
+      <description>&lt;p&gt;Welcome to the &lt;em&gt;&amp;ldquo;Sunday Edition&amp;rdquo;&lt;/em&gt; of my blog. This is my (occasionally) recurring weekly
+news letter where I highlight some interesting things from across the tech industry, share a
+few insights from the week, and give you a chance to catch up on some
+worth-while reads from around the internet.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;d like to subscribe via RSS and receive new posts,
+you can find &lt;a href=&#34;https://johncodes.com/index.xml&#34;&gt;the atom feed here.&lt;/a&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Welcome to the <em>&ldquo;Sunday Edition&rdquo;</em> of my blog. This is my (occasionally) recurring weekly
 news letter where I highlight some interesting things from across the tech industry, share a
 few insights from the week, and give you a chance to catch up on some
@@ -2186,13 +2393,28 @@ alias escape for zsh, bash, etc.</p>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/aws-job/</guid>
-      <description>If you&amp;rsquo;d like a view a video version of this article, check out the following:
-In the summer of 2022, I left my job at VMware for Amazon Web Services. It was a bitter sweet journey; I loved my time at VMware and I loved working on some cutting edge things in the Kubernetes space. Even just a few months latter, the project I was working on is now completely defunct.</description>
+      <description>&lt;p&gt;&lt;em&gt;If you&amp;rsquo;d like a view a video version of this article, check out the following:&lt;/em&gt;&lt;/p&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/vcyXrlGKec4?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;hr&gt;
+&lt;p&gt;In the summer of 2022, I left my job at VMware for Amazon Web Services.
+It was a bitter sweet journey; I loved my time at VMware
+and I loved working on some cutting edge things in the Kubernetes space.
+Even just a few months latter, &lt;a href=&#34;https://github.com/vmware-tanzu/community-edition&#34;&gt;the project I was working on is now completely defunct.&lt;/a&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><em>If you&rsquo;d like a view a video version of this article, check out the following:</em></p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/vcyXrlGKec4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vcyXrlGKec4?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <p>In the summer of 2022, I left my job at VMware for Amazon Web Services.
@@ -2324,8 +2546,12 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/golang-performance/</guid>
-      <description>These simple go tests check the &amp;ldquo;leaky-ness&amp;rdquo; of using channels in Go. There are two methods described here; one using both a local context, and the parent context. When tests are run against both, the LeakyAsync method runs faster, but fails the leak checker as goroutines are not resolved or cleaned up.
-In a production system with possibly thousands of go routines being spun up, this could result in massive memory leaks and a deadlock situation in the go binary.</description>
+      <description>&lt;p&gt;These simple go tests check the &amp;ldquo;leaky-ness&amp;rdquo; of using channels in Go.
+There are two methods described here; one using both a local context, and the parent context.
+When tests are run against both, the &lt;code&gt;LeakyAsync&lt;/code&gt; method runs faster, but fails the leak checker
+as goroutines are not resolved or cleaned up.&lt;/p&gt;
+&lt;p&gt;In a production system with possibly thousands of go routines being spun up,
+this could result in massive memory leaks and a deadlock situation in the go binary.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>These simple go tests check the &ldquo;leaky-ness&rdquo; of using channels in Go.
 There are two methods described here; one using both a local context, and the parent context.
 When tests are run against both, the <code>LeakyAsync</code> method runs faster, but fails the leak checker
@@ -2528,8 +2754,9 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 21 Jan 2019 21:18:06 -0700</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/slack-is-watching/</guid>
-      <description>(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed) TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.
-In today&amp;rsquo;s world, violations of privacy are no surprise. Between all the leaks and data dumps, many people have accepted this as &amp;ldquo;just the world we live in&amp;rdquo;. But what if information was exposed that could be used to judge your work performance?</description>
+      <description>&lt;p&gt;(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed)
+TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.&lt;/p&gt;
+&lt;p&gt;In today&amp;rsquo;s world, violations of privacy are no surprise. Between all the leaks and data dumps, many people have accepted this as &amp;ldquo;just the world we live in&amp;rdquo;. But what if information was exposed that could be used to judge your work performance? Or steal your company’s intellectual property?&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed)
 TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.</p>
 <p>In today&rsquo;s world, violations of privacy are no surprise. Between all the leaks and data dumps, many people have accepted this as &ldquo;just the world we live in&rdquo;. But what if information was exposed that could be used to judge your work performance? Or steal your company’s intellectual property?</p>
@@ -2616,8 +2843,8 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Fri, 14 Dec 2018 21:20:46 -0700</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/npm-event-stream/</guid>
-      <description>(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)
-A few weeks ago, this issue was opened on a popular Node NPM package called Event Stream. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM.</description>
+      <description>&lt;p&gt;(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)&lt;/p&gt;
+&lt;p&gt;A few weeks ago, &lt;a href=&#34;https://github.com/dominictarr/event-stream/issues/116&#34;&gt;this&lt;/a&gt; issue was opened on a popular Node NPM package called &lt;em&gt;Event Stream&lt;/em&gt;. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM. The newly opened issue initially questioned a new, suspicious dependency that was pushed by a new, unknown maintainer. I was lucky enough to follow the community&amp;rsquo;s investigation into this issue and now, I hope to present the findings here. My goal with this piece is to hopefully shed some light on how easy it is for somebody to inject malicious code into NPM packages, the responsibility of open source maintainers, and the responsibility of the community.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)</p>
 <p>A few weeks ago, <a href="https://github.com/dominictarr/event-stream/issues/116">this</a> issue was opened on a popular Node NPM package called <em>Event Stream</em>. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM. The newly opened issue initially questioned a new, suspicious dependency that was pushed by a new, unknown maintainer. I was lucky enough to follow the community&rsquo;s investigation into this issue and now, I hope to present the findings here. My goal with this piece is to hopefully shed some light on how easy it is for somebody to inject malicious code into NPM packages, the responsibility of open source maintainers, and the responsibility of the community.</p>
 <h2 id="the-malicious-code">The Malicious Code</h2>
@@ -2819,9 +3046,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 05 Nov 2018 21:15:35 -0700</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/rethink-db-cookbook/</guid>
-      <description>(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed) RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data and is a production ready option for Node infrastructures.
-Pre-reqs: Docker, Node, NPM
-This post will serve as a brief overview of RethinkDB and hopefully give you a taste of how it works and why a JSON based database might be beneficial for you and your product.</description>
+      <description>&lt;p&gt;(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed)
+RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Node infrastructures.&lt;/p&gt;
+&lt;p&gt;Pre-reqs: Docker, Node, NPM&lt;/p&gt;
+&lt;p&gt;This post will serve as a brief overview of RethinkDB and hopefully give you a taste of how it works and why a JSON based database might be beneficial for you and your product. You should have some knowledge of docker for this tutorial, but it&amp;rsquo;s not required. However, knowledge of Node and JavaScript will be necessary.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed)
 RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Node infrastructures.</p>
 <p>Pre-reqs: Docker, Node, NPM</p>
@@ -2980,7 +3208,7 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Sat, 13 May 2017 22:17:04 -0700</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/docker-trouble/</guid>
-      <description>If you are a Oregon State CS 344 student, then you&amp;rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</description>
+      <description>&lt;p&gt;If you are a Oregon State CS 344 student, then you&amp;rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>If you are a Oregon State CS 344 student, then you&rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</p>
 <p><em><em>Note:</em></em> when a &ldquo;host&rdquo; is referenced, this is in regard to your own laptop and your own environment, not any container or virtual machine you might have running.</p>
 <h3 id="1-get-docker">1. Get Docker</h3>
@@ -3097,8 +3325,8 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Wed, 22 Mar 2017 21:19:16 -0700</pubDate>
       
       <guid>https://johncodes.com/posts/legacy/vim-tips/</guid>
-      <description>(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)
-I&amp;rsquo;d consider myself some sort of Vim - evangelist. It&amp;rsquo;s an incredible tool and has ALOT of power. If there&amp;rsquo;s something you wish Vim could do, there&amp;rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from.</description>
+      <description>&lt;p&gt;(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d consider myself some sort of Vim - evangelist. It&amp;rsquo;s an incredible tool and has ALOT of power. If there&amp;rsquo;s something you wish Vim could do, there&amp;rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from. Being able to modify files directly on a server is necessary in almost every development sphere.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)</p>
 <p>I&rsquo;d consider myself some sort of Vim - evangelist. It&rsquo;s an incredible tool and has ALOT of power. If there&rsquo;s something you wish Vim could do, there&rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from. Being able to modify files directly on a server is necessary in almost every development sphere.</p>
 <h2 id="get-vim">Get Vim</h2>
@@ -3259,9 +3487,14 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/about/</guid>
-      <description>Hi there! 🌊 My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at OpenSauced where I&amp;rsquo;m building our backend infrastructure and open source insights tooling.
-In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry where I worked on open source software, observability &amp;amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.
-This site is my personal landing page and blog. You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays, photos, music, videos, ramblings on philosophy, and really, whatever I want (it&amp;rsquo;s my website after all).</description>
+      <description>&lt;h1 id=&#34;hi-there-&#34;&gt;Hi there! 🌊&lt;/h1&gt;
+&lt;p&gt;My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at &lt;a href=&#34;https://opensauced.pizza&#34;&gt;OpenSauced&lt;/a&gt;
+where I&amp;rsquo;m building our backend infrastructure and open source insights tooling.&lt;/p&gt;
+&lt;p&gt;In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry
+where I worked on open source software, observability &amp;amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.&lt;/p&gt;
+&lt;p&gt;This site is my personal landing page and blog.
+You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays,
+photos, music, videos, ramblings on philosophy, and really, whatever I want &lt;em&gt;(it&amp;rsquo;s my website after all)&lt;/em&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
 <p>My name is John &amp; I&rsquo;m a senior software engineer at <a href="https://opensauced.pizza">OpenSauced</a>
 where I&rsquo;m building our backend infrastructure and open source insights tooling.</p>
@@ -3290,9 +3523,37 @@ Use it to send me secret messages or verify my identity online.</p>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/interview-prep/</guid>
-      <description>The No Nonsense Interview Prep The following is interview preperation material for software engineer and development roles that covers the most common aspects of data structures, algorithms, design, and behavioral.
-This interview manual is ever evolving; I make changes to it frequently as my experience grows and I find new resources.
-Python Crash Course But why Python? Basic operations Data structures Arrays Python Crash Course The following is a crash course in Python that I&amp;rsquo;ve used to refresh my knowledge and understanding of the langauge from a high level.</description>
+      <description>&lt;h1 id=&#34;the-no-nonsense-interview-prep&#34;&gt;The No Nonsense Interview Prep&lt;/h1&gt;
+&lt;p&gt;The following is interview preperation material
+for software engineer and development roles
+that covers the most common aspects of data structures,
+algorithms, design, and behavioral.&lt;/p&gt;
+&lt;p&gt;This interview manual is ever evolving;
+I make changes to it frequently as my experience grows
+and I find new resources.&lt;/p&gt;
+&lt;div class=&#34;toc&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#python-crash-course&#34;&gt;Python Crash Course&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#but-why-python&#34;&gt;But why Python?&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#basic-operations&#34;&gt;Basic operations&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#data-structures&#34;&gt;Data structures&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#arrays&#34;&gt;Arrays&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;python-crash-course&#34;&gt;Python Crash Course&lt;/h2&gt;
+&lt;p&gt;The following is a crash course in Python
+that I&amp;rsquo;ve used to refresh my knowledge and understanding of the langauge
+from a high level.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="the-no-nonsense-interview-prep">The No Nonsense Interview Prep</h1>
 <p>The following is interview preperation material
 for software engineer and development roles
@@ -3431,8 +3692,57 @@ and reduces the overall complexity of your technical interview.</p>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johncodes.com/talks/</guid>
-      <description>Talks Inquires: talks@johncodes.com
-2023 Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains Neovim Conf 2023: Introducing nvim-llama PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass 2022 KubeCon EU: The Risks of Single Maintainer Dependencies Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride NeovimConf 2022: Lua, A Primer Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh 2023 Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .</description>
+      <description>&lt;h1 id=&#34;talks&#34;&gt;Talks&lt;/h1&gt;
+&lt;p&gt;Inquires: &lt;a href=&#34;mailto:talks@johncodes.com&#34;&gt;talks@johncodes.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;toc&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#2023&#34;&gt;2023&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#kubecon-na-hacking-the-kubernetes-secure-software-supply-chain-with-zip-domains&#34;&gt;Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#neovim-conf-2023-introducing-nvim-llama&#34;&gt;Neovim Conf 2023: Introducing nvim-llama&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#pancakescon-4-containers-hardening-against-escapes-and-funk-bass&#34;&gt;PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2022&#34;&gt;2022&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#kubecon-eu-the-risks-of-single-maintainer-dependencies&#34;&gt;KubeCon EU: The Risks of Single Maintainer Dependencies&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride&#34;&gt;Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#neovimconf-2022-lua-a-primer&#34;&gt;NeovimConf 2022: Lua, A Primer&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#deserted-island-devops-2022-distributed-shared-team-configurations-with-oh-my-zsh&#34;&gt;Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;2023&#34;&gt;2023&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;kubecon-na-hacking-the-kubernetes-secure-software-supply-chain-with-zip-domains&#34;&gt;Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains&lt;/h3&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/57k-KwOsj9c?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;neovim-conf-2023-introducing-nvim-llama&#34;&gt;Neovim Conf 2023: Introducing nvim-llama&lt;/h3&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/Jx4IEJRlPQw?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;pancakescon-4-containers-hardening-against-escapes-and-funk-bass&#34;&gt;PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass&lt;/h3&gt;
+&lt;p&gt;I spoke at Stackoverflow&amp;rsquo;s cyber-security and red-team conference, PankcakesCon.
+In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers,
+as a use case for hardening container based environments against attack.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="talks">Talks</h1>
 <p>Inquires: <a href="mailto:talks@johncodes.com">talks@johncodes.com</a></p>
 <div class="toc">
@@ -3462,16 +3772,22 @@ and reduces the overall complexity of your technical interview.</p>
 <hr>
 <h3 id="kubecon-na-hacking-the-kubernetes-secure-software-supply-chain-with-zip-domains">Kubecon NA: Hacking the Kubernetes Secure Software Supply-chain with .zip Domains</h3>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/57k-KwOsj9c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/57k-KwOsj9c?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <h3 id="neovim-conf-2023-introducing-nvim-llama">Neovim Conf 2023: Introducing nvim-llama</h3>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/Jx4IEJRlPQw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Jx4IEJRlPQw?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <h3 id="pancakescon-4-containers-hardening-against-escapes-and-funk-bass">PancakesCon 4: Containers, Hardening Against Escapes, and Funk Bass</h3>
@@ -3479,9 +3795,12 @@ and reduces the overall complexity of your technical interview.</p>
 In this talk, I discuss Bottlerocket, a Linux based operating system designed for running containers,
 as a use case for hardening container based environments against attack.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/7azaXmlcoGg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7azaXmlcoGg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h2 id="2022">2022</h2>
 <hr>
@@ -3490,9 +3809,12 @@ as a use case for hardening container based environments against attack.</p>
 an extremely important software project in the cloud-native ecosystem,
 with just a small group of other contributors.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/YBsDnXXW_d8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YBsDnXXW_d8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h3 id="business-of-open-source-exploring-the-risks-of-single-maintainer-dependencies-with-john-mcbride">Business of Open Source: Exploring the Risks of Single Maintainer Dependencies with John McBride</h3>
 <p>During my time in Spain for Kubecon EU &lsquo;22,
@@ -3507,9 +3829,12 @@ But what <em>IS</em> Lua?</p>
 You&rsquo;ll learn how to use it effectively within Nvim, how to create a simple Lua plugin,
 and how to use it on it&rsquo;s own via it&rsquo;s interpreter.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/gjIl5Sfh2QQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gjIl5Sfh2QQ?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <hr>
 <h3 id="deserted-island-devops-2022-distributed-shared-team-configurations-with-oh-my-zsh">Deserted Island DevOps 2022: Distributed Shared Team Configurations With Oh-My-Zsh</h3>
@@ -3521,9 +3846,12 @@ in order to share team knowledge, distribute common configurations, and share in
 I also discuss the real world scenario this use case emerged from,
 challenges faced in this approach, and how you can leverage Oh-My-Zsh for your distributed devops teams.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/ppvjyibyrEg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ppvjyibyrEg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 ]]></content:encoded>
     </item>
