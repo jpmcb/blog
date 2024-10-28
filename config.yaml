@@ -45,6 +45,7 @@ languages:
 
 # home-info mode
 params:
+  social: true
   ShowFullTextinRSS: true
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: John-McBride
@@ -75,10 +76,8 @@ params:
       url: "https://github.com/jpmcb"
     - name: youtube
       url: "https://youtube.com/c/JohnCodes"
-    - name: twitter
-      url: "https://twitter.com/johncodezzz"
-    - name: mastodon
-      url: "https://fosstodon.org/@johnmcbride"
+    - name: bluesky
+      url: "https://bsky.app/profile/johncodes.com"
     - name: linkedin
       url: "https://linkedin.com/in/jpmcb"
 
