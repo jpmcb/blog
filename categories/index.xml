@@ -4,7 +4,8 @@
     <title>Categories on John McBride</title>
     <link>https://johncodes.com/categories/</link>
     <description>Recent content in Categories on John McBride</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://johncodes.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.136.5</generator>
+    <language>en</language>
+    <atom:link href="https://johncodes.com/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -4,14 +4,104 @@
     <title>Posts on John McBride</title>
     <link>https://johncodes.com/posts/</link>
     <description>Recent content in Posts on John McBride</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.136.5</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Sep 2024 08:00:00 -0600</lastBuildDate><atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Oct 2024 10:00:00 -0600</lastBuildDate>
+    <atom:link href="https://johncodes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devlog 000 - rip-and-tear.nvim</title>
+      <link>https://johncodes.com/posts/2024/10-28-devlog-000-rip-and-tear/</link>
+      <pubDate>Mon, 28 Oct 2024 10:00:00 -0600</pubDate>
+      <guid>https://johncodes.com/posts/2024/10-28-devlog-000-rip-and-tear/</guid>
+      <description>&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/vU2Gj40v9II?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;hr&gt;
+&lt;p&gt;This is probably one of the stupidest Neovim plugins I&amp;rsquo;ve built.&lt;/p&gt;
+&lt;p&gt;And I&amp;rsquo;m having a ton of fun doing it.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/jpmcb/rip-and-tear.nvim&#34;&gt;&lt;code&gt;rip-and-tear.nvim&lt;/code&gt;&lt;/a&gt; is a super-not-serious Neovim plugin that plays a configured mp3 when you&amp;rsquo;re typing in the editor. The original idea, like so many great hacker scenes in movies, was to have an epic soundtrack starts playing as you engaged your mad Neovim skills.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vU2Gj40v9II?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<hr>
+<p>This is probably one of the stupidest Neovim plugins I&rsquo;ve built.</p>
+<p>And I&rsquo;m having a ton of fun doing it.</p>
+<p><a href="https://github.com/jpmcb/rip-and-tear.nvim"><code>rip-and-tear.nvim</code></a> is a super-not-serious Neovim plugin that plays a configured mp3 when you&rsquo;re typing in the editor. The original idea, like so many great hacker scenes in movies, was to have an epic soundtrack starts playing as you engaged your mad Neovim skills.</p>
+<p>Something akin to a Mr. Robot scene:</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/67gYEK4FtzA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<hr>
+<p><a href="https://www.youtube.com/watch?v=vyA1z2A-lhU&pp=ygUMcmlwIGFuZCB0ZWFy">&ldquo;Rip and Tear&rdquo;</a> is one of the title tracks for the 2016 Doom game; a chugy, heavy metal song that really gets you amped up. It felt like an appropriate name for a plugin intended for egregious hype and motivation. And <em>&ldquo;I. Dogma&rdquo;</em> from the game, a preamble about the Doomslayer, seemed to fit how using Neovim sometimes feels:</p>
+<p><em>In the first age</em><br>
+<em>In the first battle</em><br>
+<em>When the bloatware first lengthened</em><br>
+<em>One stood</em></p>
+<p><em>He chose the path of perpetual torment</em><br>
+<em>In his ravenous configurations he found no peace</em><br>
+<em>And with boiling blood he scoured the internet</em><br>
+<em>Seeking vengeance against the VScoders who had wronged him</em></p>
+<p><em>And those that tasted the bite of his keyboard bindings named him</em><br>
+<em>The Neovimer.</em></p>
+<h2 id="how-the-plugin-works">How the plugin works</h2>
+<p>Upon installing the plugin, in your Neovim configs, the following map can be passed in:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>require(<span style="color:#e6db74">&#39;rip-and-tear&#39;</span>).setup({
+</span></span><span style="display:flex;"><span>    mp3_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/Users/jpmcb/Downloads/rip-and-tear.mp3&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>For obvious legal reasons, I couldn&rsquo;t include <code>rip-and-tear.mp3</code> in the plugin or git repo itself, so that piece is left up to an end user: you must provide the full path to an mp3 file in the <code>mp3_file</code> field which will play during typing.</p>
+<p>You can also pass in <code>player_command</code> to denote which system mp3 player should be used and <code>delay</code> to configure how long to wait before starting a song as you&rsquo;re typing. The default player is <code>mpg123</code> so end users need to have that installed to get this plugin to work (easily installable via <code>brew install mpg123</code>). In the future, I hope to incorporate other system players.</p>
+<h2 id="detecting-keypresses">Detecting keypresses</h2>
+<p>Neovim provides a handy way to handle when a key is pressed via <a href="https://neovim.io/doc/user/lua.html#vim.on_key()"><code>vim.on_key</code></a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>vim.on_key(on_key_function, nvim_namespace_id)
+</span></span></code></pre></div><p>In this arbitrary example, <code>on_key_function</code> is a defined function that takes a char (the key that was pressed) and performs some action: in our case, play the mp3. We don&rsquo;t need the char that was pressed, so we effectively ignore it. This API utility then maps our function to the system loop enabling us to capture every key press every time.</p>
+<p>The <code>nvim_namespace_id</code> is the integer ID of a Neovim namespace (which can be useful for separating buffer highlights or other plugin specific entities).</p>
+<h2 id="managing-process-state">Managing process state</h2>
+<p>By default, the plugin uses <code>mpg123</code> to play an mp3 file. We can execute that utility like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">local</span> mp3_process <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mpg123&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> args <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;--loop&#39;</span>, <span style="color:#e6db74">&#39;-1&#39;</span>, mp3_file}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mp3_process <span style="color:#f92672">=</span> vim.fn.jobstart({cmd, unpack(args)}, {detach <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>})
+</span></span></code></pre></div><p><a href="https://neovim.io/doc/user/builtin.html#jobstart()"><code>vim.fn.jobstart</code></a> is apart of Neovim&rsquo;s broader &ldquo;job control&rdquo; schematic: it allows for plugins and users to control multiple jobs and tasks within Neovim without blocking the current editor instance. It&rsquo;s a great way to perform and manage background tasks or launch CLI tools. And it&rsquo;s what allows you to continue to type in your Neovim editor without having to wait for <code>mpg123</code> to finish executing.</p>
+<p>The <code>mp3_process</code> gets assigned a &ldquo;job ID&rdquo; which is a Neovim managed identifying integer for that specific job running within that Neovim session. Importantly, this is <em>not</em> the actual system&rsquo;s process ID.</p>
+<p>And you might be saying <em>&ldquo;John! Why not use <a href="https://neovim.io/doc/user/lua.html#vim.system()"><code>vim.system</code></a>! It&rsquo;s so much better!&rdquo;</em> True, <code>vim.system</code> is preferred for running system commands and has built in asynchronous mechanics for running this type of background task without having to deal with Neovim managed job IDs. <code>vim.system</code> will even return to you a <code>vim.SystemObj</code> which has a PID integer for the real system process, not a job managed by Neovim.</p>
+<p>Well, I&rsquo;m lazy.</p>
+<p>And for a small, silly proof of concept plugin, it stands to reason that I wouldn&rsquo;t spend abunch of precious time trying to get asyncrounous Lua within Neovim to work! <code>jobstart</code> is great for a quick and dirty processes spawning. Despite its drawbacks, it is simple and easy to work with compared to <code>vim.system</code>.</p>
+<h2 id="using-timers">Using timers</h2>
+<p>Neovim also includes some awesome timer utilities which makes stopping the mp3 when no keypress has occurred a breeze:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>timer <span style="color:#f92672">=</span> vim.loop.new_timer()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>timer:start(configured_delay, vim.schedule_wrap(<span style="color:#66d9ef">function</span>()
+</span></span><span style="display:flex;"><span>  stop_mp3()
+</span></span><span style="display:flex;"><span>  timer:stop()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>))
+</span></span></code></pre></div><p>This little mechanism makes it simple to integrate with <a href="https://neovim.io/doc/user/luvref.html#luv-event-loop">the Neovim event-loop</a> and kick off a timer that will fire an async function when the configured delay is reached. We can always reset the timer if typing continues since we are capturing every keystroke.</p>
+<p>This gives that continuous hype &ldquo;feel&rdquo; I was going for that will continue to play the mp3 only as long as you&rsquo;re typing or hitting keys.</p>
+<h2 id="rough-edges">Rough edges</h2>
+<p>But there are definitely still some big bugs to iron out.</p>
+<p>For example, if you&rsquo;re typing, the song starts playing, and then you exit Neovim (with something like <code>:q</code> or <code>ZZ</code>) without waiting for the song to stop (because you stopped typing) the <code>mp3_process</code> doesn&rsquo;t get reaped or cleaned up. The song just keeps playing in the background. Worst case, you go <em>back</em> into Neovim and start typing to only have <em>another</em> <code>mp3_process</code> kick off too, overlapping the first.</p>
+<p>You can imagine the headaches this can cause an end user.</p>
+<p>And to play devil&rsquo;s advocate to my own point, utilizing <code>vim.system</code> and reaping any of the PIDs on exit / cleanup would likely be a more elegant solution to this.</p>
+<p>I&rsquo;d also like to include the capability to play a whole directory of mp3s, not just a single file. The same song over and over again can get very annoying.</p>
+<p>Check out the plugin for yourself, and god speed: <a href="https://github.com/jpmcb/rip-and-tear.nvim">https://github.com/jpmcb/rip-and-tear.nvim</a></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Binging on Bytes: The Danger of Overprocessed Engineering Content</title>
       <link>https://johncodes.com/posts/2024/09-03-binging-on-bytes/</link>
       <pubDate>Wed, 04 Sep 2024 08:00:00 -0600</pubDate>
-      
       <guid>https://johncodes.com/posts/2024/09-03-binging-on-bytes/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s universally agreed that eating a lot of junk food and candy over your lifetime will lead to all sorts of problems:
 diabetes, increased cancer risk, obesity, heart problems, digestive issues, etc.&lt;/p&gt;
@@ -121,12 +211,10 @@ Avoid consuming things at the top of the content pyramid.
 Otherwise, much like a poor nutritional diet will whither away your body, you risk rotting away your technical skills.</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Editing Astro projects with Neovim</title>
       <link>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</link>
       <pubDate>Sat, 16 Mar 2024 10:00:00 -0600</pubDate>
-      
       <guid>https://johncodes.com/posts/2024/03-16-config-neovim-for-astro/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://astro.build/&#34;&gt;Astro&lt;/a&gt; is a fast &amp;amp; dynamic web framework designed to be flexible
 enough for small static websites, blogs, big interactive apps, and more.
@@ -134,7 +222,11 @@ I&amp;rsquo;ve been interested in checking it out since building silly little st
 that are &amp;ldquo;Content-first&amp;rdquo; is a fun past-time of mine.&lt;/p&gt;
 &lt;p&gt;Since Neovim is my main text editor, it took &lt;em&gt;abit&lt;/em&gt; of configuration fu
 to get things up and running.&lt;/p&gt;
-&lt;p&gt;Herein is my Astro setup:&lt;/p&gt;</description>
+&lt;p&gt;Herein is my Astro setup:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;You probably already have most of these tools installed since they have become
+synonymous with most Neovim configs:&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><a href="https://astro.build/">Astro</a> is a fast &amp; dynamic web framework designed to be flexible
 enough for small static websites, blogs, big interactive apps, and more.
 I&rsquo;ve been interested in checking it out since building silly little static websites
@@ -269,12 +361,10 @@ Happy coding!</p>
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Awk: A beginners guide for humans</title>
       <link>https://johncodes.com/posts/2024/03-03-awk-basics/</link>
       <pubDate>Sun, 03 Mar 2024 09:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2024/03-03-awk-basics/</guid>
       <description>&lt;p&gt;Earlier this week, I had a file of names, each delimited by a newline:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;john
@@ -452,12 +542,10 @@ using <code>BEGIN</code> and <code>END</code>, we print an opening and closing b
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Job scheduling with tmux</title>
       <link>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</link>
       <pubDate>Mon, 15 Jan 2024 09:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2024/01-15-tmux-scheduling/</guid>
       <description>&lt;p&gt;Tmux is one of my favorite utilities: it&amp;rsquo;s a terminal multiplexer
 that lets you create persistent shell sessions, panes, windows, etc. all within a single
@@ -686,12 +774,10 @@ components of our system organized in a system I know well and can easily wrap m
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>2023 in review</title>
       <link>https://johncodes.com/posts/2024/01-01-in-review/</link>
       <pubDate>Mon, 01 Jan 2024 09:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2024/01-01-in-review/</guid>
       <description>&lt;p&gt;I had a huge year.&lt;/p&gt;
 &lt;p&gt;And every year, around this time, when I have a well deserved opportunity to
@@ -894,12 +980,10 @@ Good luck in the new year!!</p>
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>4 billion Go if statements</title>
       <link>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</link>
       <pubDate>Thu, 28 Dec 2023 09:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/12-28-4-billon-go-if-statements/</guid>
       <description>&lt;p&gt;I recently read &lt;a href=&#34;https://andreasjhkarlsson.github.io/jekyll/update/2023/12/27/4-billion-if-statements.html&#34;&gt;this &lt;em&gt;excellent&lt;/em&gt; little bit of programming horror&lt;/a&gt;
 titled: &lt;em&gt;&amp;ldquo;4 billion if statements&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
@@ -1276,12 +1360,10 @@ I found there was a tricky soft limit on ints in bash:</p>
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>There is no secure software supply-chain.</title>
       <link>https://johncodes.com/posts/2023/09-02-there-is-no-secure-software-supply-chain/</link>
       <pubDate>Sun, 03 Sep 2023 09:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/09-02-there-is-no-secure-software-supply-chain/</guid>
       <description>&lt;p&gt;Years ago, entrepreneurs and innovators predicated that
 &lt;a href=&#34;https://a16z.com/2011/08/20/why-software-is-eating-the-world/&#34;&gt;“software would eat the world”.&lt;/a&gt;&lt;/p&gt;
@@ -1542,12 +1624,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Prestige Over Influence: Choosing A More Impactful Online Presence</title>
       <link>https://johncodes.com/posts/2023/08-11-prestige/</link>
       <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/08-11-prestige/</guid>
       <description>&lt;p&gt;The world of software engineering influencers, what I typically like to refer to
 as &amp;ldquo;tech-fluencers&amp;rdquo;, has grown significantly in the last few years. There are
@@ -1716,12 +1796,10 @@ leveling up their career. And in my experience, it&rsquo;s a much preferred meth
 the typical &ldquo;tech-fluencers&rdquo; content grind.</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>On maintaining spf13/cobra</title>
       <link>https://johncodes.com/posts/2023/06-29-on-maintaining-cobra/</link>
       <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/06-29-on-maintaining-cobra/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s something I feel like I need to acknowledge
 around &lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;my maintainership of&lt;/a&gt;
@@ -1850,12 +1928,10 @@ or <a href="https://github.com/sponsors/jpmcb">buy me a coffee via GitHub sponso
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>So long AWS! Hello OpenSauced!</title>
       <link>https://johncodes.com/posts/2023/06-13-goodbye-aws/</link>
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/06-13-goodbye-aws/</guid>
       <description>&lt;p&gt;This is my last week at Amazon Web Services.&lt;/p&gt;
 &lt;p&gt;And while the last year has been an incredible journey diving deep into the world
@@ -1999,12 +2075,10 @@ Your support means the world to me!!</p>
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>NeoVim: Using the spellchecker</title>
       <link>https://johncodes.com/posts/2023/02-25-nvim-spell/</link>
       <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/02-25-nvim-spell/</guid>
       <description>&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
       &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/KoL-2WTlr04?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
@@ -2154,12 +2228,10 @@ Your support means the world to me!!</p>
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>An elegant social media network for a more civilized age.</title>
       <link>https://johncodes.com/posts/2023/01-28-the-joy-of-mastodon/</link>
       <pubDate>Sat, 28 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/01-28-the-joy-of-mastodon/</guid>
       <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://johncodes.com/images/lite-saber-meme.png&#34; alt=&#34;Mastodon, an elegant social media network&#34;  /&gt;
 &lt;/p&gt;
@@ -2168,7 +2240,16 @@ Not as clumsy or random as Twitter; an elegant network for a more civilized age.
 &lt;hr&gt;
 &lt;p&gt;Over the last week, I&amp;rsquo;ve abandoned my Twitter account
 in favor of diving head first into the world of Mastodon and the &lt;em&gt;&amp;ldquo;Fediverse&amp;rdquo;&lt;/em&gt;.
-So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.&lt;/p&gt;</description>
+So far, it&amp;rsquo;s been a surprising, delightful, and enriching experience.&lt;/p&gt;
+&lt;p&gt;By the time I moved to Mastodon,
+I had some &lt;em&gt;3,000&lt;/em&gt; followers on Twitter.
+But the platform has atrophied and changed in many sad ways.
+Long gone are the days of fun technical deep dives,
+inside scoops on your favorite projects,
+and starting conversations with your technical peers.
+Engagement (at least for me. Maybe I&amp;rsquo;m very boring?)
+is way down and the platform itself is breaking:
+I haven&amp;rsquo;t been able to reliably access my DMs for the better part of a week.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><img loading="lazy" src="/images/lite-saber-meme.png" alt="Mastodon, an elegant social media network"  />
 </p>
 <p><em>&ldquo;This is the social media network of a software engineer.
@@ -2296,19 +2377,20 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>So long windows 7!</title>
       <link>https://johncodes.com/posts/2023/01-14-sat-edition/</link>
       <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/2023/01-14-sat-edition/</guid>
       <description>&lt;p&gt;Welcome to the &lt;em&gt;&amp;ldquo;Sunday Edition&amp;rdquo;&lt;/em&gt; of my blog. This is my (occasionally) recurring weekly
 news letter where I highlight some interesting things from across the tech industry, share a
 few insights from the week, and give you a chance to catch up on some
 worth-while reads from around the internet.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;d like to subscribe via RSS and receive new posts,
-you can find &lt;a href=&#34;https://johncodes.com/index.xml&#34;&gt;the atom feed here.&lt;/a&gt;&lt;/p&gt;</description>
+you can find &lt;a href=&#34;https://johncodes.com/index.xml&#34;&gt;the atom feed here.&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;news&#34;&gt;News&lt;/h2&gt;
+&lt;p&gt;Microsoft ended long term support for Windows 7 this week.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Welcome to the <em>&ldquo;Sunday Edition&rdquo;</em> of my blog. This is my (occasionally) recurring weekly
 news letter where I highlight some interesting things from across the tech industry, share a
 few insights from the week, and give you a chance to catch up on some
@@ -2386,12 +2468,10 @@ But whenever I need <em>actual</em> vim, I can escape my alias using a backslash
 alias escape for zsh, bash, etc.</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>How I got a job at Amazon as a software engineer</title>
       <link>https://johncodes.com/posts/legacy/aws-job/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/aws-job/</guid>
       <description>&lt;p&gt;&lt;em&gt;If you&amp;rsquo;d like a view a video version of this article, check out the following:&lt;/em&gt;&lt;/p&gt;
 
@@ -2539,12 +2619,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Leaky Go Channels</title>
       <link>https://johncodes.com/posts/legacy/golang-performance/</link>
       <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/golang-performance/</guid>
       <description>&lt;p&gt;These simple go tests check the &amp;ldquo;leaky-ness&amp;rdquo; of using channels in Go.
 There are two methods described here; one using both a local context, and the parent context.
@@ -2747,12 +2825,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Slack Is Always Watching ...</title>
       <link>https://johncodes.com/posts/legacy/slack-is-watching/</link>
       <pubDate>Mon, 21 Jan 2019 21:18:06 -0700</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/slack-is-watching/</guid>
       <description>&lt;p&gt;(Note: this is from a blog archieve dated 2019/01/21. These opinions are my own and the slack API may have changed)
 TLDR: The Slack API exposes endpoints for a token holder to read all public and private messages.&lt;/p&gt;
@@ -2836,12 +2912,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>To Catch a Hacker - NPM Even Stream</title>
       <link>https://johncodes.com/posts/legacy/npm-event-stream/</link>
       <pubDate>Fri, 14 Dec 2018 21:20:46 -0700</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/npm-event-stream/</guid>
       <description>&lt;p&gt;(Note: this post is from a legacy blog dated 12/14/2018 and some content or links may have changed)&lt;/p&gt;
 &lt;p&gt;A few weeks ago, &lt;a href=&#34;https://github.com/dominictarr/event-stream/issues/116&#34;&gt;this&lt;/a&gt; issue was opened on a popular Node NPM package called &lt;em&gt;Event Stream&lt;/em&gt;. This package enables Node streams to be simpler and streamlines many I/O operations within Node. Regardless, this package is a key dependency for many other Node packages and has over 1 million downloads per week from NPM. The newly opened issue initially questioned a new, suspicious dependency that was pushed by a new, unknown maintainer. I was lucky enough to follow the community&amp;rsquo;s investigation into this issue and now, I hope to present the findings here. My goal with this piece is to hopefully shed some light on how easy it is for somebody to inject malicious code into NPM packages, the responsibility of open source maintainers, and the responsibility of the community.&lt;/p&gt;</description>
@@ -3039,12 +3113,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Rethink-DB Cookbook</title>
       <link>https://johncodes.com/posts/legacy/rethink-db-cookbook/</link>
       <pubDate>Mon, 05 Nov 2018 21:15:35 -0700</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/rethink-db-cookbook/</guid>
       <description>&lt;p&gt;(Note: this is from an old blog archieve dating 2018/11/05. Some things with Rethink have very likely changed)
 RethinkDB is a JSON based, non-relational database that provides a promise oriented, Node JS backend. It integrates seamlessly with JSON type data  and is a production ready option for Node infrastructures.&lt;/p&gt;
@@ -3201,12 +3273,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Virtual machine trouble?? Try Docker!</title>
       <link>https://johncodes.com/posts/legacy/docker-trouble/</link>
       <pubDate>Sat, 13 May 2017 22:17:04 -0700</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/docker-trouble/</guid>
       <description>&lt;p&gt;If you are a Oregon State CS 344 student, then you&amp;rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>If you are a Oregon State CS 344 student, then you&rsquo;ve been told to develop exclusively on the OS1 server. Unfortunately, this server is frequently nuked by fork bombs. If you are unable to run a full CentOS virtual machine, then here is a step by step guide to getting a CentOS docker container running on your computer. This way, you can continue to work on your assignments in a similar environment to OS1 and not have to have a full virtual machine running!</p>
@@ -3318,12 +3388,10 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Vim Tips!</title>
       <link>https://johncodes.com/posts/legacy/vim-tips/</link>
       <pubDate>Wed, 22 Mar 2017 21:19:16 -0700</pubDate>
-      
       <guid>https://johncodes.com/posts/legacy/vim-tips/</guid>
       <description>&lt;p&gt;(Note: this is a post from a legacy blog. This post was intended to help new OSU students get started with Vim)&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;d consider myself some sort of Vim - evangelist. It&amp;rsquo;s an incredible tool and has ALOT of power. If there&amp;rsquo;s something you wish Vim could do, there&amp;rsquo;s probably a plugin for it or a way to make Vim do it with scripting (in its own language!). Moderate proficiency in Vim is a skill that nearly every developer could benefit from. Being able to modify files directly on a server is necessary in almost every development sphere.&lt;/p&gt;</description>
@@ -3480,6 +3548,5 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
 
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>
