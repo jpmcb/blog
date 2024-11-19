@@ -8,6 +8,14 @@ Inquires: talks@johncodes.com
 
 {{< toc >}}
 
+
+## 2024
+
+---
+### Kubecon NA: Building Massive-Scale Generative AI Services with Kubernetes and Open Source
+
+{{< youtube wYzsPNfMF7A >}}
+
 ## 2023
 
 ---
