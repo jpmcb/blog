@@ -173,7 +173,7 @@ financial windfall he desires. A lose, lose situation.
 
 But this is a sort of _“Tale of Two Cities”_ - despite the clear and present
 danger the project was in and regardless of veiled threats leveraged against the
-community by it’s sole maintainer, JavaScript developers disregarded this risk,
+community by its sole maintainer, JavaScript developers disregarded this risk,
 big businesses consumed it as a deeply integrated dependency, and everyone
 increased their usage of the library, ignoring a potentially worsening
 situation.
