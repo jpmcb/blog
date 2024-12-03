@@ -4,7 +4,7 @@
     <title>John McBride</title>
     <link>https://johncodes.com/</link>
     <description>Recent content on John McBride</description>
-    <generator>Hugo -- 0.139.0</generator>
+    <generator>Hugo -- 0.139.3</generator>
     <language>en</language>
     <lastBuildDate>Sat, 16 Nov 2024 06:00:00 -0600</lastBuildDate>
     <atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
@@ -1476,6 +1476,345 @@ I found there was a tricky soft limit on ints in bash:</p>
 ]]></content:encoded>
     </item>
     <item>
+      <title>What to do with rotting software?</title>
+      <link>https://johncodes.com/posts/2023/12-03-what-to-do-with-rotting-software/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://johncodes.com/posts/2023/12-03-what-to-do-with-rotting-software/</guid>
+      <description>&lt;p&gt;If you were to visit one of the biggest React drag and drop libraries on GitHub,
+&lt;a href=&#34;https://github.com/atlassian/react-beautiful-dnd&#34;&gt;Atlassian’s react-beautiful-dnd&lt;/a&gt;,
+you would be greeted with the following message:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This library continues to be relied upon heavily by Atlassian products, but
+we are focused on other priorities right now and have no current plans for
+further feature development or improvements.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The project has over 30 thousand stars on GitHub, “used by” over 97 thousand
+dependent codebases, and is downloaded &lt;a href=&#34;https://www.npmjs.com/package/react-beautiful-dnd&#34;&gt;over 1 million times &lt;em&gt;per week&lt;/em&gt; on NPM&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>If you were to visit one of the biggest React drag and drop libraries on GitHub,
+<a href="https://github.com/atlassian/react-beautiful-dnd">Atlassian’s react-beautiful-dnd</a>,
+you would be greeted with the following message:</p>
+<blockquote>
+<p>This library continues to be relied upon heavily by Atlassian products, but
+we are focused on other priorities right now and have no current plans for
+further feature development or improvements.</p>
+</blockquote>
+<p>The project has over 30 thousand stars on GitHub, “used by” over 97 thousand
+dependent codebases, and is downloaded <a href="https://www.npmjs.com/package/react-beautiful-dnd">over 1 million times <em>per week</em> on NPM</a>.</p>
+<blockquote>
+<p>It will continue to be here on GitHub and we will still make critical
+updates (e.g. security fixes, if any) as required, but will not be actively
+monitoring or replying to issues and pull requests.</p>
+</blockquote>
+<p>This message was last updated well over 2 years ago, in October of 2021.</p>
+<p>And what security fixes have landed in the library? Well, the last update to the
+“package.json” was over a year ago, in August of 2022. There are 20 some odd
+Dependabot pull requests unaddressed. And a quick “npm audit” of the library
+shows 109 vulnerabilities; 1 low, 39 moderate, 51 high, and 18 critical (as of
+the time of this writing).</p>
+<p>Those familiar with contributing to open source software know this as project
+“rot”: when something goes unmaintained and accumulates cruft over time.</p>
+<blockquote>
+<p>We recommend that you don’t raise issues or pull requests, as they will not
+be reviewed or actioned until further notice.</p>
+</blockquote>
+<p>Or in other words, this library still exists, is depended on by legitimate
+products, can be easily consumed via NPM, but is ostensively dead. A rotting,
+zombie library that may spread dangerous vulnerabilities to downstream
+consumers, unaware of the potential risks they’re bringing into their codebases
+and exposing to their customers.</p>
+<hr>
+<p>What should we do with libraries like react-beautiful-dnd?</p>
+<p><em>“Completely deprecate it, archiving in the process?”</em> Atlassian, and often times
+many other big tech companies, simply can not do this nor afford it. There may
+be deep internal dependencies that could take months of engineering effort to
+move tools off of. There could still be products (and customers) with long
+support cycles that rely heavily on the libraries functionality for many years
+in the future.</p>
+<p>Or maybe the maintainers and teams that created the projects have moved on or
+left the company: the burden on the business to maintain open source software is
+often a neglected aspect of the FOSS movement. It can be very challenging to
+find the right engineering allocation for projects like this.</p>
+<p>Deprecating and removing open source projects can also backfire in really big
+ways: giving a long notice to the community that the project will officially end
+and no longer be made available after some point can be a massive disruption to
+dependent, downstream projects. The supply-chain rot will end and unknowing
+consumers of potentially critical vulnerabilities can choose something better,
+but you essentially shatter the chain of dependencies forcing those downstream
+projects to spend potentially critical engineering cycles on desperate efforts
+to update packages before a dependency vanishes. Or, in the worst cases,
+deprecation unknowingly break functionality for entire products, pipelines, and
+businesses.</p>
+<p>Software rarely exists in an isolated space: it almost always lives and breathes
+within an ecosystem. And deprecation can be an incredibly disruptive to that
+delicate, living balance.</p>
+<p><em>“Well, can’t they just maintain it then?”</em> This is clearly an ideal solution for
+the software supply-chain and the wider software ecosystem, especially with
+existing business dependencies, but this may not be possible depending on
+engineering allocations, headcount, if the original creators are still at the
+company, interest within the engineering org, etc. For some companies, all this
+engineering overhead is simply off the table due to cost and prioritization.</p>
+<p><em>“Lift and shift to something else?”</em> For most people consuming a library like
+react-beautiful-dnd, this seems to be the best choice: there are many drop in
+replacements that work well, like dnd-kit. But it might not be that simple: what
+if there are custom patches that you rely on that have not yet been upstreamed?
+What if drop in replacements aren’t truly “drop in” and require more work to
+pass tests and product requirements?</p>
+<p><em>“Ok, I really need this one though. Fork it?”</em> Another excellent choice, but a
+costly one: in and of itself, forking comes with alot of engineering overhead.
+To fork and maintain a large React component library is not a trivial task. But
+that’s sort of the beauty of open source software: if you or your business
+really depend on this library, given that the license is permissive enough, you
+can always fork the project, fix it, or enhance it in any way you see fit.</p>
+<p><em>“If they can’t maintain it, forking requires too much overhead, and deprecating
+is too disruptive, just leave it as is and let it rot?”</em></p>
+<p>This seems to be the only unfortunate choice left to leadership of many
+engineering orgs. It’s a sort of “between a rock and a hard place” decision. And
+I personally don’t think this is necessarily a bad choice: all software has a
+lifecycle and is inevitably destined to be re-written. Even the original creator
+of the react-beautiful-dnd library agrees:</p>
+<blockquote>
+<p>Over time I am more comfortable with the notion that all software has a
+shelf life and that it&rsquo;s okay for open source maintainers to discontinue
+working on projects if they choose to</p>
+</blockquote>
+<p>I deeply empathize with any open source maintainers that face such a decision:
+it’s not easy to find yourself with new priorities, reduced headcount, or tricky
+dependency chains.</p>
+<hr>
+<p>The provenance and stability of open source software within the secure software
+supply-chain is an incredibly complex topic. And, in my opinion, is still
+relatively unsolved today.</p>
+<p>Having a deep understanding of where your software dependencies come from and
+what’s happening in the ecosystem around the bits you need is a critical first
+step. Supporting and sponsoring open source maintainers is a great second step.
+And, as a triumphant step across the finish line, allocate engineering resources
+into projects you or your business depend on.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Why types in programming languages matter.</title>
+      <link>https://johncodes.com/posts/2023/09-10-why-types-matter/</link>
+      <pubDate>Sun, 10 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://johncodes.com/posts/2023/09-10-why-types-matter/</guid>
+      <description>&lt;p&gt;Loosely typed programming languages have been around for a very, very long time.
+And they’ve been the center of many problems for about as long.&lt;/p&gt;
+&lt;p&gt;One of the first modern “typeless” programming languages was Ken Thompson’s B: a
+machine independent language who’s primary use was for very early Unix systems
+development at the legendary Bell laboratory in 1969. Before Dennis Ritchie
+(along with Ken) went on to invent the ground breaking, seminal C programming
+language, they both used, designed, and developed B.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Loosely typed programming languages have been around for a very, very long time.
+And they’ve been the center of many problems for about as long.</p>
+<p>One of the first modern “typeless” programming languages was Ken Thompson’s B: a
+machine independent language who’s primary use was for very early Unix systems
+development at the legendary Bell laboratory in 1969. Before Dennis Ritchie
+(along with Ken) went on to invent the ground breaking, seminal C programming
+language, they both used, designed, and developed B.</p>
+<p>B sort of looks like typical C mixed in with modern Go (and knowing that, you
+wouldn’t be surprised to find that Ken Thompson years latter had a big hand in
+designing Go at Google in the early 2000s).</p>
+<p>Let’s take a quick peak at a “Hello, World!” program in B:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* use an external stdlib putchar to print to the screen */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">extern</span> putchar;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* declare and assign variables with automatic storage duration */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> msg, i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* iterate each char within the msg
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       until 0 (or in more modern terms, null) is reached */</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (msg[i] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">putchar</span>(msg[i]);
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To say that B is “typeless” isn’t necessarily correct. It has just one type: the
+“word”.</p>
+<p>For those unfamiliar with lower level systems programming, a word is typically
+an abstraction for a processor’s standard memory format. So, on modern 64-bit
+systems, a word would be 64 bits wide (or more often just referred to as 8
+bytes). Within that word, you can store just about anything: integers, strings,
+address pointers, stack references, etc. In the end, it all gets dereferenced as
+raw memory and it’s sort of up to the programmer to know what to do with those
+bits.</p>
+<p>B also came with some nice quality of life features that would latter resurface
+in C and Go: the auto keyword automatically allocates and manages memory for the
+duration of the scope it’s being held within. Modern operands like <code>++</code> and <code>--</code>.
+Function declaration. And much more.</p>
+<p>In Ken Thompson’s own words:</p>
+<blockquote>
+<p>&ldquo;B and the old old C were very very similar languages except for all the types [in C]”.</p>
+</blockquote>
+<p>Early on, B compiled down to “threaded code”: essentially a script that called
+many other subroutines and system calls. This made sense at the time since it
+worked well with the rudimentary operating systems and small bit architectures
+Ken was working within. But eventually, as year over year leaps and bounds
+continued within Bell labs computer systems, Richie converted the compiler to
+produce raw machine code that resulted in safer data typing for variables (see
+where we might be going here?).</p>
+<p>What’s important to understand is that B was a high level programming language
+that initially used an extremely loose type system: accessing a variable usually
+meant you would be dereferencing the underlying memory within that word without
+any checks to its bounds.</p>
+<p>You can imagine the problems this produced: even in our rudimentary “hello
+world” program above, there’s a huge assumption that <code>msg</code> is indeed a string (and
+not a number or function address).</p>
+<p>These “type assumptions” by programmers can create some really nasty bugs. A
+similar example of these dangerous assumptions is the classic C buffer overflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// A character buffer array of only 10 chars
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">10</span>];
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// A null terminated string array
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// (notice it&#39;s abit longer than 10 chars)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> message[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Copy the message directly into the buffer.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Note that there is no effort to check the bounds of the buffer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// which results in a buffer overflow.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// C allows for writing past buffer[9] which enters the realm of
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// &#34;undefined behavior&#34;: It might work. It might overwrite
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// other variables in the stack. It might crash the running program.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Or, depending on the system, it may even cause a hardware
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// exception if some important system memory is overwritten.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>(message); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        buffer[i] <span style="color:#f92672">=</span> message[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This is very similar to the loop in B we wrote:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Iterate the buffer array until the null terminator is found
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Again, depending on the system and user permissions running this,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// we enter the world of &#34;undefined behavior&#34;: reading bytes in
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// memory far beyond the original allocation may crash the program
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// or cause an exception to be thrown.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (buffer[j] <span style="color:#f92672">!=</span> <span style="color:#960050;background-color:#1e0010">&#39;\\</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">putchar</span>(buffer[j]);
+</span></span><span style="display:flex;"><span>        j<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is a classic buffer overflow: a program is accessing and writing memory
+that it really shouldn’t. It demonstrates a few things: sensible checks by the
+programmer on the “kind” of memory being accessed are ignored which leads to
+buggy and undefined behavior. It also shows how a very strong typing system
+would prevent something like this: copy from one buffer to another in languages
+like Go are relatively safe because of the compiler’s strongly typed interfaces
+and boundaries.</p>
+<p>Using a modern “loose” or dynamic typing system is a bit different but
+replicating similar unintended behavior is not difficult: accessing portions of
+memory (or the <em><strong>“shapes”</strong></em> of that memory) deep within a language’s systems can
+have very unintended consequences.</p>
+<p>Let’s look at a JavaScript example now:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printchars</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>[<span style="color:#a6e22e">i</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Yikes! This is the wrong type and should have been a string!!!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Thanks to type coercion in js, this will inevitably become &#34;12345&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and adopt the &#34;length&#34; property and not throw an error.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// But the real question remains: 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// what was the intent here? Why did the caller assume they could use
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// a number here? What confusion occurred? Or maybe they embraced the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// type coercion and forced the function to print a string 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// of their number. Which in itself is confusing and abit obtuse.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">myData</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printchars</span>(<span style="color:#a6e22e">myData</span>);
+</span></span></code></pre></div><p>I anticipate that JavaScript enthusiasts will not appreciate that example. And I
+can sympathize! Type coercion can be a very powerful tool and helps to prevent
+the types of crashes that usually occur in a more rigid type system. But I hope
+you see the danger here: human communication. Not only between co-workers (I
+can’t imagine shipping the above code and assuming my co-workers would all
+understand why I used a <code>printchars</code> function with a number) but also with
+yourself (I’ve come back to “clever” solutions in personal projects pretty
+confused why I wrote something the way I did).</p>
+<hr>
+<p>Taking an even bigger step back, throughout history, these sorts of “type”
+problems have had catastrophic results.</p>
+<p>In 1996, the European Space Agency was slated to launch their new Ariane 5
+rocket: a cutting edge engine that would provide heavy lift space launches for
+satellites, orbital missions, and much more. Like the Falcon 9 rocket, it was
+intended primarily for communication satellite missions. Maybe one of it’s most
+famous flights was in December 2021 when it launched the James Webb Space
+Telescope and was a huge part in the international effort.</p>
+<p>The Ariane 5 originally inherited its software from the Ariane 4 rocket, a
+system that had worked for years without problem. But during the first launch,
+carrying a payload of satellites, a problem occurred: a 64-bit floating point
+number that represented the rocket&rsquo;s horizontal velocity was converted into a
+16-bit integer. Since the Ariane 5 had different flight dynamics compared to
+it’s younger sibling, the value was much much larger than anticipated and could
+not be converted.</p>
+<p>This failed conversion resulted in an overflow (sound familiar?), which was not
+caught and caused a hardware exception. Unfortunately, the rocket’s flight
+software wasn&rsquo;t designed to handle this kind of exception and the fault-tolerant
+design of the system switched to a backup system, but that subsequent system
+failed in the same way, leading the rocket to go off course. This cascading
+effect of failed type conversions continued until the rocket was so off course
+that the self-destruct mechanism was triggered within the mechanical failsafes.
+This ultimately resulted in a complete loss of the rocket and its satellite
+payload.</p>
+<p>At the time, some estimates put the cost of this extraordinary failure at over
+$300 million USD.</p>
+<p>By this point, you probably realize that this is a late, veiled critique of
+DHH’s recent declaration that “Turbo 8 is dropping TypeScript” in favor of
+regular, vanilla JavaScript:</p>
+<blockquote>
+<p>TypeScript just gets in the way of that for me. Not just because it requires
+an explicit compile step, but because it pollutes the code with type
+gymnastics that add ever so little joy to my development experience, and
+quite frequently considerable grief. Things that should be easy become hard,
+and things that are hard become any. No thanks!</p>
+</blockquote>
+<p>I’ve personally never heard of a project going from a strongly typed system to a
+loosely typed one. But essentially what this introduces is an insurmountable
+number of possible bugs and potential catastrophic failures that would be caught
+by a typing system.</p>
+<p>People (and thought leaders) are all entitled to their own opinion. But when it
+gets dangerous is when you ship a library (like Turbo) that is in use by others.
+The true tragedy here is not the bad opinions: it’s the rug pull performed in
+one fell swoop through a single PR. I encourage everyone using Turbo to think
+deeply about the potential side effects this decision might have on your product
+and your users: DHH didn’t consider this effect for their users.</p>
+<p>Humans are bad at programming. Our brains weren’t really built to think so
+rigidly and consider all the possibilities when building systems. Strongly typed
+systems are tools. And like any good tool, it helps us go further, safer.</p>
+<hr>
+<p>If you’re a space nerd like me and interested in the Ariane 5 maiden voyage,
+flight V88, I highly recommend this made for TV documentary from the late 90s.
+It’s also abit of fascinating TV history and was a great watch while researching
+this piece.</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DGPwHq8J7_s?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3bujoNtjgTU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+]]></content:encoded>
+    </item>
+    <item>
       <title>There is no secure software supply-chain.</title>
       <link>https://johncodes.com/posts/2023/09-02-there-is-no-secure-software-supply-chain/</link>
       <pubDate>Sun, 03 Sep 2023 09:00:00 +0000</pubDate>
@@ -1719,24 +2058,6 @@ Gorilla lives on. Here&rsquo;s hoping the code is in good hands.</p>
 <p>If you found this blog post valuable,
 consider <a href="https://johncodes.com/index.xml">subscribing to future posts via RSS</a>
 or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub sponsors.</a></p>
-<hr>
-<script src="https://giscus.app/client.js"
-        data-repo="jpmcb/blog"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTYxODMyNjg="
-        data-category="Blog comments"
-        data-category-id="DIC_kwDOBuzQ5M4CTbHW"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="dark_dimmed"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
-
 ]]></content:encoded>
     </item>
     <item>
@@ -2188,6 +2509,717 @@ Your support means the world to me!!</p>
         async>
 </script>
 
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Why engineers need to be bored.</title>
+      <link>https://johncodes.com/posts/2023/05-05-why-engineers-need-to-be-bored/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://johncodes.com/posts/2023/05-05-why-engineers-need-to-be-bored/</guid>
+      <description>&lt;p&gt;There’s a mantra that people in software engineering love:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;80% of the work is done by 20% of the people.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ironically, often, people will group themselves within the minority of workers
+(“of course I’m one of the high output people doing most of the work!”)&lt;/p&gt;
+&lt;p&gt;But whether we’re talking about individual engineering teams, bigger
+organizations, or broadly across entire companies, people will find that there
+are small, tactical, high performer groups doing giant chunks of the meaningful
+work.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>There’s a mantra that people in software engineering love:</p>
+<pre><code>80% of the work is done by 20% of the people.
+</code></pre>
+<p>Ironically, often, people will group themselves within the minority of workers
+(“of course I’m one of the high output people doing most of the work!”)</p>
+<p>But whether we’re talking about individual engineering teams, bigger
+organizations, or broadly across entire companies, people will find that there
+are small, tactical, high performer groups doing giant chunks of the meaningful
+work.</p>
+<p>Another one you might hear in DevOps or IT circles is:</p>
+<pre><code>80% of our problems are caused by 20% of the changes.
+</code></pre>
+<p>Again, often, people would lump their own changes with the ones that don’t
+result in problems (“of course my features don’t cause issues, they’re rock
+solid!”)</p>
+<p>And again, whether we’re talking about individual contributions or massive
+companies, you will find that there are usually a small subsets of changes that
+notoriously cause massive problems.</p>
+<p>The origin of this catchy idea comes from the <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto principle</a>:</p>
+<pre><code>80% of consequences come from 20% of causes
+</code></pre>
+<p>or, in other-words, the majority of results come from a minority of effects.
+There are big consequences (both good and bad) to small things. And this has
+been observed across socio-economics, micro-economics, and macro-economics (in
+all of the different economic sectors).</p>
+<p>Let’s take a look at a few examples.</p>
+<p>In 2009, within the droves of the American healthcare reform, <a href="https://web.archive.org/web/20090802002952/http://www.projo.com/opinion/contributors/content/CT_weinberg27_07-27-09_HQF0P1E_v15.3f89889.html">Myrl Weinberg found</a>
+that some 80 percent of healthcare costs are incurred by 20% of the
+population. I.e. the majority of the massive amounts of money being spent on
+healthcare in the United States is actually only coming from a small minority of
+people with chronic conditions.</p>
+<blockquote>
+<p>The Agency for Healthcare Research and Quality says that 20 percent of the
+population incurs 80 percent of total health-care expenses. We also know
+that this segment is made up of people with chronic conditions.</p>
+</blockquote>
+<p>Another good example is Amazon Web Services.</p>
+<p>In the early 2000s, <a href="https://techcrunch.com/2016/07/02/andy-jassys-brief-history-of-the-genesis-of-aws/">as the story goes</a>,
+Amazon found itself in a technology and
+IT rats nest. With massive dependencies on third party vendors, very short
+windows for pushing changes into production, dependency deadlocks across teams,
+and little planning for how to scale their online business, Amazon needed a way
+to decouple everything from within: Amazon Web Services was born. Using an API
+driven methodology, teams began to move faster by consuming services from
+within. CEO of Amazon and previous leader of AWS, <a href="https://techcrunch.com/2016/07/02/andy-jassys-brief-history-of-the-genesis-of-aws/">Andy Jassy said</a>:</p>
+<blockquote>
+<p>We expected all the teams internally from that point on to build in a
+decoupled, API-access fashion, and then all of the internal teams inside of
+Amazon expected to be able to consume their peer internal development team
+services in that way. So very quietly around 2000, we became a services
+company with really no fanfare</p>
+</blockquote>
+<p>Over time, the innovation and creation of AWS within Amazon by a small group of
+engineers and product leaders would become the central product of the entire
+company. In 2021, <a href="https://www.visualcapitalist.com/aws-powering-the-internet-and-amazons-profits/">AWS made up some 74%</a>
+<em>(nearly 80%)</em> of Amazon’s total operating profit. And that number is expected to continue to climb.</p>
+<p>One question you may be asking yourself is <em>“What’s the point of the small
+minority then? For example, if 80% of the work is done by 20% of the people,
+shouldn’t we just trim the fat and get rid of the people only doing 20% of
+work?”</em></p>
+<p>And while an interesting thought, you need to keep in mind that this is a
+constant balanced principle.</p>
+<p>If you did attempt to get the minority of workers doing the majority of work to
+actually just do 100% of it, those workers would inevitably slid back into the
+balanced mold of the principle. You would find yourself with a skeleton crew
+where even fewer people are doing the majority of the work and a few of your
+previous high performers have slid into the lower 20%. Instead, it’s important
+that the system surrounding this balance change and adapt to lift the tide of
+both the majority and the minority.</p>
+<p>For example, looking deeper at the discussion on healthcare reform in the United
+States, addressing the needs of the minority will inevitably also addresses the
+needs of the majority:</p>
+<blockquote>
+<p>If we can create a system that provides for and appropriately addresses the
+unique needs of the 20 percent of the population who are driving the
+health-care dollars spent in America, we’re 80 percent of the way toward a
+health-care solution for all.</p>
+</blockquote>
+<p>And in the example of Amazon web services, it would be a massive mistake to cut
+out all the other businesses that don’t bring in large portions of the operating
+profit: those smaller departments and businesses all run on AWS and enable the
+platform as a whole to get better through surfacing early issues, trying beta
+features internally, and so on. Or as some like to say, the other Amazon
+business units “Drink their own champagne” and everyone’s life gets better.</p>
+<hr>
+<p>Today, I’d like to propose a new principle: The Pareto principle of Boredom</p>
+<pre><code>80% of innovation comes from being bored 20% of the time
+</code></pre>
+<p>Engineering teams and innovators are peculiar anomalies. They can produce
+amazing output, but when pushed too far, you can extinguish the bright flame of
+innovation that many entrepreneurs and enthusiasts spend their whole life
+chasing.</p>
+<p>It’s extremely important that boredom is built into the logistics of daily work.
+Which can be nearly impossible today with our constant inundation from
+notifications, “productivity” instant messaging solutions, on call alerts,
+customer questions, so on and so forth.</p>
+<p>We live in a hyper connected world, but often times, all you need to cultivate
+some invention and creativity <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4217586/">is a little boredom in your day</a>:</p>
+<blockquote>
+<p>&hellip; boredom motivates pursuit of new goals when the previous goal is no longer
+beneficial. Exploring alternate goals and experiences allows the attainment
+of goals that might be missed if people fail to reengage. Similar to other
+discrete emotions, we propose that boredom has specific and unique impacts
+on behavior, cognition, experience and physiology.</p>
+</blockquote>
+<p>And what are those impacts?</p>
+<blockquote>
+<p>&hellip; it has been suggested that boredom can increase creativity … despite the
+fact that folk ideas often consider boredom and creativity to be opposites</p>
+</blockquote>
+<blockquote>
+<p>&hellip; In support of this claim, one study found that, when asked about the
+subjective positive outcomes of boredom, some participants listed increased
+creativity</p>
+</blockquote>
+<p>To some in the tech industry, this may be obvious: if you are constantly pushing
+your engineers for increased productivity, the really important innovations
+around automation, experiments, and research won’t ever happen. Or said more
+plainly, your team will never automate the boring stuff.</p>
+<p>You often see this on teams that have failed to adequately automated the most
+boring tasks (like releases and testing). Instead of doing the really fun, sexy
+innovative work that everyone wants to be doing, those teams are stuck spending
+huge swaths of time doing manual testing and hand crafting releases (that all
+should have been done through a pipeline).</p>
+<p>There are a few questions you can ask yourself as an engineering leader:</p>
+<ul>
+<li>“Am I pushing productivity beyond the sweet spot of The Pareto principle of Boredom?”</li>
+<li>“How can I encourage my team to spend 20% of their time innovating and doing what excites them in free-form-boredom time?”</li>
+<li>“Is my team spending 100% of it’s output on tasks that have to get done?”</li>
+</ul>
+<p>Boredom is the easiest and cheapest way you can start to breed innovation on an
+engineering team. By simply reducing the “true” workload from 100% down to 80%,
+you’ll start to find that in the newly created 20% of free-form-boredom time,
+engineers will get curious and creative. They’ll start spinning the flywheel of
+innovation and create unique solutions to existing problems on the team. And, as
+that flywheel spins, the speed of innovation and creativity will pick up. You
+may even find an entirely new and interesting product on your hands.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>How the Agile Manifesto Changed Nothing</title>
+      <link>https://johncodes.com/posts/2023/04-26-the-agile-manifesto-changed-nothing/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>https://johncodes.com/posts/2023/04-26-the-agile-manifesto-changed-nothing/</guid>
+      <description>&lt;p&gt;When the &lt;a href=&#34;https://agilemanifesto.org/&#34;&gt;Agile Manifesto&lt;/a&gt;
+first appeared in 2001, the industry had just finished
+reeling from the catastrophic collapse of the dot-com bubble. Massive amounts of
+capital had swarmed into the tech market, every company was “adopting” the
+internet, and, when the inevitable economic downturn arrived, many software
+engineers lost their jobs.&lt;/p&gt;
+&lt;p&gt;Flush with cash due to the low interest rates of 1998 and 1999, the late 90s
+gave rise to a new kind of startup: &lt;em&gt;the internet startup&lt;/em&gt;. Blinded by the
+possibilities of this entirely new and booming market, many entrepreneurs (often
+without the ability to actually execute on their ideas) where able to
+successfully pitch their businesses to venture firms. While there were some
+massively successful unicorns that came out of this bubble (like Google’s
+internet search engine, Ebay’s online auction site, and Amazon.com’s internet
+book store) many others failed, inevitably going out of business and tanking the
+market with them.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>When the <a href="https://agilemanifesto.org/">Agile Manifesto</a>
+first appeared in 2001, the industry had just finished
+reeling from the catastrophic collapse of the dot-com bubble. Massive amounts of
+capital had swarmed into the tech market, every company was “adopting” the
+internet, and, when the inevitable economic downturn arrived, many software
+engineers lost their jobs.</p>
+<p>Flush with cash due to the low interest rates of 1998 and 1999, the late 90s
+gave rise to a new kind of startup: <em>the internet startup</em>. Blinded by the
+possibilities of this entirely new and booming market, many entrepreneurs (often
+without the ability to actually execute on their ideas) where able to
+successfully pitch their businesses to venture firms. While there were some
+massively successful unicorns that came out of this bubble (like Google’s
+internet search engine, Ebay’s online auction site, and Amazon.com’s internet
+book store) many others failed, inevitably going out of business and tanking the
+market with them.</p>
+<p>Regardless of this terrible tech-market, the world of software in 2001 was a
+very messy, cut-throat, and “process-heavy” place. Many engineers were subject
+to the dreadful Waterfall methodologies of software development: a system of
+creating software that used ironclad requirements which were very difficult to
+change. And fixed deadlines on delivery of software products left little room
+for iteration or integration testing.</p>
+<p>In other engineering fields, Waterfall works just fine: if you’re building a
+bridge, I sure hope you have a list of requirements, measurements, materials,
+and structural calculations before you start building.</p>
+<p>But in software, where things change quickly, integrations break often, and
+customer needs shift without warning, a shorter and simpler development
+methodology is often needed. You could be months into developing some piece of
+software using Waterfall and find out some critical API integration being
+delivered by another team, in another department is completely incompatible with
+what you’ve built (requiring more lengthy Waterfall cycles). Or that your
+project is getting de-prioritized, if not canceled completely, by the business
+(if only we had gotten user feedback months ago so we knew what the right thing
+to build was … ).</p>
+<p>Companies in the late 90s and early 2000s that attempted to “adopt the internet”
+found themselves bogged down by the old lengthy engineering processes and dev
+cycles. This, at least in part, contributed to the economic collapse of the
+dot-com bubble: huge sectors of the economy that had stagnated and failed to
+execute on inflated evaluations of their internet business’s value and
+stability. I wonder what the world would be like if businesses during the early
+technology revolutions had taken the simpler agile approach: would fewer
+businesses have failed? Would we have progressed the state of technology even
+further today?</p>
+<p>Thankfully, agile proposes a different approach.</p>
+<p>Let’s imagine your team is tasked with building and delivering a software car.
+In Waterfall development, you might first build the frame, then the wheels,
+eventually the engine, and so on. Alot can go wrong: what if your customers
+needs aren’t met by the final product? What if your integrations with the road
+software suite is broken upon delivery? Or you find out that the engine
+components never actually worked as intended causing the entire product to
+break. The plans and requirements for the car are handed down to the dev team at
+the very beginning of development, often by “the business”, and there is little
+flexibility for change or ability to get early feedback from real users.</p>
+<p>Conversely, using agile to build this software car, you’d always and
+continuously deliver working and tested software, working closely with the
+people who know the customer’s needs. You might first deliver a skateboard type
+thing. Easy enough to build; it has four wheels and works right out of the gate.
+Then, you may make the frame bigger. You may add an engine for a small
+go-cart-type vehicle. Add enough seats for a car. Configure the steering wheel.
+Add a radio. Eventually, the project will be completed and, all along the way,
+the development team is able to get feedback from real users and integrate with
+existing systems continuously, testing as they go (the team would catch that
+failing integration with the road systems very early on!).</p>
+<p>Agile software development proposes principles that may seem obvious to
+engineers today in 2023, but, at the time, these ideas were intriguing, nuanced,
+and powerful: always deliver working software, test your code, integrate
+continuously, have face-to-face conversations, prioritize relationships with
+people on your team, adapt quickly to changing requirements, work closely with
+the business people, and let teams self organize for the best results.</p>
+<p>Like any good “declaration”, all this was wrapped up in a simple and elegant
+document: The Agile Manifesto. This wasn’t something that was handed down from
+pundits within the industry; it was written and signed by software engineers
+doing real work. Its inception actually sounds like something out of a novel: in
+the winter of 2001, 17 software developers gathered in Snowbird Utah to ski,
+eat, drink, and discuss the software industry (but, unfortunately, not to go on
+some epic quest). People like Kent Beck (who would later go on to establish
+Extreme programming), Andrew Hunt &amp; David Thomas (who co-authored The Pragmatic
+Programmer), and Jeff Sutherland (a fore-father of the scrum project management
+methods). They were all present. The output; a single, simple document outlining
+the engineering processes for an ideal, lean, and efficient software
+organization.</p>
+<p>Agile development would eventually become the bedrock for other systems of
+software development, like Scrum, DevOps, Extreme-programming, and Platform
+Engineering. These subsequent systems of development heavily emphasized
+different prinviples within agile; like continuous delivery, continuous
+integration automation suites, relationships between individual contributors,
+and easily deploying and delivering optimized dev environments to individual
+contributors and dev teams. But throughout all of these methodologies is agile.
+Agile remains the backbone. Agile is what gave life to these methods.</p>
+<p>Despite agile seeming like it’s all about process and how to get stuff done, the
+Agile Manifesto is, first and foremost, a response to an industry that was
+falling apart, cannibalizing itself from the inside out, and burning out its
+talent.</p>
+<p>At its heart, <a href="http://agilemanifesto.org/history.html">The Agile Manifesto is</a>:</p>
+<blockquote>
+<p>… a set of values based on trust and respect for each other and promoting
+organizational models based on people, collaboration, and building the types of
+organizational communities in which we would want to work.</p>
+</blockquote>
+<p>To buy into the agile engineering processes also means that you buy into the
+cultural ideals that surround and encompass agile. The engineering processes of
+test often, ship working code, integrate continuously, etc. are only in service
+of a model that supports the kinds of engineering organizations where
+self-organizing teams thrive, people love the work they are doing, and trust in
+your fellow engineer is paramount.</p>
+<p>Today, most software organizations would say they’ve adopted agile (or at least
+some bastardized form of agile). Yet, I would argue that the industry has missed
+the mark on adopting the true heart of agile.</p>
+<p>We find ourselves in a very similar situation to the 2001 dot-com bubble
+collapse; increasing interest rates, massive droves of software talent being let
+go <a href="https://www.businessinsider.com/google-employee-layoffs-engineer-locked-out-emails-termination-pichai-2023-1">in some of the worst ways possible</a>,
+priorities shifting away from collaboration and psychologically safe engineering organizations and moving more
+towards efficiently delivering products.</p>
+<p>It seems that the industry is pushing back on the agile ideals.</p>
+<p>And my worst fear is that the Agile Manifesto changed nothing with more and more
+of the sector being somewhere I wouldn’t really want to work.</p>
+<p>I’ll be the first to admit: agile takes time, energy, and dedication. It’s not
+always easy. Retrospectives, planning meetings, user research (and so on) all
+take time and engineering resources. Time not spent coding or working directly
+on products. But if there’s anything the last 20 some years of this tech boom
+market have shown us, where agile was adopted by the industry very broadly, it’s
+that agile works. Happy engineers who love their work deliver amazing solutions
+and, in the long term, make for more sustainable organizations that can continue
+to ship stable, and innovative products that customers love.</p>
+<p>If you’ve been reading this so far and find yourself saying “Huh, the dot-com
+bubble sort of looks like the tech-market today”, that’s because it is. From an
+economic standpoint, culture perspective, and engineering process view. It seems
+when the economic goings get rough, engineering organizations get worse.</p>
+<p>A primary, high profile example of this is the Elon Musk takeover of Twitter:
+most engineers have been laid off, there have been
+<a href="https://www.theguardian.com/technology/2023/mar/08/spike-in-twitter-outages-since-musk-takeover-hint-at-more-systemic-problems">multiple lengthy outages</a>,
+<a href="https://twitter.com/davidgerard/status/1634633886712954881">rumors of badly broken internal infrastructure systems</a>,
+and a new <a href="https://www.theverge.com/23551060/elon-musk-twitter-takeover-layoffs-workplace-salute-emoji">“extremely hardcore” culture</a>,
+all for the crusade to find profitability and ship software requirements.</p>
+<p>But Elon is not solely to blame.
+<a href="https://www.nytimes.com/2021/08/16/technology/twitter-culture-change-conflict.html?searchResultPosition=1">The problems at Twitter existed long before the takeover</a>:</p>
+<blockquote>
+<p>Soon after joining Twitter in 2019, Dantley Davis gathered his staff in a
+conference room at the company’s San Francisco headquarters … He asked employees
+to go around the room, complimenting and critiquing one another. Tough criticism
+would help Twitter improve, he said. The barbs soon flew. Several attendees
+cried during the two-hour meeting, said three people who were there.</p>
+</blockquote>
+<p>That sure doesn’t sound like <em>“the type of organizational community in which we
+would want to work”</em>.</p>
+<p>This is significant because the tech market is a self feeding, always
+cannibalizing beast: whatever the big players do, typically companies like
+Google, Meta, and Amazon, the rest of the tech market will follow. These trends
+in engineering cultures, compensation, interviews, and so on will always trickle
+down to the rest of the industry. So, without you even knowing it, the Elon
+takeover of Twitter has probably already affected you.</p>
+<p>Layoffs and downsizing in 2023 may not yet be over. <a href="https://www.nytimes.com/2023/04/07/business/economy-markets-recession-federal-reserve.html">And many economists believe</a>
+we are heading into a recession (if not already there) which could accelerate
+cultural and engineering organization changes at many companies. And like
+before, in 2001, when the dot-com bubble had its reckoning, the software and
+tech industry of today must face the economic music.</p>
+<p>But my hope for the future is that engineering organizations and leadership
+recognize the history that is being repeated here, change course, and continue
+to focus on lean, agile processes that work for them. Otherwise, we may see more
+companies like Twitter with a failing business model, collapsing infrastructure,
+deplorable stability, and maybe worst of all, an engineering organization that
+no one wants to be apart of.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Revisiting the Core-JS Situation</title>
+      <link>https://johncodes.com/posts/2023/04-22-revisiting-the-core-js-situation/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>https://johncodes.com/posts/2023/04-22-revisiting-the-core-js-situation/</guid>
+      <description>&lt;p&gt;Weeks ago, Denis Pushkarev, the author of core-js, published &lt;a href=&#34;https://github.com/zloirock/core-js/issues/1179&#34;&gt;“So, what’s next?”&lt;/a&gt;.
+While a long and lengthy stream of consciousness on the state of the project, I
+believe it is something that anyone and everyone who interacts with open source
+software should read. It chronicles an emotional tale of his passion project,
+distrust &amp;amp; hate for him, his seemingly selfless solitary quest for a better web,
+and a plea for financial assistance.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Weeks ago, Denis Pushkarev, the author of core-js, published <a href="https://github.com/zloirock/core-js/issues/1179">“So, what’s next?”</a>.
+While a long and lengthy stream of consciousness on the state of the project, I
+believe it is something that anyone and everyone who interacts with open source
+software should read. It chronicles an emotional tale of his passion project,
+distrust &amp; hate for him, his seemingly selfless solitary quest for a better web,
+and a plea for financial assistance.</p>
+<p><a href="https://www.reddit.com/r/programming/comments/111k9aq/corejs_maintainer_so_whats_next/">The post rightfully went viral</a>
+and <a href="https://www.patreon.com/zloirock">donations started flowing in</a>.</p>
+<p>However, boiling just under the surface, much like any other large open source
+project with a solo developer, there are some real and scary implications to
+this entire situation.</p>
+<p><em>But first, what is core-js?</em></p>
+<p>After all, the project is at the center of this discussion, so it’s worth
+understanding it deeply. Core-js is a JavaScript library that focuses on
+providing cutting edge web APIs, standardization, and <em>“polyfills”</em>. At the time
+of this writing, it has over 50 thousand dependent projects and some 40 million
+downloads <em>weekly</em> on NPM, a popular JavaScript module hosting service.</p>
+<p>In short, it’s <em>the</em> JavaScript glue for web applications.</p>
+<p>It enables modern JavaScript to work on an array of different browsers,
+including Internet Explorer. And it constantly tracks the latest web standards.
+This way, JavaScript developers can take advantage of the latest and greatest
+ECMAScript standards, ensuring interoperability of web pages and applications
+across different browser platforms. Things like collections, iterators, and
+promises can simply and easily be used through the core-js polyfills. All
+without having to re-invent the wheel and worry about broken builds across the
+many different browsers and JavaScript interpreters.</p>
+<p>Like any project that attempts to implement a “standard”, this also means that
+it’s a “living” project; without constant update, which usually requires
+interplay with the upstream browsers and web-standard-setters, core-js would
+quickly fall apart. One small change in a web browser’s JavaScript interpreter
+without an update to core-js could mean a whole swath of web applications stop
+working and break.</p>
+<p>And for years, the project has existed in the depths of front-end dependencies,
+where Denis worked tirelessly. Many projects consumed core-js, usually not
+directly, but rather, somewhere in the nether of the NPM dependency hellscape.
+Its code, at least indirectly through dependency poisoning, is used almost
+everywhere. Massive multi-billion dollar companies like Apple, Amazon, Netflix,
+and many more have it embedded somewhere in their front-end dependency chains.</p>
+<p>To say the least, it’s a really important project used by nearly every
+front-end.</p>
+<p>So when did the trouble start? Around 2018, if you tried to NPM install core-js
+(or a project that depended on core-js), you would be greeted with the following
+message after the installation:</p>
+<pre tabindex="0"><code>Thank you for using core-js for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open
+Collective or Patreon ...
+
+Also, the author of core-js is looking for a good job
+</code></pre><p>While, admittedly, this was a fairly unconventional way to ask for support, it
+was a heartfelt attempt by the author to find financial means for a project he
+believed was worth all his time. Many in the JavaScript community did not
+<a href="https://github.com/zloirock/core-js/issues/548">respond well</a>.
+So much so that
+<em>“the author of some library is looking for a good job”</em>
+<a href="https://github.com/zloirock/core-js/issues/708">sort of became a meme unto itself</a>.</p>
+<p>At this point, many in the JavaScript, front-end open source community should
+have looked a little closer and seen the potential disastrous future incoming;
+the author was in financial trouble (“the project needs your help!”) and the
+author was taking extreme measures to find any financial support (by adding a
+very unconventional message embedded <a href="https://github.com/zloirock/core-js/blob/381c366b8cdc84050bb0ef7184a6e80f45bf5903/packages/core-js/scripts/postinstall.js">within a post-install script</a>.
+But instead
+of responding accordingly by financially supporting the project, adding
+additional maintainers, forking the project, or moving it to a foundation, the
+broader JavaScript open source community instead turned to slander and hate;
+Denis received numerous distasteful comments in the core-js repository, via
+email, and everywhere else he had a presence online.</p>
+<p>In 2019, as a response to a growing number of projects using the
+post-install-script as a way to raise funds and advertise their commercial
+product, NPM made the unilateral decision to
+<a href="https://github.com/zloirock/core-js/issues/635">ban post install console output that included “ads”</a>.
+This impacted core-js and removed Denis’s plea for support.</p>
+<p>His response:</p>
+<blockquote>
+<p>If NPM will ban the postinstall message, it will be moved to browsers console.
+If NPM will ban core-js - it will cause problems for millions of users. I warned
+about it.</p>
+</blockquote>
+<p><a href="https://github.com/zloirock/core-js/issues/548#issuecomment-510684777"><em>And what was that warning?</em></a></p>
+<blockquote>
+<p>If for some reason will be disabled ability to publish packages with this
+message - we will have one more left-pad-like problem, but much more serious.
+And after that 2 options - or core-js will not be maintained completely, or it
+will be maintained as a commercial-only project.</p>
+</blockquote>
+<blockquote>
+<p>Yes, I am ready to kill it as a free open source project, if it will be required
+by the protection of my rights.</p>
+</blockquote>
+<p>Through these warnings that attempted to appear genuine on the surface but
+really, were just thinly veiled threats, Denis was making it clear to anyone
+looking closely enough that he was more than ok nuking the project out of
+existence (or at least, hard pivoting it to a commercial product).</p>
+<p><em>But what is left-pad?</em></p>
+<p>And what does it have to do with core-js anyways?</p>
+<p>Left-pad was a very small JavaScript library authored by Azer Koçulu. It was
+only 11 lines of code long and added additional white space to the beginning of
+a string (or in other words, it would “pad” the left side of a string).</p>
+<p>And much like core-js, it was also distributed through NPM
+<em>(I’m seeing a common theme here …)</em>. After a legal dispute with NPM over the name of Azer’s package
+“kik” (a different side project which happened to also be the name of a popular
+messaging app), Azer removed all of his packages from NPM. Suddenly, in one fell
+swoop, across the world, JavaScript developers started seeing errors when
+building their projects:</p>
+<pre tabindex="0"><code>npm ERR! 404 ‘left-pad’ is not in the npm registry.
+</code></pre><p>Almost no one knew what the “left-pad” module was or what it did. And it didn’t
+even really matter. Somehow, through the swamp of NPM dependency chains,
+left-pad had become a project with 10s of millions of downloads a week and
+thousands of dependent projects. Azer effectively “broke the internet” by
+removing his packages that happened to be used across many other packages (and
+those packages used by other packages, so on and so forth).</p>
+<p>Some time latter, <a href="https://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/">in emails that were widely published</a>, Azer wrote:</p>
+<blockquote>
+<p>I want all my modules to be deleted including my account, along with this
+package. I don’t wanna be a part of NPM anymore. If you don’t do it, let me know
+how do it quickly.</p>
+</blockquote>
+<blockquote>
+<p>I think I have the right of deleting all my stuff from NPM.</p>
+</blockquote>
+<p>Yes, it is well within the rights of a package owner to remove their packages
+from the NPM registry. They are, after all, just pieces of open source software,
+freely distributed with no contract to their working order; often a fact that
+corporate consumers of open source software forget.</p>
+<p>By invoking the name of “left-pad”, Denis insinuates that he has considered
+following in Azer’s footsteps and doing the same. Although, the impact would
+likely be far greater.</p>
+<p><em>What about commercialization?</em> Instead of completely obliterate the project, why
+not start selling licenses for it? Or somehow turn it into a product.</p>
+<p>I find this unlikely. If Denis, a Russian national, commercialized the library
+over night, it would essentially have the same effect as deleting it: core-js is
+used by thousands of large businesses around the world, and if they suddenly had
+a Russian corporate dependency
+(<a href="https://www.state.gov/the-impact-of-sanctions-and-export-controls-on-the-russian-federation/">where there are currently many sanctions, including against “advanced technologies”</a>),
+this would force drastic action to
+remove core-js from any and all front end dependencies. More likely than not,
+NPM themselves would remove the package if this hard pivot was made. If I had to
+guess, this is why Denis has not yet attempted to commercialize core-js; it
+would destroy a library he is passionate about without providing him the
+financial windfall he desires. A lose, lose situation.</p>
+<p>But this is a sort of <em>“Tale of Two Cities”</em> - despite the clear and present
+danger the project was in and regardless of veiled threats leveraged against the
+community by it’s sole maintainer, JavaScript developers disregarded this risk,
+big businesses consumed it as a deeply integrated dependency, and everyone
+increased their usage of the library, ignoring a potentially worsening
+situation.</p>
+<p>And, unfortunately, things did get worse.</p>
+<p>Sometime in 2019-2020, Denis found himself in prison. And the core-js project
+went dark.
+<a href="https://github.com/zloirock/core-js/issues/767">Many found themselves asking <em>“What happened?”</em></a>,
+<em>“What’s the state of this project?”</em>, and <em>“Is there any governance?”</em>:</p>
+<blockquote>
+<p>The JavaScript community should be a bit concerned because @zloirock looks like
+to be the “only” maintainer. Does somebody else have admin privileges to write
+on this repo? Publish on npm and make this project not to die?</p>
+</blockquote>
+<p>Compounding a risky situation, Denis had made himself the sole maintainer of the
+GitHub repository, despite frequent requests to donate the project to a
+foundation or to add others with administrative privileges. At the time, and
+still to this day, he had no interest in giving up authority over the project.
+This means that during the time of Denis’s absence, there were no changes. No
+security fixes. No new features. No commits to the main branch.</p>
+<p>The project, for all intents and purposes, was dead.</p>
+<p>Yet, still, the open source community and many multi-billion dollar companies
+did nothing. They didn’t attempt to mitigate the risk of using this critical,
+solo maintainer project and no alternatives emerged. Funny enough, at the time,
+the usage actually increased, by some estimates, to over 25 million downloads a
+week.</p>
+<p>In the lifecycle of “important” projects, once they die or their sole maintainer
+abandons them,
+<a href="https://github.com/ryanelian/ts-polyfill/issues/4#issuecomment-599227863">usually a prominent fork emerges from within the community</a>:</p>
+<blockquote>
+<p>Babel maintainer here 👋 We are probably not going to fork core-js because we
+don’t have enough resources to maintain it.</p>
+</blockquote>
+<p>Unfortunately, despite many requests, one of the most qualified JavaScript
+organizations in the entire ecosystem, Babel, who had worked closely with Denis
+and core-js in the past, would not take the onerous of protecting their secure
+software supply-chain by forking core-js. Either because core-js was too
+complicated, they truly didn’t have allocations, or there was existing bad blood
+with the project, no useful alternative to core-js emerged.</p>
+<p>And unfortunately, at the point when a critical, solo-maintainer, open source
+project becomes so complex and so intertwined with the foundation of your
+product, you’ve effectively “lost”. When it becomes impossible to fork,
+maintain, or contribute back to the upstream project, you’ve effectively entered
+a deadlock hostage situation. Providing community support becomes impossible,
+yet, your software’s well-being is now directly linked to a solo maintainer
+who’s incentives are completely out of your control. One day on their own
+volition, they may up and abandon the project, leaving you the impossible task
+of picking up all the pieces.</p>
+<p>At this point, major JavaScript organizations like NPM or the V8 engine team at
+Google should have recognized the problem, stepped in, forked the project into
+an organization with a community, and enabled people to start contributing back.</p>
+<p>But Denis has never wanted to give up core-js to the community - he’s fought
+back on allowing others to have administrative privileges, he doesn’t enable
+others to make large meaningful contributions, and he won’t share the burden of
+shepherding an important project.
+<a href="https://github.com/zloirock/core-js/issues/139">He’s only ever seen two potential futures for core-js</a>;
+make enough money (through donations or a job) to work on core-js full
+time or let it die. Any requests from Denis for outside contributions are
+general asks to report issues, improve testing, and write better documentation.</p>
+<p>If I had to criticize Denis for something, it would be this deliberate decision
+to castrate his open source community. The overwhelming majority of the over
+5,000 commits to the repository are exclusively from Denis, mostly committed
+directly to the main branch; no pull requests, no discussion, no feedback, just
+straight to the mainline. And a great open source leader should eventually
+evolve beyond making code contributions; they should be effectively delegating
+tasks to the community, grooming the backlog, discussing proposals with
+community members, creating safegaurds to ensure the safety &amp; security of the
+software assets, and guiding the general direction of everything. Core-js never
+evolved past a simple pet project. Yet, to this day, the JavaScript ecosystem
+treats core-js like it’s a well maintained project with the support of an entire
+community. In reality, it’s one person with all the power making all the
+decisions and pushing all the changes.</p>
+<p>This, finally, brings us to this week: Denis is out of prison. He appears to be
+in insurmountable debt to some Russian authority. And he publishes his call for
+financial assistance
+<a href="https://github.com/zloirock/core-js">directly to the core-js README</a>.
+It’s a harrowing story. A
+story that I believe it, fills me with sympathy but also scares me.</p>
+<p>Denis ends his writing with the following, quoted at length for brevity:</p>
+<blockquote>
+<p>This was the last attempt to keep core-js as a free open-source project with a
+proper quality and functionality level. It was the last attempt to convey that
+there are real people on the other side of open-source with families to feed and
+problems to solve.</p>
+</blockquote>
+<blockquote>
+<p>If you or your company use core-js in one way or another and are interested in
+the quality of your supply chain, support the project</p>
+</blockquote>
+<p><em>Again, his final statement:</em></p>
+<blockquote>
+<p>If your company uses core-js and are interested in the quality of your supply
+chain, support the project</p>
+</blockquote>
+<p>is not the crescendo of someone asking for help. This is, like before, a thinly
+veiled threat. And this time, it’s a threat against the security of the
+JavaScript supply chain at large.</p>
+<p>If you know anything about me, you know that the secure software supply-chain is
+a topic I am deeply passionate about. I believe it is the most important
+technological hurdle of our modern area and I believe is at incredible risk.
+There are many avenues to disastrous supply chain attacks, but widely used
+projects that have solo maintainers are probably the largest and most blatant
+risk of them all. They’re sort of like unicorns, difficult to believe they’re
+real, but here we see one; a solo maintainer project that Amazon, Netflix,
+Apple, LinkedIn, PayPal, Binance, and tens of thousands of others have a
+dependency on.</p>
+<p>Worse yet, <a href="https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md#accident">through Denis’s own words</a>,
+we can now clearly see the massive financial trouble he is in:</p>
+<blockquote>
+<p>I received financial claims totaling about 80 thousand dollars at the exchange
+rate at that time from “victims’” relatives. A significant amount of money was
+also needed for a lawyer.</p>
+</blockquote>
+<p>And for a solo maintainer who has administrative, force push powers on a very
+complex, very popular software library, that few other people understand, his
+claims are a troubling reality. In the worst case, he could easily embed a
+malicious piece of code deep in the commit log and publish a new package to NPM
+for his financial gain. But more realistically, I worry for his safety; someone
+with crushing debt who presides over an incredibly valuable technological
+resource with little oversight is a prime target for state-sponsored hacker
+groups.</p>
+<p>Ironically, to this day, many well respected security and supply-chain companies
+would call core-js “healthy”. Snyk, a developer security platform company,
+<a href="https://snyk.io/advisor/npm-package/core-js">gives core-js a score of 94/100</a>
+noting it’s “Popularity” rating as a “Key Ecosystem
+Project” and its “Maintenance” rating as “Healthy”. I personally find this
+surprising given the years of solo maintainership of core-js, refusals by that
+sole maintainer to donate the project to a reputable organization, where that
+solo maintainer disappeared for well over a year, where threats of extinguishing
+the project were levied against the community, and where financial problems have
+been a reoccurring theme since the project’s conception.</p>
+<p>Still, potentially worse, are the thousands of massive companies that saw no
+problem freely commercializing Dnnis’s work despite the clear call for help.
+Again, this is a sort of <em>“Tale of Two Cities”</em>: Denis should be criticized for
+how he’s handled the open source community around his project but the software
+industry should be equally ashamed of how they’ve turned their back on this
+maintainer and their own software stability.</p>
+<p><em>“This all sounds bad. What do I do?”</em> Here are my recommendations for consumers
+of core-js:</p>
+<ul>
+<li>
+<p>Make a financial contribution - To start with, show Denis your support for the
+solo work he’s done on core-js and the incredible functionality he’s brought to
+the web. It’s the least we, as a software ecosystem, can do.</p>
+</li>
+<li>
+<p>Pin your core-js dependency - While not a long term solution, pinning your
+dependency will keep you from consuming potentially malicious upstream changes
+that get made to new versions of core-js. Generally, it’s not a great idea to
+blindly take every new package or track “latest”. You should attempt to
+independently verify critical projects and packages you consume, pinning to the
+ones that pass your screening.</p>
+</li>
+<li>
+<p>Cache versions of core-js you do rely on - In general, it is a mistake to
+blindly take dependencies from upstream package registries. In other words, you
+should never install an NPM package directly to your production environment. You
+may find yourself in a “left-pad” situation where a module owner one day decides
+to remove that package from the face of the earth. Or worse, where the package
+owner publishes a new malicious package under the same version that flows down
+to consumers. Those packages should, instead, be installed through a cache that
+you and your security team have independently created, validated, and control.
+Yes, this is another service you’d be running internally, but it’s well worth
+the cost in order to mitigate an entire class of supply chain attacks.</p>
+</li>
+<li>
+<p>Raise this concern with your CISO - Chief Information Security Officers are
+tasked with tracking, monitoring, and assessing the risk to all security vectors
+your company may be vulnerable to. It’s clear that Denis is in financial
+trouble. That, compounded with the fact that he has admin access to force push
+onto the main branch and unilaterally publish new packages, should be
+concerning. Work with your security team and CISO to determine the threat level
+of this risk and what impact it has on your code bases.</p>
+</li>
+<li>
+<p>Get involved with the project - I’ve generally advocated for this in the past.
+And while core-js appears to be a difficult project to get involved with, there
+are still issues on GitHub you can raise, a few pull-requests to be commented
+on, and the commit log to be validated. If it’s a critical project to your
+company, spend the time, money, and engineering resources to protect your
+companies assets by getting involved.</p>
+</li>
+<li>
+<p>Find a reputable alternative and move to it - This is the best long term
+solution. But would require significant engineering resources.</p>
+</li>
+</ul>
+<p>A quick note on making a financial contribution - by donating, you are not
+supporting a project. You are not providing funds to a well defined
+organization. And you are not entitled to technical support. You are simply
+bank-rolling an individual. An individual who has brought massively useful
+usability features to the web and JavaScript developers. Someone who needs help.
+Someone who, at will, on their own volition, may abandon the project, inject
+malicious commits deep into the commit log, or outright sell their GitHub
+account to nefarious third parties. And for a massively critical project like
+core-js, this is a terrifying solution to propose: “just pay him and forget
+about it” won’t fix the problem in the long term and will never scale. If
+anything, it may exacerbate the problem by enabling a single, solo developer to
+keep working on a critical piece of web infrastructure by themselves. In that
+scenario, <a href="https://en.wikipedia.org/wiki/Bus_factor">the bus factor</a>
+is still 100%; Dennis working on the project alone means
+that at any time, he could disappear again and leave the project to rot.</p>
+<p>If you’ve read this far, I hope you understand why I am worried for core-js’s
+future. And yet, I am also sympathetic to Denis’s plea. Commercialization of
+free and open software by large, multi-billion dollar companies has gone
+unchecked for decades. Denis worked tirelessly for years to provide what he
+believed to be a good solution to a massive problem on the web. And the
+ecosystem took advantage of that, using his project with little recognition.
+While I disagree with and criticize some of his decisions, in the end, it is his
+project, it’s just gotten out of control and is used everywhere. He has every
+right to do with it what he wants.</p>
+<p>But that’s also the beauty of open source software. Denis could completely
+disappear tomorrow and there would be zero real world consequence to him doing
+that; most open source licenses indicate that the software is provided “as is”
+with no support, no contract, and no assurance of its good working order.</p>
+<p>It also means that anyone can fork the project and maintain it themselves. If
+there’s anyone to be ashamed of, it’s the JavaScript open source ecosystem that
+perpetuated an increasingly bad situation for too long.</p>
+<p>Now is the time to step up. Now is the time to support Denis. Now is the time to
+fork core-js. Now is the time to prevent another “left-pad-like problem”.</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -3669,17 +4701,17 @@ or <a href="https://github.com/sponsors/jpmcb">buying me a coffee via GitHub spo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://johncodes.com/about/</guid>
       <description>&lt;h1 id=&#34;hi-there-&#34;&gt;Hi there! 🌊&lt;/h1&gt;
-&lt;p&gt;My name is John &amp;amp; I&amp;rsquo;m a senior software engineer at &lt;a href=&#34;https://opensauced.pizza&#34;&gt;OpenSauced&lt;/a&gt;
-where I&amp;rsquo;m building our backend infrastructure and open source insights tooling.&lt;/p&gt;
-&lt;p&gt;In the past, I&amp;rsquo;ve worked at AWS, VMware, &amp;amp; Pivotal Cloud Foundry
+&lt;p&gt;My name is John. I&amp;rsquo;m an engineer VP at The Linux Foundation
+where I&amp;rsquo;m building our AI and backend infrastructure for the LFX platform.&lt;/p&gt;
+&lt;p&gt;In the past, I&amp;rsquo;ve worked at OpenSauced, AWS, VMware, &amp;amp; Pivotal Cloud Foundry
 where I worked on open source software, observability &amp;amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.&lt;/p&gt;
 &lt;p&gt;This site is my personal landing page and blog.
 You&amp;rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays,
 photos, music, videos, ramblings on philosophy, and really, whatever I want &lt;em&gt;(it&amp;rsquo;s my website after all)&lt;/em&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="hi-there-">Hi there! 🌊</h1>
-<p>My name is John &amp; I&rsquo;m a senior software engineer at <a href="https://opensauced.pizza">OpenSauced</a>
-where I&rsquo;m building our backend infrastructure and open source insights tooling.</p>
-<p>In the past, I&rsquo;ve worked at AWS, VMware, &amp; Pivotal Cloud Foundry
+<p>My name is John. I&rsquo;m an engineer VP at The Linux Foundation
+where I&rsquo;m building our AI and backend infrastructure for the LFX platform.</p>
+<p>In the past, I&rsquo;ve worked at OpenSauced, AWS, VMware, &amp; Pivotal Cloud Foundry
 where I worked on open source software, observability &amp; SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.</p>
 <p>This site is my personal landing page and blog.
 You&rsquo;ll find all kinds of stuff here: stuff about tech, short stories, long-form essays,
