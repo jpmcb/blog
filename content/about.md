@@ -4,10 +4,10 @@
 
 # Hi there! 🌊
 
-My name is John & I'm a senior software engineer at [OpenSauced](https://opensauced.pizza)
-where I'm building our backend infrastructure and open source insights tooling.
+My name is John. I'm an engineer VP at The Linux Foundation
+where I'm building our AI and backend infrastructure for the LFX platform.
 
-In the past, I've worked at AWS, VMware, & Pivotal Cloud Foundry
+In the past, I've worked at OpenSauced, AWS, VMware, & Pivotal Cloud Foundry
 where I worked on open source software, observability & SRE tooling, Kubernetes, Linux operating systems, and cloud technologies.
 
 This site is my personal landing page and blog.

@@ -250,7 +250,3 @@ Gorilla lives on. Here's hoping the code is in good hands.
 If you found this blog post valuable,
 consider [subscribing to future posts via RSS](https://johncodes.com/index.xml)
 or [buying me a coffee via GitHub sponsors.](https://github.com/sponsors/jpmcb)
-
----
-
-{{< comments >}}
