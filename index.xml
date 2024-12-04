@@ -6,10 +6,68 @@
     <description>Recent content on John McBride</description>
     <generator>Hugo -- 0.139.3</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Nov 2024 06:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2024 06:00:00 -0600</lastBuildDate>
     <atom:link href="https://johncodes.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Goodbye Xitter - A short archive of my greatest hits.</title>
+      <title>goodbye opensauced</title>
+      <link>https://johncodes.com/posts/2024/12-04-goodbye-opensauced/</link>
+      <pubDate>Wed, 04 Dec 2024 06:00:00 -0600</pubDate>
+      <guid>https://johncodes.com/posts/2024/12-04-goodbye-opensauced/</guid>
+      <description>&lt;p&gt;On November 1st, 2024, OpenSauced leadership announced
+that the company would be joining The Linux Foundation.
+&lt;a href=&#34;https://opensauced.pizza/blog/opensauced-is-joining-the-linux-foundation&#34;&gt;Bdougie wrote&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The natural next step in our journey is to extend our impact beyond GitHub. We’re beyond excited to announce our new home with the Linux Foundation, where we’ll collaborate to expand data insights within the LFX product, bringing even richer intelligence to the open source community&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Now that the acquisition dust has settled
+and I&amp;rsquo;ve started to find my footing at The Linux Foundation,
+I wanted to take a moment to reflect, think back on the
+last year and a half of building OpenSauced,
+ponder the lessons learned, and take a moment to thank everyone who made this journey
+possible.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>On November 1st, 2024, OpenSauced leadership announced
+that the company would be joining The Linux Foundation.
+<a href="https://opensauced.pizza/blog/opensauced-is-joining-the-linux-foundation">Bdougie wrote</a>:</p>
+<blockquote>
+<p>The natural next step in our journey is to extend our impact beyond GitHub. We’re beyond excited to announce our new home with the Linux Foundation, where we’ll collaborate to expand data insights within the LFX product, bringing even richer intelligence to the open source community</p>
+</blockquote>
+<hr>
+<p>Now that the acquisition dust has settled
+and I&rsquo;ve started to find my footing at The Linux Foundation,
+I wanted to take a moment to reflect, think back on the
+last year and a half of building OpenSauced,
+ponder the lessons learned, and take a moment to thank everyone who made this journey
+possible.</p>
+<p>And ultimately, what is a company but the people that make up the greater whole?</p>
+<p>I found myself at OpenSauced doing some of my most inspired and inventive work
+(often on a shoestring budget, under tight <em>&ldquo;startup mode&rdquo;</em> deadlines).
+I attribute all that innovation to nothing but the vision laid out by the people that surrounded us
+and made up the engineering org.</p>
+<p>If I had to give one piece of advice to prospective startup founders or early engineerings,
+it&rsquo;d be to encapsulate yourself with people
+who challenge you, inspire you, accept you, are ready to be challenged,
+and have a vision for the future you resonate with.
+<em>And then let them go out, do their job, and excel.</em>
+Too often we forget the <em>human side</em> of building tech and it can be easy to get stuck in <em>&ldquo;founder mode&rdquo;</em> grind
+where the sole focus is <em>what</em> you&rsquo;re building (not <em>how</em> or <em>why</em>).</p>
+<p>Bootstrapping a company often means building a place that talented people can call home.
+A place they&rsquo;re excited to show up and do great work.</p>
+<hr>
+<p>To <a href="https://www.linkedin.com/in/brianldouglas/">Brian</a>, thank you for your guidance, incredible vision,
+and steadfast leadership.
+To <a href="https://www.linkedin.com/in/brandontroberts/">Brandon</a>, thank you for trusting me and giving all of us a culture where we could invent, excel, and be ourselves.
+To <a href="https://www.linkedin.com/in/nickytonline/">Nick</a>, thank you for being the compatriot and counterpart I needed, day in and day out.
+To <a href="https://www.linkedin.com/in/zeucapua/">Zeu</a>, thank you for taking a chance on us: it&rsquo;s rare to get to work with someone
+who has such raw talent - wield it well!
+To <a href="https://www.linkedin.com/in/isabel-bensusan/">Isa</a>, thank you for your mindfulness and eye for impeccable design.
+To <a href="https://www.linkedin.com/in/bekahhw/">Bekah</a>, thank you for giving me the confidence to write and own my voice.
+To <a href="https://www.linkedin.com/in/chhristopher/">Chris</a>, thank you for making it easy to create, imagine, and share our vision.</p>
+<p><em>As always - stay saucey.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>a short archive of my greatest xitter hits.</title>
       <link>https://johncodes.com/posts/2024/11-16-goodbye-twitter/</link>
       <pubDate>Sat, 16 Nov 2024 06:00:00 -0600</pubDate>
       <guid>https://johncodes.com/posts/2024/11-16-goodbye-twitter/</guid>
