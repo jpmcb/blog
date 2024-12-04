@@ -1,5 +1,5 @@
 ---
-title: "Goodbye Xitter - A short archive of my greatest hits."
+title: "a short archive of my greatest xitter hits."
 date: 2024-11-16T06:00:00-06:00
 ---
 
