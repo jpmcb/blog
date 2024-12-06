@@ -25,7 +25,7 @@ I found myself at OpenSauced doing some of my most inspired and inventive work
 I attribute all that innovation to nothing but the vision laid out by the people that surrounded us
 and made up the engineering org.
 
-If I had to give one piece of advice to prospective startup founders or early engineerings,
+If I had to give one piece of advice to prospective startup founders or early engineers,
 it'd be to encapsulate yourself with people
 who challenge you, inspire you, accept you, are ready to be challenged,
 and have a vision for the future you resonate with.
@@ -38,14 +38,19 @@ A place they're excited to show up and do great work.
 
 ---
 
-To [Brian](https://www.linkedin.com/in/brianldouglas/), thank you for your guidance, incredible vision,
-and steadfast leadership.
-To [Brandon](https://www.linkedin.com/in/brandontroberts/), thank you for trusting me and giving all of us a culture where we could invent, excel, and be ourselves.
-To [Nick](https://www.linkedin.com/in/nickytonline/), thank you for being the compatriot and counterpart I needed, day in and day out.
-To [Zeu](https://www.linkedin.com/in/zeucapua/), thank you for taking a chance on us: it's rare to get to work with someone
-who has such raw talent - wield it well!
-To [Isa](https://www.linkedin.com/in/isabel-bensusan/), thank you for your mindfulness and eye for impeccable design.
-To [Bekah](https://www.linkedin.com/in/bekahhw/), thank you for giving me the confidence to write and own my voice.
-To [Chris](https://www.linkedin.com/in/chhristopher/), thank you for making it easy to create, imagine, and share our vision.
+To [Brian](https://www.linkedin.com/in/brianldouglas/), thank you for your
+guidance, incredible vision, and steadfast leadership. To
+[Brandon](https://www.linkedin.com/in/brandontroberts/), thank you for trusting
+me and giving all of us a culture where we could invent, excel, and be
+ourselves. To [Nick](https://www.linkedin.com/in/nickytonline/), thank you for
+being the compatriot and counterpart I needed, day in and day out. To
+[Zeu](https://www.linkedin.com/in/zeucapua/), thank you for taking a chance on
+us: it's rare to get to work with someone who has such raw talent - wield it
+well! To [Isa](https://www.linkedin.com/in/isabel-bensusan/), thank you for
+your mindfulness and eye for impeccable design. To
+[Bekah](https://www.linkedin.com/in/bekahhw/), thank you for giving me the
+confidence to write and own my voice. To
+[Chris](https://www.linkedin.com/in/chhristopher/), thank you for making it
+easy to create, imagine, and share our vision.
 
 _As always - stay saucey._
